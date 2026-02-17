@@ -1,0 +1,112 @@
+\section{Determinants in the transmission of tariffs}\label{sec:4}
+
+\subsection{Baseline results}%\label{sec:US_tariffs}
+We begin by discussing how trade tariffs propagate through the economy in our global production network model. We start with a benchmark experiment in which the United States imposes a 10\% tariff on China's goods imports — a symmetric tariff increase across sectors — which is a stylized policy shock designed to isolate the key macro transmission channels. We then analyze how the macroeconomic effects of the trade war differ under alternative model calibrations that alter key structural features of the global production network. Specifically, we explore the the elasticity of trade flows, the role of DCP and role of intersectoral input–output linkages. Then we go onto to explore the sector specific tariffs in order to unpack the mechanisms that govern the propagation of tariff shocks across countries and sectors.\par
+
+Shock to Sectors 4-23 aggregated
+Dynamic Response over 12 quarters (IRF) for USA, CHN, and EA
+\\
+The baseline version has the following specifications:
+\begin{itemize}
+    \item Armington trade elasticity of 1
+    \item heterogenous DCP across sectors
+    \item intersectoral input-output linkages
+    \item China with flexible exchange rate
+\end{itemize}
+
+Figure \ref{fig:baseline1} summarizes the baseline responses over 3 years for the macroeconomic impact of the US tariffs on China. The results show that tariffs have large and asymmetric effects across the four regions. Real GDP declines significantly in  the US and China, by 2.2 percentage points and 2.6 percentage points respectively, with particularly strong inflationary pressures in the US, with a 3.7 percentage point cumulative impact over the three-year horizon. The contraction in US imports drives an improvement in the trade balance, which rises by roughly 2 percentage points, despite a decline in exports. China is also adversely affected, especially through a drop in exports and a moderate increase in inflation, and the overall macroeconomic impact is slightly more severe than in the US. The euro area (EA) and the rest of the world (ROW) experience more muted spillovers in our baseline calibration, with marginal declines in output and trade.\par
+
+Figure \ref{fig:baseline2} shows the impact of tariffs on bilateral trade balances across country pairs. The largest disruptions occur in trade between the US and China, where both tariffs and retaliatory measures drive a sharp deterioration in bilateral balances. However, spillovers also appear in third-country trade relationships, highlighting how global production and trade networks transmit the effects of bilateral policy actions more broadly. These baseline results provide a benchmark against which we compare the alternative calibrations that follow. To better understand the transmission mechanisms underlying these aggregate outcomes, we next explore the sensitivity of the results to changes in three key structural parameters: the configuration of input–output linkages, the degree of nominal price rigidities, and the elasticity of trade substitution.\footnote{The corresponding impulse response functions for these scenarios are provided in Appendix~\ref{sec:appendix_irfs}.}\par
+
+\begin{figure}[ht]
+  \centering
+    \includegraphics[width=\linewidth]{0_clean/figures/Stacked_Combined_Baseline.png}
+    \caption{Three-Year Cumulative Responses to US-China trade war.}
+    \label{fig:baseline1}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+    \includegraphics[width=0.75\linewidth]{0_clean/figures/Stacked_Bilat_TradeBalance.png}
+    \caption{Three-Year Cumulative Responses of Bilateral Trade Balances.}
+    \label{fig:baseline2}
+\end{figure}
+
+%In this section, we explore the sensitivity of the model’s results to changes in structural parameters and transmission channels. Our goal is to unpack the mechanisms that govern the macroeconomic response to tariffs in a networked open-economy setting. To do so, we conduct a canonical trade-war simulation between the United States and China, where both countries impose a 50\% tariff on each other’s imports. This symmetric policy shock serves as a benchmark for assessing how the average three-year impact of tariffs differs across model configurations. Specifically, we evaluate the average quarterly responses across three key dimensions: the structure of production linkages, the degree of nominal rigidities, and the elasticity of trade\footnote{The corresponding impulse response functions for the scenarios are shown in Appendix \ref{sec:appendix_irfs}.}.\par
+% ---------------
+
+\subsection{Role of DCP relative to PCP}%\label{sec:US_tariffs}
+
+Dominant Currency Pricing (DCP) plays a central role in shaping the transmission of trade shocks, such as tariffs, across economies. Under DCP, the invoicing of international trade in US dollars creates a framework where exchange rate fluctuations have more limited influence on trade prices. This pricing rigidity alters the way economic adjustments occur, amplifying global spillovers and constraining policy responses. As detailed in *Appendix A*, the model incorporates the effects of pricing structures, including DCP, into the equilibrium conditions of the global economy. The log-linearized equations derived in the appendix highlight how price-setting behavior directly influences the pass-through of tariffs and their subsequent impact on inflation, output, and trade balances. Specifically through three channels:
+\begin{enumerate}
+    \item \bold{Exchange Rate:} Under DCP, the pricing of goods in a dominant currency limits the responsiveness of trade prices to bilateral exchange rate changes. As shown in the log-linearized Phillips curve equations in **Appendix A**, the rigidity in nominal pricing (via DCP) decouples exchange rate movements from marginal cost adjustments. This is reflected in the derived price dynamics, where the terms involving exchange rates (e.g., \( E_{k,kMU,t} \)) are neutralized under DCP.
+    \item \bold{Tariff Transmission:} The equations for real GDP and trade components in *Appendix A* (Equations A.100 and A.101) illustrate how tariff-induced price changes propagate through the economy. The dominant currency’s role in pricing intermediate goods (via the input-output structure ) magnifies the impact of tariffs, as these price shocks cascade through production networks without exchange rate adjustments buffering the effects.
+    \item \bold{Inflation Amplification:} The derivation of sectoral inflation dynamics in *Appendix A* highlights how DCP amplifies inflationary pressures. When tariffs are imposed on goods priced in the dominant currency, the direct pass-through to consumer prices is higher, as shown by the interaction between marginal costs (\( mc_t \)), input-output matrices (\( \Omega_F \)), and trade prices (\( p_F \)). This dynamic is particularly pronounced in economies highly reliant on imports invoiced in the dominant currency.
+\end{enumerate}\par
+
+In the baseline specification the DCP is applied to selected sectors - based on data [to expand above]. 
+
+In contrast to DCP, Producer Currency Pricing (PCP) allows trade prices to adjust flexibly with exchange rate movements, as demonstrated by the alternative forms of the Phillips curve and trade equations in *Appendix A*. Under PCP, the adjustments in trade flows are more responsive to exchange rate shocks, as the nominal exchange rate directly affects the relative competitiveness of exports and imports. The log-linearized equations in *Appendix A* (Equation B.13) show that under PCP, exchange rate changes (\( e_t \)) appear explicitly in the pricing terms, influencing both import and export prices. This contrasts with DCP, where exchange rate terms are largely absent due to the fixed invoicing in the dominant currency. In PCP, tariffs interact with exchange rate movements to influence trade balances and relative prices, as seen in the equations for nominal imports and exports in *Appendix A*. This mechanism will provide a stabilizing effect, reducing the inflationary impact of tariffs compared to the rigid pricing under DCP.\par
+
+The use of a dominant currency in trade invoicing limits the ability of exchange rate fluctuations to adjust trade flows. DCP means currency movements primarily affect the purchasing power of importing countries rather than altering relative trade prices. As a result, under DCP, the global transmission of shocks—such as tariff increases—is amplified, as the dominant currency acts as a common denominator for pricing across multiple economies. For instance, when tariffs are imposed on goods invoiced in the dominant currency, the cost increase directly impacts the importer’s domestic prices and reduces demand for those goods. Exporters face reduced competitiveness globally, as the prices of their goods in the dominant currency rise uniformly across all markets. This mechanism exacerbates inflationary pressures in importing countries and dampens export-driven growth in producer economies, creating widespread macroeconomic effects.\par
+
+DCP also plays a unique role in production networks, where intermediate goods are often traded across countries before reaching final consumers. When intermediate goods are priced in the dominant currency, the cost shocks caused by tariffs cascade through the supply chain, amplifying the impact on sectoral inflation and employment across multiple economies. This amplifying effect highlights the interconnectedness of global trade under DCP and underscores its importance in shaping policy responses to trade disruptions.\par
+
+Producer Currency Pricing (PCP), in contrast, assumes that goods are priced in the currency of the exporting country. Under PCP, exchange rate movements directly influence the relative prices of goods traded internationally. For example, a depreciation of the exporter’s currency reduces the relative price of its goods abroad, boosting competitiveness and potentially offsetting tariff impacts. This adjustment mechanism provides a more flexible response to trade shocks, allowing exchange rates to play a stabilizing role in mitigating macroeconomic disruptions.\par
+
+The key difference between DCP and PCP lies in the degree of price rigidity and the role of exchange rates. Under DCP, the dominant currency acts as a stabilizer for exporters since their invoiced prices do not change with exchange rate fluctuations. However, this rigidity shifts the burden of adjustment to the importing countries, which face higher inflation and reduced purchasing power. In contrast, under PCP, the exporting country bears more of the adjustment burden, as exchange rate movements directly affect its trade prices and competitiveness.
+
+Another critical distinction is the impact on monetary policy. Under PCP, monetary authorities can leverage exchange rate policies to influence trade flows and inflation. However, under DCP, the dominant currency’s widespread use reduces the effectiveness of exchange rate interventions, as trade prices remain largely unaffected by local currency fluctuations. This rigidity complicates monetary policy responses to trade shocks, requiring more aggressive measures to stabilize inflation and output.\par
+
+The charts reveal the sectoral dynamics of DCP (dominant currency pricing) and PCP (producer currency pricing) under trade protectionism scenarios. Across regions, the dynamic responses indicate significant variations in macroeconomic outcomes influenced by pricing regimes. Under DCP, inflationary pressures are more pronounced due to reduced pass-through effects, amplifying cost shocks globally, particularly in the US and China. PCP, on the other hand, shows stronger export and import adjustments tied to relative price shifts, reflecting higher sensitivity to currency fluctuations. The interplay of DCP and PCP across sectors, combined with production network linkages, magnifies the contraction in GDP and inflationary impacts, with the US and China experiencing severe declines in output and heightened inflation. Meanwhile, the Euro Area benefits moderately through trade diversion effects, highlighting asymmetric spillovers across economies. Input-output linkages and trade elasticities further amplify these effects, underscoring the critical role of pricing structures in shaping global trade and macroeconomic responses.
+
+The comparison between DCP and PCP underscores the importance of currency choice in trade invoicing and its broader macroeconomic consequences. While PCP allows for greater flexibility in responding to trade shocks, DCP creates a more rigid structure that amplifies the global transmission of shocks. Policymakers must consider these dynamics when designing trade and monetary policies, particularly in economies heavily reliant on dominant currency invoicing. Understanding the nuances of DCP and PCP provides valuable insights into the trade-offs between flexibility and stability in the global economy.
+% ---------------
+
+\subsection{Role of China exchange rate}%\label{sec:US_tariffs}
+
+% ---------------
+
+\subsection{Role of Trade Elasticity}%\label{sec:US_tariffs}
+
+Finally, we examine how the elasticity of substitution in trade flows affects the macroeconomic consequences of tariffs. In the baseline calibration, we assume a trade elasticity of $\delta=1$ as is standard in the literatureWe contrast this with two alternative values: a low-elasticity case ($\delta = 0.7$) and a high-elasticity case ($\delta = 3$).\par
+
+As shown in Figure \ref{fig:elasticity}, a higher trade elasticity significantly amplifies the impact of tariffs. In this scenario, the United States and China experience real GDP losses that are, respectively, around 10 and 7 percentage points larger than under the baseline, reflecting more aggressive substitution away from taxed imports. The US, in particular, faces a steeper decline in exports, as foreign demand adjusts quickly to higher prices.  At the same time, the euro area (EA) benefits from trade diversion effects: as global trade patterns reorient, EA GDP increases by 0.3 percentage points over the three-year horizon. In contrast, when trade elasticity is low, volumes adjust sluggishly, muting the real impact of tariffs and limiting both the inflationary and contractionary responses.\par
+
+\begin{figure}[ht]
+  \centering
+    \includegraphics[width=\linewidth]{0_clean/figures/Cummulative_Combined_Elasticity.png}
+    \caption{Three-Year Cumulative Responses by Trade Elasticity Scenario.}
+    \label{fig:elasticity}
+\end{figure}
+% ---------------
+
+
+\subsection{Role of Input–Output Linkages}%\label{sec:US_tariffs}
+
+We first isolate the role of production networks by varying the structure of input–output (IO) linkages in the model. In the baseline calibration, firms source intermediate goods both domestically and internationally, forming complex production chains that transmit shocks across sectors and borders. To evaluate the amplifying effect of these networks, we consider three counterfactual scenarios: (i) a model with only international linkages; (ii) a model with no IO linkages at all; and (iii) a model with international linkages only to the EA.\par
+
+Figure \ref{fig:IO} shows that stripping out input–output linkages—either partially or fully—significantly dampens the estimated macroeconomic effects of tariffs. When production networks are removed, the contraction in real GDP and the rise in inflation are both markedly smaller than in the baseline, which includes full production network effects. For the US, eliminating IO linkages reduces output losses and inflation by approximately 0.5 percentage points each, underlining the central role of production chains in amplifying the effects of trade barriers. A similar pattern is observed for China. Beyond GDP and inflation, IO linkages also play a critical role in shaping trade responses. These results highlight that much of the impact of tariffs operates through upstream and downstream production interdependencies, which magnify cost shocks and propagate them across borders.\par
+
+\begin{figure}[ht]
+  \centering
+    \includegraphics[width=\linewidth]{0_clean/figures/Cummulative_Combined_IO_USplusCHNtariff.png}
+    \caption{Three-Year Cumulative Responses by Input-Output (IO) Structure.}
+    \label{fig:IO}
+\end{figure}
+% ---------------
+
+\subsection{Role of Nominal Price Rigidities}%\label{sec:US_tariffs}
+
+We next assess how nominal price rigidities shape the transmission of tariffs. In the model, firms adjust prices infrequently according to sector-specific Calvo probabilities $\theta^p_{ki}$. We consider two alternative settings: one with uniformly 8\% higher nominal rigidities, and one with 8\% lower rigidities, relative to the baseline\footnote{The 8\% threshold reflects the largest symmetric deviation feasible before hitting a model boundary.}.\par
+
+ Under greater price stickiness, the pass-through of tariff-induced cost shocks into final consumer prices is dampened, leading to a smaller rise in inflation and a milder contraction in real activity, particularly in the United States and China (Figure \ref{fig:rigidities}). The muted inflation response delays the erosion of real incomes, thereby softening the decline in domestic demand. Conversely, lower nominal rigidities accelerate cost pass-through, amplifying the inflationary impulse and deepening the output contraction. These results underscore the role of price adjustment frictions in mediating short- and medium-run responses to tariff shocks.\par
+
+\begin{figure}[ht]
+  \centering
+    \includegraphics[width=\linewidth]{0_clean/figures/Cummulative_Combined_Rigidities.png}
+    \caption{Three-Year Cumulative Responses by Rigidity Scenario.}
+    \label{fig:rigidities}
+\end{figure}
+
+

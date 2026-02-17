@@ -1,0 +1,248 @@
+\documentclass[fleqn]{article}
+%----------------------------------------------------
+% BASIC PACKAGES
+%----------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{comment}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage[affil-it]{authblk}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning}
+\usepackage{xcolor}
+\allowdisplaybreaks
+\usepackage[backend=biber, style=authoryear, natbib=true]{biblatex}
+\addbibresource{references.bib} 
+% Number equations within sections:
+\numberwithin{equation}{section}
+% Redefine \section to reset the equation counter and use section-based numbering
+\let\oldsection\section
+\renewcommand{\section}{
+  \setcounter{equation}{0}%
+  \renewcommand{\theequation}{\thesection.\arabic{equation}}%
+  \oldsection
+}
+
+\title{Derivations}
+\author{Antonio Eugenelo}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+% \subsection*{Derivation of the Debt Dynamics Equation}
+
+\section{Derivation of the Government Debt Dynamics Equation}
+
+This section derives the linearized law of motion for the government debt-to-GDP ratio, starting from the standard government budget constraint.
+
+\subsection{The Absolute Budget Constraint}
+Let's start with the government budget constraint in absolute nominal terms. The stock of debt at the end of tomorrow ($B_{t+1}$) is equal to the stock of debt today ($B_t$) plus accrued interest, plus the primary deficit incurred tomorrow ($G_{t+1} - T_{t+1}$).
+\begin{equation}
+    B_{t+1} = B_{t}(1+i_{t+1}) + G_{t+1} - T_{t+1}
+    \label{eq:absolute}
+\end{equation}
+Where:
+\begin{itemize}
+    \item $B_t$: Total nominal government debt at the end of period $t$.
+    \item $i_{t+1}$: Nominal interest rate on debt from period $t$ to $t+1$.
+    \item $G_{t+1}$: Nominal primary government spending in period $t+1$.
+    \item $T_{t+1}$: Nominal government tax revenue in period $t+1$.
+\end{itemize}
+
+\subsection{Transformation to Ratios of GDP}
+To analyze debt relative to the size of the economy, we convert Equation \eqref{eq:absolute} into ratios of GDP. Let $Y_t$ be nominal GDP in period $t$, and $g_{t+1}$ be the nominal growth rate of GDP, such that $Y_{t+1} = Y_t(1+g_{t+1})$.
+
+% Step 1: Divide the entire absolute equation by tomorrow's GDP, Y_{t+1}.
+We divide Equation \eqref{eq:absolute} by $Y_{t+1}$:
+\begin{equation}
+    \frac{B_{t+1}}{Y_{t+1}} = \frac{B_t(1+i_{t+1})}{Y_{t+1}} + \frac{G_{t+1}}{Y_{t+1}} - \frac{T_{t+1}}{Y_{t+1}}
+\end{equation}
+
+% Step 2: Define the ratio variables.
+Let's define lowercase variables as ratios to concurrent GDP:
+$b_t \equiv \frac{B_t}{Y_t}$, $g^{fiscal}_{t+1} \equiv \frac{G_{t+1}}{Y_{t+1}}$, and $t^{tax}_{t+1} \equiv \frac{T_{t+1}}{Y_{t+1}}$.
+
+% Step 3: Rewrite the first term on the RHS to isolate b_t.
+The term involving $B_t$ can be rewritten using the GDP growth definition:
+\begin{equation}
+    \frac{B_t(1+i_{t+1})}{Y_{t+1}} = \frac{B_t(1+i_{t+1})}{Y_t(1+g_{t+1})} = \frac{B_t}{Y_t} \cdot \frac{1+i_{t+1}}{1+g_{t+1}} = b_t \frac{1+i_{t+1}}{1+g_{t+1}}
+\end{equation}
+
+% Step 4: Substitute the ratios back to get the final equation in levels.
+Substituting the definitions gives the precise law of motion for the debt-to-GDP ratio:
+\begin{equation}
+    b_{t+1} = b_t \frac{1+i_{t+1}}{1+g_{t+1}} + g^{fiscal}_{t+1} - t^{tax}_{t+1}
+    \label{eq:ratio}
+\end{equation}
+
+\subsection{Linearization Around the Steady State}
+Equation \eqref{eq:ratio} is non-linear. To analyze small fluctuations, we perform a first-order Taylor expansion around a non-stochastic steady state. Variables in the steady state are denoted with an overbar (e.g., $\bar{b}$).
+
+% The steady-state relationship is found by removing time subscripts.
+The steady-state condition is:
+\begin{equation}
+    \bar{b} = \bar{b} \frac{1+\bar{i}}{1+\bar{g}} + \bar{g}^{fiscal} - \bar{t}^{tax}
+\end{equation}
+
+Let a "hat" variable denote the log-deviation from its steady state, e.g., $\hat{b}_t = \ln(b_t/\bar{b})$. This implies $b_t \approx \bar{b}(1+\hat{b}_t)$ for small deviations. 
+
+\begin{align*}
+    % Step 1: Substitute the approximation X = X_bar(1+x_hat)
+    \bar{b}(1+\hat{b}_{t+1}) &\approx \left[\bar{b}(1+\hat{b}_t)\right] \frac{1+\bar{i}(1+\hat{i}_t)}{1+\bar{g}(1+\hat{g}_{t+1})} + \bar{g}^{fiscal}(1+\hat{g}^{fiscal}_{t+1}) - \bar{t}^{tax}(1+\hat{t}^{tax}_{t+1}) \\
+    % Step 2: Expand the fraction using the 1/(1+x) approx. 1-x and keeping only first-order terms.
+    % First, handle the fraction: (1+i+i*i_hat) * (1 - (g+g*g_hat))
+    % This expands to 1 + i - g + i*i_hat - g*g_hat, ignoring higher-order terms.
+    &\approx \left[\bar{b}(1+\hat{b}_t)\right] \left( (1+\bar{i}-\bar{g}) + \bar{i}\hat{i}_t - \bar{g}\hat{g}_{t+1} \right) + \bar{g}^{fiscal}(1+\hat{g}^{fiscal}_{t+1}) - \bar{t}^{tax}(1+\hat{t}^{tax}_{t+1}) \\
+    % Step 3: Expand the remaining product term, dropping products of hats (e.g., b_hat*i_hat)
+    &\approx \bar{b}(1+\bar{i}-\bar{g}) + \bar{b}(1+\bar{i}-\bar{g})\hat{b}_t + \bar{b}\bar{i}\hat{i}_t - \bar{b}\bar{g}\hat{g}_{t+1} + \bar{g}^{fiscal} + \bar{g}^{fiscal}\hat{g}^{fiscal}_{t+1} - \bar{t}^{tax} - \bar{t}^{tax}\hat{t}^{tax}_{t+1}
+\end{align*}
+
+The steady-state terms cancel out, leaving only the deviation terms. The general linearized equation is:
+\begin{equation}
+    \hat{b}_{t+1} = \rho_b \hat{b}_t + \beta_i \hat{i}_t - \beta_g \hat{g}_{t+1} + \eta_g \hat{g}^{fiscal}_{t+1} - \eta_t \hat{t}^{tax}_{t+1}
+\end{equation}
+The coefficients are:
+\begin{align*}
+    \rho_b &= 1+\overline{i}-\overline{g}, & \beta_i &= \overline{i}, & \beta_g &= \overline{g}, & \eta_g &= \frac{\bar{g}^{fiscal}}{\bar{b}}, & \eta_t &= \frac{\bar{t}^{tax}}{\bar{b}}
+\end{align*}
+\section{Derivation of the Wage Inflation Equation}
+
+This section derives the log-linear New Keynesian Wage Phillips Curve, incorporating a tax on labor income. The derivation begins with the foundational equations governing firm and household behavior and proceeds to the final aggregate relationship.
+
+\subsection{Foundational Model Equations}
+
+The model's private sector behavior is characterized by firms' demand for labor and households' (or unions') wage-setting decisions.
+
+\subsubsection{Firm Labor Demand}
+Firms combine a continuum of differentiated labor services, $N_{fgki,t}$, into a composite labor input. The demand for a specific labor type $g$ is a function of its relative pre-tax wage, given by:
+\begin{equation}
+    N_{fgki,t} = \left( \frac{W_{gk,t}}{W_{k,t}} \right)^{-\epsilon_{wk,t}} N_{fki,t}
+    \label{eq:labor_demand}
+\end{equation}
+where $W_{gk,t}$ is the nominal wage for labor type $g$, $W_{k,t}$ is the aggregate nominal wage index, and $\epsilon_{wk,t}$ is the elasticity of substitution. As firms' costs are determined by pre-tax wages, this labor demand schedule is unaffected by a tax on household labor income.
+
+\subsubsection{Household Wage-Setting: The First-Order Condition}
+A monopolistically competitive household (or union) sets its nominal wage, $W^*_{k,t}$, to maximize its utility, subject to the labor demand curve it faces. In the absence of taxes, the first-order condition (FOC) for this problem is:
+\begin{equation}
+    \sum_{l=0}^{\infty} (\beta\theta^W_k)^l \mathbb{E}_t \left[ N_{k,t+l|t} C_{t+l|t}^{-\sigma} \left( \frac{W^*_{k,t}}{P_{t+l}} - \mathcal{M}_{wk,t} MRS_{k,t+l|t} \right) \right] = 0
+    \label{eq:foc_original}
+\end{equation}
+where $\beta$ is the discount factor, $\theta^W_k$ is the Calvo probability of not resetting a wage, $\mathcal{M}_{wk,t}$ is the desired wage markup, and $MRS_{k,t+l|t}$ is the marginal rate of substitution.
+
+The introduction of a proportional tax on labor income, $\tau_{w,t}$, alters the household's take-home pay. The household's decision is now based on the after-tax real wage, $(1-\tau_{w,t+l})W^*_{k,t}/P_{t+l}$. The FOC is therefore modified to:
+\begin{equation}
+    \sum_{l=0}^{\infty} (\beta\theta^W_k)^l \mathbb{E}_t \left[ N_{k,t+l|t} C_{t+l|t}^{-\sigma} \left( \frac{(1-\tau_{w,t+l})W^*_{k,t}}{P_{t+l}} - \mathcal{M}_{wk,t} MRS_{k,t+l|t} \right) \right] = 0
+    \label{eq:foc_modified}
+\end{equation}
+This condition implies that the optimal pre-tax wage must be set to cover both the desired markup over the MRS and the tax wedge.
+
+\subsection{Log-Linearization and Aggregation}
+
+To derive the aggregate wage dynamics, we log-linearize the model's equations around a zero-inflation steady state.
+
+\subsubsection{The Optimal Reset Wage}
+Log-linearizing the modified FOC in Equation \eqref{eq:foc_modified} yields an expression for the optimal reset wage, $w^*_{k,t}$:
+\begin{equation}
+    w^*_{k,t} = (1 - \beta\theta^W_k) \sum_{l=0}^{\infty} (\beta\theta^W_k)^l \mathbb{E}_t \left[ mrs_{t+l|t} + \mu^n_{wk,t+l} + P_{kc,t+l} + \tau_{w,t+l} \right]
+    \label{eq:reset_wage}
+\end{equation}
+where lowercase variables denote log-deviations from the steady state. The tax, $\tau_{w,t+l}$, enters as an additional term that wage-setters seek to pass through to the pre-tax wage.
+
+\subsubsection{Key Substitutions and Aggregate Dynamics}
+To make the model tractable, the individual-specific MRS, $mrs_{t+l|t}$, is expressed in terms of aggregate variables using the firm's labor demand curve \eqref{eq:labor_demand}. This yields the standard approximation:
+\begin{equation}
+    mrs_{t+l|t} = mrs_{t+l} - \epsilon_{wk}\varphi(w^*_{k,t} - w_{k,t+l})
+    \label{eq:mrs_approx}
+\end{equation}
+The evolution of the aggregate wage index is determined by the Calvo-pricing structure, where a fraction $(1-\theta^W_k)$ of wages are reset to $w^*_{k,t}$ each period:
+\begin{equation}
+    w_{k,t} = \theta^W_k w_{k,t-1} + (1-\theta^W_k)w^*_{k,t}
+    \label{eq:wage_agg}
+\end{equation}
+
+\subsection{The Final Wage Phillips Curve}
+Combining the equation for the optimal reset wage \eqref{eq:reset_wage} with the substitutions and aggregate dynamics in \eqref{eq:mrs_approx} and \eqref{eq:wage_agg} yields the final New Keynesian Wage Phillips Curve. Let wage inflation be $\pi_{wk,t} = w_{k,t} - w_{k,t-1}$.
+
+The resulting equation, including the labor income tax, is:
+\begin{equation}
+    \pi_{wk,t} = \kappa_{wk}(\sigma\hat{c}_{k,t} + \varphi\hat{n}_t - \tilde{w}_{k,t} + \hat{\tau}_{w,t}) + \beta\mathbb{E}_t\pi_{wk,t+1} + u^w_{k,t}
+    \label{eq:wage_phillips_curve}
+\end{equation}
+where $\kappa_{wk}$ is a composite parameter of the model's structural elasticities, and variables with hats or tildes represent log-deviations. The term $\hat{\tau}_{w,t}$ represents the deviation of the tax rate from its steady state. Its presence indicates that tax changes act as a cost-push shock, directly influencing wage inflation dynamics.
+
+\section{Derivation of the Price Inflation Equation}
+
+This section derives the log-linear New Keynesian Phillips Curve for price inflation. The derivation begins with the foundational equations governing monopolistically competitive firms facing nominal rigidities and incorporates a time-varying production subsidy, which serves as a micro-foundation for a cost-push shock.
+
+\subsection{Foundational Model Equations}
+
+The model's core price-setting behavior is characterized by firms facing downward-sloping demand for their differentiated products.
+
+\subsubsection{Firm Demand and Optimal Pricing}
+A monopolistically competitive firm faces a demand curve for its product $i$ (denoted with subscript $f$ in the source text) given by:
+\begin{equation}
+    Y_{ik,t} = \left( \frac{P_{ik,t}}{P_{k,t}} \right)^{-\epsilon_{pk,t}} Y_{k,t}
+    \label{eq:firm_demand}
+\end{equation}
+where $P_{ik,t}$ is the price set by firm $i$, $P_{k,t}$ is the aggregate sectoral price level, and $\epsilon_{pk,t}$ is the elasticity of demand.
+
+\subsubsection{Price-Setting under Nominal Rigidities}
+Firms set prices à la Calvo, meaning only a fraction $(1-\theta_p)$ can reset their price in any given period. A firm resetting its price at time $t$ seeks to maximize the expected stream of discounted future profits. The optimality condition (FOC) for this problem is given by:
+\begin{equation}
+    \sum_{l=0}^{\infty} (\beta\theta_p)^l \mathbb{E}_t \left[ \Lambda_{t,t+l} Y_{ik,t+l|t} \left( P^*_{ik,t} - \mathcal{M}_{pk,t+l} MC^n_{ik,t+l|t} \right) \right] = 0
+    \label{eq:foc_original}
+\end{equation}
+where $P^*_{ik,t}$ is the optimal reset price, $\Lambda_{t,t+l}$ is the stochastic discount factor, $\mathcal{M}_{pk,t+l}$ is the desired gross markup, and $MC^n_{ik,t+l|t}$ is the nominal marginal cost for a firm that last reset its price at time $t$.
+
+The introduction of a time-varying production subsidy, $\tau_{s,t}$, reduces the effective marginal cost faced by the firm to $(1-\tau_{s,t})MC^n_{ik,t+l|t}$. The FOC is therefore modified to account for this subsidized cost:
+\begin{equation}
+    \sum_{l=0}^{\infty} (\beta\theta_p)^l \mathbb{E}_t \left[ \Lambda_{t,t+l} Y_{ik,t+l|t} \left( P^*_{ik,t} - \mathcal{M}_{pk,t+l} (1-\tau_{s,t+l}) MC^n_{ik,t+l|t} \right) \right] = 0
+    \label{eq:foc_modified}
+\end{equation}
+
+\subsection{Log-Linearization and Aggregation}
+
+To derive the aggregate price dynamics, we log-linearize the model's equations around a zero-inflation steady state.
+
+\subsubsection{The Optimal Reset Price}
+Log-linearizing the modified FOC in Equation \eqref{eq:foc_modified} yields an expression for the optimal reset price, $p^*_{ik,t}$. This price is set as a weighted average of expected future effective marginal costs.
+\begin{equation}
+    p^*_{ik,t} = (1 - \beta\theta_p) \sum_{l=0}^{\infty} (\beta\theta_p)^l \mathbb{E}_t \left[ mc^n_{ik,t+l|t} + \mu^n_{pk,t+l} + \log(1-\tau_{s,t+l}) \right]
+    \label{eq:reset_price}
+\end{equation}
+where lowercase variables denote log-deviations from the steady state, and $\mu^n_{pk,t+l}$ is the log of the desired gross markup. The subsidy, $\tau_{s,t+l}$, enters as a term that reduces the firm's target price.
+
+\subsubsection{Marginal Cost and Aggregate Dynamics}
+The firm-specific marginal cost, $mc^n_{ik,t+l|t}$, can be related to the aggregate marginal cost, $\overline{mc}_{k,t+l}$, through a series of substitutions detailed in the source text. This ultimately allows the firm's FOC \eqref{eq:reset_price} to be rewritten in terms of aggregate variables and firm-specific markup deviations, $\hat{\mu}_{ik,t+l}$:
+\begin{equation}
+    p^*_{ik,t} = (1 - \beta\theta_p) \sum_{l=0}^{\infty} (\beta\theta_p)^l \mathbb{E}_t \left[ p_{k,t+l} + \overline{mc}_{k,t+l} - \hat{p}_{k,t+l} + \hat{\mu}_{ik,t+l} + \log(1-\tau_{s,t+l}) \right]
+    \label{eq:reset_price_agg}
+\end{equation}
+The evolution of the aggregate price index is determined by the Calvo-pricing structure:
+\begin{equation}
+    p_{k,t} = \theta_p p_{k,t-1} + (1-\theta_p)p^*_{ik,t}
+    \label{eq:price_agg}
+\end{equation}
+
+\subsection{The Final New Keynesian Phillips Curve}
+Combining the equation for the optimal reset price \eqref{eq:reset_price_agg} with the aggregate price dynamics \eqref{eq:price_agg} yields the final New Keynesian Phillips Curve. Let price inflation be $\pi_{k,t} = p_{k,t} - p_{k,t-1}$.
+
+The resulting equation, which includes the production subsidy, is:
+\begin{equation}
+    \pi_{k,t} = \beta\mathbb{E}_t[\pi_{k,t+1}] + \kappa_{p} (\widehat{mc}_{k,t} - \hat{p}_{k,t}) + u^p_{k,t}
+    \label{eq:price_phillips_curve}
+\end{equation}
+where $\kappa_p$ is a composite parameter of the model's structural features, and variables with hats denote deviations from the steady state. The term $u^p_{k,t}$ is a cost-push shock. By incorporating the subsidy from the beginning, we can micro-found this shock as being driven by markup shocks and the subsidy itself:
+\begin{equation}
+    u^p_{k,t} = \kappa_{p} \left( \hat{\mu}^n_{pk,t} + \log(1-\tau_{s,t}) \right)
+    \label{eq:cost_push_shock}
+\end{equation}
+The term $\log(1-\tau_{s,t})$ is negative for any positive subsidy. This demonstrates that an increase in the production subsidy acts as a **disinflationary cost-push shock**, reducing the inflationary pressure from marginal costs and desired markups.
+
+
+
+\end{document}

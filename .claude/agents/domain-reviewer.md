@@ -45,7 +45,12 @@ For every identification result or theoretical claim on every slide:
 - [ ] Are "under regularity conditions" statements justified?
 - [ ] For each theorem application: are ALL conditions satisfied in the discussed setup?
 
-<!-- Customize: Add field-specific assumption patterns to check -->
+**Macroeconomics-specific checks:**
+- Are CES/Calvo/Cobb-Douglas functional forms stated before results that depend on them?
+- Are log-linearisation conditions (e.g., "around zero-inflation steady state") explicit?
+- Is the distinction between levels and log-deviations consistent?
+- Are welfare approximation conditions stated (e.g., $\sigma=1$, $\kappa=0$)?
+- For open-economy results: are small-open-economy vs. large-economy assumptions clear?
 
 ---
 
@@ -88,8 +93,12 @@ When scripts exist for the lecture:
 - [ ] Are standard errors computed using the method the slides describe?
 - [ ] Do simulations match the paper being replicated?
 
-<!-- Customize: Add your field's known code pitfalls here -->
-<!-- Example: "Package X silently drops observations when Y is missing" -->
+**Macroeconomics code pitfalls:**
+- Dynare/MATLAB steady-state solvers may converge to wrong SS with bad initial values
+- IRF sign conventions: check whether shock is positive or negative
+- Welfare computations: second-order approximation requires `order=2` in Dynare
+- Calvo parameter vs frequency of price change: $\theta$ vs $1-\theta$ confusion
+- Log-deviation vs percentage-point scaling mismatches in IRF plots
 
 ---
 

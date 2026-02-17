@@ -1,0 +1,440 @@
+\setcounter{section}{0}
+\renewcommand{\thesection}{\Alph{section}}
+\setcounter{equation}{0}
+\renewcommand{\theequation}{A.\arabic{equation}}
+
+\section{Model Derivation and Log-linearization}\label{sec:appendix_model_derivation}
+In this section, we derive model equilibrium conditions, outlining the final set of log-linearized equations. We further enlarge the theoretical model presented in the main text---which only contains exogenous perturbations to the foreign price wedges and the monetary policy shock---to accommodate the standard shocks in the literature: an internal demand shock, sectoral TFP, sectoral price cost-push shocks, and wage cost-push shocks.
+
+\subsection{Households}
+ 
+\paragraph{Consumption Demand Curves}
+The allocation optimal allocation between energy and non-energy goods is the result of a cost minimization programme $\min P_{kE,t} C_{kE,t} + P_{kM,t} C_{kM,t}$ subject to \eqref{eq:intermediate_input_aggregator}. Similarly, the optimal allocation between energy (non-energy) consumption is the result of a cost minimization programme $\min \sum_{i\in I_E} P_{kiC,t} C_{ki,t}$ ($\min \sum_{i\in I_M} P_{kiC,t} C_{ki,t}$) subject to \eqref{eq:energy_nonenergy_consumption_aggregators}. Finally, the optimal allocation between the different consumption goods is the result of a cost minimization programme $\min \sum^{K}_{l=1} (1+\tau_{kli,t})P_{kli,t} C_{kli,t} $ subject to \eqref{eq:final_layer_consumption_aggregator}. The implied demand curves are given by
+\begin{align}
+    P_{kE,t} = P_{kC,t} \left(\frac{\widetilde{\beta}_{k} C_{k,t}}{C_{kE,t}}\right)^{\frac{1}{\gamma}}\quad&\text{and}\quad
+    P_{kM,t} = P_{kC,t} \left(\frac{(1-\widetilde{\beta}_{k}) C_{k,t}}{C_{kM,t}}\right)^{\frac{1}{\gamma}}\label{eq:consumption_demand_1}\\
+    P_{kiC,t} = P_{kE,t} \left(\frac{\widetilde{\nu}_{ki} C_{kE,t}}{C_{ki,t}}\right)^{\frac{1}{\eta}} \quad \forall \quad i\in I_M\quad&\text{and}\quad
+    P_{kiC,t} = P_{kM,t}  \left(\frac{\widetilde{\upsilon}_{ki} C_{kM,t}}{C_{ki,t}}\right)^{\frac{1}{\iota}} \quad \forall \quad i\in I_E\label{eq:consumption_demand_2}\\
+    (1+\tau_{kli,t})P_{kli,t} = P_{kiC,t}  &\left(\frac{\widetilde{\zeta}_{kli} C_{ki,t}}{C_{kli,t}}\right)^\frac{1}{\delta} \quad \forall \quad l \in K.\label{eq:consumption_demand_3}
+\end{align}
+
+The log-linearized versions of the consumption demand curves \eqref{eq:consumption_demand_1}-\eqref{eq:consumption_demand_3} are given by
+    \begin{align}
+        \widehat{p}_{kE,t}=  {\frac{1}{\gamma}}(\widehat{c}_{k,t}-\widehat{c}_{kE,t})\quad&\text{and}\quad\widehat{p}_{kM,t}= {\frac{1}{\gamma}}(\widehat{c}_{k,t}-\widehat{c}_{kM,t})\\
+        \widehat{p}_{kiC,t} - \widehat{p}_{kE,t}={\frac{1}{\eta}}(\widehat{c}_{kE,t}-\widehat{c}_{ki,t})&\quad\text{and}\quad\widehat{p}_{kiC,t} - \widehat{p}_{kM,t}=  {\frac{1}{\iota}}(\widehat{c}_{kM,t}-\widehat{c}_{ki,t})\\
+        \tau_{kli,t}+\widehat{p}_{kli,t} - \widehat{p}_{kiC,t}&= \frac{1}{\delta}\left(  \widehat{c}_{ki,t}-\widehat{c}_{kli,t}\right)
+    \end{align}
+where $\widehat{p}_{kE,t}= p_{kE,t} - p_{kC,t}$, $\widehat{p}_{kM,t}= p_{kM,t} - p_{kC,t}$,  $\widehat{p}_{kiC,t}=p_{kiC,t}-p_{kC,t}$, and $\widehat{p}_{kli,t}=p_{kli,t}-p_{kC,t}$ are well-defined as a ratio of prices.\footnote{The individual price levels are not well-defined in steady state, but their ratio is.}
+
+\paragraph{Consumption Baskets}
+
+The log-linearized consumption aggregator \eqref{eq:intermediate_input_aggregator} is given by
+  \begin{align}
+        \widehat{c}_{k,t}&=\beta_k\widehat{c}_{kE,t}+(1-\beta_k)\widehat{c}_{kM,t}
+    \end{align}
+    where $\beta_k=\frac{P_{kE}C_{kE}}{P_{kC}C_k}=\widetilde{\beta}_{k}^{\frac{1}{\gamma}}\left(\frac{C_{kE}}{C_{k}}\right)^{\frac{\gamma-1}{\gamma}}$ and $(1-\beta_k)=\frac{P_{kM}C_{kM}}{P_{kC}C_k}=(1-\widetilde{\beta}_{k})^{\frac{1}{\gamma}}\left(\frac{C_{kM}}{C_{k}}\right)^{\frac{\gamma-1}{\gamma}}$ can be verified using the steady-state consumption aggregator \eqref{eq:intermediate_input_aggregator} and the demand curves \eqref{eq:consumption_demand_1}.
+
+    The log-linearized versions of the energy and non-energy consumption aggregators \eqref{eq:energy_nonenergy_consumption_aggregators} are given by
+    \begin{align}
+        \widehat{c}_{kE,t}&=\sum_{i \in I_E} \nu_{ki}\widehat{c}_{ki,t}\qquad \text{and}\qquad
+        \widehat{c}_{kM,t}=\sum_{i \in I_M} \upsilon_{ki}\widehat{c}_{ki,t}\label{eq:loglin_consumption_demand_2}
+    \end{align}
+where $\nu_{ki}=\frac{P_{kiC}C_{ki}}{P_{kE}C_{kE}}=\widetilde{\nu}_{ki}^{\frac{1}{\eta}} \left(\frac{C_{ki}}{C_{kE}}\right)^{\frac{\eta-1}{\eta}}$ and $\upsilon_{ki}=\frac{P_{kiC}C_{ki}}{P_{kM}C_{kM}}=\widetilde{\upsilon}_{ki}^{\frac{1}{\iota}} \left(\frac{C_{ki}}{C_{kM}}\right)^{\frac{\iota-1}{\iota}}$ can be verified using the steady-state energy and non-energy consumption aggregators \eqref{eq:energy_nonenergy_consumption_aggregators} and the demand curves \eqref{eq:consumption_demand_2}.
+
+The log-linearized version of the final layer of the consumption aggregator, \eqref{eq:final_layer_consumption_aggregator}, is given by
+\begin{equation}
+\widehat{c}_{ki,t}=\sum_{l=1}^K\zeta_{kli}\widehat{c}_{kli,t}
+    \end{equation}
+    where $\zeta_{kli}=\frac{P_{kli}C_{kli}}{P_{kiC}C_{ki}}=\widetilde{\zeta}_{kli}^{\frac{1}{\delta}} \left(\frac{C_{kli}}{C_{ki}}\right)^{\frac{\delta-1}{\delta}}$ can be verified using the steady-state international consumption aggregator \eqref{eq:final_layer_consumption_aggregator} and the consumption demand curves \eqref{eq:consumption_demand_3}.
+
+\paragraph{Price Indices} 
+
+The different price indices can be derived by combining the consumption demand curves previously derived with the different consumption aggregators. The consumption price index, the energy and non-energy price index, and the consumption import price index are given by $P_{kC,t} = \left[\widetilde{\beta}_{k} P_{kE,t}^{1-\gamma} + (1-\widetilde{\beta}_{k})P_{kM,t}^{1-\gamma}\right]^{\frac{1}{1-\gamma}}$, $P_{kE,t} = \left[\sum_{i\in I_E} \widetilde{\nu}_{ki} P_{kiC,t}^{1-\eta}\right]^{\frac{1}{1-\eta}}$, $P_{kM,t} = \left[\sum_{i\in I_M} \widetilde{\upsilon}_{ki} P_{kiC,t}^{1-\iota}\right]^{\frac{1}{1-\iota}}$, and $P_{kiC,t} =  \left\{\sum_{l=1}^K \widetilde{\zeta}_{kli} [(1+\tau_{kli,t})P_{kli,t}]^{1-\delta}\right\}^{\frac{1}{1-\delta}}$. Their log-linearized counterparts are given by
+\begin{align}
+    0 &= {\beta}_{k} \widehat{p}_{kE,t} + (1-{\beta}_{k})\widehat{p}_{kM,t}\label{eq:loglin_consumer_prices_1}\\
+    \widehat{p}_{kE,t}=\sum_{i \in I_E} \nu_{kj}\widehat{p}_{kiC,t}\quad&\text{and}\quad\widehat{p}_{kM,t}=\sum_{i \in I_M} {\upsilon}_{ki}\widehat{p}_{kiC,t}\\
+    \widehat{p}_{kiC,t} &=  \sum^{K}_{l=1}\zeta_{kli}(\widehat{p}_{kli,t}+\tau_{kli,t})\label{eq:loglin_consumer_prices_3}
+\end{align}
+
+\paragraph{Intertemporal Household Problem}
+
+    
+The log-linearized version of the household's first-order conditions \eqref{eq:household_foc_1}-\eqref{eq:household_foc_2} are given by
+\begin{align}
+    \widehat{c}_{k,t}&=-\frac{1}{\sigma}(i_{k,t}-\mathbb{E}_t\pi_{kc,t+1})+\mathbb{E}_t\widehat{c}_{k,t+1}+\frac{1}{\sigma}(1-\rho^z_{k})z_{k,t}\label{eq:loglin_household_foc_1}\\
+    \widehat{c}_{k,t}&=-\frac{1}{\sigma}(i_{K,t}-\mathbb{E}_t\pi_{kC,t+1})+\mathbb{E}_t\widehat{c}_{k,t+1}+\frac{1}{\sigma}(1-\rho^z_{k})z_{k,t}-\frac{1}{\sigma}\mathbb{E}_t\Delta e_{kK,t+1}-\frac{1}{\sigma}\gamma_* \text{nfa}^K_{k,t} \quad \forall k\neq K\label{eq:loglin_household_foc_2}
+\end{align}
+where we define the different log-linear NFA positions as $\text{nfa}^K_{k,t}=B^K_{k,t}\mathcal{E}_{kK,t}/\mathcal{Y}_k$ and $\text{nfa}^\text{MU}_{k,t}=B^\text{MU}_{k,t}\mathcal{E}_{k\text{MU},t}/\mathcal{Y}_k$ since $B^K_{k,t}=0$ and $B^\text{MU}_{k,t}=0$ in the steady state.
+
+    Combining the log-linearized first-order conditions for the holdings of domestic and internationally traded bonds \eqref{eq:loglin_household_foc_1}-\eqref{eq:loglin_household_foc_2}, yields a risk-adjusted Uncovered Interest Parity (UIP) condition $i_{k,t}-i^*_{K,t}=\mathbb{E}_t\Delta e_{kK,t+1}+\gamma_*\text{nfa}^K_{k,t}$.
+
+    \subsection{Firms}
+We augment the production function \eqref{eq:production_function_text} to include a sectoral TFP shock $A_{ki,t}$,
+    \begin{align}
+    Y_{fki,t}&=A_{ki,t} \left[\widetilde{\alpha}_{ki}^{\frac{1}{\psi}} N_{fki,t}^{\frac{\psi-1}{\psi}} + \widetilde{\vartheta}_{ki}^{\frac{1}{\psi}} X_{fki,t}^{\frac{\psi-1}{\psi}}\right]^{\frac{\psi}{\psi-1}},
+    \label{eq:production_function}
+\end{align}
+where the (log-)TFP shock follows an AR(1) process: 
+    \begin{equation}
+        a_{ki,t}\equiv\log A_{ki,t}=\rho^a_{ki}a_{ki,t-1}+\varepsilon_{ki,t}^a,\label{eq:tfp_shock_process}
+    \end{equation}
+    where $a_{ki,t}:=\log A_{ki,t}$, and $\varepsilon_{ki,t}^a\sim\mathcal{N}\left(0,\sigma^2_{kia}\right)$. 
+
+\paragraph{Intermediate Input Demand Curves}
+The optimal allocation between labor and intermediate inputs is the result of a cost minimization programme $\min W_{k,t} N_{fki,t} + P_{kiX,t} X_{fki,t}$ subject to \eqref{eq:production_function}. The optimal allocation between energy and non-energy intermediate goods is the result of a cost minimization programme $\min P_{kiXE,t} X_{kiE,t} + P_{kiXM,t} X_{kiM,t}$ subject to \eqref{eq:intermediate_input_aggregator}. Similarly, the optimal allocation between energy (non-energy) intermediate inputs is the result of a cost minization programme $\min \sum_{j\in I_E} P_{kijX,t} X_{kij,t}$ ($\min \sum_{j\in I_M} P_{kijX,t} X_{kij,t}$) subject to \eqref{eq:energy_nonenergy_intermediate_input_aggregators}. Finally, the optimal allocation between the different consumption goods is the result of a cost minimization programme $\min \sum^{K}_{l=1} (1+\tau_{klj,t})P_{klj,t} X_{klij,t}  $ subject to \eqref{eq:final_layer_consumption_aggregator}. The implied intermediate input demand curves are given by
+\begin{align}
+    W_{k,t} = \text{MC}_{fki,t} A_{ki,t}^\frac{\psi-1}{\psi} &\left(\frac{\widetilde{\alpha}_{ki} Y_{fki,t}}{N_{fki,t}}\right)^{\frac{1}{\psi}}\label{eq:labor_demand}\\
+    P_{kiX,t} = \text{MC}_{ki,t} A_{ki,t}^\frac{\psi-1}{\psi} &\left(\frac{\widetilde{\vartheta}_{ki} Y_{fki,t}}{X_{fki,t}}\right)^{\frac{1}{\psi}}\label{eq:intermediate_input_demand}\\
+        P_{kiXE,t} = P_{kiX,t}  \left(\frac{\widetilde{\beta}_{ki} X_{ki,t}}{X_{kiE,t}}\right)^{\frac{1}{\phi}}\quad&\text{and}\quad
+        P_{kiXM,t} = P_{kiX,t}  \left(\frac{(1-\widetilde{\beta}_{ki}) X_{ki,t}}{X_{kiM,t}}\right)^{\frac{1}{\phi}}\label{eq:intermediate_input_demand_1}\\
+        P_{kijX,t} = P_{kiXE,t}  \left(\frac{\widetilde{\nu}_{kij} X_{kiE,t}}{X_{kij,t}}\right)^{\frac{1}{\chi}} \quad \forall \quad j\in I_E\quad&\text{and}\quad
+        P_{kijX,t} = P_{kiXM,t} \left(\frac{\widetilde{\upsilon}_{kij} X_{kiM,t}}{X_{kij,t}}\right)^{\frac{1}{\xi}} \quad \forall \quad j\in I_M\label{eq:intermediate_input_demand_2}\\
+        (1+\tau_{klj,t})P_{klj,t} = P_{kijX,t}  &\left(\frac{\zeta_{klij} X_{kij,t}}{X_{klij,t}}\right)^\frac{1}{\mu} \quad \forall \quad l \in K\label{eq:intermediate_input_demand_3}
+\end{align}
+
+The log-linearized versions of the labor and intermediate inputs demand curves \eqref{eq:labor_demand}-\eqref{eq:intermediate_input_demand_3} are given by
+    \begin{align}
+        \widehat{w}_{k,t}-\widehat{\text{mc}}_{ki,t}=\frac{\psi-1}{\psi}a_{ki,t}+&\frac{1}{\psi}\left(\widehat{y}_{fki,t}-\widehat{n}_{fki,t}\right)\label{eq:loglin_labor_demand} \\
+        \widehat{p}_{kiX,t}-\widehat{\text{mc}}_{ki,t}=\frac{\psi-1}{\psi}a_{ki,t}+&\frac{1}{\psi}\left(\widehat{y}_{fki,t}-\widehat{x}_{fki,t}\right)\label{eq:loglin_input_demand}\\
+        \widehat{p}_{kiXE,t} - \widehat{p}_{kiX,t}= {\frac{1}{\phi}}\left( \widehat{x}_{ki,t}-\widehat{x}_{kiE,t}\right)\quad&\text{and}\quad
+        \widehat{p}_{kiXM,t} - \widehat{p}_{kiX,t}={\frac{1}{\phi}}\left( \widehat{x}_{ki,t}-\widehat{x}_{kiM,t}\right)\\
+        \widehat{p}_{kijX,t} - \widehat{p}_{kiXE,t}=  {\frac{1}{\chi}} \left(\widehat{x}_{kiE,t}-\widehat{x}_{kij,t}\right) \quad \forall \quad j\in I_E\quad&\text{and}\quad
+        \widehat{p}_{kijX,t} - \widehat{p}_{kiXM,t} = {\frac{1}{\xi}} \left(\widehat{x}_{kiM,t}-\widehat{x}_{kij,t}\right) \quad \forall \quad j\in I_M\\
+        \tau_{klj,t}+\widehat{p}_{klj,t} - \widehat{p}_{kijX,t}  &=\frac{1}{\mu}\left( \widehat{x}_{kij,t}-\widehat{x}_{klij,t}\right) \quad \forall \quad l \in K
+    \end{align}
+where $\widehat{w}_{k,t}=w_{k,t}-p_{kC,t}$, $\widehat{\text{mc}}_{ki,t}=\widehat{\text{mc}}^n_{ki,t}-p_{kC,t}$, $\widehat{p}_{kiX,t}=p_{kiX,t}-p_{kC,t}$,
+$\widehat{p}_{kiXE,t}= p_{kiXE,t} - p_{kC,t}$, $\widehat{p}_{kiXM,t}= p_{kiXM,t} - p_{kC,t}$,  $\widehat{p}_{kijX,t}=p_{kijX,t}-p_{kC,t}$, and $\widehat{p}_{klj,t}=p_{klj,t}-p_{kC,t}$ are well-defined as a ratio of prices. 
+
+
+    \paragraph{Intermediate Inputs Baskets}
+
+    The log-linearized intermediary input aggregator \eqref{eq:intermediate_input_aggregator} is given by
+    \begin{align}
+        \widehat{x}_{ki,t}&=\beta_{ki}\widehat{x}_{kiE,t}+(1-\beta_{ki})\widehat{x}_{kiM,t}
+    \end{align}
+    where $\beta_{ki}=\frac{P_{kiXE}X_{kiE}}{P_{kiX}X_{ki}}=\widetilde{\beta}_{ki}^{\frac{1}{\phi}} \left(\frac{X_{kiE}}{X_{ki}}\right)^{\frac{\phi-1}{\phi}}$ and $(1-\beta_{ki})=\frac{P_{kiXM}X_{kiM}}{P_{kiM}X_{ki}}=(1-\widetilde{\beta}_{ki})^{\frac{1}{\phi}} \left(\frac{X_{kiM}}{X_{ki}}\right)^{\frac{\phi-1}{\phi}}$ can be verified using the steady-state intermediate input aggregator \eqref{eq:intermediate_input_aggregator} and the input demand curves \eqref{eq:intermediate_input_demand_1}.
+
+    The log-linearized versions of the energy and non-energy intermediate input aggregators \eqref{eq:energy_nonenergy_intermediate_input_aggregators} are given by
+    \begin{align}
+        \widehat{x}_{kiE,t}=\sum_{j \in I_E} \nu_{kij}\widehat{x}_{kij,t}\qquad\text{and}\qquad \widehat{x}_{kiM,t}=\sum_{j \in I_M} \upsilon_{kij}\widehat{x}_{kij,t}
+    \end{align}
+    where $\nu_{kij}=\frac{P_{kijX}X_{kij}}{P_{kiXE}X_{kiE}}=\widetilde{\nu}_{kij}^{\frac{1}{\chi}} \left(\frac{X_{kij}}{X_{kiE}}\right)^{\frac{\chi-1}{\chi}}$ and $\upsilon_{kij}=\frac{P_{kijX}X_{kij}}{P_{kiXM}X_{kiM}}=\widetilde{\upsilon}_{kij}^\frac{1}{\xi} \left(\frac{X_{kij}}{X_{kiM}}\right)^{\frac{\xi-1}{\xi}}$ can be verified using the steady-state energy and non-energy intermediate input aggregators \eqref{eq:energy_nonenergy_intermediate_input_aggregators} and the demand curves \eqref{eq:intermediate_input_demand_2}.
+
+    The log-linearized version of the final layer of the intermediate input aggregator, \eqref{eq:final_layer_consumption_aggregator}, is given by
+     \begin{equation}
+        \widehat{x}_{kij,t}=\sum_{l=1}^K\zeta_{klij}\widehat{x}_{klij,t}
+    \end{equation}
+    where $\zeta_{klij}=\frac{P_{klj}X_{klij}}{P_{kijX}X_{kij}}=\widetilde{\zeta}_{klij}^{\frac{1}{\mu}} \left(\frac{X_{klij}}{X_{kij}}\right)^{\frac{\mu-1}{\mu}}$ can be verified using the steady-state international intermediate input aggregators \eqref{eq:final_layer_consumption_aggregator} and the demand curve \eqref{eq:intermediate_input_demand_3}.
+
+
+
+\paragraph{Price Indices} 
+
+The different price indices can be derived by combining the intermediate input demand curves previously derived with the other intermediate input aggregators. The marginal cost of production, the intermediate input price index, the energy and non-energy input price index, and the input import price index are given by $MC_{ki,t} = {A^{-1}_{ki,t}} \left[\widetilde{\alpha}_{ki} W_{k,t}^{1-\psi} + \widetilde{\vartheta}_{ki}P_{kiX,t}^{1-\psi}\right]^{\frac{1}{1-\psi}}$, $
+        P_{kiX,t} = \left[\widetilde{\beta}_{ki} P_{kiXE,t}^{1-\phi} + (1-\widetilde{\beta}_{ki})P_{kiXM,t}^{1-\phi}\right]^{\frac{1}{1-\phi}}$, \sloppy $
+        P_{kiXE,t} = \Big[\sum_{j\in I_E} \widetilde{\nu}_{kij} P_{kijX,t}^{1-\chi}\Big]^{\frac{1}{1-\chi}}$, $
+        P_{kiXM,t} = \left[\sum_{j \in I_M} \widetilde{\upsilon}_{kij} P_{kijX,t}^{1-\xi}\right]^{\frac{1}{1-\chi}}$, and $
+        P_{kijX,t}= \left\{\sum_{l=1}^K \widetilde{\zeta}_{klij} [(1+\tau_{klj,t})P_{klj,t}]^{1-\mu}\right\}^{\frac{1}{1-\mu}}$. Their log-linearized counterparts are given by
+\begin{align}
+    \widehat{\text{mc}}_{ki,t}&=-a_{ki,t}+\mathcal{M}_{ki} \frac{W_kN_{ki}}{P_{ki}Y_{ki}}\widehat{w}_{k,t}+\mathcal{M}_{ki} \frac{P_{kiX}X_{ki}}{P_{ki}Y_{ki}}\widehat{p}_{kiX,t}\label{eq:loglin_marginal_cost_price}\\
+    \widehat{p}_{kiX,t} &= \widetilde{\beta}_{ki} \widehat{p}_{kiXE,t} + (1-\widetilde{\beta}_{ki})\widehat{p}_{kiXM,t}\label{eq:loglin_intermediate_inputs_price_index_1}\\
+    \widehat{p}_{kiXE,t}&=\sum_{j \in I_E} {\nu}_{kij}\widehat{p}_{kijX,t}\quad\text{and}\quad  \widehat{p}_{kiXM,t}=\sum_{j \in I_M} {\upsilon}_{kij}\widehat{p}_{kijX,t}\\
+    \widehat{p}_{kijX,t} &=  \sum^{K}_{l=1}\zeta_{klij}(\widehat{p}_{klj,t}+\tau_{klj,t})\label{eq:loglin_intermediate_inputs_price_index_3}
+\end{align}
+where $\mathcal{M}_{ki} \frac{W_kN_{ki}}{P_{ki}Y_{ki}}=\left(\frac{W_k}{\text{MC}_{ki}}\right)^{1-\psi}\widetilde{\alpha}_{ki}$ and $\mathcal{M}_{ki} \frac{P_{kiX}X_{ki}}{P_{ki}Y_{ki}}=\left(\frac{P_{kiX}}{\text{MC}_{ki}}\right)^{1-\psi}\widetilde{\vartheta}_{ki}$ can be derived using \eqref{eq:labor_demand}-\eqref{eq:intermediate_input_demand} in steady-state.
+
+    \paragraph{Production Structure}
+
+    The log-linearized version of the production function \eqref{eq:production_function} is given by
+    \begin{align}
+        \widehat{y}_{fki,t}&= a_{ki,t}+\mathcal{M}_{ki}\alpha_{ki}\widehat{n}_{fki,t}+\mathcal{M}_{ki}\vartheta_{ki}\widehat{x}_{fki,t}\label{eq:loglin_production_function}
+    \end{align}
+    where the identities $\mathcal{M}_{ki}\alpha_{ki}=\mathcal{M}_{ki}\frac{W_kN_{ki}}{P_{ki}Y_{ki}}=\frac{N_{ki}}{Y_{ki}}\left(\frac{\widetilde{\alpha}_{ki}Y_{ki}}{N_{ki}}\right)^\frac{1}{\psi}$ and $\mathcal{M}_{ki}\vartheta_{ki}=\mathcal{M}_{ki}\frac{P_{kiX}X_{ki}}{P_{ki}Y_{ki}}=\frac{X_{ki}}{Y_{ki}}\left(\frac{\widetilde{\vartheta}_{ki}Y_{ki}}{X_{ki}}\right)^\frac{1}{\psi}$ can be verified using the first-order conditions from the firms' problem \eqref{eq:labor_demand} and \eqref{eq:intermediate_input_demand} in steady-state and the standard monopolistic competition pricing condition in steady-state, $P_{ki}=\mathcal{M}_{ki}\text{MC}^n_{ki}$. Using the previous identities, together with the production function \eqref{eq:production_function} in steady-state, one can verify that
+    \begin{align}
+        \mathcal{M}_{ki}\frac{W_kN_{ki}}{P_{ki}Y_{ki}}+\mathcal{M}_{ki}\frac{P_{kiX}X_{ki}}{P_{ki}Y_{ki}}=\frac{W_kN_{ki}}{\text{MC}^n_{ki}Y_{ki}}+\frac{P_{kiX}X_{ki}}{\text{MC}^n_{ki}Y_{ki}}=1\label{equation:production_function_rs}.
+    \end{align} 
+
+    \subsection{Price--Setting}
+
+
+We extend our framework to allow for a time-varying elasticity of substitution between different good varieties, in order to micro-found price cost-push shocks. We extend \eqref{eq:general_model_consumption_aggregator} to
+\begin{equation}
+Y_{ki,t}=\left(\int_0^1Y_{fki,t}^\frac{\epsilon_{pk,t}-1}{\epsilon_{pk,t}}df\right)^\frac{\epsilon_{pk,t}}{\epsilon_{pk,t}-1},\label{eq:production_index}
+    \end{equation}
+The implied sectoral price index is 
+    \begin{align}
+        P_{ki,t}=\left(\int_0^1P_{fki,t}^{1-\epsilon_{pki,t}}df\right)^\frac{1}{1-\epsilon_{pki,t}}.\label{eq:price_index}
+    \end{align}
+    Producers of each differentiated variety face the demand function
+\begin{equation}
+    Y_{ik,t+l|t}=\left(\frac{P_{fki,t}}{P_{ki,t+l}}\right)^{-\epsilon_{pki,t}}Y_{ki,t+l}\label{eq:demand_constraints}
+\end{equation}
+Firms set prices à la Calvo, which implies that the aggregate price dynamics are described by the equation
+\begin{equation}
+    \Pi_{ki,t}^{1-\epsilon_{pki,t}}=\theta^p_{ki}+(1-\theta^p_{ki})\left(\frac{P_{ki,t}^*}{P_{ki,t-1}}\right)^{1-\epsilon_{pki,t}}\label{eq:calvo_inflation_dynamics}
+\end{equation}
+Log-linearized: $\pi_{ki,t}=(1-\theta^p_{ki})(p^*_{ki,t}-p_{ki,t-1})$. A firm that resets its price at time $t$ faces the following problem $\max_{P_{ki,t}^*}\sum_{l=0}^\infty\theta^{pl}_{ki}\mathbb{E}_t\left\{\frac{\Lambda_{t,t+l}}{P_{ki,t+l}}[P_{ki,t}^*Y_{ki,t+l|t}-\mathcal{C}_{ki,t+l}(Y_{ki,t+l|t})]\right\}$ subject to the sequence of demand constraints \eqref{eq:demand_constraints}. The optimality condition associated with the problem takes the form
+\begin{align}
+   \sum_{l=0}^\infty\theta^{pl}_{ki}\mathbb{E}_t\left\{\frac{\Lambda_{t,t+l}Y_{ki,t+l|t}}{P_{ki,t+l}}[P_{ki,t}^*-\mathcal{M}_{ki,t}\text{MC}^n_{ki,t+l|t}]\right\}=0\label{eq:firms_problem_foc_p}
+\end{align}
+where $\text{MC}^n_{ki,t+l|t}$ denotes the nominal marginal cost in period $t+l$ for a firm which last reset its price in period $t$, and $\mathcal{M}_{ki,t}=\frac{\epsilon_{pki,t}}{\epsilon_{pki,t}-1}$. A first-order Taylor expansion of \eqref{eq:firms_problem_foc_p} around the zero inflation steady state yields
+\begin{equation}
+    p_{ki,t}^*=(1-\beta\theta^p_{ki})\sum_{l=0}^\infty(\beta\theta^p_{ki})\mathbb{E}_t\left(\text{mc}^n_{ki,t+l|t}+\mu_{ki,t}^n\right)\label{eq:firms_problem_foc_p_loglin}
+\end{equation}
+where $\text{mc}^n_{ki,t+l|t}\equiv\log\text{MC}^n_{ki,t+l|t}$ is the log marginal cost, and $\mu_{ki,t}^n:=\log\mathcal{M}_{ki,t}$ is the log of the desired gross markup. 
+
+The log marginal cost for an individual firm that last set its price in period $t$ is given by $$
+    \text{mc}^n_{ki,t+l|t}=w_{k,t+l}-\frac{\psi-1}{\psi}a_{ki,t+l}-\frac{1}{\psi}\left[\log\widetilde{\alpha}_{ki}+y_{ki,t+l|t}-n_{ki,t+l|t}\right],$$
+where $n_{ki,t+l|t}$ denotes the log employment in period $t+l$ for a firm that last reset its price in period $t$, and where we have made use of \eqref{eq:loglin_labor_demand}. 
+
+Letting $\text{mc}^n_{ki,t}=\int_0^1\text{mc}^n_{fki,t}\hspace{0.1cm}df=(1-\theta^p_{ki})\sum_{l=0}^\infty\theta^{pl}_{ki}\text{mc}^n_{ki,t|t-l}$ represent the log average marginal cost, it follows that $$\text{mc}^n_{ki,t}=w_{k,t}-\frac{\psi-1}{\psi}a_{ki,t}-\frac{1}{\psi}\left[\log\widetilde{\alpha}_{ki}+y_{ki,t}-n_{ki,t}\right].$$ Thus, the following relation holds between firm-specific and economy-wide marginal costs
+$$\text{mc}^n_{ki,t+l|t}=\text{mc}^n_{ki,t+l}-\frac{1}{\psi}\left[\left(y_{ki,t+l|t}-y_{ki,t+l}\right)-\left(n_{ki,t+l|t}-n_{ki,t+l}\right)\right].$$
+Notice that, making use of both marginal cost expressions \eqref{eq:labor_demand}-\eqref{eq:intermediate_input_demand}, the identity $x_{ki,t+l|t}-x_{ki,t+l}=n_{ki,t+l|t}-n_{ki,t+l}$ is satisfied. Hence, we can write
+    $$y_{ki,t+l|t}-y_{ki,t+l}=\left[\mathcal{M}_{ki}\frac{W_kN_{ki}}{P_{ki}Y_{ki}}+\mathcal{M}_{ki}\frac{P_{kiX}X_{ki}}{P_{ki}Y_{ki}}\right]({n}_{ki,t+l|t}-{n}_{ki,t+l})=(n_{ki,t+l|t}-n_{ki,t+l}),$$ where we have used the identity \eqref{equation:production_function_rs}, and where we have used the linearized production function \eqref{eq:loglin_production_function}. Hence, we can finally write the relation between marginal costs as  $\text{mc}^n_{ki,t+l|t}=\text{mc}^n_{ki,t+l}$.
+    
+Introducing this last expression into the log-linearized firms' FOC \eqref{eq:firms_problem_foc_p_loglin}, we can write
+$$p_{ki,t}^*=(1-\beta\theta^p_{ki})\sum_{l=0}^\infty(\beta\theta^p_{ki})\mathbb{E}_t\left[p_{ki,t+l}-\left(\widehat{\mu}_{ki,t+l}-\widehat{\mu}_{ki,t+l}^n\right)\right],$$
+where $\widehat{\mu}_{ki,t}\equiv \mu_{ki,t}-\mu_{ki}$ is the deviation between the average and desired markups, with $\mu_{ki,t}=p_{ki,t}-\text{mc}^n_{ki,t}$, and $\widehat{\mu}_{ki,t}^n\equiv \mu_{ki,t}^n-\mu_{ki}$. Combining the (linearized) inflation dynamics \eqref{eq:calvo_inflation_dynamics} with the above expression, we can write 
+\begin{align}
+    \pi_{ki,t}&=\kappa_{ki}\left(\widehat{\text{mc}}_{ki,t}-\widehat{p}_{ki,t}\right)+\beta\mathbb{E}_t\pi_{ki,t+1}+u_{ki,t}^p,\label{eq:price_phillips_curve}
+\end{align}
+where $\pi_{ki,t}=p_{ki,t}-p_{ki,t-1}$ denotes price inflation in sector $i$,  and the price variables (real marginal costs $\widehat{\text{mc}}_{ki,t}=\widehat{\text{mc}}^n_{ki,t}-p_{kC,t}$ and the real price level $\widehat{p}_{ki,t}=p_{ki,t}-p_{kC,t}$) appear in real terms so that they are stationary. Furthermore, $\kappa_{ki}=(1-\theta^p_{ki})(1-\beta\theta^p_{ki})/\theta^p_{ki}$. 
+
+An equivalent log-linearization of the LCP condition \eqref{eq:general_model_price_setting_foreign} yields:
+\begin{align}
+    \pi^{l}_{ki,t}&=\kappa_{ki}\left(\widehat{\text{mc}}_{ki,t}-\widehat{p}^{l}_{ki,t} - \widehat{q}_{kl,t}\right)+\beta\mathbb{E}_t\pi^{l}_{ki,t+1}+u_{ki,t}^p,\label{eq:price_phillips_curve_export}
+\end{align}
+where $\pi^{l}_{ki,t}$ denotes the export price inflation produced in country $k$ and sold to country $l$, and $\widehat{q}_{kl,t}$ denotes the log-deviation of the real exchange rate between country $k$ and country $l$:
+\begin{align}
+    \mathcal{Q}_{kl,t}=\frac{P_{lC,t}\mathcal{E}_{kl,t}}{P_{kC,t}}.\label{eq:real_exchange_rate}
+\end{align}   
+We assume that the sectoral price cost-push shocks $u^p_{ki,t}=\kappa_{ki}\widehat{\mu}_{ki,t}^n$, micro-founded through a time-varying elasticity of substitution $\epsilon_{pki,t}$ in \eqref{eq:general_model_consumption_aggregator}, follow independent AR(1) processes:
+\begin{align}
+    u^p_{ki,t}&=\rho^p_{ki}u^p_{ki,t-1}+\varepsilon^p_{ki,t},
+\end{align}
+where $u^p_{ki,t}\sim\mathcal{N}\left(0,\sigma^2_{kip}\right)$. 
+
+In this open input-output (IO) economy, the price  Phillips curve \eqref{eq:price_phillips_curve} depends on the international supply network through the real marginal costs faced by firm $i$ in country $k$, $\widehat{\text{mc}}_{ki,t}$. Combining the log-linearized intermediate input prices indices \eqref{eq:loglin_marginal_cost_price}-\eqref{eq:loglin_intermediate_inputs_price_index_3}, we obtain the marginal cost equation,
+\begin{align}
+    \widehat{\text{mc}}_{ki,t}&=-a_{ki,t}+\mathcal{M}_{ki}\alpha_{ki}\widehat{w}_{k,t}+\sum_{l=1}^K\sum_{j=1}^I\mathcal{M}_{ki}\omega_{klij}\widehat{p}_{klij,t}\label{eq:loglin_marginal_cost_maintext}
+\end{align}
+where, in the absence of a production subsidy, $\alpha_{ki}=\frac{W_kN_{ki}}{P_{ki}Y_{ki}}=\frac{W_kN_{ki}}{\mathcal{M}_{ki}\text{MC}_{ki}Y_{ki}}$ denotes the (steady-state) labor income share of total sales of firm $i$, $\omega_{klij}=\frac{P_{klj}X_{klij}}{P_{ki}Y_{ki}}=\frac{P_{klj}X_{klij}}{\mathcal{M}_{ki}\text{MC}_{ki}Y_{ki}}$ denotes the (steady-state) IO expenditure share of total sales of firm $i$, and $\mathcal{M}_{ki}=\epsilon_{pki}/(\epsilon_{pki}-1)$ denotes the steady-state markup charged by firm $i$. 
+
+
+    Note that sectoral-inflation rates and sectoral-level real prices ($\widehat{p}_{ki,t}$) are related through the identity
+    \begin{equation}
+        \pi_{ki,t} = \widehat{p}_{ki,t}-\widehat{p}_{ki,t-1} + \pi_{kC,t}.
+    \end{equation}
+    Writing \eqref{eq:loglin_consumer_prices_1}-\eqref{eq:loglin_consumer_prices_3} in first-differences, we can obtain consumer price inflation,
+    \begin{equation}
+        \pi_{kC,t} = \sum^I_{i=1} \sum_{l=1}^K\beta_{kli}\pi_{kli,t}
+    \end{equation}
+    where $\beta_{kli}=\frac{P_{kli}C_{kli}}{P_{kC}C_{k}}=\zeta_{kli}\left[\nu_{ki}\beta_k\mathbb{1}_{\{i\in I_E\}}+\upsilon_{ki}(1-\beta_k)\left(1-\mathbb{1}_{\{i\in I_E\}}\right)\right]$.
+
+    \subsection{Wage--Setting} 
+
+    Following \citet{Erceg2000}, wage stickiness is introduced in a way analogous to price stickiness. Labor unions specialized in any given labor type can reset their nominal wage only with probability $1-\theta^w_{k}$ each period, independently of the time elapsed since they last adjusted their wage. We assume that firms employ a continuum of differentiated labor services. In particular, $N_{fki,t}$ is an index of labor input used by firm $f$, and defined by 
+    \begin{equation}
+N_{fki,t}=\left(\int_0^1N_{fgki,t}^\frac{\epsilon_{wk}-1}{\epsilon_{wk}}dg\right)^\frac{\epsilon_{wk}}{\epsilon_{wk}-1},\label{eq:aggregate_supply_labor}
+    \end{equation}
+    where $N_{fgki,t}$ denotes the quantity of type-$g$ labor employed by firm $f$ in period $t$. Note that $\epsilon_{wk,t}$ represents the elasticity of substitution among labor varieties. Note also the assumption of a continuum of labor types, indexed by $g\in[0,1]$. 
+    
+    Let $W_{gk,t}$ denote the nominal wage for type-$g$ labor prevailing in period $t$. Nominal wages are set by workers of each type (or a union representing them) and taken as given by firms. Given the wages effective at any point in time for the different types of labor services, cost minimization yields a corresponding set of demand schedules for each firm $f$ and labor type $g$, given the firm's total employment $N_{fk,t}$,  
+    \begin{align}
+        N_{fgki,t}=\left(\frac{W_{gk,t}}{W_{k,t}}\right)^{-\epsilon_{wk,t}}N_{fki,t},\label{eq:employment_demand}
+    \end{align}
+    where 
+    \begin{align}
+        W_{k,t}\equiv \left(\int_0^1W_{gk,t}^{1-\epsilon_{wk,t}}dg\right)^\frac{1}{1-\epsilon_{wk,t}}\label{eq:wage_index}
+    \end{align}
+    is an aggregate wage index. Combining the previous conditions, one can obtain a convenient aggregation result, $\int_0^1W_{gk,t}N_{fgki,t}dg=W_{k,t}N_{fki,t}$. That is, the wage bill of any given firm can be expressed as the product of the wage index and the firm's employment index.
+    
+ The first-order condition of the wage-setting problem is given by $$\sum_{l=0}^\infty(\beta\theta^w_{k})^l\mathbb{E}_t\left[N_{k,t+l|t}C_{t+l}^{-\sigma}\left(\frac{W_{k,t}^*}{P_{t+l}^c}-\mathcal{M}_{wk,t}\text{MRS}_{k,t+l|t}^\varphi\right)\right]=0,$$
+where $\mathcal{M}_{wk,t}=\frac{\epsilon_{wk,t}}{\epsilon_{wk,t}-1}$, and $\text{MRS}_{k,t+l|t}=C_{t+l}^{-\sigma}N_{k,t+l|t}^\varphi$ denotes the marginal rate of substitution between household consumption and employment in period $t+l$ relevant to the workers resetting their wage in period $t$. Log-linearizing the above expression around a zero inflation steady-state yields the wage setting rule
+\begin{align}
+    w^*_{k,t}=(1-\beta\theta^w_{k})\sum_{l=0}^\infty(\beta\theta^w_{k})^l\mathbb{E}_t\left(\text{mrs}_{t+l|t}+\mu_{wk,t}^n+p_{kc,t+l}\right)\label{eq:wage_setting_foc}
+\end{align}
+where $\mu_{wk,t}^n=\log\mathcal{M}_{wk,t}$ and $\text{mrs}_{t+l|t}=\sigma c_{k,t+l}+\varphi n_{k,t+l|t}$. 
+
+Letting $\text{mrs}_{t+l}=\sigma c_{k,t+l}+\varphi n_{k,t+l}$ define the economy's average marginal rate of substitution, where $n_{k,t+l}=\log\int_0^1\int_0^1N_{fgk}dfdg$ denotes the log aggregate employment. Up to a first-order approximation, $$\text{mrs}_{t+l|t}=\text{mrs}_{t+l}+\varphi (n_{k,t+l}-n_{k,t+l|t})=\text{mrs}_{t+l}-\epsilon_{wk}\varphi (w_{k,t}^*-w_{k,t+l}).$$ 
+Hence, we can write \eqref{eq:wage_setting_foc} as
+\begin{align}
+    w^*_{k,t}=\frac{1-\beta\theta^w_{k}}{1+\epsilon_{wk}\varphi}\sum_{l=0}^\infty(\beta\theta^w_{k})^l\mathbb{E}_t\left[(1+\epsilon_{wk}\varphi)w_{k,t+l}-\left(\widehat{\mu}_{wk,t+l}-\widehat{\mu}^n_{wk,t+l}\right)\right]\label{eq:wage_setting_foc2}
+\end{align}
+where $\widehat{\mu}_{wk,t+l}={\mu}_{wk,t+l}-{\mu}_{wk}$ denotes the deviations of the economy's log average wage markup ${\mu}_{wk,t+l}=w_{k,t+k}-p_{kc,t+l}-\text{mrs}_{k,t+l}$ from its steady-state level, and $\widehat{\mu}^n_{wk,t+l}={\mu}_{wk,t+l}^n-{\mu}_{wk}$.
+
+Given the assumed wage setting structure, the evolution of the aggregate wage index is given by $$W_{k,t}=\left(\theta^w_{k}W_{k,t-1}^{1-\epsilon_{wk}}+(1-\theta^w_{k})(W_{k,t}^*)^{1-\epsilon_{wk}}\right)^\frac{1}{1-\epsilon_{wk}}.$$ Log-linearized, $$w_{k,t}=\theta^w_{k}w_{k,t-1}+(1-\theta^w_{k})w_{k,t}^*.$$ 
+Combining the last expression with \eqref{eq:wage_setting_foc2}, and letting $\pi_{wk,t}=w_{k,t}-w_{k,t-1}$, we obtain the  wage inflation equation:
+\begin{align}
+    \pi_{wk,t}&=\kappa_{wk}\left(\sigma\widehat{c}_{k,t}+\varphi\widehat{n}_{k,t}-\widehat{w}_{k,t}\right)+\beta\mathbb{E}_t\pi_{wk,t+1}+u_{ki,t}^w,\label{eq:wage_phillips_curve}
+\end{align}
+where $\pi_{wk,t}=w_{k,t}-w_{k,t-1}= \widehat{w}_{k,t} - \widehat{w}_{k,t-1} + \pi_{Ck,t}$ denotes wage inflation, with , $\widehat{w}_{k,t}=w_{k,t}-p_{kC,t}$ denoting the real wage; $\widehat{\mu}_{wk,t}=\widehat{w}_{k,t}-\sigma \widehat{c}_{k,t}-\varphi\widehat{n}_{k,t}$, where both aggregate consumption $\widehat{c}_{k,t}$ and employment $\widehat{n}_{k,t}$ appear in log-deviations from their steady-state values, and $u_{k,t}^w=\kappa_{wk}\widehat{\mu}_{wk,t}^n$. 
+
+
+    \subsection{Monetary Authority}
+    The log-linearized bilateral nominal exchange rate \eqref{eq:bilateral_nominal_exchange_rate_MU} is given by $e_{k,k^{MU},t} = e_{k,k^{MU}}$, $ \forall k \in K^{MU}$. 
+    In stationary terms, taking first differences, this can be written as
+    \begin{equation}
+        \Delta e_{k,k^{MU},t} = 0 \quad \forall k \in K^{MU}
+    \end{equation}
+    
+    Log-linearizing the expression for the real exchange rate \eqref{eq:real_exchange_rate} and first-differencing, we obtain 
+    \begin{align}
+        \Delta q_{kl,t}=\Delta e_{kl,t}+\pi_{l,t}-\pi_{k,t}.
+    \end{align}
+    Similarly, log-linearizing and first-differencing the symmetry of nominal exchange rates condition $\mathcal{E}_{kl,t}=\mathcal{E}_{lk,t}^{-1}$ yields
+    \begin{align}
+        \Delta e_{kl,t} = -\Delta e_{lk,t}
+    \end{align}
+
+
+
+\subsection{Market Clearing, GDP, and Trade Balance}
+
+\paragraph{Market Clearing}
+
+We first consider the goods market clearing condition \eqref{eq:goods_market_clearing}. Pre-multiplying by $\frac{P_{ki,t}}{ P_{k,t}C_{k,t}}=\frac{P_{ki,t}}{E_{k,t}}$, and making use of \eqref{eq:loglin_consumption_demand_2},
+    \begin{align}
+        \frac{P_{ki,t}Y_{ki,t}}{E_{k,t}} &= \sum^{K}_{l=1} \frac{P_{ki,t}C_{lki,t}}{E_{k,t}} + \sum^{K}_{l=1} \sum^{I}_{j=1}  \frac{P_{ki,t}X_{lkji,t}}{E_{k,t}}  \nonumber\\
+        &=\sum^{K}_{l=1} \frac{P_{ki,t}}{P_{lki,t}}\frac{P_{lki,t}C_{lki,t}}{E_{k,t}} + \sum^{K}_{l=1} \sum^{I}_{j=1}  \frac{P_{ki,t}}{P_{lki,t}}\frac{P_{lj,t}Y_{lj,t}}{E_{k,t}}\frac{P_{lki,t}X_{lkji,t}}{P_{lj,t}Y_{lj,t}}\nonumber\\
+        &=\sum^{K}_{l=1} \frac{P_{ki,t}}{P_{lki,t}}\frac{E_{l,t}}{E_{k,t}}\frac{P_{lki,t}C_{lki,t}}{E_{l,t}} + \sum^{K}_{l=1} \sum^{I}_{j=1}  \frac{P_{ki,t}}{P_{lki,t}}\frac{E_{l,t}}{E_{k,t}}\frac{P_{lj,t}Y_{lj,t}}{E_{l,t}}\frac{P_{lki,t}X_{lkji,t}}{P_{lj,t}Y_{lj,t}} \quad \forall i \in I\label{eq:domar_weights}
+    \end{align}
+    which we can write in steady-state as
+    \begin{align}
+        \lambda_{ki} &=\sum_{l=1}^K\mathcal{Y}_{lk}\beta_{lki}+ \sum^{K}_{l=1} \sum^{I}_{j=1}\mathcal{Y}_{lk}\lambda_{lj}\omega_{lkji}\quad \forall i \in I\nonumber
+    \end{align}
+    where the Domar weight for sector $i$ in country $k$ is $\lambda_{ki}=\frac{P_{ki}Y_{ki}}{\mathcal{Y}_{k}}$, the nominal GDP ratio between countries $l$ and $k$ is defined as $\mathcal{Y}_{lk}=\frac{P_{lC}C_{l}}{ P_{kC}C_{k}}$, and the IO share is given by $\omega_{lkji}=\frac{P_{lki}X_{lkji}}{P_{lj}Y_{lj}}=\frac{P_{ki}X_{lkji}}{P_{lj}Y_{lj}}=\zeta_{lkji}\vartheta_{lj}\left[\nu_{lji}\beta_{lj}\mathbb{1}_{\{i\in I_E\}}+\upsilon_{lji}(1-\beta_{lj})\left(1-\mathbb{1}_{\{i\in I_E\}}\right)\right]$, where we have made use of the law of one price in steady-state, $P_{klj}=P_{lj}$. Notice that $\beta_{lki}$ and $\omega_{lkji}$ can be extracted directly from the data. 
+    
+    Hence, we can write the log-linearized version of the goods market clearing condition \eqref{eq:goods_market_clearing}, $Y_{ki} \widehat{y}_{ki,t} = \sum^{K}_{l=1} \left( C_{lki}\widehat{c}_{lki,t} + \sum^{I}_{j=1} X_{lkji}\widehat{x}_{lkji} \right)$. Pre-multiplying the expression by $P_{ki}/E_{k}$, we can write
+    \begin{align}
+      \lambda_{ki} \widehat{y}_{ki,t}&= \sum^{K}_{l=1} \mathcal{Y}_{lk}\left( \beta_{lki}\widehat{c}_{lki,t} + \sum^{I}_{j=1} \lambda_{lj}\omega_{lkji}\widehat{x}_{lkji} \right)
+    \end{align}
+where we have pre-multiplied the first expression by $\frac{P_{ki}}{E_{k}}$.
+
+The log-linearized version of the labor market clearing condition \eqref{eq:labor_market_clearing} is given by
+ \begin{align}
+        \widehat{n}_{k,t} &=\sum^{I}_{i=1}\delta_{ki}\widehat{n}_{ki,t}\label{eq:loglin_labor_market_clearing}
+    \end{align}
+    where $\delta_{ki}=\frac{N_{ki}}{N_k}={\frac{W_kN_{ki}}{P_{ki}Y_{ki}}\frac{P_{ki}Y_{ki}}{P_{kC}C_k}\frac{P_{kC}C_k}{W_kN_k}}=\frac{\alpha_{ki}\lambda_{ki}}{1-\sum_{j=1}^I\left(1-\frac{\psi_{kj}}{\mathcal{M}_{kj}}\right)\lambda_{kj}}$ can be derived using \eqref{eq:nominal_output_steady_state}.
+
+    The NFA from the ``global'' country $K$ \eqref{eq:nfa_not_MU} can be log-linearized to
+    \begin{equation}
+        \frac{1}{\beta}\sum^{K-1}_{k=1} \text{nfa}^K_{k,t-1} - \sum^{K-1}_{k=1}\text{nfa}^K_{k,t} =  \Upsilon_K\left(\widehat{\text{exp}}_{K,t} - \widehat{\text{imp}}_{K,t} +\widehat{p}_{K\text{EXP},t} - \widehat{p}_{K\text{IMP},t} \right),
+    \end{equation}
+    the NFA from country $k\neq K$ $k\notin\text{MU}$, \eqref{eq:nfa_not_MU}  can be log-linearized to 
+    \begin{equation}
+        \text{nfa}^K_{k,t} -\frac{1}{\beta}\text{nfa}^K_{k,t-1} =  \Upsilon_k\left(\widehat{\text{exp}}_{k,t} - \widehat{\text{imp}}_{k,t} +\widehat{p}_{k\text{EXP},t} - \widehat{p}_{k\text{IMP},t} \right)
+    \end{equation}
+    where the linearized export and import price deflators are given by:
+    \begin{align}
+        \widehat{p}_{k\text{IMP},t} &= \sum_{l\neq k} \sum^{I}_{i=1} \left[ \frac{P_{kli} C_{kli} + \sum^I_{j=1} P_{kli} X_{klji}}{P_{k,IMP} IMP_{k}} \widehat{p}_{kli,t} \right]\nonumber\\
+        &=\sum_{l\neq k} \sum^{I}_{i=1} \Upsilon_k^{-1}\left(\beta_{kli}+\sum_{j=1}^I\lambda_{kj}\omega_{klji}\right)\widehat{p}_{kli,t}\\
+    \widehat{p}_{k\text{EXP},t} &= \sum_{l\neq k} \sum^{I}_{i=1} \left[ \frac{P_{ki} C_{lki} + \sum^I_{j=1} P_{ki} X_{lkji}}{P_{k,EXP} EXP_{k}} (q_{kl,t}+\widehat{p}_{lki,t}) \right]\nonumber\\& =\sum_{l\neq k} \sum^{I}_{i=1} \frac{\mathcal{Y}_{lk}}{\Upsilon_k}\left(\beta_{lki}+\sum_{j=1}^I\lambda_{lj}\omega_{lkji}\right)(q_{kl,t}+\widehat{p}_{lki,t})
+    \end{align}
+%      The NFA from country $k\neq K$, $k\in\text{MU}$ $k\neq \text{lMU}$ \eqref{eq:nfa_MU_not_leader} can be log-linearized to
+%     \begin{equation}
+%         (\text{nfa}^K_{k,t}+\text{nfa}^\text{MU}_{k,t}) -\frac{1}{\beta}(\text{nfa}^K_{k,t-1}+\text{nfa}^\text{MU}_{k,t-1}) =  \Upsilon_k\left(\widehat{\text{exp}}_{k,t} - \widehat{\text{imp}}_{k,t} +\widehat{p}_{k\text{EXP},t} - \widehat{p}_{k\text{IMP},t} \right)
+%     \end{equation}
+    
+%     The NFA from leader of monetary union $k=K^\text{lMU}$ \eqref{eq:nfa_MU_leader} can be log-linearized to
+%     \begin{align}
+%         \frac{1}{\beta}&\sum^{K^\text{MU}}_{k\in\text{MU},k\neq K^\text{lMU}} \text{nfa}^\text{MU}_{k,t-1} - \sum^{K^\text{MU}}_{k\in\text{MU},k\neq K^\text{lMU}}\text{nfa}^\text{MU}_{k,t}\\
+%         &=  \Upsilon_{K^\text{lMU}}\left(\widehat{\text{exp}}_{K^\text{lMU},t} - \widehat{\text{imp}}_{K^\text{lMU},t} +\widehat{p}_{K^\text{lMU}\text{EXP},t} - \widehat{p}_{K^\text{lMU}\text{IMP},t} \right)
+%     \end{align}
+
+
+\paragraph{Gross Domestic Product and Net Exports}
+    Let us now move to nominal GDP \eqref{eq:nominal_output}. In steady state, assuming zero net exports, $P_{k\text{EXP}}\text{EXP}_{k} - P_{k\text{IMP}} \text{IMP}_{k}=0$, we can write $\mathcal{Y}_k=P_{kC}C_k$. Using the household's budget constraint \eqref{eq:budget_constraint} in steady state, we can write
+    \begin{align}
+        \mathcal{Y}_k=P_{kC}C_k=W_kN_k+\Pi_k=W_kN_k+\sum_{i=1}^I\left(1-\frac{1}{\mathcal{M}_{ki}}\right)P_{ki}Y_{ki}\label{eq:nominal_output_steady_state}
+    \end{align}
+    where the last equality makes use of \eqref{equation:production_function_rs}.
+
+    Log-linearizing the real GDP \eqref{eq:real_output} definition,
+    \begin{align}
+        \widehat{y}_{k,t} = & \frac{P_{kC} C_{k}}{\mathcal{Y}_{k}} \widehat{c}_{k,t} + \frac{P_{k\text{EXP}} \text{EXP}_{k}}{\mathcal{Y}_{k}} \widehat{\text{exp}}_{k,t} - \frac{P_{k\text{IMP}} \text{IMP}_{k}}{\mathcal{Y}_{k}} \widehat{\text{imp}}_{k,t} \nonumber = \widehat{c}_{k,t} + \Upsilon_k \left(\widehat{\text{exp}}_{k,t} -  \widehat{\text{imp}}_{k,t}\right)
+    \end{align}
+    where second equality uses that nominal consumption expenditures will be equal nominal GDP in steady state, and $\Upsilon_k=\frac{P_{k\text{EXP}} \text{EXP}_{k}}{\mathcal{Y}_{k}}=\frac{P_{k\text{IMP}} \text{IMP}_{k}}{\mathcal{Y}_{k}}$ is the export (or import) share of nominal GDP.
+
+The nominal exports expression \eqref{eq:nominal_exports} can be log-linearized to:
+    \begin{align}
+        \widehat{\text{exp}}_{k,t} = & \sum_{l\neq k} \sum_{i \in I} \left( \frac{P_{ki} C_{lki}}{P_{k\text{EXP}} \text{EXP}_{k}} \widehat{c}_{lki,t} + \sum^{I}_{j=1} \frac{P_{ki} X_{lki}}{P_{k\text{EXP}} \text{EXP}_{k}} \widehat{x}_{lkji,t} \right) \nonumber \\ 
+        =&\sum_{l\neq k} \sum_{i \in I} \frac{\mathcal{Y}_{lk}}{\Upsilon_k}\left( \beta_{lki} \widehat{c}_{lki,t} + \sum^{I}_{j=1} \lambda_{lj}\omega_{lkji} \widehat{x}_{lkji,t} \right)  
+    \end{align}
+    where the export share of nominal GDP is given by
+    \begin{align}
+        \Upsilon_k&=\frac{P_{k\text{EXP}} \text{EXP}_{k}}{\mathcal{Y}_{k}}=\sum_{l\neq k}\sum_{i =1}^I\mathcal{Y}_{lk}\left[\beta_{lki}+\sum_{j=1}^I\lambda_{lj}\omega_{lkji}\right]=\left(\sum_{i=1}^I\lambda_{ki}\right)-\left(\beta_{kki}+\sum_{j=1}^I\lambda_{kj}\omega_{kkji}\right)\label{eq:upsilon_k_1}\\
+        &=\frac{P_{k\text{IMP}} \text{IMP}_{k}}{\mathcal{Y}_{k}}=\sum_{l\neq k}\sum_{i =1}^I\left[\beta_{kli}+\sum_{j=1}^I\lambda_{kj}\omega_{klji}\right]\label{eq:upsilon_k_2}
+    \end{align}
+
+Similarly, the nominal imports expression \eqref{eq:nominal_imports} can be log-linearized to
+      \begin{align}
+         \widehat{\text{imp}}_{k,t} = & \sum_{l\neq k}   \sum_{i \in I}  \left( \frac{P_{kli} C_{kli}}{P_{k\text{IMP}} \text{IMP}_{k}} \widehat{c}_{kli,t}   + \sum^{I}_{j=1}  \frac{P_{kli} X_{klji}}{P_{k\text{IMP}} \text{IMP}_{k}} \widehat{x}_{klji,t} \right) \nonumber \\ 
+         =&   \sum_{l\neq k}   \sum_{i \in I}  \Upsilon_k^{-1}\left( \beta_{kli} \widehat{c}_{kli,t}   + \sum^{I}_{j=1}  \lambda_{kj}\omega_{klji} \widehat{x}_{klji,t} \right)  
+    \end{align}
+
+    Now we can combine the linearized expression for real gdp, que the expressions for real imports and exports:
+    \begin{align}
+        \widehat{y}_{k,t} &=  \widehat{c}_{k,t}  +  \sum_{l\neq k} \sum_{i \in I} \left( \frac{P_{ki} C_{lki}}{\mathcal{Y}_{k}} \widehat{c}_{lki,t} + \sum^{I}_{j=1} \frac{P_{ki} X_{lkji}}{\mathcal{Y}_{k}} \widehat{x}_{lkji,t} - \frac{P_{kli} C_{kli}}{\mathcal{Y}_{k}} \widehat{c}_{kli,t}   - \sum^{I}_{j=1}  \frac{P_{kli} X_{klji}}{\mathcal{Y}_{k}} \widehat{x}_{klji,t} \right) \nonumber \\ 
+        &= \widehat{c}_{k,t}  +  \sum_{l\neq k} \sum_{i \in I} \left( \mathcal{Y}_{lk}\beta_{lki} \widehat{c}_{lki,t} + \sum^{I}_{j=1} \mathcal{Y}_{lk}\lambda_{lj}\omega_{lkji} \widehat{x}_{lkji,t} -  \beta_{kli} \widehat{c}_{kli,t}   - \sum^{I}_{j=1}  \lambda_{kj}\omega_{klji} \widehat{x}_{klji,t} \right) \nonumber
+    \end{align}
+
+   \section{IRFs of determinants in the transmission of tariffs}\label{sec:appendix_irfs}
+
+   \begin{figure}[H]
+  \centering
+    \includegraphics[width=0.9\linewidth]{figures/Combined_IRFs_by_IO_Structure.png}
+    \caption{IRFs to a US-China 50\% reciprocal tariff shock by Input-Output (IO) Structure.}
+    \label{fig:IRF1}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.9\linewidth]{figures/Combined_IRFs_by_NomRigidity.png}
+    \caption{IRFs to a US-China 50\% reciprocal tariff shock by Rigidity Scenario.}
+    \label{fig:IRF1}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.9\linewidth]{figures/Combined_IRFs_by_Elast.png}
+    \caption{IRFs to a US-China 50\% reciprocal tariff shock by Trade Elasticity Scenario.}
+    \label{fig:IRF1}
+\end{figure}
+
+%----------------------------------
+\begin{figure}[H]
+  \centering
+
+  \begin{subfigure}{\linewidth}
+    \centering
+    \includegraphics[width=0.9\linewidth]{figures/EA_trade_balance_IO.png}
+    \caption{IRFs to a US-China 50\% reciprocal tariff shock by Input-Output (IO) Structure.}
+    \label{fig:EA_IO}
+  \end{subfigure}
+
+  \vspace{1em}
+
+  \begin{subfigure}{\linewidth}
+    \centering
+    \includegraphics[width=0.9\linewidth]{0_clean/figures/EA_trade_balance_Rigidities.png}
+    \caption{IRFs to a US-China 50\% reciprocal tariff shock by Nominal Rigidity.}
+    \label{fig:EA_rigidity}
+  \end{subfigure}
+
+  \vspace{1em}
+
+  \begin{subfigure}{\linewidth}
+    \centering
+    \includegraphics[width=0.9\linewidth]{0_clean/figures/EA_trade_balance_Elasticity.png}
+    \caption{IRFs to a US-China 50\% reciprocal tariff shock by Trade Elasticity.}
+    \label{fig:EA_elasticity}
+  \end{subfigure}
+
+  \caption{EA Bilateral Trade Balances.}
+  \label{fig:EA_all_IRFs}
+\end{figure}
+
+
+
+

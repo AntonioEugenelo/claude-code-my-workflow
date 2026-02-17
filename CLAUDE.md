@@ -5,8 +5,8 @@
      Keep this file under ~150 lines — Claude loads it every session.
      See the guide at docs/workflow-guide.html for full documentation. -->
 
-**Project:** [YOUR PROJECT NAME]
-**Institution:** [YOUR INSTITUTION]
+**Project:** Macro Workshop — Fiscal Policy in Multisectoral Economies
+**Institution:** University of Oxford, Department of Economics
 **Branch:** main
 
 ---
@@ -16,7 +16,7 @@
 - **Plan first** -- enter plan mode before non-trivial tasks; save plans to `quality_reports/plans/`
 - **Verify after** -- compile/render and confirm output at the end of every task
 - **Single source of truth** -- Beamer `.tex` is authoritative; Quarto `.qmd` derives from it
-- **Quality gates** -- nothing ships below 80/100
+- **Quality gates** -- nothing ships below 90/100
 - **[LEARN] tags** -- when corrected, save `[LEARN:category] wrong → right` to MEMORY.md
 
 ---
@@ -24,7 +24,7 @@
 ## Folder Structure
 
 ```
-[YOUR-PROJECT]/
+workshop-presentation/
 ├── CLAUDE.MD                    # This file
 ├── .claude/                     # Rules, skills, agents, hooks
 ├── Bibliography_base.bib        # Centralized bibliography
@@ -64,9 +64,9 @@ python scripts/quality_score.py Quarto/file.qmd
 
 | Score | Gate | Meaning |
 |-------|------|---------|
-| 80 | Commit | Good enough to save |
-| 90 | PR | Ready for deployment |
-| 95 | Excellence | Aspirational |
+| 90 | Commit | Minimum for this project (critical audience) |
+| 95 | PR | Ready for deployment |
+| 98 | Excellence | Aspirational |
 
 ---
 
@@ -96,32 +96,25 @@ python scripts/quality_score.py Quarto/file.qmd
 
 ---
 
-<!-- CUSTOMIZE: Replace the example entries below with your own
-     Beamer environments and Quarto CSS classes. These are examples
-     from the original project — delete them and add yours. -->
-
 ## Beamer Custom Environments
 
-| Environment       | Effect        | Use Case       |
-|-------------------|---------------|----------------|
-| `[your-env]`      | [Description] | [When to use]  |
-
-<!-- Example entries (delete and replace with yours):
-| `keybox` | Gold background box | Key points |
-| `highlightbox` | Gold left-accent box | Highlights |
-| `definitionbox[Title]` | Blue-bordered titled box | Formal definitions |
--->
+| Environment | Effect | Use Case |
+|---|---|---|
+| `block{Title}` | Oxford navy header, light blue body | Definitions, model components |
+| `alertblock{Title}` | Accent red header, light red body | Key results, warnings |
+| `beamercolorbox[...]{title}` | Custom full-width colour box | Title slide layout |
+| `columns[T]` + `column{0.48\textwidth}` | Two-column layout | Side-by-side comparisons |
+| `\red{text}` | Accent red highlight (`oxfordaccent`) | Emphasising key terms in equations |
 
 ## Quarto CSS Classes
 
-| Class              | Effect        | Use Case       |
-|--------------------|---------------|----------------|
-| `[.your-class]`    | [Description] | [When to use]  |
-
-<!-- Example entries (delete and replace with yours):
-| `.smaller` | 85% font | Dense content slides |
-| `.positive` | Green bold | Good annotations |
--->
+| Class | Effect | Use Case |
+|---|---|---|
+| `.smaller` | 85% font | Dense content, appendix slides |
+| `.keybox` | Gold-accent bordered box | Key results and properties |
+| `.methodbox` | Blue-accent bordered box | Model setup, equations |
+| `.highlightbox` | Yellow-accent bordered box | Important notes |
+| `.hi-red` | Bold red text | Equation annotations (maps to `\red{}`) |
 
 ---
 
@@ -129,5 +122,4 @@ python scripts/quality_score.py Quarto/file.qmd
 
 | Lecture | Beamer | Quarto | Key Content |
 |---------|--------|--------|-------------|
-| 1: [Topic] | `Lecture01_Topic.tex` | `Lecture1_Topic.qmd` | [Brief description] |
-| 2: [Topic] | `Lecture02_Topic.tex` | -- | [Brief description] |
+| Workshop Talk | `Slides/MacroWorkshop_short.tex` | -- | 15-min talk: toy model relative allocation rule → Aguilar et al. production network → fiscal extensions (labour tax, production subsidy) → research agenda |

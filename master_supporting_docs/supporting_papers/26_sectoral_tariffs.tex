@@ -1,0 +1,17 @@
+\subsection{Tariffs}\label{tariffs_Section}
+
+We are interested in analyzing the propagation and consequences of tariffs in the economy. To do so, we introduce an exogenous price wedge $\tau_{k,l,i}$ between the price set by industry in sector $i$ of country $l$ exporting to country $k$ (denominated in the currency of country $k$), $\widetilde{P}_{l,k,i,t}$, and the actual price paid by either the household $P_{k,l,i,t}$ and/or the intermediate producers in their imports from country $k$:
+\begin{equation}
+    P_{k,l,i,t} = \left(1+\tau_{k,l,i,t} \right) \widetilde{P}_{l,k,i,t}.\label{eq:price_wedge}
+\end{equation}
+and likewise for the price of intermediate inputs $P_{X,i,j,t}$:
+\begin{equation}
+    P_{X,i,j,t} = \left(1+\tau_{k,l,i,t} \right) \widetilde{P}_{X,i,j,t}.\label{eq:price_wedge_int}
+\end{equation}
+We assume that the (log-)tariff, introduced in \eqref{eq:general_model_consumption_allocation}, follows an AR(1) process: 
+\begin{equation}
+    \tau_{lkj,t}=\rho^\tau_{lkj}\tau_{lkj,t-1}+\varepsilon_{lkj,t}^\tau\label{eq:tau_lkj_shock}
+\end{equation}
+    where $\varepsilon_{lkj,t}^\tau\sim\mathcal{N}\left(0,(\sigma^\tau_{lkj})^2\right)$. 
+
+This characterization of tariffs enable us to capture the possibility of tariffs in either final good prices (see equation \eqref{eq:general_model_consumption_allocation}) or intermediate goods price (see equation \eqref{eq:general_model_intermediate_goods_allocation}) at a sectoral levels.

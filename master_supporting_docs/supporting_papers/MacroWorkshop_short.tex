@@ -1,0 +1,693 @@
+\documentclass[10pt,aspectratio=169]{beamer}
+
+% ============================================================
+% THEME & COLOURS
+% ============================================================
+\usetheme{default}
+\useinnertheme{rectangles}
+
+\definecolor{oxfordblue}{RGB}{0,33,71}
+\definecolor{oxfordmid}{RGB}{75,100,130}
+\definecolor{oxfordlight}{RGB}{195,210,225}
+\definecolor{oxfordaccent}{RGB}{163,31,52}
+\definecolor{oxfordgrey}{RGB}{100,100,100}
+
+\setbeamercolor{structure}{fg=oxfordblue}
+\setbeamercolor{frametitle}{fg=white,bg=oxfordblue}
+\setbeamercolor{title}{fg=white,bg=oxfordblue}
+\setbeamercolor{block title}{fg=white,bg=oxfordblue}
+\setbeamercolor{block body}{bg=oxfordlight!30}
+\setbeamercolor{block title alerted}{fg=white,bg=oxfordaccent}
+\setbeamercolor{block body alerted}{bg=oxfordaccent!8}
+\setbeamercolor{alerted text}{fg=oxfordaccent}
+\setbeamercolor{item}{fg=oxfordblue}
+\setbeamercolor{subitem}{fg=oxfordmid}
+\setbeamercolor{footline}{fg=oxfordgrey,bg=oxfordblue!8}
+
+% ============================================================
+% FONTS & LAYOUT
+% ============================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage{mathtools}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\usepackage{appendixnumberbeamer}
+\hypersetup{colorlinks=true,linkcolor=oxfordblue,urlcolor=oxfordmid,citecolor=oxfordaccent}
+
+\setbeamerfont{frametitle}{size=\large,series=\bfseries}
+\setbeamerfont{title}{size=\Large,series=\bfseries}
+\setbeamerfont{author}{size=\normalsize}
+\setbeamerfont{institute}{size=\small}
+\setbeamerfont{date}{size=\small}
+\setbeamerfont{footnote}{size=\tiny}
+
+\setbeamertemplate{itemize item}{\small\raisebox{0.12ex}{\color{oxfordblue}$\blacktriangleright$}}
+\setbeamertemplate{itemize subitem}{\scriptsize\raisebox{0.1ex}{\color{oxfordmid}$\bullet$}}
+\setbeamertemplate{navigation symbols}{}
+
+\setbeamertemplate{frametitle}{%
+  \nointerlineskip
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2.8ex,dp=1.2ex,leftskip=0.8em]{frametitle}%
+    \usebeamerfont{frametitle}\insertframetitle%
+  \end{beamercolorbox}%
+}
+
+\setbeamertemplate{footline}{%
+  \hbox{%
+    \begin{beamercolorbox}[wd=\paperwidth,ht=2.4ex,dp=1.2ex]{footline}%
+      \hspace{1.2em}%
+      {\usebeamerfont{footnote}\color{oxfordgrey}%
+        A.\,Eugenelo%
+        \hfill%
+        Fiscal Policy in Production Networks%
+        \hfill%
+        \insertframenumber\,/\,\inserttotalframenumber%
+      }%
+      \hspace{1.5em}%
+    \end{beamercolorbox}%
+  }%
+}
+
+\setbeamersize{text margin left=1.2em,text margin right=1.2em}
+
+\newcommand{\red}[1]{{\color{oxfordaccent}#1}}
+
+% ============================================================
+% METADATA
+% ============================================================
+\title[Fiscal Policy in Production Networks]{%
+  Government Spending in Multi-Sector\\[3pt]
+  Open Economies with Production Networks}
+\author[A.\,Eugenelo]{Antonio Eugenelo}
+\institute{University of Oxford\\ Department of Economics}
+\date{Macro Workshop \,---\, February 2026}
+
+% ============================================================
+\begin{document}
+% ============================================================
+
+% ------ TITLE ------
+{
+\setbeamertemplate{footline}{}
+\begin{frame}[plain]
+  \vfill
+  \begin{beamercolorbox}[wd=\paperwidth,ht=0.45\paperheight,dp=0pt,center]{title}
+    \vskip1.5em
+    \usebeamerfont{title}\inserttitle\\[12pt]
+    \usebeamerfont{author}\insertauthor\\[4pt]
+    \usebeamerfont{institute}\insertinstitute\\[8pt]
+    \usebeamerfont{date}\insertdate
+    \vskip1em
+  \end{beamercolorbox}
+  \vfill
+\end{frame}
+}
+
+% ============================================================
+% SLIDE 1 --- MOTIVATION (absorbs literature + roadmap)
+% ============================================================
+
+\begin{frame}{Motivation and Plan}
+  \textbf{Question.}  What is the welfare effect of redistributing sector-specific government spending under a fixed aggregate budget, relative to fully endogenous fiscal policy?
+
+  \bigskip
+  \begin{itemize}
+    \setlength{\itemsep}{6pt}
+    \item Production networks amplify and reshape the transmission of shocks across sectors (Acemoglu et al., 2012; Baqaee \& Farhi, 2020; Rubbo, 2023).
+    \item Optimal fiscal allocation across sectors depends on sectoral heterogeneity in price stickiness, public-good shares, and network position (Cox et al., 2024).
+    \item No existing framework combines these two dimensions in an open-economy setting.
+  \end{itemize}
+
+  \bigskip
+  \textbf{Plan --- building up step by step:}
+  \begin{enumerate}\setlength{\itemsep}{2pt}
+    \item[\textbf{(i)}] A \textbf{toy model} with non-distortionary lump-sum transfers and government procurements $\to$ a \emph{relative allocation rule}.
+    \item[\textbf{(ii)}] The \textbf{global production network model} of Aguilar et al.\ (2025) with distortionary taxation and subsidisation.
+    \item[\textbf{(iii)}] \textbf{Planned extensions}: combine lump-sum procurements with proportional taxation/subsidies to production and labour in the richer model.
+  \end{enumerate}
+\end{frame}
+
+% ============================================================
+% SLIDE 2 --- SIMPLE MODEL: SETUP & WELFARE
+% ============================================================
+
+\begin{frame}{A Simple Multi-Sector Model: Setup}
+  Closed NK economy, $K$ sectors, Calvo pricing ($\alpha_k$), following Cox et al.\ (2024).
+
+  \medskip
+  Household utility over private and public composites:
+  \[
+    U = \sum_t \beta^t \left[ (1-\chi)\frac{C_t^{1-\sigma}}{1-\sigma} + \chi\frac{G_t^{1-\sigma}}{1-\sigma} - \sum_k \nu_k \frac{N_{k,t}^{1+\varphi}}{1+\varphi} \right]
+  \]
+
+  \textbf{Key constraint:} the aggregate public-good bundle $\bar{G}_t$ is \textit{exogenous}.  The planner chooses only the sectoral composition $\{g_{k,t}\}$.
+
+  \medskip
+  The welfare loss (setting $\sigma=1$, isolating the budget channel):
+  \[
+    \mathcal{W} \;\approx\; -\,\frac{1}{2}\,\sum_{k}\mu_k\bigg[\underbrace{(1+\varphi)\,y_{k,t}^2}_{\text{output gaps}} + \underbrace{\frac{\theta(1-\chi_k)}{\lambda_k}\,\pi_{k,t}^2}_{\text{inflation}} + \underbrace{\chi_k^*\,(g_{k,t}-y_{k,t})^2}_{\text{public-good gaps}}\bigg]
+  \]
+\end{frame}
+
+% ============================================================
+% SLIDE 3 --- THE RELATIVE ALLOCATION RULE
+% ============================================================
+
+\begin{frame}{The Relative Allocation Rule}
+  Under exogenous $\bar{G}_t$, optimal spending in sector~$k$ relative to a residual sector~$i$:
+  \begin{align*}
+    g_{k,t} \;=\;\;
+    & \underbrace{\Phi_{ki}}_{\text{structural}}\; g_{i,t} \\[8pt]
+    & \underbrace{-\; \frac{\varphi}{1{+}\lambda_k{+}\varphi\lambda_k}\; y_{k,t}
+    \;-\; \frac{\theta\,\varphi\,(1{-}\chi_k)}{1{+}\lambda_k{+}\varphi\lambda_k}\; \pi_{k,t}
+    }_{\text{\red{sector $k$}: spending falls when own gaps are large}} \\[8pt]
+    & \underbrace{+\;\Phi_{ki}\!\left(
+      \frac{\varphi\,y_{i,t}}{1{+}\lambda_i{+}\varphi\lambda_i(1{-}\chi_i)}
+      \;+\; \frac{\theta\,\varphi\,(1{-}\chi_i)\,\pi_{i,t}}{1{+}\lambda_i{+}\varphi\lambda_i(1{-}\chi_i)}
+    \right)}_{\text{\red{sector $i$}: spending rises when residual-sector gaps are large}}
+  \end{align*}
+
+  \begin{alertblock}{Key property}
+    The rule is inherently \textit{relative}: spending is \textbf{reallocated} toward sectors with lower output gaps and lower inflation \emph{relative} to the residual sector.  What matters is the cross-sectional dispersion of gaps, not their level.
+  \end{alertblock}
+\end{frame}
+
+% ============================================================
+% SLIDE 4 --- AGUILAR ET AL. MODEL
+% ============================================================
+
+\begin{frame}{The Global Production Network Model (Aguilar et al., 2025)}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{itemize}
+        \setlength{\itemsep}{4pt}
+        \item $K{=}4$ countries, $I{=}44$ sectors
+        \item Nested CES: energy/non-energy, domestic/foreign
+        \item Sector- and country-specific Calvo pricing
+        \item Country-specific Taylor rules
+        \item Balanced budget, lump-sum taxes, static production subsidies, tariff revenue
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      Marginal cost in sector $i$, country $k$:
+      \[
+        \widehat{\mathrm{mc}}_{ki,t} = -a_{ki,t} + \underbrace{\mathcal{M}_{ki}\alpha_{ki}\,\widehat{w}_{k,t}}_{\text{labour}} + \underbrace{\textstyle\sum_{l,j} \mathcal{M}_{ki}\omega_{klij}\,\widehat{p}_{klij,t}}_{\text{IO inputs}}
+      \]
+      Sectoral Phillips curve:
+      \[
+        \pi_{ki,t} = \kappa_{ki}\!\left(\widehat{\mathrm{mc}}_{ki,t} - \widehat{p}_{ki,t}\right) + \beta\,\mathbb{E}_t\pi_{ki,t+1} + u^p_{ki,t}
+      \]
+      Tariffs enter as price wedges:
+      \[
+        P_{k,l,i,t} = (1+\tau_{k,l,i,t})\,\widetilde{P}_{l,k,i,t}
+      \]
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ============================================================
+% SLIDE 5 --- EXTENSIONS: FISCAL INSTRUMENTS
+% ============================================================
+
+\begin{frame}{Original Extensions: Fiscal Instruments in the Phillips Curves}
+  \textbf{Not part of Aguilar et al.\ (2025).}  Low-cost additions that do not alter the IO structure.
+
+  \medskip
+  Define $\hat{\tau}^w_{k,t} \equiv (\tau^w_{k,t} - \bar{\tau}^w_k)/(1-\bar{\tau}^w_k)$ and $\hat{\tau}^s_{ki,t} \equiv (\tau^s_{ki,t} - \bar{\tau}^s_{ki})/(1-\bar{\tau}^s_{ki})$.
+
+  \bigskip
+  \textbf{Wage Phillips curve} --- adding a labour income tax:
+  \[
+    \pi_{wk,t} = \kappa_{wk}\Big(\sigma\,\hat{c}_{k,t} + \varphi\,\hat{n}_{k,t} - \hat{w}_{k,t} + \red{\hat{\tau}^w_{k,t}}\Big) + \beta\,\mathbb{E}_t\pi_{wk,t+1} + u^w_{k,t}
+  \]
+
+  \textbf{Price Phillips curve} --- making the production subsidy time-varying:
+  \[
+    \pi_{ki,t} = \kappa_{ki}\Big(\widehat{\mathrm{mc}}_{ki,t} - \hat{p}_{ki,t} \;\red{-\; \hat{\tau}^s_{ki,t}}\Big) + \beta\,\mathbb{E}_t\pi_{ki,t+1} + u^p_{ki,t}
+  \]
+
+  \medskip
+  Tax hike $\to$ inflationary cost-push.\quad Subsidy hike $\to$ disinflationary cost-push.
+\end{frame}
+
+% ============================================================
+% SLIDE 6 --- RESEARCH AGENDA
+% ============================================================
+
+\begin{frame}{Research Agenda: Fixed vs.\ Endogenous Fiscal Envelopes}
+  \textbf{Goal:} introduce sector-specific $G_{ki,t}$ in the goods market clearing condition of the global production network model:
+  \[
+    Y_{ki,t} = \sum_l C_{lki,t} + \sum_l\sum_j X_{lkji,t} + \red{G_{ki,t}}
+  \]
+  and compare two policy regimes:
+
+  \medskip
+  \begin{columns}[T]
+    \begin{column}{0.47\textwidth}
+      \begin{block}{Fully endogenous spending}
+        Planner chooses level \textit{and} composition.  Benchmark for first-best fiscal stabilisation.
+      \end{block}
+    \end{column}
+    \begin{column}{0.47\textwidth}
+      \begin{block}{Fixed aggregate budget}
+        $\bar{G}_{k,t}$ exogenous; only the sectoral composition adjusts.  Relevant when total spending is politically constrained.
+      \end{block}
+    \end{column}
+  \end{columns}
+
+  \bigskip
+  \textbf{Central question:} how large is the welfare gap between the two regimes?  If it is small, compositional reallocation alone---the relative allocation rule---may approximate the first-best, even without aggregate fiscal flexibility.
+\end{frame}
+
+% ============================================================
+% SLIDE 7 --- SUMMARY
+% ============================================================
+
+\begin{frame}{Summary}
+  \begin{enumerate}
+    \setlength{\itemsep}{8pt}
+    \item Under a fixed fiscal envelope, optimal sectoral spending follows a \textbf{relative allocation rule}: reallocate toward sectors with larger gaps.
+    \item The global production network model of \textbf{Aguilar et al.\ (2025)} provides a quantitative environment with IO linkages and sectoral tariffs, but lacks non-trivial fiscal dynamics.
+    \item \textbf{Original extensions}---labour income tax in the wage PC, time-varying subsidy in the price PC---introduce fiscal instruments without altering the core model.
+    \item The \textbf{research agenda}: derive spending rules in the networked model; quantify the welfare cost of fixing the aggregate budget relative to fully endogenous spending.
+  \end{enumerate}
+\end{frame}
+
+% ============================================================
+% THANK YOU
+% ============================================================
+{
+\setbeamertemplate{footline}{}
+\begin{frame}[plain]
+  \vfill
+  \begin{center}
+    {\Large\color{oxfordblue}\textbf{Thank you}}\\[16pt]
+    {\normalsize\color{oxfordgrey} antonio.eugenelo@economics.ox.ac.uk}
+  \end{center}
+  \vfill
+\end{frame}
+}
+
+% ============================================================
+%
+%                        APPENDIX
+%
+% ============================================================
+\appendix
+
+% ------ A1: FULL LITERATURE ------
+
+\begin{frame}[noframenumbering]{Appendix: Related Literature}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Production Networks \& NK}
+        \begin{itemize}
+          \item Acemoglu et al.\ (2012)
+          \item Baqaee \& Farhi (2020, 2024)
+          \item Pasten, Schoenle \& Weber (2020)
+          \item Rubbo (2023)
+        \end{itemize}
+      \end{block}
+      \vspace{4pt}
+      \begin{block}{Tariffs \& Open-Economy NK}
+        \begin{itemize}
+          \item Gal\'{i} \& Monacelli (2005)
+          \item Comin \& Johnson (2023)
+          \item Aguilar et al.\ (2025)
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Fiscal Policy in Disaggregated Economies}
+        \begin{itemize}
+          \item Aoki (2001)
+          \item Cox, M\"{u}ller, Pasten, Schoenle \& Weber (2024)
+        \end{itemize}
+      \end{block}
+      \vspace{4pt}
+      \begin{block}{Fiscal--Price Effects (Empirical)}
+        \begin{itemize}
+          \item Nekarda \& Ramey (2013)
+          \item Ben Zeev \& Pappa (2017)
+          \item Barattieri et al.\ (2023)
+        \end{itemize}
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ------ A2: WELFARE OBJECTIVE (detail) ------
+
+\begin{frame}[noframenumbering]{Appendix: Welfare Objective}
+  Under $\sigma=1$, abstracting from government-demand pass-through, the second-order welfare approximation is:
+  \[
+    \mathcal{W} \;\approx\; -\,\frac{1}{2}\,\sum_{k}\mu_k\bigg[(1+\varphi)\,y_{k,t}^2 \;+\; \frac{\theta(1-\chi_k)}{\lambda_k}\,\pi_{k,t}^2 \;+\; \chi_k^*\,(g_{k,t}-y_{k,t})^2\bigg]
+  \]
+
+  Three tensions:
+  \begin{enumerate}
+    \item \textbf{Output-gap stabilisation:} penalises $y_{k,t}^2$.
+    \item \textbf{Inflation stabilisation:} penalises $\pi_{k,t}^2$, weighted inversely by the Phillips curve slope $\lambda_k$.
+    \item \textbf{Public-good allocation:} penalises the gap $g_{k,t}-y_{k,t}$.
+  \end{enumerate}
+
+  When $\bar{G}_t$ is unconstrained, $g_{k,t}$ can be set independently in each sector.  When only the composition is a choice variable, the problem changes qualitatively: the planner can only \textit{reshuffle} spending.
+\end{frame}
+
+% ------ A3: FULL WELFARE WITH SIGMA =/= 1, KAPPA =/= 0 ------
+
+\begin{frame}[noframenumbering]{Appendix: Welfare with $\sigma \neq 1$ and $\kappa \neq 0$}
+  When CRRA preferences and government-demand pass-through are active:
+  \small
+  \begin{align*}
+    -\frac{1}{2}\sum_k\mu_k\Biggl(&
+      (1{+}\varphi)\,y_{k,t}^2
+      + \frac{\theta(1{-}\chi_k)}{\lambda_k}\,\pi_{k,t}^2
+      + \chi_k^*\,(g_{k,t}{-}y_{k,t})^2 \\
+    & + \red{(\sigma{-}1)}\Biggl[
+        (1{-}\chi_k)\,\omega_{c,k}\!\left(\frac{y_{k,t}}{1{-}\chi_k} - \chi_k^*\,g_{k,t}\right)^{\!2}
+        + \omega_{g,k}\,\chi_k\,g_{k,t}^2
+      \Biggr]\Biggr)
+  \end{align*}
+
+  \begin{itemize}
+    \item The $\sigma{-}1$ term introduces an \textbf{insurance motive}: the planner uses sectoral fiscal policy to hedge against aggregate risk.
+    \item $\kappa > 0$ steepens Phillips curves ($\lambda'_k > \lambda_k$), making fiscal policy a supply-side instrument.
+  \end{itemize}
+\end{frame}
+
+% ------ A4: RELATIVE RULE (structural coefficients) ------
+
+\begin{frame}[noframenumbering]{Appendix: Relative Allocation Rule --- Structural Coefficients}
+  \small
+  Under exogenous $\bar{G}_t$ (with $\sigma=1$, $\kappa=0$):
+  \begingroup\footnotesize
+  \begin{align*}
+    g_{k,t} \;&=\; \tfrac{1{-}\chi_k}{1{-}\chi_i}\biggl(\tfrac{1{+}\lambda_i{+}\varphi\lambda_i}{1{+}\lambda_i{+}\varphi\lambda_i(1{-}\chi_i)}\biggr) \biggl(\tfrac{\omega_{g,k}}{\omega_{g,i}}\biggr)^{\!\rho} \biggl(\tfrac{1{+}\lambda_k{+}\varphi\lambda_k}{1{+}\lambda_k{+}\varphi\lambda_k(1{-}\chi_k)}\biggr)^{\!-1} g_{i,t} \\
+    &\quad -\; \tfrac{\varphi\,y_{k,t}}{1{+}\lambda_k{+}\varphi\lambda_k}
+    \;-\; \tfrac{\theta\,\varphi\,(1{-}\chi_k)\,\pi_{k,t}}{1{+}\lambda_k{+}\varphi\lambda_k} \\
+    &\quad +\; \tfrac{1{-}\chi_k}{1{-}\chi_i}\biggl(\tfrac{\omega_{g,k}}{\omega_{g,i}}\biggr)^{\!\rho}
+    \biggl(\tfrac{1{+}\lambda_k{+}\varphi\lambda_k}{1{+}\lambda_k{+}\varphi\lambda_k(1{-}\chi_k)}\biggr)^{\!-1} \\
+    &\qquad \times\biggl(
+      \tfrac{\varphi\,y_{i,t}}{1{+}\lambda_i{+}\varphi\lambda_i(1{-}\chi_i)}
+      + \tfrac{\theta\,\varphi\,(1{-}\chi_i)\,\pi_{i,t}}{1{+}\lambda_i{+}\varphi\lambda_i(1{-}\chi_i)}
+    \biggr)
+  \end{align*}
+  \endgroup
+
+  $\omega_{g,k}$: weight of sector $k$ in the government Cobb--Douglas aggregator.\quad $\rho$: CES elasticity of public-good bundle.
+\end{frame}
+
+% ------ A5: OPTIMAL MONETARY RULE UNDER CONSTRAINT ------
+
+\begin{frame}[noframenumbering]{Appendix: Optimal Monetary Rule under Aggregate Constraint}
+  Under exogenous $\bar{G}_t$, optimal monetary policy sets:
+  \begin{gather*}
+    \sum_k \mu_k\,\frac{\theta(1{-}\chi_k)}{\lambda_k}\,\frac{\lambda_k + \varphi\lambda_k(1{-}\chi_k)}{1+\lambda_k+\varphi\lambda_k(1{-}\chi_k)}\,\pi_{k,t}
+    \;= \\[4pt]
+    \sum_k \mu_k\!\left(\frac{\chi_k\,g_{k,t}}{1+\lambda_k+\varphi\lambda_k(1{-}\chi_k)} - \frac{y_{k,t}(1{-}\chi_k)(1{+}\varphi{+}\chi_k^*)}{1+\lambda_k+\varphi\lambda_k(1{-}\chi_k)}\right)
+  \end{gather*}
+
+  \begin{itemize}
+    \item Inflation weights depend on private-consumption share and $\lambda_k$.
+    \item Government spending enters the target because the constraint links $g_{k,t}$ and $y_{k,t}$ across sectors.
+  \end{itemize}
+\end{frame}
+
+% ------ A6: AGUILAR ET AL. MODEL DETAILS ------
+
+\begin{frame}[noframenumbering]{Appendix: Aguilar et al.\ --- Household Problem}
+  \small
+  Per-period utility: $U_t = \bigl(C_{k,t}^{1-\sigma}/(1{-}\sigma) - \int_0^1 \mathcal{N}_{gk,t}^{1+\varphi}/(1{+}\varphi)\,dg\bigr)Z_{k,t}$
+
+  \medskip
+  Consumption nested CES (energy/non-energy, domestic/foreign):
+  \[
+    C_{k,t} = \left[\widetilde{\beta}_k^{1/\gamma}\,C_{kE,t}^{(\gamma-1)/\gamma} + (1{-}\widetilde{\beta}_k)^{1/\gamma}\,C_{kM,t}^{(\gamma-1)/\gamma}\right]^{\gamma/(\gamma-1)}
+  \]
+
+  Euler equations:
+  \begin{align*}
+    C_{k,t}^{-\sigma} &= \beta\,\mathbb{E}_t\,C_{k,t+1}^{-\sigma}\,\frac{1+i_{k,t}}{1+\pi_{kC,t+1}}\,\frac{Z_{k,t+1}}{Z_{k,t}} \\[2pt]
+    i_{k,t} - i_{K,t} &= \mathbb{E}_t\Delta e_{kK,t+1} - \gamma_*\,\mathrm{nfa}_{k,t} + \varepsilon^e_{kK,t} \qquad\text{(UIP)}
+  \end{align*}
+
+  Calvo wage setting yields:
+  \[
+    \pi_{wk,t} = \kappa_{wk}\bigl(\sigma\hat{c}_{k,t} + \varphi\hat{n}_{k,t} - \hat{w}_{k,t}\bigr) + \beta\,\mathbb{E}_t\pi_{wk,t+1} + u^w_{k,t}
+  \]
+\end{frame}
+
+\begin{frame}[noframenumbering]{Appendix: Aguilar et al.\ --- Firm Problem}
+  \small
+  CES production: $Y_{ki,f,t} = A_{ki,t}\!\left[\widetilde{\alpha}_{ki}^{1/\psi}\,N_{fki,t}^{(\psi-1)/\psi} + \widetilde{\vartheta}_{ki}^{1/\psi}\,X_{fki,t}^{(\psi-1)/\psi}\right]^{\psi/(\psi-1)}$
+
+  \medskip
+  Intermediate bundle mirrors the household CES nesting (energy/non-energy, domestic/foreign).
+
+  \medskip
+  Log-linearised marginal cost:
+  \[
+    \widehat{\mathrm{mc}}_{ki,t} = -a_{ki,t} + \mathcal{M}_{ki}\alpha_{ki}\,\widehat{w}_{k,t} + \sum_{l=1}^K\sum_{j=1}^I \mathcal{M}_{ki}\omega_{klij}\,\widehat{p}_{klij,t}
+  \]
+  where $\alpha_{ki}$: labour share, $\omega_{klij}$: IO expenditure share, $\mathcal{M}_{ki}$: steady-state markup.
+
+  \medskip
+  Calvo pricing yields:
+  \[
+    \pi_{ki,t} = \kappa_{ki}\bigl(\widehat{\mathrm{mc}}_{ki,t} - \widehat{p}_{ki,t}\bigr) + \beta\,\mathbb{E}_t\pi_{ki,t+1} + u^p_{ki,t}
+    \qquad
+    \kappa_{ki} = \frac{(1-\theta^p_{ki})(1-\beta\theta^p_{ki})}{\theta^p_{ki}}
+  \]
+\end{frame}
+
+\begin{frame}[noframenumbering]{Appendix: Aguilar et al.\ --- Tariff Propagation}
+  \small
+  Tariffs enter as price wedges on final and intermediate goods:
+  \[
+    P_{k,l,i,t} = (1+\tau_{k,l,i,t})\,\widetilde{P}_{l,k,i,t}
+  \]
+
+  \textbf{Propagation:}
+  \begin{enumerate}
+    \setlength{\itemsep}{4pt}
+    \item Tariff on country~$l$ raises input prices $\widehat{p}_{klij,t}$ for domestic sectors sourcing from sector~$j$ in~$l$.
+    \item Higher input costs raise $\widehat{\mathrm{mc}}_{ki,t}$, feeding into $\pi_{ki,t}$.
+    \item Cost increases cascade downstream through the IO network.
+    \item Tariff revenue accrues to the government; currently rebated lump-sum.
+  \end{enumerate}
+
+  \medskip
+  Government budget constraint:
+  \[
+    \frac{B_{k,t}}{1+i_{k,t}} + T_{k,t} + \sum_{l\neq k}\sum_i \tau_{kli,t}\,P^l_{kli,t}\!\left(C_{kli,t} + \textstyle\sum_j X_{klji,t}\right) = B_{k,t-1} + \sum_i \tau^s_{ki}\,\mathrm{MC}_{ki,t}\,Y_{ki,t}
+  \]
+\end{frame}
+
+\begin{frame}[noframenumbering]{Appendix: Aguilar et al.\ --- Calibration}
+  \small
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \textbf{Households}
+      \begin{itemize}
+        \item $\beta=0.99$, $\sigma=1$, $\varphi=1$
+        \item Energy/non-energy elast.\ $\gamma=0.4$
+        \item Trade elasticity $\delta=1$
+        \item Calvo wage $\theta^w_k=0.75$
+        \item Consumption shares from OECD ICIO (2019)
+      \end{itemize}
+
+      \medskip
+      \textbf{Monetary policy}
+      \begin{itemize}
+        \item $\rho_r=0.7$, $\phi_\pi=1.5$, $\phi_y=0.125$
+        \item Target: headline inflation
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \textbf{Firms}
+      \begin{itemize}
+        \item Labour/input elast.\ $\psi=0.5$
+        \item Energy/non-energy elast.\ $\phi=0.4$
+        \item Trade elasticity $\mu=1$
+        \item IO shares from OECD ICIO (2019)
+        \item Markups from Eurostat Figaro
+        \item Calvo prices from ECB PRISMA
+      \end{itemize}
+
+      \medskip
+      \textbf{Tariff shocks}
+      \begin{itemize}
+        \item $\rho^\tau=0.96$, $\sigma^\tau=1$
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[noframenumbering]{Appendix: Aguilar et al.\ --- Goods Market Clearing and GDP}
+  \small
+  Market clearing:
+  \[
+    Y_{ki,t} = \sum_{l=1}^K C_{lki,t} + \sum_{l=1}^K\sum_{j=1}^I X_{lkji,t}
+  \]
+
+  Log-linearised:
+  \[
+    \lambda_{ki}\,\widehat{y}_{ki,t} = \sum_{l=1}^K \mathcal{Y}_{lk}\!\left(\beta_{lki}\,\widehat{c}_{lki,t} + \sum_{j=1}^I \lambda_{lj}\,\omega_{lkji}\,\widehat{x}_{lkji,t}\right)
+  \]
+  where $\lambda_{ki} = P_{ki}Y_{ki}/\mathcal{Y}_k$ is the Domar weight.
+
+  \medskip
+  Real GDP:
+  \[
+    \widehat{y}_{k,t} = \widehat{c}_{k,t} + \Upsilon_k\!\left(\widehat{\mathrm{exp}}_{k,t} - \widehat{\mathrm{imp}}_{k,t}\right)
+  \]
+  where $\Upsilon_k$ is the trade-to-GDP ratio.
+\end{frame}
+
+% ------ A7: EXTENSION DERIVATIONS ------
+
+\begin{frame}[noframenumbering]{Appendix: Derivation --- Wage Phillips Curve with Tax}
+  \small
+  Household FOC with labour income tax $\tau^w_{k,t}$:
+  \[
+    \sum_{l=0}^{\infty}(\beta\theta^W_k)^l\,\mathbb{E}_t\!\left[N_{k,t+l|t}\,C_{t+l|t}^{-\sigma}\!\left(\frac{(1{-}\tau^w_{k,t+l})\,W^*_{k,t}}{P_{t+l}} - \mathcal{M}_{wk,t}\,\mathrm{MRS}_{k,t+l|t}\right)\right] = 0
+  \]
+
+  Log-linearised reset wage:
+  \[
+    w^*_{k,t} = (1{-}\beta\theta^W_k)\sum_{l=0}^{\infty}(\beta\theta^W_k)^l\,\mathbb{E}_t\!\left[\mathrm{mrs}_{t+l|t} + \mu^n_{wk,t+l} + p_{kC,t+l} + \hat{\tau}^w_{k,t+l}\right]
+  \]
+
+  Calvo aggregation ($\pi_{wk,t} = w_{k,t} - w_{k,t-1}$):
+  \[
+    \pi_{wk,t} = \kappa_{wk}\bigl(\sigma\hat{c}_{k,t} + \varphi\hat{n}_{k,t} - \hat{w}_{k,t} + \hat{\tau}^w_{k,t}\bigr) + \beta\,\mathbb{E}_t\pi_{wk,t+1} + u^w_{k,t}
+  \]
+  Tax deviation enters additively: wage-setters pass the wedge through to the pre-tax wage.
+\end{frame}
+
+\begin{frame}[noframenumbering]{Appendix: Derivation --- Price Phillips Curve with Subsidy}
+  \small
+  Firm FOC with time-varying production subsidy $\tau^s_{ki,t}$:
+  \[
+    \sum_{l=0}^{\infty}(\beta\theta^p_{ki})^l\,\mathbb{E}_t\!\left[\Lambda_{t,t+l}\,Y_{ki,t+l|t}\!\left(P^*_{ki,t} - \mathcal{M}_{pk,t+l}\,(1{-}\tau^s_{ki,t+l})\,\mathrm{MC}^n_{ki,t+l|t}\right)\right] = 0
+  \]
+
+  Log-linearised reset price:
+  \[
+    p^*_{ki,t} = (1{-}\beta\theta^p_{ki})\sum_{l=0}^{\infty}(\beta\theta^p_{ki})^l\,\mathbb{E}_t\!\left[\mathrm{mc}^n_{ki,t+l|t} + \mu^n_{pki,t+l} - \hat{\tau}^s_{ki,t+l}\right]
+  \]
+
+  Calvo aggregation ($\pi_{ki,t} = p_{ki,t} - p_{ki,t-1}$):
+  \[
+    \pi_{ki,t} = \kappa_{ki}\bigl(\widehat{\mathrm{mc}}_{ki,t} - \hat{p}_{ki,t} - \hat{\tau}^s_{ki,t}\bigr) + \beta\,\mathbb{E}_t\pi_{ki,t+1} + u^p_{ki,t}
+  \]
+  Subsidy increase lowers effective marginal cost $\to$ disinflationary cost-push.
+\end{frame}
+
+% ------ A8: BUDGET DYNAMICS ------
+
+\begin{frame}[noframenumbering]{Appendix: Government Budget Dynamics}
+  Starting from the nominal budget constraint:
+  \[
+    B_{t+1} = B_t(1+i_{t+1}) + G_{t+1} - T_{t+1}
+  \]
+
+  In ratios to GDP ($b_t \equiv B_t/Y_t$):
+  \[
+    b_{t+1} = b_t\,\frac{1+i_{t+1}}{1+g_{Y,t+1}} + s_{t+1} - \mathcal{T}_{t+1}
+  \]
+  where $s_t = G_t/Y_t$ and $\mathcal{T}_t = T_t/Y_t$.
+
+  \medskip
+  Linearised:
+  \[
+    \hat{b}_{t+1} = \underbrace{\frac{1+\bar{\imath}}{1+\bar{g}_Y}}_{\rho_b}\,\hat{b}_t + \frac{\bar{\imath}}{1+\bar{g}_Y}\,\hat{\imath}_t - \frac{\bar{g}_Y}{1+\bar{g}_Y}\,\hat{g}_{Y,t+1} + \frac{\bar{s}}{\bar{b}}\,\hat{s}_{t+1} - \frac{\bar{\mathcal{T}}}{\bar{b}}\,\hat{\mathcal{T}}_{t+1}
+  \]
+
+  Extension: replace lump-sum rebate of tariff revenue with $G_{ki,t}$ financing, creating a feedback loop between trade and fiscal policy.
+\end{frame}
+
+% ------ A9: UNCONSTRAINED FISCAL RULE ------
+
+\begin{frame}[noframenumbering]{Appendix: Optimal Fiscal Rule (Unconstrained Budget, $\sigma>1$, $\kappa>0$)}
+  \small
+  \[
+    g_{k,t} = \frac{H_k}{X_k}\,y_{k,t} + \frac{J_k}{X_k}\,a_{k,t} - \frac{\theta}{\lambda_k X_k}\,\pi_{k,t} + \frac{\sigma{-}1}{(1{-}\chi)^{1/\sigma}X_k}\sum_k\mu_k\lambda_k\,\phi^\pi_{k,t}
+  \]
+  \begingroup\scriptsize
+  \begin{align*}
+    H_k &= \chi_k^* + 1 + \varphi + (\sigma{-}1)\tfrac{\omega_{c,k}}{1{-}\chi_k} - \varphi\lambda_k\,\tfrac{1+\chi_k^*+\varphi+\frac{1}{\lambda_k(1-\chi_k)}}{\lambda_k\varphi + \frac{\kappa}{\theta-1}\frac{\lambda_k}{1-\chi_k}} \\[2pt]
+    J_k &= -(1{+}\varphi)\left(1 - \lambda_k\,\tfrac{1+\chi_k^*+\varphi+\frac{1}{\lambda_k(1-\chi_k)}}{\lambda_k\varphi + \frac{\kappa}{\theta-1}\frac{\lambda_k}{1-\chi_k}}\right) \\[2pt]
+    X_k &= \chi_k^* + (\sigma{-}1)\chi_k^*\omega_{c,k}\chi_k + \bigl(1{+}(\sigma{-}1)\omega_{g,k}\bigr)\Bigl(\lambda_k + \tfrac{1+\chi_k^*+\varphi}{\lambda_k\varphi + \frac{\kappa}{\theta-1}\frac{\lambda_k}{1-\chi_k}}\Bigr) \\[2pt]
+    \phi^\pi_{k,t} &= \bigl(-\varphi\,y_{k,t} - g_{k,t}(1{+}(\sigma{-}1)\omega_{g,k}) + (1{+}\varphi)\,a_{k,t}\bigr)\bigl(\lambda_k\varphi + \tfrac{\kappa}{\theta-1}\tfrac{\lambda_k}{1-\chi_k}\bigr)^{-1}
+  \end{align*}
+  \endgroup
+
+  Comparing welfare under this vs.\ the constrained rule quantifies the cost of fiscal inflexibility.
+\end{frame}
+
+% ------ A10: UNCONSTRAINED MONETARY RULE ------
+
+\begin{frame}[noframenumbering]{Appendix: Optimal Monetary Rule (Unconstrained Budget)}
+  Optimal monetary policy sets a weighted inflation target:
+  \[
+    \sum_k \frac{\theta(1{-}\chi_k)}{\lambda_k}\,\pi_{k,t} = -\sum_k \mu_k\,\frac{\varphi\,y_{k,t} + g_{k,t}\bigl(1{+}(\sigma{-}1)\omega_{g,k}\bigr) + (1{+}\varphi)\,a_{k,t}}{\lambda_k\varphi + \frac{\kappa}{\theta-1}\frac{\lambda_k}{1-\chi_k}}
+  \]
+
+  \begin{itemize}
+    \item Inflation weights increase with private-consumption share, decrease with $\lambda_k$.
+    \item Government spending enters the target when $\kappa>0$ (government demand affects marginal costs).
+  \end{itemize}
+\end{frame}
+
+% ------ A11: FIXED VS ENDOGENOUS DETAIL ------
+
+\begin{frame}[noframenumbering]{Appendix: Fixed vs.\ Endogenous Budgets --- Detail}
+  \begin{columns}[T]
+    \begin{column}{0.47\textwidth}
+      \begin{block}{Fully endogenous spending}
+        \begin{itemize}
+          \item Planner chooses both $\bar{G}_{k,t}$ and $\{G_{ki,t}\}$.
+          \item Level and composition respond to shocks.
+          \item Benchmark: first-best fiscal stabilisation.
+          \item Fiscal rule is \textit{absolute}: each $g_{k,t}$ set independently.
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{0.47\textwidth}
+      \begin{block}{Fixed aggregate budget}
+        \begin{itemize}
+          \item $\bar{G}_{k,t}$ exogenous; only composition adjusts.
+          \item Fiscal rule is \textit{relative}: gaps wrt residual sector.
+          \item Welfare loss from constraint is concentrated in aggregate stabilisation.
+          \item Cross-sectional allocation may remain close to first-best.
+        \end{itemize}
+      \end{block}
+    \end{column}
+  \end{columns}
+
+  \bigskip
+  \textbf{Implications.}\; If the welfare gap is small, a budget-constrained government can approximate first-best outcomes through compositional reallocation alone.  This is the central hypothesis to be tested in the networked model.
+\end{frame}
+
+% ------ A12: OPEN QUESTIONS ------
+
+\begin{frame}[noframenumbering]{Appendix: Open Questions}
+  \begin{itemize}
+    \setlength{\itemsep}{8pt}
+    \item \textbf{Network centrality and fiscal allocation.}\; How does a sector's position in the IO network affect its optimal public-good allocation?  The IO weights $\omega_{klij}$ introduce cross-sector spillovers absent in the simple model.
+    \item \textbf{Fiscal--trade policy interaction.}\; With tariff revenue financing government purchases, trade policy changes alter the fiscal envelope.  The welfare implications of this feedback are to be characterised.
+    \item \textbf{Dimensionality.}\; The Ramsey problem involves $K \times I$ spending instruments.  Practical approaches may require restricting the class of admissible rules.
+    \item \textbf{Political economy.}\; The exogenous-budget assumption abstracts from the determination of $\bar{G}_{k,t}$.  Endogenising this would require a political-economy layer.
+  \end{itemize}
+\end{frame}
+
+
+\end{document}

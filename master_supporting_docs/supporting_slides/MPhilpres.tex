@@ -1,0 +1,426 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+\useoutertheme{miniframes} % For navigation dots
+\useinnertheme{circles}
+\usecolortheme{default}
+
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern} % better font rendering
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{tcolorbox}
+
+\newif\ifinappendix
+\inappendixfalse
+
+
+\setbeamertemplate{itemize item}{\small$\blacktriangleright$}
+\setbeamertemplate{itemize subitem}{\footnotesize$\bullet$}
+
+\author[Antonio Eugenelo]{Antonio Eugenelo}
+\institute[Oxford]{University of Oxford}
+
+
+% Hide navigation symbols at the bottom right
+\setbeamertemplate{navigation symbols}{}
+
+\setbeamertemplate{itemize item}{\small$\blacktriangleright$}
+\setbeamertemplate{itemize subitem}{\footnotesize$\bullet$}
+
+\makeatletter
+\setbeamertemplate{footline}{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.2\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.3\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\insertshortdate{}%
+    \ifinappendix%
+\hspace*{2em}
+  \phantom{\insertframenumber{} / \inserttotalframenumber}
+    \else%
+    \hspace*{2em}
+    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+    \fi%
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+\makeatother
+
+
+\title{Government spending in Disaggregated Economies}
+\author{Antonio Eugenelo}
+\institute{University of Oxford \\ MPhil in Economics}
+\date{June 2025}
+
+
+\begin{document}
+
+% Title slide
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% Current section
+\AtBeginSection[ ]
+{
+\begin{frame}{Outline}
+    \tableofcontents[currentsection]
+\end{frame}
+}
+
+
+\section{Introduction}
+\begin{frame}{Why Study Multisectoral Policy?}
+  \begin{itemize}
+    \item Recent large asymmetric shocks (2020 pandemic, 2022 energy‐price spike) highlight the role of sectoral heterogeneity in aggregate dynamics.
+    \item Heterogeneity arises from:
+      \begin{itemize}
+        \item Differential exposure across sectors (Guerrieri et al., 2022; Baqaee \& Farhi, 2022)
+        \item Sector‐specific responses to shocks (Pasten et al., 2020)
+      \end{itemize}
+    \item Implications for optimal policy design (Aoki, 2001; Rubbo, 2023; Cox et al., 2024).
+    \item Need to understand the joint design of monetary and fiscal policy in a multi‐sector framework.
+  \end{itemize}
+\end{frame}
+
+% Slide 2: Findings of Cox et al. (2024)
+\begin{frame}{Cox \textit{et al.} 2024}
+  \begin{itemize}
+    \item Model setup:
+      \begin{itemize}
+        \item Multi‐sector New‐Keynesian economy
+        \item Planner chooses sector‐specific government purchases and an aggregate monetary instrument.
+      \end{itemize}
+    \item Main result:
+      \begin{itemize}
+        \item \textbf{Fiscal policy} – should be targeted at the sectoral level.
+        \item \textbf{Monetary policy} – should prioritize aggregate output and inflation stabilization.
+      \end{itemize}
+    \item Key assumptions:
+      \begin{enumerate}
+        \item Public demand does not enter firms’ private‐good pricing problem (independent prices).
+        \item Planner freely chooses both aggregate and sectoral government spending.
+      \end{enumerate}
+  \end{itemize}
+\end{frame}
+
+% Slide 3: Contributions of This Thesis
+\begin{frame}{Contributions}
+  I relax two critical assumptions in Cox \textit{et al.} (2024):
+  \begin{enumerate}
+    \item \textbf{Partial pass‐through of government demand:}
+      \begin{itemize}
+        \item Introduce parameter $\kappa\in[0,1]$ capturing the degree of pass‐through of inelastic government purchases into firms’ private‐good pricing problem.
+        \item Nest Cox \textit{et al.} (2024) as special case $\kappa=0$.
+        \item Reconcile strong fiscal‐price effects (Ben Zeev \& Pappa, 2017; Barattieri et al., 2023) with weak evidence of procyclical markups (Nekarda \& Ramey, 2013).
+      \end{itemize}
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Contributions}
+\begin{enumerate}
+\setcounter{enumi}{1} 
+    \item \textbf{Exogenous aggregate provision of government goods:}
+      \begin{itemize}
+        \item Allow deviations of aggregate real government good $\bar G$ from steady state to be exogenously set.
+        \item Retain flexible, optimal allocation of this exogenous aggregate across sectors.
+        \item Capture politically driven constraints on overall government spending.
+      \end{itemize}
+  \end{enumerate}
+\end{frame}
+
+
+
+
+\section{Model Overview}
+\begin{frame}{Building Blocks}
+\begin{itemize}
+\item $K$ sectors, Calvo pricing with heterogenous stickiness $\alpha_k$.
+\item Representative household: utility over private ($C_t$) and public ($G_t$) Cobb‑Douglas composites obtained from CES aggregation of firm-level goods:
+$$U=\sum_t\beta^t\Bigl[(1-\chi)\frac{C_t^{1-\sigma}}{1-\sigma}+\chi\frac{G_t^{1-\sigma}}{1-\sigma}-\sum_k\nu_k\frac{N_{k,t}^{1+\phi}}{1+\phi}\Bigr]$$
+\item The government inelastically buys goods with degree of price pass‑through $\kappa$.
+\item Monetary authority chooses nominal rate; fiscal authority allocates $G_{k,t}$ under the balanced budget assumption.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Two New Ingredients}
+\begin{block}{CRRA preferences ($\sigma>1$)}
+\begin{itemize}
+\item Precautionary savings and consumption‑insurance motives are strengthened.
+\item Aggregate fluctuations feed into sectoral labour supply decisions.
+\end{itemize}
+\end{block}
+\begin{block}{Pass‑through parameter $\kappa$}
+\begin{itemize}
+\item $\kappa=0$: traditional assumption, public demand does not affect marginal cost.
+\item $\kappa>0$: government purchases steepen sectoral Phillips curves; firms partially internalise inelastic demand.
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Changes in key equations}
+    \begin{itemize}
+        \item The labour supply condition gains an additional term:
+    \end{itemize}
+    \[\omega_{c,k}(1-\chi)\frac{\color{red}{C_t^{\sigma-1}}}{C_{k,t}}\, \frac{W_{k,t}}{P_{k,t}}\;=\;\nu_k\, N_{k,t}^\varphi.\]
+    \begin{itemize}
+        \item While the log-linearised Phillips curve becomes:
+    \end{itemize}
+    \[\pi_{k,t}=\beta \pi_{k,t+1} + \lambda^ {\color{red}{'}}_k\left[ \psi_{k,t} - a_{k,t} + {\color{red}{\delta\, g_{k,t}}} \right]\]
+    \begin{itemize}
+        \item Where $\omega_{c,k}$ is the k-th sector weight in the consumption Cobb-Douglas aggregator, $\theta$ is the consumer price elasticity, $\delta\;=\;\frac{\kappa}{\theta-1}\tfrac{\bar G}{\bar C}$, and $\lambda_k^{'} = \lambda_k \frac{1}{1-\delta}$. For $\theta=6$, and $\chi_k^*=1$, $\lambda_k^{'}\,=\, 1.25\lambda_k$
+    \end{itemize}
+\end{frame}
+
+\section{Policy with $\sigma \neq 1$ \& $\kappa \neq 0$}
+\begin{frame}{Optimal Fiscal Policy Rule}
+Let us briefly see the updated welfare objective (changes in red):
+\begin{align*}\small
+- \frac{1}{2} \sum_{k} \mu_k \Biggl(&
+    \left[(1+\varphi)\,y_{k,t}^{2} 
+    + \frac{\theta (1-\chi)}{\lambda_k}\,\pi_{k,t}^{2} + \chi_k^* \, (g_{k,t} - y_{k,t})^2\right] \notag  \\ 
+    &    {\color{red}{+ (\sigma-1)\Biggl[
+    (1-\chi_k)\,\omega_{c,k} \left(\frac{y_{k,t}}{1 - \chi_k}- \chi_k^*\,g_{k,t}\right)^2 
+    + \omega_{g,k}\,\chi_k\,g_{k,t}^{2}
+\Biggr]}}\Biggr)
+\end{align*}
+\vspace{-10pt}
+\begin{itemize}
+\item Fiscal policy balances three motives:\\
+\textbf{(i) Allocation} of public goods\\
+\textbf{(ii) Stabilisation} of sectoral gaps\\
+\textbf{(iii) Insurance} against aggregate risk ($\sigma-1$ term)
+\end{itemize}
+\end{frame}
+
+% Slide 1: Solution
+\begin{frame}{Optimal Fiscal Policy Rule}
+  \begin{itemize}
+    \item The optimal fiscal policy takes the form:
+    \begingroup
+    \small
+    \[
+      g_{k,t}
+      = \frac{H_{k,t}}{X_{k,t}}\,y_{k,t}
+      + \frac{J_{k,t}}{X_{k,t}}\,a_{k,t}
+      - \frac{\theta}{\lambda_k\,X_{k,t}}\,\pi_{k,t}
+      + \frac{\sigma - 1}{(1-\chi)^{1/\sigma}X_{k,t}}
+        \sum_k \mu_k\lambda_k\,\phi_{k,t}^\pi
+    \]
+    \endgroup
+    \vspace{0.5ex}
+    \item $\phi_{k,t}^\pi$ is a sectoral index negatively correlated with sectoral output and government spending
+    \item $H_{k,t}, J_{k,t}, X_{k,t}>0$ are model‐derived constants
+  \end{itemize}
+\end{frame}
+
+% Slide 2: Results
+\begin{frame}{Optimal Fiscal Policy Rule}
+  \textbf{1. The overall coefficient on $y_{k,t}$.}
+  Including the contribution from $\phi_{k,t}^\pi$, and setting $\kappa=1$, yields:
+  \[
+    \Bigl[\tfrac{1}{(\theta-1)(1-\chi_k)\varphi+1}\Bigr]
+    \;\times\;
+    \Bigl[\tfrac{1}{1-\chi_k} + \varphi
+      + (\sigma - 1)\tfrac{\omega_{c,k}}{1-\chi_k}
+      - \tfrac{(\theta-1)(1-\chi_k)\varphi}{(1-\chi_k)\lambda_k}\Bigr]
+  \]
+  This coefficient is negative if and only if:
+  \[
+    \sigma
+    >\;
+    \Bigl(\tfrac{(\theta-1)(1-\chi_k)\varphi}{\lambda_k}
+      - 1 - \varphi(1-\chi_k)\Bigr)\tfrac{1}{\omega_{c,k}}
+    \;+\;1,
+  \]
+  Which is always true under flexible prices, and can be true under low price rigidities ($\alpha < 0.3$). More in general, $\kappa \neq 1$ implies a less countercyclical stance.
+\end{frame}
+
+
+\begin{frame}{Optimal Monetary Rule}
+\begin{itemize}
+\item Target weighted inflation index:
+\[
+\sum_k\frac{\theta(1-\chi_k)}{\lambda_k}\,\pi_{k,t} = -\sum_k \Psi_k(y_{k,t},\, g_{k,t},\, a_{k,t})
+\]
+\item Weights increase with private‑consumption share, and decrease with Phillips slope $\lambda_k$.
+\item $\kappa>0$ lowers inflation volatility; high $\sigma$ raises weight on government spending.
+\end{itemize}
+\end{frame}
+
+\section{Constrained Fiscal Capacity}
+\begin{frame}{Fixed Government Basket}
+\begin{itemize}
+\item We set $\sigma = 1$, and $\kappa=0$ to abstract from other channels of sectoral interaction.
+\item The government is required to deliver an exogenous CES bundle $\bar G_t$ (with elasticity $\rho$).
+\item Optimal rule becomes \emph{relative}: choose residual sector $i$, set others as functions of gaps wrt $i$.
+\item Preserves counter‑cyclical stance: allocate more spending to sectors with lower $\pi_{k,t}$ and $y_{k,t}$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Optimal policy}
+\begin{itemize}
+    \item \textbf{Fiscal policy} sets $g_{k,t}$ inversely proportional to the inflation and output gap between sector $k$ and the residual sector $i$.\\
+    $g_{i,t}$ is a function of sectoral output and inflation in all sectors of the economy.
+    \item \textbf{Monetary policy} is now reduced to a more general case where the optimal inflation target depends on sectoral output and government spending.
+\end{itemize}
+\end{frame}
+
+\section{Conclusions}
+\begin{frame}{Conclusions}
+\begin{itemize}
+\item The assumption that government prices are independent of consumer prices leads to a strong simplification of the optimal policy rule, and overestimates optimal policy countercyclicality. 
+\item Constrained budgets require relative‐allocation rules rather than absolute spending paths.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Thank You}
+\centering Questions?
+\end{frame}
+
+
+
+
+\section*{Appendix}
+\inappendixtrue
+\begin{frame}[noframenumbering]
+  \frametitle{Optimal Policy with $\kappa \neq 1$}
+\small
+Under non‐zero government‐demand pass‐through and CRRA preferences, the optimal fiscal rule is:
+\[
+  g_{k,t}
+  = \frac{H_{k,t}}{X_{k,t}}\,y_{k,t}
+  + \frac{J_{k,t}}{X_{k,t}}\,a_{k,t}
+  - \frac{\theta}{\lambda_k\,X_{k,t}}\,\pi_{k,t}
+  + \frac{\sigma - 1}{(1-\chi)^{1/\sigma}\,X_{k,t}}
+    \sum_k \mu_k\lambda_k\,\phi_{k,t}^\pi
+\]
+\begingroup
+\scriptsize
+\[
+\begin{aligned}
+  H_{k,t} &= 
+    \chi^{*}_{k}
+  + 1 + \varphi
+  + {\color{red}{(\sigma-1)\,\frac{\omega_{c,k}}{1-\chi_{k}}}}
+  - \varphi\,\lambda_k\,
+    \frac{1+\chi_{k}^* + \varphi + \tfrac{1}{\lambda_k\,(1-\chi_k)}}
+         {\lambda_{k}\,\varphi
+          + {\color{red}{\tfrac{\kappa}{\theta-1}\,\tfrac{\lambda_{k}}{1-\chi_{k}}}}},
+  \\[1ex]
+  J_{k,t} &= 
+    -\,(1+\varphi)\,
+      \Biggl(1
+      - \lambda_k\,
+        \frac{1+\chi_{k}^* + \varphi + \tfrac{1}{\lambda_k\,(1-\chi_k)}}
+             {\lambda_{k}\,\varphi
+              + {\color{red}{\tfrac{\kappa}{\theta-1}\,\tfrac{\lambda_{k}}{1-\chi_{k}}}}}
+      \Biggr),
+  \\[1ex]
+  X_{k,t} &=
+    \chi^{*}_{k}
+  + {\color{red}{(\sigma-1)\,\chi^{*}_{k}\,\omega_{c,k}\,\chi_k}}
+  + \bigl(1 + {\color{red}{(\sigma-1)\,\omega_{g,k}}}\bigr)\,
+    \Biggl(
+      \lambda_k
+      + \frac{1+\chi_{k}^* + \varphi}
+             {\lambda_{k}\,\varphi
+              + {\color{red}{\tfrac{\kappa}{\theta-1}\,\tfrac{\lambda_{k}}{1-\chi_{k}}}}}
+    \Biggr),
+  \\[1ex]
+  \phi_{k,t}^\pi &=
+    \Bigl(-\,\varphi\,y_{k,t}
+      - g_{k,t}\,(1+{\color{red}{(\sigma-1)\,\omega_{g,k}}})
+      + (1+\varphi)\,a_{k,t}\Bigr)
+    \Bigl(\lambda_{k}\,\varphi
+      + {\color{red}{\tfrac{\kappa}{\theta-1}\,\tfrac{\lambda_{k}}{1-\chi_k}}}
+    \Bigr)^{-1}.
+\end{aligned}
+\]
+\endgroup
+\end{frame}
+
+
+\begin{frame}[noframenumbering]
+  \frametitle{Optimal Policy with $\kappa \neq 1$}
+  \small
+Optimal monetary policy entails setting the aggregate inflation target:
+  \begingroup
+\begin{gather*}
+    \sum_k \, \frac{\theta(1-\chi_k)}{\lambda_k} \, \pi_{k,t}\;=\; \notag \\[-4pt]
+    \qquad 
+    - \,\sum_k \, \mu_k\, 
+\Bigl(
+  y_{k,t}\,\varphi
+  \;+\;g_{k,t}\Bigl(1+{\color{red}{(\sigma-1)}}\,\omega_{g,k}\Bigr)
+  \;+\;(1+\varphi)\,a_{k,t}
+\Bigr)\, \times \\[-4pt]
+\Bigl(
+  \lambda_{k}\,\varphi
+  \;+\;{\color{red}{\tfrac{\kappa}{\theta-1}\,\tfrac{\lambda_{k}}{1-\chi_k}}}
+\Bigr)^{-1}.
+\end{gather*}
+\endgroup
+\end{frame}
+
+\begin{frame}[noframenumbering]
+\frametitle{Optimal Policy with Aggregate Constraint}
+\small
+Optimal provision under an aggregate constraint involves:
+\begin{itemize}
+  \item Selecting a residual sector $i$, whose government spending is freely set;
+  \item Expressing $g_{k,t}$ in all other sectors $k \neq i$ as a function of relative output and inflation deviations with respect to sector $i$.
+\end{itemize}
+
+\medskip
+The optimal spending rule becomes:
+\begingroup
+\scriptsize
+\begin{align*}
+g_{k,t} \;&=\; \tfrac{1-\chi_k}{1-\chi_i}\,\biggl(\tfrac{1+\lambda_i +\varphi \lambda_i}{1+\lambda_i + \phi\lambda_i(1-\chi_i)}\biggr)\, \biggl(\tfrac{\omega_{g,k}}{\omega_{g,i}}\biggr)^\rho\, \biggl(\tfrac{1+\lambda_k + \varphi \lambda_k}{1+\lambda_k + \phi\lambda_k(1-\chi_k)}\biggr)^{-1}\, g_{i,t}\\
+&\quad -\; \tfrac{\varphi\, y_{k,t}}{1+\lambda_k + \varphi \lambda_k}
+\;-\; \tfrac{\theta\, \varphi\, (1-\chi_k)\,\pi_{k,t}}{1+\lambda_k + \varphi \lambda_k}\\
+&\quad +\; \tfrac{1-\chi_k}{1-\chi_i}
+\biggl(\tfrac{\omega_{g,k}}{\omega_{g,i}}\biggr)^\rho 
+\biggl(
+\tfrac{1+\lambda_k + \varphi \lambda_k}{1+\lambda_k + \phi\lambda_k(1-\chi_k)}\biggr)^{-1}\\
+&\qquad \times \biggl(
+\tfrac{\varphi}{1+\lambda_i+\phi\lambda_i(1-\chi_i)}\,y_{i,t}
++ \tfrac{\theta\, \varphi\, (1-\chi_i)}{1+\lambda_i+\phi\lambda_i(1-\chi_i)}\,\pi_{i,t}
+\biggr)
+\end{align*}
+\endgroup
+\end{frame}
+
+\begin{frame}[noframenumbering]
+  \frametitle{Optimal Policy with $\kappa \neq 1$}
+  \small
+Optimal monetary policy entails setting the aggregate inflation target:
+  \begingroup
+
+\begin{gather}
+    \sum_k \, \mu_k\, \frac{\theta \, (1-\chi_k)}{\lambda_k}\, \frac{\lambda_k + \varphi \,\lambda_k\,(1-\chi_k)}{1 + \lambda_k + \varphi \,\lambda_k\,(1-\chi_k)}\, \pi_{k,t} 
+    \;=\; \notag \\[-4pt] \qquad
+    \sum_k \, \mu_k \left( \frac{\chi_k\,g_{k,t}}{1 + \lambda_k + \varphi\,\lambda_k\,(1-\chi_k)} - \frac{y_{k,t}\,(1-\chi_k)\,(1+\varphi+\chi_k^*)}{1 + \lambda_k + \varphi \,\lambda_k\,(1-\chi_k)}\right). \notag
+\end{gather}
+\endgroup
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

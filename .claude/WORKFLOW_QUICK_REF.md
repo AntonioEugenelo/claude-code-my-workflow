@@ -23,16 +23,16 @@ Repeat
 ## I Ask You When
 
 - **Design forks:** "Option A (fast) vs. Option B (robust). Which?"
-- **Code ambiguity:** "Spec unclear on X. Assume Y?"
-- **Replication edge case:** "Just missed tolerance. Investigate?"
+- **Content ambiguity:** "Equation unclear on X. Assume Y?"
 - **Scope question:** "Also refactor Y while here, or focus on X?"
+- **Mathematical choices:** "Alternative derivation path available. Preference?"
 
 ---
 
 ## I Just Execute When
 
 - Code fix is obvious (bug, pattern application)
-- Verification (tolerance checks, tests, compilation)
+- Verification (compilation, rendering)
 - Documentation (logs, commits)
 - Plotting (per established standards)
 - Deployment (after you approve, I ship automatically)
@@ -43,31 +43,27 @@ Repeat
 
 | Score | Action |
 |-------|--------|
-| >= 80 | Ready to commit |
-| < 80  | Fix blocking issues |
+| >= 90 | Ready to commit |
+| < 90  | Fix blocking issues |
 
 ---
 
-## Non-Negotiables (Customize These)
+## Non-Negotiables
 
-<!-- Replace with YOUR project's locked-in preferences -->
-
-- [YOUR PATH CONVENTION] (e.g., `here::here()` for R, relative paths for LaTeX)
-- [YOUR SEED CONVENTION] (e.g., `set.seed()` once at top for stochastic code)
-- [YOUR FIGURE STANDARDS] (e.g., white bg, 300 DPI, custom theme)
-- [YOUR COLOR PALETTE] (e.g., institutional colors)
-- [YOUR TOLERANCE THRESHOLDS] (e.g., 1e-6 for point estimates)
+- **Paths:** Relative paths from project root; `\input{../Preambles/header.tex}` for LaTeX
+- **Figures:** Publication-ready, vector format (TikZ/PDF) preferred, white background
+- **Colour palette:** Oxford navy #002147, accent red #A31F34, mid blue #4B6482, grey #646464
+- **Mathematical rigour:** Every equation verified, notation consistent with knowledge base
+- **Compilation:** 3-pass XeLaTeX must succeed before any commit
 
 ---
 
 ## Preferences
 
-<!-- Fill in as you discover your working style -->
-
-**Visual:** [How you want figures/plots handled]
-**Reporting:** [Concise bullets? Detailed prose? Details on request?]
-**Session logs:** Always (post-plan, incremental, end-of-session)
-**Replication:** [How strict? Flag near-misses?]
+**Visual:** Clean, minimal slides. Two-column layouts for dense content. Equations centred and prominent.
+**Reporting:** Concise bullets. Details on request.
+**Session logs:** Always (post-plan, incremental, end-of-session).
+**Audience context:** Rigorous macro theorists. Precision over accessibility.
 
 ---
 
@@ -75,7 +71,7 @@ Repeat
 
 For experimental work, use the **Fast-Track** workflow:
 - Work in `explorations/` folder
-- 60/100 quality threshold (vs. 80/100 for production)
+- 60/100 quality threshold (vs. 90/100 for production)
 - No plan needed — just a research value check (2 min)
 - See `.claude/rules/exploration-fast-track.md`
 

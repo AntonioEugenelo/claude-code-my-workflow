@@ -1,0 +1,82 @@
+\subsection{Households}\label{sec:general_model_households}
+
+There is a representative household in each country $k$ that derives utility from consumption and disutility from labor according to the following per-period utility function,
+\begin{align}\label{eq:general_model_utility_function}
+    U_t=\left(C_{k,t}^{1-\sigma}/(1-\sigma)-\int_0^1\mathcal{N}_{gk,t}^{1+\varphi}/(1+\varphi)\hspace{0.1cm}dg\right)Z_{k,t},
+\end{align}
+which is extended to accomodate nominal wage rigidities \citep{Erceg2000}, where $\mathcal{N}_{gk,t}$ denotes the labor supply of labor service $g$, $C_{k,t}$ denotes aggregate consumption,  $Z_{k,t}$ is an exogenous preference shifter,  $\sigma$ denotes the inverse of the intertemporal elasticity of substitution, and $\varphi$ denotes the inverse of the Frisch elasticity.\footnote{Each household takes as given labor income since wages are set by labor unions and employment is decided by firms. The only decisions made by the household are the optimal allocation of consumption expenditures among different good varieties across different sectors and countries, and the optimal intertemporal allocation of consumption.}
+
+\paragraph{Consumption Aggregators}
+Aggregate consumption is defined as a constant-returns-to-scale (CRS) composite of sectoral consumption, each of which is itself a CRS aggregation of country-specific consumption goods. This nested structure is summarized by
+\begin{align}
+    C_{k,t} = \mathcal{C}_k\left(\{C_{k,i,t}\}_{i=1}^I\right)\label{eq:general_model_consumption_aggregator_1}\quad \text{and}\quad C_{k,i,t} &= \mathcal{C}_{k,i}\left(\{C_{k,l,i,t}\}_{l=1}^K\right),
+\end{align}
+where $C_{k,i,t}$ is consumption of sector $i$ at time $t$, and $C_{k,l,i,t}$ is country's $k$ household's consumption of good produced by industry $i$ in country $l$. Given the quantitative relevance of energy sectors in recent periods, we introduce a layer to distinguish between energy and non-energy goods,\footnote{This specification allows us to introduce a specific elasticity of substitution of the  energy consumption that does not necessarily need to be equal to the elasticity of substitution between the rest of goods and services.}
+\begin{align}
+    C_{k,t}&=\left[\widetilde{\beta}_k^\frac{1}{\gamma}C_{kE,t}^\frac{\gamma-1}{\gamma}+\left(1-\widetilde{\beta}_k\right)^\frac{1}{\gamma}C_{kM,t}^\frac{\gamma-1}{\gamma}\right]^\frac{\gamma}{\gamma-1},\label{eq:consumption_aggregator}
+\end{align}
+where $C_{kE,t}$ and $C_{kM,t}$ denote the consumption of energy and non-energy goods, respectively, with steady-state shares $\beta_k$ and $(1-\beta_k)$, and $\gamma$ denotes the elasticity of substitution between energy and non-energy goods. These are given by:
+\begin{align}
+    C_{kE,t} &= \left[\sum_{i\in I_E} \widetilde{\nu}_{ki}^{\frac{1}{\eta}} C_{ki,t}^{\frac{\eta-1}{\eta}} \right]^{\frac{\eta}{\eta-1}}, 
+    & C_{kM,t} &= \left[\sum_{i\in I_M} \widetilde{\upsilon}_{ki}^{\frac{1}{\iota}} C_{ki,t}^{\frac{\iota-1}{\iota}} \right]^{\frac{\iota}{\iota-1}},\label{eq:energy_nonenergy_consumption_aggregators}
+\end{align}
+where $I_E$ and $I_M$ denote the sets of sectors producing energy and non-energy goods, respectively, $C_{ki,t}$ denotes the consumption of goods from sector $i$, with steady-state shares $\nu_{ki}$ and $\upsilon_{ki}$, and $\eta$ and $\iota$ denote the elasticity of substitution between goods in energy and non-energy sectors, respectively. The aggregation over sectoral goods produced in different countries is given by CES aggregators:
+\begin{equation}
+    C_{ki,t}=\left[\sum_{l=1}^{ K}\widetilde{\zeta}_{kli}^\frac{1}{\delta}C_{kli,t}^\frac{\delta-1}{\delta}\right]^\frac{\delta}{\delta-1}.\label{eq:final_layer_consumption_aggregator}
+\end{equation}
+where $C_{kli,t}$ denotes the consumption of goods from sector $i$ in country $l$, with steady-state shares $\zeta_{kli}$, and $\delta$ denotes the \citet{Armington1969} trade elasticity of substitution between goods in sectors in different countries.
+
+Finally, we let $C_{k,l,i,t}$ be a \citet{Dixit1977} aggregator over differentiated goods produced by firms in sector $i$ in country $l$:
+\begin{equation}\label{eq:general_model_consumption_aggregator}
+    C_{k,l,i,t} = \left( \int_0^1 C_{k,l,i,f,t}^{(\epsilon_{p,ki,t}-1)/\epsilon_{p,ki,t}} df \right)^{\epsilon_{p,ki,t}/(\epsilon_{p,ki,t}-1)}
+\end{equation}
+where $\epsilon_{p,ki,t}$ denotes the sectoral constant elasticity of substitution between good varieties.
+
+\paragraph{Intertemporal Household Problem}
+
+International financial markets are incomplete, with households in each country only having access to two risk-free bonds. The household in country $k$ has access to a domestic bond $B_{k,t}$, and an internationally traded bond, $B_{k,t}^K$, issued, without loss of generality, by country $K$ and denominated in country $K$'s currency. The agent maximizes the present discounted value of per-period utility flows \eqref{eq:general_model_utility_function}, with discount factor $\beta$, subject to her budget constraint,
+\begin{align}
+    & P_{kC,t}C_{k,t} + B_{k,t} + B^K_{k,t}\left[1-\Gamma(\text{NFA}^K_{k,t})\right]^{-1} \mathcal{E}_{kK,t}+\Xi_{k,t}\leq  \nonumber\\ &\hspace{0.2cm}B_{k,t-1} (1+i_{k,t-1}) +B^K_{k,t-1}\mathcal{E}_{kK,t}(1+i_{K,t-1})+ \int_0^1W_{gk,t}\mathcal{N}_{gk,t}dg+  \Pi_{k,t}-T_{k,t} \label{eq:budget_constraint}
+    \end{align}
+where $P_{kC,t}$ denotes the consumption price index, $\int_0^1W_{gk,t}\mathcal{N}_{gk,t}dg$ is the nominal labor income received by the representative household, $\text{NFA}^K_{k,t}= B^K_{k,t} \mathcal{E}_{kK,t}$ is the net foreign asset position of households in the country $k$, and where $\Gamma(x)=\gamma_*\left(\exp\left\{x/\mathcal{Y}_{k,t}\right\}-1\right)$ is an external financial intermediary premium that depends on the economy-wide net holdings of internationally traded foreign bonds as a ratio to the national nominal GDP $\mathcal{Y}_{k,t}$, with $\gamma_*>0$.\footnote{The role of this intermediation premium is to stabilize the net foreign asset position in response to transitory shocks, a common practice in open economies with incomplete financial markets \citep{SCHMITTGROHE2003163}. Furthermore, this specification guarantees that, in the non-stochastic steady state, households have no incentive to hold foreign bonds and the economy’s net foreign asset position is zero.} The incurred intermediation premium is rebated to households in a lump-sum manner through the fiscal instrument $\Xi_{k,t}$. Finally, $T_{k,t}$ denotes government transfers, also rebated to households in lump sum.
+
+The above program delivers two sets of different Euler conditions, 
+\begin{align}
+    C^{-\sigma}_{k,t} &= \mathbb{E}_t \beta C^{-\sigma}_{k,t+1} \frac{1+i_{k,t}}{1+\pi_{kC,t+1}}\frac{Z_{k,t+1}}{Z_{k,t}}\label{eq:household_foc_1}\\
+    C^{-\sigma}_{k,t} &= \mathbb{E}_t \beta C^{-\sigma}_{k,t+1} \frac{1+i_{K,t}}{1+\pi_{kC,t+1}}\left[1-\Gamma(\text{NFA}^K_{k,t})\right]\frac{\mathcal{E}_{kK,t+1}}{\mathcal{E}_{kK,t}}\frac{Z_{k,t+1}} {Z_{k,t}} \quad \forall k\neq K \label{eq:household_foc_2}
+    % \\ C^{-\sigma}_{k,t} &= \mathbb{E}_t \beta C^{-\sigma}_{k,t+1} \frac{1+i_{\text{MU},t}}{1+\pi_{kC,t+1}}\left[1-\Gamma(\text{NFA}^\text{MU}_{k,t})\right]\frac{\mathcal{E}_{k\text{MU},t}}{\mathcal{E}_{k\text{MU},t+1}}\frac{Z_{k,t+1}} {Z_{k,t}} \quad \forall k\in \text{MU} \label{eq:household_foc_3}
+\end{align}
+where we assume that the (log-)demand shock follows an AR(1) process:
+    \begin{equation}
+        z_{k,t}=\rho^z_{k}z_{k,t-1}+\varepsilon_{k,t}^z\label{eq:demand_shock_process}
+    \end{equation}
+    where $z_{k,t}:=\log Z_{k,t}$, and $\varepsilon_{k,t}^z\sim\mathcal{N}\left(0,\sigma^2_{kz}\right)$.
+    
+Combining both Euler conditions, and log-linearizing around a steady-state, we obtain the UIP condition between country $k$ and country $K$,
+\begin{align}
+    i_{k,t}-i_{K,t}=\mathbb{E}_t\Delta e_{k,K,t+1}-\gamma_*\text{nfa}_{k,t}+\varepsilon_{k,K,t}^e\label{eq:uip}
+\end{align}
+where $\Delta e_{k,K,t+1}=e_{k,K,t+1}-e_{k,K,t}$, and $\varepsilon_{k,K,t}^e$ denotes an exogenous UIP shock, which is purely transitory, with $\varepsilon_{k,K,t}^e\sim\mathcal{N}\left(0,\sigma^2_{kKe}\right)$.
+ 
+
+For the allocation of consumption across sectors, countries, and differentiated goods:
+\begin{equation}\label{eq:general_model_consumption_allocation}
+    \frac{\partial \mathcal{C}_{k,i,t}}{\partial C_{k,i,t}}= \frac{P_{C,k,i,t}}{P_{C,k,t}}, \quad \frac{\partial \mathcal{C}_{k,i}}{\partial C_{k,l,i,t}} = \frac{(1+\tau_{k,l,i,t})P_{k,l,i,t}}{P_{C,k,i,t}}, \quad\text{and}\quad C_{k,l,i,f,t} = \left(\frac{P_{k,l,f,i,t}}{P_{k,l,i,t}}\right)^{-\epsilon_{p,ki,t}} C_{k,l,i,t},
+\end{equation}
+where $P_{C,k,i,t}$ denotes the consumer price index of sector $i$ faced by the household in country $k$,  and $P_{k,l,i,t}\equiv \left( \int_0^1 P_{k,l,i,f,t}^{(\epsilon_{p,ki,t}-1)/\epsilon_{p,ki,t}} df \right)^{\epsilon_{p,ki,t}/(\epsilon_{p,ki,t}-1)}$ is the price in the currency of country $k$ of the good produced by sector $i$ in country $l$,  that as explained in section \ref{tariffs_Section} allows for the presence of tariffs through a price wedge.
+
+\paragraph{Wage-Setting}
+    We assume that labor unions specialized in any given labor type can reset their nominal wage only with probability $1-\theta^w_{k}$ each period, independently of the time elapsed since they last adjusted their wage.  The labor union chooses the optimal wage to maximize the discounted sum of households' welfare
+    $$\max_{W_{k,t}^*}\mathbb{E}_t\sum_{l=0}^\infty(\beta\theta^w_{k})^l\Bigg(\frac{C_{k,t+l}W^*_{k,t}N_{k,t+l|t}}{P_{t+l}^c}-\frac{N_{k,t+l|t}^{1+\varphi}}{1+\varphi}\Bigg)$$ 
+subject to the sequence of labor demand schedules $$N_{k,t+l|t}=\left(\frac{W^*_{k,t}}{W_{k,t+l}}\right)^{-\epsilon_{wk,t}}\int_0^1N_{gk,t}dg,$$ where $N_{k,t+l|t}$ denotes the level of employment in period $t+l$ among workers that last reset their wage in period $t$, and $\epsilon_{wk,t}$ denotes the elasticity of substitution between different labor varieties. Such maximization program yields the log-linearized wage Phillips curve:
+\begin{align}
+    \pi_{wk,t}&=\kappa_{wk}\left(\sigma\widehat{c}_{k,t}+\varphi\widehat{n}_{k,t}-\widehat{w}_{k,t}\right)+\beta\mathbb{E}_t\pi_{wk,t+1}+u_{ki,t}^w\label{eq:wage_phillips_curve}
+\end{align}
+where $\pi_{wk,t}=w_{k,t}-w_{k,t-1}$ denotes wage inflation. Both aggregate consumption $\widehat{c}_{k,t}$ and employment $\widehat{n}_{k,t}$ appear in log-deviations from their steady-state values, and $\widehat{w}_{k,t}=w_{k,t}-p_{kC,t}$ denotes the real wage.
+We assume that the wage cost-push shock, micro-founded through a time-varying elasticity of substitution in the labor demand aggregator, follows an AR(1) processes:
+\begin{align}
+    u^w_{k,t}&=\rho^w_{k}u^w_{k,t-1}+\varepsilon^w_{k,t}
+\end{align}
+where $u^w_{k,t}\sim\mathcal{N}\left(0,\sigma^2_{kw}\right)$. 
+
+    

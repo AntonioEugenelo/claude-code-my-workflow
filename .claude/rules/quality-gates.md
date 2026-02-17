@@ -9,9 +9,9 @@ paths:
 
 ## Thresholds
 
-- **80/100 = Commit** -- good enough to save
-- **90/100 = PR** -- ready for deployment
-- **95/100 = Excellence** -- aspirational
+- **90/100 = Commit** -- minimum for this project (critical audience)
+- **95/100 = PR** -- ready for deployment
+- **98/100 = Excellence** -- aspirational
 
 ## Quarto Slides (.qmd)
 
@@ -47,8 +47,8 @@ paths:
 
 ## Enforcement
 
-- **Score < 80:** Block commit. List blocking issues.
-- **Score < 90:** Allow commit, warn. List recommendations.
+- **Score < 90:** Block commit. List blocking issues.
+- **Score < 95:** Allow commit, warn. List recommendations.
 - User can override with justification.
 
 ## Quality Reports
@@ -62,6 +62,7 @@ Save to `quality_reports/merges/YYYY-MM-DD_[branch-name].md`.
 
 | Quantity | Tolerance | Rationale |
 |----------|-----------|-----------|
-| Point estimates | [e.g., 1e-6] | [Numerical precision] |
-| Standard errors | [e.g., 1e-4] | [MC variability] |
-| Coverage rates | [e.g., +/- 0.01] | [MC with B reps] |
+| IRF peak responses | 1e-6 | Dynare numerical precision |
+| Welfare losses | 1e-8 | Second-order approximation accuracy |
+| Steady-state values | 1e-10 | Solver convergence criterion |
+| Calibrated parameters | Exact match to source | No rounding unless stated |

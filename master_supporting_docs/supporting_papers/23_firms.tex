@@ -1,0 +1,83 @@
+\subsection{Firms}\label{sec:general_model_firms}
+
+There are $I$ industries in each economy, indexed by $i\in\{1,2,...,I\}$, and within each industry there is a unit mass of firms.
+
+\paragraph{Production} %There is a unit mass of monopolistically competitive firms $f\in(0,1)$ in each sector $i$ in each country $k$. 
+Each firm $f$, in sector $i$ and country $k$, produces a differentiated good $Y_{k,i,f,t}$ using a CRS production function $F_{k,i}$ using labor $N_{k,i,f,t}$ and a basket of intermediate goods $X_{k,i,f,t}$ as inputs:
+\begin{equation}\label{eq:general_model_production_function}
+    Y_{k,i,f,t} = A_{k,i,t} F_{k,i}(N_{k,i,f,t}, X_{k,i,f,t}).
+\end{equation}
+where $A_{ki,t}$ denotes the sectoral TFP shock. We consider  the following CES production function:
+\begin{align}
+    F_{k,i}(N_{fki,t},X_{fki,t})&=\left[\widetilde{\alpha}_{ki}^{\frac{1}{\psi}} N_{fki,t}^{\frac{\psi-1}{\psi}} + \widetilde{\vartheta}_{ki}^{\frac{1}{\psi}} X_{fki,t}^{\frac{\psi-1}{\psi}}\right]^{\frac{\psi}{\psi-1}}.
+    \label{eq:production_function_text}
+\end{align}
+Both factors are combined under a constant elasticity of substitution $\psi$;  $\widetilde{\alpha}_{ki}$ can be interpreted as a measure of labor-biased demand in production in sector $i$ and country $k$, and $\widetilde{\vartheta}_{ki}$ can be interpreted as a measure of input-biased demand in production in sector $i$ and country $k$. We assume that the (log-)TFP shock follows an AR(1) process: 
+    \begin{equation}
+        a_{ki,t}=\rho^a_{ki}a_{ki,t-1}+\varepsilon_{ki,t}^a,\label{eq:tfp_shock_process}
+    \end{equation}
+    where $a_{ki,t}:=\log A_{ki,t}$, and $\varepsilon_{ki,t}^a\sim\mathcal{N}\left(0,\sigma^2_{kia}\right)$. 
+
+\paragraph{Input Baskets}
+The bundle of intermediate goods $X_{k,i,f,t}$ is defined similar to the household's consumption basket, given by a CRS aggregator of sectoral intermediate goods, which are themselves defined as a CRS aggregator of country-specific intermediate goods:
+\begin{align}
+    X_{k,i,f,t} &= \mathcal{X}_{k,i}\left(\{X_{k,i,j,f,t}\}_{j=1}^I\right)\label{eq:general_model_intermediate_input_aggregator_1}\quad \text{and} \quad
+    X_{k,i,j,f,t} = \mathcal{X}_{k,i,j}\left(\{X_{k,l,i,j,f,t}\}_{l=1}^K\right),
+\end{align}
+where $X_{k,i,j,f,t}$ is firm's $f$ demand in sector $i$ of country $k$ for goods produced in sector $j$, and $X_{k,l,i,j,f,t}$ is firm's $f$ demand in sector $i$ of country $k$ for goods produced in sector $j$ in country $l$. Similarly, we assume a CES structure for the intermediate \eqref{eq:general_model_intermediate_input_aggregator_1} good aggregators. As in the household side, we introduce an additional layer to distinguish between energy and non-energy goods,
+\begin{align}
+    X_{ki,t} = \left[ \widetilde{\beta}_{ki}^{\frac{1}{\phi}} X_{kiE,t}^{\frac{\phi-1}{\phi}} + (1-\widetilde{\beta}_{ki})^{\frac{1}{\phi}}X_{kiM,t}^{\frac{\phi-1}{\phi}} \right]^{\frac{\phi}{\phi-1}},\label{eq:intermediate_input_aggregator}
+\end{align}
+where $X_{kiE,t}$ and $X_{kiM,t}$ denote sector $i$ intermediate goods' demand for energy and non-energy goods, respectively, with steady-state shares $\beta_{ki}$ and $(1-\beta_{ki})$, and $\phi$ denotes the elasticity of substitution between energy and non-energy goods. These are given by:
+\begin{align}
+    X_{kiE,t} &= \left[\sum_{j \in I_E} \widetilde{\nu}_{kij}^{\frac{1}{\chi}} X_{kij,t}^{\frac{\chi-1}{\chi}} \right]^{\frac{\chi}{\chi-1}}, 
+    & X_{kiM,t} &= \left[\sum_{j \in I_M} \widetilde{\upsilon}_{kij}^{\frac{1}{\xi}} X_{kij,t}^{\frac{\xi-1}{\xi}} \right]^{\frac{\xi}{\xi-1}},\label{eq:energy_nonenergy_intermediate_input_aggregators}
+\end{align}
+where $X_{kij,t}$ denotes the input purchase of goods from sector $j$, with steady-state shares $\nu_{kij}$ and $\upsilon_{kij}$, and $\chi$ and $\xi$ denote the elasticity of substitution between goods in energy and non-energy sectors, respectively. The aggregation over sectoral goods produced in different countries is given by CES aggregators:
+\begin{equation}
+    X_{kij,t} = \left[\sum_{j=1}^I\widetilde{\zeta}_{klij}^{\frac{1}{\mu}} X_{klij,t}^{\frac{\mu-1}{\mu}} \right]^{\frac{\mu}{\mu-1}}.\label{eq:final_layer_consumption_aggregator}
+\end{equation}
+where $X_{klij,t}$ denotes the input purchases of goods from sector $j$ in country $l$, with steady-state shares $\zeta_{klij}$, and $\mu$ denotes the Arminton trade elasticity of substitution between goods in sectors in different countries. Finally, $X_{k,l,i,j,f,t}$ is itself a Dixit-Stiglitz aggregator over differentiated goods produced by firms in sector $j$ in country $l$:
+\begin{equation}\label{eq:general_model_intermediate_input_aggregator}
+    X_{k,l,i,j,f,t} = \left( \int_0^1 X_{k,l,i,j,f,f',t}^{(\epsilon_{p,kj,t}-1)/\epsilon_{p,kj,t}} df' \right)^{\epsilon_{p,ki}/(\epsilon_{p,ki}-1)}
+\end{equation}
+
+Cost minimization by firms delivers the following first-order conditions for labor and intermediate goods demands:
+\begin{equation}\label{eq:general_model_firm_demand}
+    W_{k,t} = \text{MC}_{k,i,t} \frac{\partial F_{k,i}}{\partial N_{k,i,f,t}}, \quad P_{X,i,j,t} = \text{MC}_{k,i,t} \frac{\partial F_{k,i}}{\partial X_{k,i,j,f,t}}
+\end{equation}
+and the allocation of intermediate goods demand across sectors and countries:
+\begin{equation}\label{eq:general_model_intermediate_goods_allocation}
+    \frac{\partial \mathcal{X}_{k,i}}{\partial X_{k,i,j,f,t}} = \frac{P_{X,i,j,t}}{P_{X,i,t}}, \quad \frac{\partial \mathcal{X}_{k,i,j}}{\partial X_{k,l,i,j,f,t}} = \frac{(1+\tau_{k,l,j,t})P_{k,l,j,t}}{P_{X,i,j,t}}, \quad X_{k,l,i,j,f,t} = \left(\frac{P_{l,j,t}}{P_{X,i,j,t}}\right)^{-\epsilon_{p,kj,t}} X_{k,i,j,t}
+\end{equation}
+
+Above, $P_{X,i,t}$ denotes the price index of the intermediate input bundle $X_{k,i,f,t}$ faced by firms in sector $i$ in country $k$, and $P_{X,i,j,t}$ is the price index of the sectoral intermediate input $X_{k,i,j,f,t}$ faced by firms in sector $i$ in country $k$. As in the case of households, the prices faced by domestic industries are subject to sectoral tariffs $\tau_{k,l,j,t}$.\footnote{As in the household case, our specification of the intermediate input aggregators implies that $P_{X,i,t} X_{k,i,f,t} = \sum_{j=1}^I P_{X,i,j,t} X_{k,i,j,f,t}$ and $P_{X,i,j,t} X_{k,i,j,f,t} = \sum_{l=1}^K P_{l,j,t} X_{k,l,i,j,f,t}$.}
+
+Nominal marginal costs in sector $i$ of country $k$ are denoted by $\text{MC}_{k,i,t}$. Note that, under CRS, all firms in a given sector choose the same combination of inputs. Hence,  $\text{MC}_{k,i,t}$ is common across firms and given by:
+\begin{equation}\label{eq:general_model_sectoral_nominal_marginal_cost}
+    \text{MC}_{k,i,t} = \min_{N_{k,i,t}, X_{k,l,i,j,t}} W_{k,i,t} N_{k,i,t} + \sum_{j=1}^I \sum_{l=1}^K (1+\tau_{k,l,j,t})P_{k,l,j,t} X_{k,l,i,j,t}
+\end{equation}
+
+\paragraph{Price Setting} Firms set prices in a staggered manner \citep{Calvo1983}. Specifically, firms in sector $i$ of country $k$ can reset their price with probability $1-\theta_{k,i}$ each period. Note that the probability of price adjustment is country- and sector-specific.
+
+A firm that is resetting its price, chooses its optimal selling price to the domestic market $P^*_{k,k,i,t}$ by solving the following problem:
+\begin{equation}\label{eq:general_model_price_setting}
+    \max_{P^*_{k,k,i,t}} \mathbb{E}_t \sum^{\infty}_{s=0}\text{SDF}_{t,t+s} \theta^{s}_{k,i} \left(P^*_{k,k,i,t+s} - (1-\tau_{k,i})\text{MC}_{k,i,t+s} \right) \mathcal{D}_{k,k,i,t+s},
+\end{equation}
+where $\text{SDF}_{t,t+s} = \beta^s U^\prime(C_{k,t+s})/U^\prime(C_{k,t})$ is the stochastic discount factor between periods $t$ and $t+s$, and $\mathcal{D}_{k,k,i,t+s}$ denotes the demand for the firm's good from domestic agents given in equations \eqref{eq:general_model_consumption_allocation} and \eqref{eq:general_model_intermediate_goods_allocation}. 
+
+We document in Appendix \ref{sec:appendix_model_derivation} that such maximization programs yield the log-linearized domestic price, and price Phillips curves:
+\begin{align}
+    \pi_{ki,t}&=\kappa_{ki}\left(\widehat{\text{mc}}_{ki,t}-\widehat{p}_{ki,t}\right)+\beta\mathbb{E}_t\pi_{ki,t+1}+u_{ki,t}^p\label{eq:price_phillips_curve_export}
+\end{align}
+where $\pi_{ki,t}=p_{ki,t}-p_{ki,t-1}$ denotes price inflation in sector $i$,  and the price variables (real marginal costs $\widehat{\text{mc}}_{ki,t}=\widehat{\text{mc}}^n_{ki,t}-p_{kC,t}$ and the real price level $\widehat{p}_{ki,t}=p_{ki,t}-p_{kC,t}$) appear in real terms so that they are stationary. Furthermore, $\kappa_{ki}=(1-\theta^p_{ki})(1-\beta\theta^p_{ki})/\theta^p_{ki}$. We assume that the sectoral price cost-push shock, micro-founded through a time-varying elasticity of substitution $\epsilon_{pki,t}$ in \eqref{eq:general_model_consumption_aggregator}, follow independent AR(1) processes:
+\begin{align}
+    u^p_{ki,t}&=\rho^p_{ki}u^p_{ki,t-1}+\varepsilon^p_{ki,t},
+\end{align}
+where $u^p_{ki,t}\sim\mathcal{N}\left(0,\sigma^2_{kip}\right)$. 
+
+In this open input-output (IO) economy, the price  Phillips curve \eqref{eq:price_phillips_curve_export} depends on the international supply network through the real marginal costs faced by firm $i$ in country $k$, $\widehat{\text{mc}}_{ki,t}$. The (log-linearized) real marginal costs depend on their own productivity, and a weighted average of real wage expenses and intermediate input real prices,
+\begin{align}
+    \widehat{\text{mc}}_{ki,t}&=-a_{ki,t}+\mathcal{M}_{ki}\alpha_{ki}\widehat{w}_{k,t}+\sum_{l=1}^K\sum_{j=1}^I\mathcal{M}_{ki}\omega_{klij}\widehat{p}_{klij,t}\label{eq:loglin_marginal_cost_maintext}
+\end{align}
+where, in the absence of a production subsidy, $\alpha_{ki}=\frac{W_kN_{ki}}{P_{ki}Y_{ki}}=\frac{W_kN_{ki}}{\mathcal{M}_{ki}\text{MC}_{ki}Y_{ki}}$ denotes the (steady-state) labor income share of total sales of firm $i$, $\omega_{klij}=\frac{P_{klj}X_{klij}}{P_{ki}Y_{ki}}=\frac{P_{klj}X_{klij}}{\mathcal{M}_{ki}\text{MC}_{ki}Y_{ki}}$ denotes the (steady-state) IO expenditure share of total sales of firm $i$, and $\mathcal{M}_{ki}=\epsilon_{pki}/(\epsilon_{pki}-1)$ denotes the steady-state markup charged by firm $i$. 

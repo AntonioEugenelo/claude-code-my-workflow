@@ -1,0 +1,24 @@
+\subsection{Government}\label{sec:general_model_government}
+
+The government is composed of a fiscal authority and a central bank. The fiscal authority issues domestic debt $B_{k,t}$, provides production subsidies to firms, and collects lump-sum taxes $T_{k,t}$ from the household in order to balance its budget constraint:
+\begin{equation}\label{eq:general_model_gov_budget}
+    \frac{B_{k,t}}{1+i_{k,t}} + T_{k,t} + \sum_{l\neq k}^K\sum_{i=1}^I\left(\tau_{kli,t}P^l_{kli,t}C_{kli,t}+\sum_{j=1}^I\tau_{kli,t}P^l_{kli,t}X_{klji,t}\right) = B_{k,t-1} + \sum^I_{i=1} \tau_{k,i} \text{MC}_{k,i,t} Y_{k,i,t}
+\end{equation}
+where $Y_{k,i,t}$ denotes the production of sector $i$ in country $k$, and $P_{kli,t}^l =Q_{lk,t}P_{kli,t}$, where  $Q_{lk,t}$ denotes the real exchange rate, with 
+\begin{align}
+    \mathcal{Q}_{kl,t}=\frac{P_{lC,t}\mathcal{E}_{kl,t}}{P_{kC,t}}.\label{eq:real_exchange_rate}
+\end{align}   
+
+There is a monetary authority in each country $k\in K$, and the central bank sets the nominal interest rate, $i_{k,t}$. 
+
+\subsection{Monetary Authority}
+Each central bank follows a Taylor rule:
+    \begin{align}
+        i_{k,t} &= \rho_{kr} i_{k,t-1} + \left(1-\rho_{kr}\right)\left(\phi_{k\pi}\pi_{k\phi,t}+ \phi_{ky}\widehat{y}_{k,t}+ \phi_{ke}e_{kK,t}\right) +\varepsilon_{k,t}^r\label{eq:taylor_rule}
+    \end{align}
+    where the coefficients are allowed to vary by country; $\rho_{kr}$ denotes the degree of interest rate smoothing in the monetary instrument, coefficients $\{\phi_{k\pi},\phi_{ky},\phi_{ke}\}$ modulate the elasticity of the policy rate with respect to changes in a given inflation index $\pi_{k\phi,t}$, output $\widehat{y}_{k,t}$, measured as the log-deviation from its steady-state value, and the bilateral nominal exchange rate with respect to country $K$, $e_{kK,t}$. The Taylor rule features a monetary policy shock, which follows $\varepsilon_{k,t}^r\sim\mathcal{N}\left(0,(\sigma_{kr})^2\right)$. 
+    
+    Furthermore, we allow the monetary authority to choose the particular inflation measure (CPI, PCE, PPI, GDP deflator, etc.) that they aim to stabilize, $\pi_{k\phi,t}=\bm{\Phi}^\intercal\bm{\pi}_{k,t}=\sum_{l=1}^K\sum_{i=1}^I\phi_{kli}\pi_{kli,t}$, 
+    where $\sum_{l=1}^K\sum_{i=1}^I\phi_{kli}=1$, and $\pi_{kki,t}=\pi_{ki,t}$. For example, when $\phi_{kli}$ is equal to the consumption share of sector $i$ in the country $k$, then the central bank targets headline inflation. 
+
+ 

@@ -51,7 +51,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/notify.sh",
+            "command": "\"C:\\Program Files\\Git\\bin\\bash.exe\" -c '\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/notify.sh'",
             "timeout": 5
           }
         ]
@@ -63,7 +63,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/protect-files.sh",
+            "command": "\"C:\\Program Files\\Git\\bin\\bash.exe\" -c '\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/protect-files.sh'",
             "timeout": 5
           }
         ]
@@ -74,7 +74,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/pre-compact.sh",
+            "command": "\"C:\\Program Files\\Git\\bin\\bash.exe\" -c '\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/pre-compact.sh'",
             "timeout": 5
           }
         ]
@@ -85,7 +85,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/log-reminder.py",
+            "command": "\"C:\\Program Files\\Git\\bin\\bash.exe\" -c 'python3 \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/log-reminder.py'",
             "timeout": 10
           }
         ]

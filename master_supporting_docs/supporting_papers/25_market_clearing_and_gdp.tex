@@ -1,0 +1,38 @@
+\subsection{Market Clearing and GDP}\label{sec:general_model_market_clearing}
+
+Market clearing in the goods market requires that the quantity produced of each good matches the quantity demanded at home and abroad, either for direct consumption or intermediate use. That is,
+\begin{align}
+    Y_{ki,t}=\sum_{l=1}^K C_{lki,t}+\sum_{l=1}^K\sum_{j=1}^IX_{lkji,t}.\label{eq:goods_market_clearing}
+\end{align}
+
+Market clearing in the labor market requires that the aggregate labor supplied matches the sum of labor demand across sectors, for each country. That is,
+\begin{align}
+    N_{k,t}=\sum_{i=1}^IN_{ki,t}.\label{eq:labor_market_clearing}
+\end{align}
+
+Finally, the aggregate resource constraint of the economy requires that the net foreign position of country $k$ equals its trade balance:
+\begin{align}\label{eq:nfa_not_MU}
+             B_{k,t} - (1+i_{k,t}) B_{k,t-1} = & P_{k\text{EXP},t}\text{EXP}_{k,t} - P_{k\text{IMP},t}\text{IMP}_{k,t}
+\end{align}
+where the first term in the right-hand side of \eqref{eq:nfa_not_MU} is the total nominal exports of country $k$,
+\begin{align}
+        P_{k\text{EXP},t} \text{EXP}_{k,t} = \sum^K_{l\neq k}\sum_{i =1}^I \left(P^{k}_{lki,t}   C_{kli,t} + \sum^{I}_{j=1} P^{k}_{lki,t}   X_{lkji,t}\right), \label{eq:nominal_exports} 
+    \end{align}
+and the second term is the total nominal imports,
+\begin{align}
+        P_{k\text{IMP},t} \text{IMP}_{k,t} =  \sum^K_{l\neq k} \sum_{i \in I} \left( P_{kli,t} C_{kli,t}   + \sum^{I}_{j=1}  P_{kli,t}  X_{klji,t}\right).  \label{eq:nominal_imports}
+    \end{align}
+    
+Nominal GDP is defined as the sum of total household consumption and nominal net exports,
+\begin{align}\label{eq:nominal_output}
+        \mathcal{Y}_{k,t} =&  P_{kC,t} C_{k,t} + P_{k\text{EXP},t}\text{EXP}_{k,t} - P_{k\text{IMP},t} \text{IMP}_{k,t} 
+\end{align}
+   
+Defining the GDP deflator, $P_{kY,t}$,  as the ratio between nominal GDP measured using time--$t$ prices and nominal GDP measured using steady-state prices
+\begin{equation}
+        P_{kY,t} = \frac{P_{kC,t} C_{k,t} + P_{k\text{EXP},t}\text{EXP}_{k,t} - P_{k\text{IMP},t} \text{IMP}_{k,t}}{P_{kC} C_{k,t} + P_{k\text{EXP}}\text{EXP}_{k,t} - P_{k\text{IMP}} \text{IMP}_{k,t}},\nonumber
+    \end{equation}
+    we have that real GDP is given by:
+\begin{equation}
+        Y_{k,t} = \mathcal{Y}_{k,t}/P_{kY,t}.\label{eq:real_output}
+\end{equation}

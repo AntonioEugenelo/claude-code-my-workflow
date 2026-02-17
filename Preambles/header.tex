@@ -1,0 +1,71 @@
+% ==============================================================================
+% SHARED PREAMBLE: Macro Workshop Presentations
+% ==============================================================================
+% University of Oxford, Department of Economics
+% Use: \input{../Preambles/header.tex} from Slides/ directory
+% ==============================================================================
+
+% ============================================================
+% THEME & COLOURS
+% ============================================================
+\usetheme{default}
+\useinnertheme{rectangles}
+
+\definecolor{oxfordblue}{RGB}{0,33,71}
+\definecolor{oxfordmid}{RGB}{75,100,130}
+\definecolor{oxfordlight}{RGB}{195,210,225}
+\definecolor{oxfordaccent}{RGB}{163,31,52}
+\definecolor{oxfordgrey}{RGB}{100,100,100}
+
+\setbeamercolor{structure}{fg=oxfordblue}
+\setbeamercolor{frametitle}{fg=white,bg=oxfordblue}
+\setbeamercolor{title}{fg=white,bg=oxfordblue}
+\setbeamercolor{block title}{fg=white,bg=oxfordblue}
+\setbeamercolor{block body}{bg=oxfordlight!30}
+\setbeamercolor{block title alerted}{fg=white,bg=oxfordaccent}
+\setbeamercolor{block body alerted}{bg=oxfordaccent!8}
+\setbeamercolor{alerted text}{fg=oxfordaccent}
+\setbeamercolor{item}{fg=oxfordblue}
+\setbeamercolor{subitem}{fg=oxfordmid}
+\setbeamercolor{footline}{fg=oxfordgrey,bg=oxfordblue!8}
+
+% ============================================================
+% FONTS & LAYOUT
+% ============================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage{mathtools}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\usepackage{appendixnumberbeamer}
+\hypersetup{colorlinks=true,linkcolor=oxfordblue,urlcolor=oxfordmid,citecolor=oxfordaccent}
+
+\setbeamerfont{frametitle}{size=\large,series=\bfseries}
+\setbeamerfont{title}{size=\Large,series=\bfseries}
+\setbeamerfont{author}{size=\normalsize}
+\setbeamerfont{institute}{size=\small}
+\setbeamerfont{date}{size=\small}
+\setbeamerfont{footnote}{size=\tiny}
+
+\setbeamertemplate{itemize item}{\small\raisebox{0.12ex}{\color{oxfordblue}$\blacktriangleright$}}
+\setbeamertemplate{itemize subitem}{\scriptsize\raisebox{0.1ex}{\color{oxfordmid}$\bullet$}}
+\setbeamertemplate{navigation symbols}{}
+
+\setbeamertemplate{frametitle}{%
+  \nointerlineskip
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2.8ex,dp=1.2ex,leftskip=0.8em]{frametitle}%
+    \usebeamerfont{frametitle}\insertframetitle%
+  \end{beamercolorbox}%
+}
+
+\setbeamersize{text margin left=1.2em,text margin right=1.2em}
+
+% ============================================================
+% CUSTOM COMMANDS
+% ============================================================
+\newcommand{\red}[1]{{\color{oxfordaccent}#1}}

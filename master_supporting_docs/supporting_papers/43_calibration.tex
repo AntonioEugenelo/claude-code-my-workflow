@@ -1,0 +1,124 @@
+\section{Model Calibration}\label{sec:quantitative_analysis_model_calibration}
+% \section{Data and Calibration}\label{sec:calibration}
+
+We calibrate the model economy presented in Section \ref{sec:theoretical_quantitative_model} at the quarterly frequency to $K=4$ countries: The Euro Area, the United States, China and the Rest of the World (ROW). The production structure within each country contains $I=44$ sectors.\footnote{A detailed list of the sectors included in the analysis can be found on Table \ref{tab:nace_sectors}, in Appendix \ref{appendix: C}.} We next discuss the calibration strategy and collect in Table \ref{tab:calibration} the main parameter values and the corresponding targets or sources.
+
+\begin{table}[t!]
+	\centering
+    \caption{Calibration}
+    \begin{threeparttable}
+	\begin{tabularx}{\textwidth}{@{} l l r X @{}}	
+		\hline
+        \textbf{Parameter} & \textbf{Description} & \textbf{Value} & \textbf{Target / Source} \\
+        \midrule
+        \textbf{Households} \\
+        $\beta$ & Discount factor & 0.99 & $R=4.5\%$ p.a. \\ 
+        $\sigma$ & Inv. Intertemp. Elast. Subs. & 1 & Standard Value \\
+        $\varphi$ & Inv. Frisch Elasticity & 1 & \cite{Chetty2011} \\
+        $\gamma$ & Elast. Subst. $E$ and $M$ & 0.4 & \citet{bohringer2021energy} \\
+        $\eta$ & Elast. Subst. $E$ & 0.9 & \citet{atalay2017important} \\
+        $\iota$ & Elast. Subst. $M$ & 0.9 & \citet{atalay2017important} \\
+        $\delta$ & Trade Elasticity & 1 & Standard value \\
+        $\{\widetilde{\beta}_k,\widetilde{\nu}_{ki},\widetilde{\upsilon}_{ki},\widetilde{\zeta}_{kli}\}$ & Quasi-shares consumption & & ICIO tables (OECD) \\
+        $\theta^{w}_{k}$ & Calvo wage prob. & 0.75 & \cite{christoffel2008new} \\
+        \midrule
+        \textbf{Firms} \\
+        $\psi$ & Elast. Subst. $N$ and $X$ & 0.5 & \citet{atalay2017important} \\
+        $\phi$ & Elast. Subst. $E$ and $M$ & 0.4 & \citet{bohringer2021energy} \\
+        $\chi$ & Elast. Subst. $M$ & 0.2 & \citet{atalay2017important} \\
+        $\xi$ & Elast. Subst. $E$ & 0.2 & \citet{atalay2017important} \\
+        $\mu$ & Trade Elasticity & 1 & Standard value \\
+        $\{\widetilde{\alpha}_{ki},\widetilde{\vartheta}_{ki},\widetilde{\beta}_{ki},\widetilde{\nu}_{kij},\widetilde{\upsilon}_{kij},\widetilde{\zeta}_{kij}\}$ & Quasi-shares production & & ICIO tables (OECD) \\
+        $\mathcal{M}_{ki}$ & Markups &  & Labor shares (Eurostat) \\
+        $\theta^{p}_{ki}$ & Calvo price prob. & & \cite{Gautier2024} \\
+        \midrule
+        \textbf{Monetary Policy} \\
+        $\rho_{k,r}$ & Interest Rate Smoothing & 0.7 & Standard Value \\
+        $\phi_{k,\pi}$ & Reaction to Inflation & 1.5 & \citet{Gali2015} \\
+        $\phi_{k,y}$ & Reaction to real GDP & 0.125 & \citet{Gali2015} \\
+        \midrule
+        \textbf{Exogenous Shock Process} \\
+        $\rho^\tau_{kli}$ & Persistence Tariff & 0.96 & (--)  \\
+        $\sigma^\tau_{kli}$ & Std. Dev. tariff shock & 1 & Standard Value \\
+        $\sigma^r_{k}$ & Std. Dev. monetary shock & 1 & Standard Value \\
+		\hline
+		\hline
+	\end{tabularx}
+    \begin{tablenotes}
+        \footnotesize
+        \item \textit{Notes}: List of calibrated parameters. See the main text for a discussion on targets, values, and data used.
+    \end{tablenotes}
+    \end{threeparttable}
+    \label{tab:calibration}
+\end{table}
+
+
+\paragraph{{Households}} We set the household's discount factor $\beta$ to 0.99, to target an annual real interest rate of $4.5\%$. The intertemporal elasticity of substitution $\sigma$ is set to 1, a common value in the literature. The inverse of the Frisch elasticity $\varphi$ is set to 1, in line with the estimates presented in \cite{Chetty2011}. Households' borrowing premium $\gamma_*$ is set to 0.001 so that the evolution of net foreign assets has only a small impact on the exchange rate and trade in the short run while guaranteeing that the net foreign asset position is stabilized at zero in the long run \citep{SCHMITTGROHE2003163}.  
+
+The elasticity of substitution in consumption between energy and non-energy goods $\gamma$ is set to 0.4 following \cite{bohringer2021energy}. The elasticity of substitution in consumption between energy sources $\eta$ and between non-energy sectors $\iota$ is set to 0.9 following \citet{atalay2017important}. Household's trade elasticity $\delta$ is set to $1$.\footnote{A growing body of literature has estimated the value of these elasticities for different time horizons, finding that the values of trade elasticities are significantly greater than one in the long term but not in the short term, with values around 1 for horizons of up to two years (\citet{boehm2023long}). Given that the focus of our work is closer to a cyclical analysis rather than a long-term one, we choose the value of 1.}
+
+To calibrate the quasi-consumption shares $\{\widetilde{\beta}_k,\widetilde{\nu}_{ki},\widetilde{\upsilon}_{ki},\widetilde{\zeta}_{kli}\}$ we rely on the linearized model to target the respective consumption sectoral consumption shares in each country. More precisely, in Appendix \ref{sec:appendix_model_derivation} we show that once the model has been linearized, it is possible to read directly consumption shares from the data as long as we have as many quasi-consumption shares parameters as data targets. Implementing this strategy, we obtain consumption shares by country from Inter-country Input Output (ICIO) tables produced by the OECD, using 2019 as our baseline period. Figure \ref{figure:fig_consumption_share} reports a heatmap of the consumption share $\beta_{kli}=P_{ki}C_{kli}/(P_{kC}C_k)$, where each element denotes the consumption share of sector $i$ of country $l$ in households' basket of country $k$.
+
+\begin{figure}
+    \centering
+    \caption{Sectoral Heterogeneity on Consumption Shares, Labor Shares, Input-Output Network, and Nominal Price Rigidities}
+    \begin{tabular}{c c}
+         % First panel
+         \begin{subfigure}{0.4\textwidth}
+             \centering
+             \includegraphics[width=\textwidth]{figures/consumption_shares_heatmap.png}
+             \caption{Heatmap of the Consumption matrix, where element $\beta_{kli}$ denote the consumption share of sector $i$ of country $l$ in households' basket of country $k$.}
+             \label{figure:fig_consumption_share}
+         \end{subfigure} &
+         % Second panel
+         \begin{subfigure}{0.4\textwidth}
+             \centering
+             \includegraphics[width=0.94\textwidth]{figures/alpha_heatmap.png}
+             \caption{Heatmap of the Labor matrix, where element $\alpha_{ki}$ denotes the labor share of sector $i$ in country $k$.}
+             \label{figure:fig_labor_share}
+         \end{subfigure} \\
+         % First panel
+         \begin{subfigure}{0.4\textwidth}
+             \centering
+             \includegraphics[width=0.9\textwidth]{figures/omega_inside_EA_heatmap.png}
+             \caption{Heatmap of Home EA Input-Output matrix, where element $\omega_{ij}$ denote the input share of sector $j$ for output sector $i$, both sectors inside the EA.}
+             \label{figure:fig_input_output_inside}
+         \end{subfigure} &
+         % Second panel
+         \begin{subfigure}{0.4\textwidth}
+             \centering
+             \includegraphics[width=0.9\textwidth]{figures/omega_foreign_heatmap.png}
+             \caption{Heatmap of Foreign EA Input-Output matrix, where element $\omega_{ij}$ denotes the input share of sector $j$ from ROW for output sector $i$ inside EA.}
+             \label{figure:fig_input_output_foreign}
+         \end{subfigure} \\
+         % First panel
+         \begin{subfigure}{0.4\textwidth}
+             \centering
+             \includegraphics[width=0.94\textwidth]{figures/calvo_heatmap.png}
+             \caption{Heatmap of the Calvo pricing rigidities matrix, where element $\theta^p_{ki}$ denotes the Calvo rigidity of sector $i$ in country $k$.}
+             \label{figure:fig_calvo}
+         \end{subfigure} 
+    \end{tabular}
+    \floatfoot{\textit{Notes}: Panel \ref{figure:fig_consumption_share}: heatmap of the consumption share. Panel \ref{figure:fig_labor_share}: heatmap of the labor share. Panel \ref{figure:fig_input_output_inside}: heatmap of the home input-output matrix of the EA. Panel \ref{figure:fig_input_output_foreign}: heatmap of the foreign input-output matrix of the EA. Panel \ref{figure:fig_calvo}: heatmap of Calvo rigidities.}
+    \label{figure:fig_heatmaps}
+\end{figure}
+
+
+Regarding wage rigidities, \cite{ecb2009wage} report limited cross-sectoral heterogeneity in wage frequency adjustments for Euro-Area countries. Therefore, we fix the Calvo frequency wage adjustment probability $\theta^w_{k}$ to 0.75 for all countries, in line with the evidence presented in \cite{christoffel2008new} for the EA.
+
+
+
+\paragraph{{Production}} The elasticity of substitution in production between labor and intermediate inputs $\psi$ is set to 0.5 \citep{atalay2017important}. The elasticity of substitution in production between energy and non-energy goods $\phi$ is set to 0.4 \citep{bohringer2021energy}. The elasticity of substitution in production between energy sectors $\chi$ and between non-energy sectors $\xi$ is set to 0.2, following the estimates of \cite{atalay2017important}.  Finally, as with households, we set the trade elasticity for firms $\mu$, equal to one.
+
+We follow the same strategy as with households to calibrate the quasi-shares in production $\{\widetilde{\alpha}_{ki},\widetilde{\beta}_{ki},\widetilde{\nu}_{kij},\widetilde{\upsilon}_{kij},\widetilde{\zeta}_{kij}\}$. Namely, using the linearized model around the steady-state we directly read from the data shares in of each intermediate good in production as well as the shares of labor and production in total costs. Our data source here again is the 2019 ICIO tables from OECD. Figure \ref{figure:fig_input_output_inside} reports a heatmap of the home input-output matrix of the EA, $\omega_{kkij}=P_{kj}X_{kkij}/(P_{ki}Y_{ki})$, where each element denotes the input share of sector $j$ for output sector $i$, both sectors inside the EA. Similarly, figure \ref{figure:fig_input_output_foreign} reports a heatmap of the foreign input-output matrix of the EA, $\omega_{klij}=P_{lj}X_{klij}/(P_{ki}Y_{ki})$ for $l\neq k$, where each element denotes the input share of sector $j$ from ROW for output sector $i$ inside EA. We report in Appendix \ref{appendix: C} the equivalent graphs for each country separately, in Figure \ref{figure:fig_heatmaps_appendix}.
+
+We complement the ICIO tables with the Figaro database by Eurostat to calibrate the labor share of each industry. Namely, once the quasi-shares in production have been used, we calibrate the sector-specific markups $\mathcal{M}_{ki}$ to target the wage-bill-over-sales observed in the data.  Figure \ref{figure:fig_labor_share} reports a heatmap of the labor share $\alpha_{ki}=W_{k}N_{ki}/(P_{ki}Y_{ki})$, where each element denotes the labor share of sector $i$ in country $k$.
+
+Sectoral price rigidities are obtained from the PRISMA project conducted by the ECB \citep{Gautier2024}. Using CPI micro-data from several EA countries, the authors report the frequency of price adjustment by COICOP categories for each country separately, and from the aggregate EA. Using the COICOP--to--NACE correspondence tables \citep{kouvavas2021markups}, we compute the frequency of price adjustment by each NACE category in each country, and obtain the heterogeneous price rigidities $\theta^p_{ki}$ for the Euro Area and similarly for the United States. Finally, we assume that the China and ROW price rigidities coincide with the US.
+
+A drawback of the evidence presented in \cite{Gautier2024} is that it does not contain consistent price adjustment frequency data on energy goods. Therefore, we complement this with the evidence presented in \cite{dhyne2006} on price adjustments for energy goods for Euro-Area countries. In line with the data presented there, and not surprisingly, energy sectors in the model have the steepest price Phillips Curves, with nearly fully flexible prices.  Figure \ref{figure:fig_calvo} reports a heatmap of the pricing rigidities $\theta^p_{ki}$, where each element denotes nominal price-setting rigidity of sector $i$ in country $k$.
+
+\paragraph{{Monetary Policy}} All Taylor rule parameters are set to standard values, and are homogeneous across countries. The interest-rate smoothing coefficient $\rho_{rk}$ is set to 0.7. The coefficients for inflation and output, $\phi_{\pi k}$ and $\phi_{yk}$, are set to their standard values of 1.5 and 0.125, respectively. Furthermore, we assume that central banks target headline inflation. 
+
+\paragraph{Exogenous Process} We fit the persistence coefficients of the energy price shock to the time-series data of the Brent crude oil. The variance of the innovation is set to 1. Lastly, the variance of the monetary policy shock is also set to 1. 
+
