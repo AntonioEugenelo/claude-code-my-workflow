@@ -21,6 +21,7 @@
 - **Protected files** -- do NOT edit `Bibliography_base.bib` or settings files without explicit permission
 - **Local-first lookup** -- ALWAYS check `master_supporting_docs/` for papers and slides BEFORE searching the web
 - **Session-end reflection** -- at the end of every session, reflect on learnings and consider adding `[LEARN]` entries (see `.agent/rules/session-logging.md`)
+- **Verify before executing** -- always check the logic and accuracy of user requests; surface incongruences and ask for clarification before proceeding
 
 ---
 
