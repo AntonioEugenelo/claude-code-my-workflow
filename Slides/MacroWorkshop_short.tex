@@ -31,7 +31,7 @@
   Open Economies with Production Networks}
 \author[A.\,Eugenelo]{Antonio Eugenelo}
 \institute{University of Oxford\\ Department of Economics}
-\date{Macro Workshop \,---\, February 2026}
+\date{Macro Workshop, February 2026}
 
 % ============================================================
 \begin{document}
@@ -65,7 +65,7 @@
   \begin{itemize}
     \setlength{\itemsep}{6pt}
     \item Production networks amplify and reshape the transmission of shocks across sectors (Acemoglu et al., 2012; Baqaee \& Farhi, 2020; Rubbo, 2023).
-    \item Optimal fiscal allocation across sectors depends on sectoral heterogeneity in price stickiness, public-good shares, and network position (Cox et al., 2024).
+    \item Optimal fiscal allocation across sectors depends on sectoral heterogeneity in price stickiness and public-good shares (Cox et al., 2024), amplified by network position (Rubbo, 2023).
   \end{itemize}
 \end{frame}
 
@@ -116,8 +116,8 @@
 % SLIDE 3 --- THE RELATIVE ALLOCATION RULE
 % ============================================================
 
-\begin{frame}{The Relative Allocation Rule}
-  Under exogenous $\bar{G}_t$, the spending gap between sector~$k$ and a residual sector~$i$ satisfies:\footnote{$\Phi_{ki}$ collects structural parameters: public-good shares $\chi_k,\chi_i$, aggregator weights $\omega_{g,k}/\omega_{g,i}$, and PC slopes $\lambda_k,\lambda_i$.  See Appendix A4.}
+\begin{frame}[label=allocation-rule]{The Relative Allocation Rule}
+  Under exogenous $\bar{G}_t$, the spending gap between sector~$k$ and a residual sector~$i$ satisfies:\footnote{$\Phi_{ki}$ collects structural parameters: public-good shares $\chi_k,\chi_i$, aggregator weights $\omega_{g,k}/\omega_{g,i}$, and PC slopes $\lambda_k,\lambda_i$.  \hyperlink{structural-coefficients}{\beamergotobutton{Extended form}}}
   \begingroup\large
   \[
     \underbrace{g_{k,t} - \Phi_{ki}\,g_{i,t}}_{\text{\normalsize spending gap}}
@@ -130,7 +130,7 @@
 
   \bigskip
   \begin{alertblock}{Key property}
-    The rule is inherently \textit{relative}: spending is \textbf{reallocated} toward sectors with lower inflation and lower output gaps \emph{relative} to the residual sector.  What matters is the cross-sectional dispersion of gaps, not their level.
+    The rule is inherently \textit{relative}: spending is \textbf{reallocated} toward sectors with lower inflation and lower output gaps \emph{relative} to the residual sector.  What matters is the cross-sectional differences in gaps, not their level.
   \end{alertblock}
 \end{frame}
 
@@ -138,7 +138,7 @@
 % SLIDE 4 --- AGUILAR ET AL. MODEL
 % ============================================================
 
-\begin{frame}{The Global Production Network Model (Aguilar et al., 2025)}
+\begin{frame}[label=production-network]{The Global Production Network Model (Aguilar et al., 2025)}
   The closed-economy model delivers the intuition; we need a quantitative framework to test it.
 
   \medskip
@@ -183,7 +183,7 @@
       \[
         \pi_{ki,t} = \kappa_{ki}\!\left(\widehat{\mathrm{mc}}_{ki,t} - \widehat{p}_{ki,t}\right) + \beta\,\mathbb{E}_t\pi_{ki,t+1} + u^p_{ki,t}
       \]
-      Tariffs enter as price wedges (see Appendix A8).
+      Tariffs enter as price wedges (\hyperlink{tariff-propagation}{\beamergotobutton{Details}}).
     \end{column}
   \end{columns}
 \end{frame}
@@ -193,18 +193,18 @@
 % ============================================================
 
 \begin{frame}{Our Contribution: Fiscal Instruments in the Phillips Curves}
-  \textbf{Why extend?}  The Aguilar et al.\ model features lump-sum taxes and static production subsidies---no active fiscal stabilisation.  We introduce two time-varying distortionary instruments that enter the Phillips curves directly.  This is a tractable first step; the full Ramsey problem in a $K \times I$ networked model is the research goal.
+  \textbf{Why extend?}  The Aguilar et al.\ model features lump-sum taxes and static production subsidies but no active fiscal stabilisation.  We introduce two time-varying distortionary instruments that enter the Phillips curves directly.  This is a tractable first step; the full Ramsey problem in a $K \times I$ networked model is the research goal.
 
   \medskip
   Define $\hat{\tau}^w_{k,t} \equiv (\tau^w_{k,t} - \bar{\tau}^w_k)/(1-\bar{\tau}^w_k)$ and $\hat{\tau}^s_{ki,t} \equiv (\tau^s_{ki,t} - \bar{\tau}^s_{ki})/(1-\bar{\tau}^s_{ki})$.
 
   \bigskip
-  \textbf{Wage Phillips curve} --- adding a labour income tax:
+  \textbf{Wage Phillips curve,} adding a labour income tax:
   \[
     \pi_{wk,t} = \kappa_{wk}\Big(\sigma\,\hat{c}_{k,t} + \varphi\,\hat{n}_{k,t} - \hat{w}_{k,t} + \red{\hat{\tau}^w_{k,t}}\Big) + \beta\,\mathbb{E}_t\pi_{wk,t+1} + u^w_{k,t}
   \]
 
-  \textbf{Price Phillips curve} --- making the production subsidy time-varying:
+  \textbf{Price Phillips curve,} making the production subsidy time-varying:
   \[
     \pi_{ki,t} = \kappa_{ki}\Big(\widehat{\mathrm{mc}}_{ki,t} - \hat{p}_{ki,t} \;\red{-\; \hat{\tau}^s_{ki,t}}\Big) + \beta\,\mathbb{E}_t\pi_{ki,t+1} + u^p_{ki,t}
   \]
@@ -229,7 +229,7 @@
   \begin{columns}[T]
     \begin{column}{0.47\textwidth}
       \begin{block}{Fully endogenous spending}
-        Planner chooses level \textit{and} composition.  Benchmark for first-best fiscal stabilisation.
+        Planner chooses level \textit{and} composition.  Unconstrained fiscal benchmark (first-best within the class of spending instruments).
       \end{block}
     \end{column}
     \begin{column}{0.47\textwidth}
@@ -240,7 +240,7 @@
   \end{columns}
 
   \bigskip
-  \textbf{Central question:} how large is the welfare gap between the two regimes?  If it is small, compositional reallocation alone---the relative allocation rule---may approximate the first-best, even without aggregate fiscal flexibility.
+  \textbf{Central question:} how large is the welfare gap between the two regimes?  If it is small, compositional reallocation alone (the relative allocation rule) may approximate the first-best, even without aggregate fiscal flexibility.
 
 \end{frame}
 
@@ -251,7 +251,7 @@
 \begin{frame}{Summary}
   \begin{enumerate}
     \setlength{\itemsep}{12pt}
-    \item \textbf{Key result:} under a fixed fiscal envelope, optimal spending follows a \emph{relative allocation rule}---what matters is the cross-sectional dispersion of output and inflation gaps, not their level.
+    \item \textbf{Key result:} under a fixed fiscal envelope, optimal spending follows a \emph{relative allocation rule}; what matters is the cross-sectional dispersion of output and inflation gaps, not their level.
     \item \textbf{Central question:} can compositional reallocation alone approximate the first-best, even without aggregate fiscal flexibility?
     \item \textbf{What's next:} quantify the welfare gap between fixed and endogenous budgets in the $K \times I$ networked model of Aguilar et al.\ (2025), extended with distortionary fiscal instruments.
   \end{enumerate}
@@ -304,7 +304,8 @@
       \begin{block}{Fiscal Policy in Disaggregated Economies}
         \begin{itemize}
           \item Aoki (2001)
-          \item Cox, M\"{u}ller, Pasten, Saia \& Zanocco (2024)
+          \item Antonova \& M\"{u}ller (2025)
+          \item Cox, Feng, M\"{u}ller, Pasten, Schoenle \& Weber (2024)
         \end{itemize}
       \end{block}
       \vspace{4pt}
@@ -342,7 +343,7 @@
 
 % ------ A4: RELATIVE RULE (structural coefficients) ------
 
-\begin{frame}[noframenumbering]{Appendix: Relative Allocation Rule --- Structural Coefficients}
+\begin{frame}[noframenumbering,label=structural-coefficients]{Appendix: Relative Allocation Rule --- Structural Coefficients}
   \small
   Under exogenous $\bar{G}_t$ (with $\sigma=1$, $\kappa=0$):
   \begingroup\footnotesize
@@ -360,6 +361,12 @@
   \endgroup
 
   $\omega_{g,k}$: weight of sector $k$ in the government Cobb--Douglas aggregator.\quad $\rho$: CES elasticity of public-good bundle.
+
+  \smallskip
+  {\scriptsize \textit{Note:} the asymmetric denominators ($1{+}\lambda_k{+}\varphi\lambda_k$ for own-sector terms vs.\ $1{+}\lambda_i{+}\varphi\lambda_i(1{-}\chi_i)$ for the residual-sector terms) arise from solving the equated FOCs for $g_{k,t}$; the $(1{-}\chi)$ factor enters through the resource-constraint substitution in the residual sector's Phillips curve.}
+
+  \vfill
+  \hfill\hyperlink{allocation-rule}{\beamerreturnbutton{Back}}
 \end{frame}
 
 % ------ A5: OPTIMAL MONETARY RULE UNDER CONSTRAINT ------
@@ -380,7 +387,7 @@
 
 % ------ A6: AGUILAR ET AL. MODEL DETAILS ------
 
-\begin{frame}[noframenumbering]{Appendix: Aguilar et al.\ --- Household Problem}
+\begin{frame}[noframenumbering]{Appendix: Aguilar et al.\ ---Household Problem}
   \small
   Per-period utility: $U_t = \bigl(C_{k,t}^{1-\sigma}/(1{-}\sigma) - \int_0^1 \mathcal{N}_{gk,t}^{1+\varphi}/(1{+}\varphi)\,dg\bigr)Z_{k,t}$
 
@@ -402,7 +409,7 @@
   \]
 \end{frame}
 
-\begin{frame}[noframenumbering]{Appendix: Aguilar et al.\ --- Firm Problem}
+\begin{frame}[noframenumbering]{Appendix: Aguilar et al.\ ---Firm Problem}
   \small
   CES production: $Y_{ki,f,t} = A_{ki,t}\!\left[\widetilde{\alpha}_{ki}^{1/\psi}\,N_{fki,t}^{(\psi-1)/\psi} + \widetilde{\vartheta}_{ki}^{1/\psi}\,X_{fki,t}^{(\psi-1)/\psi}\right]^{\psi/(\psi-1)}$
 
@@ -425,7 +432,7 @@
   \]
 \end{frame}
 
-\begin{frame}[noframenumbering]{Appendix: Aguilar et al.\ --- Tariff Propagation}
+\begin{frame}[noframenumbering,label=tariff-propagation]{Appendix: Aguilar et al.\ ---Tariff Propagation}
   \small
   Tariffs enter as price wedges on final and intermediate goods:
   \[
@@ -446,9 +453,12 @@
   \[
     \frac{B_{k,t}}{1+i_{k,t}} + T_{k,t} + \sum_{l\neq k}\sum_i \tau_{kli,t}\,P^l_{kli,t}\!\left(C_{kli,t} + \textstyle\sum_j X_{klji,t}\right) = B_{k,t-1} + \sum_i \tau^s_{ki}\,\mathrm{MC}_{ki,t}\,Y_{ki,t}
   \]
+
+  \vfill
+  \hfill\hyperlink{production-network}{\beamerreturnbutton{Back}}
 \end{frame}
 
-\begin{frame}[noframenumbering]{Appendix: Aguilar et al.\ --- Calibration}
+\begin{frame}[noframenumbering]{Appendix: Aguilar et al.\ ---Calibration}
   \small
   \begin{columns}[T]
     \begin{column}{0.48\textwidth}
@@ -488,7 +498,7 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}[noframenumbering]{Appendix: Aguilar et al.\ --- Goods Market Clearing and GDP}
+\begin{frame}[noframenumbering]{Appendix: Aguilar et al.\ ---Goods Market Clearing and GDP}
   \small
   Market clearing:
   \[
@@ -511,7 +521,7 @@
 
 % ------ A7: EXTENSION DERIVATIONS ------
 
-\begin{frame}[noframenumbering]{Appendix: Derivation --- Wage Phillips Curve with Tax}
+\begin{frame}[noframenumbering]{Appendix: Derivation ---Wage Phillips Curve with Tax}
   \small
   Household FOC with labour income tax $\tau^w_{k,t}$:
   \[
@@ -530,7 +540,7 @@
   Tax deviation enters additively: wage-setters pass the wedge through to the pre-tax wage.
 \end{frame}
 
-\begin{frame}[noframenumbering]{Appendix: Derivation --- Price Phillips Curve with Subsidy}
+\begin{frame}[noframenumbering]{Appendix: Derivation ---Price Phillips Curve with Subsidy}
   \small
   Firm FOC with time-varying production subsidy $\tau^s_{ki,t}$:
   \[
@@ -577,7 +587,7 @@
 \begin{frame}[noframenumbering]{Appendix: Optimal Fiscal Rule (Unconstrained Budget, $\sigma>1$, $\kappa>0$)}
   \small
   \[
-    g_{k,t} = \frac{H_k}{X_k}\,y_{k,t} + \frac{J_k}{X_k}\,a_{k,t} - \frac{\theta}{\lambda_k X_k}\,\pi_{k,t} + \frac{\sigma{-}1}{(1{-}\chi)^{1/\sigma}X_k}\sum_k\mu_k\lambda_k\,\phi^\pi_{k,t}
+    g_{k,t} = \frac{H_k}{X_k}\,y_{k,t} + \frac{J_k}{X_k}\,a_{k,t} - \frac{\theta}{\lambda_k X_k}\,\pi_{k,t} + \frac{\sigma{-}1}{(1{-}\chi)^{1/\sigma}X_k}\sum_j\mu_j\lambda_j\,\phi^\pi_{j,t}
   \]
   \begingroup\scriptsize
   \begin{align*}
@@ -614,7 +624,7 @@
         \begin{itemize}
           \item Planner chooses both $\bar{G}_{k,t}$ and $\{G_{ki,t}\}$.
           \item Level and composition respond to shocks.
-          \item Benchmark: first-best fiscal stabilisation.
+          \item Unconstrained fiscal benchmark (first-best within spending instruments).
           \item Fiscal rule is \textit{absolute}: each $g_{k,t}$ set independently.
         \end{itemize}
       \end{block}
@@ -665,7 +675,7 @@
   \begin{itemize}
     \setlength{\itemsep}{6pt}
     \item The Phillips-curve approach is a \textbf{reduced-form shortcut}: it isolates the cost-push channel of taxation while preserving the existing IO structure of Aguilar et al.\ (2025).
-    \item A full Ramsey problem in a $4 \times 44$ networked model is computationally demanding---it requires solving for $K \times I$ optimal tax instruments simultaneously.
+    \item A full Ramsey problem in a $4 \times 44$ networked model is computationally demanding: it requires solving for $K \times I$ optimal tax instruments simultaneously.
     \item The \textbf{research agenda goal} is precisely to move toward the full Ramsey characterisation.  The current extensions are a tractable first step.
     \item La'O \& Tahbaz-Salehi (2024) show that even in simpler networks, the Ramsey problem has a rich structure.  Our approach builds intuition before scaling up.
   \end{itemize}
@@ -701,7 +711,7 @@
   \end{columns}
 
   \bigskip
-  \textbf{Key distinction:} our relative allocation rule operates under a \textit{fixed fiscal envelope}---a constraint absent in both papers.
+  \textbf{Key distinction:} our relative allocation rule operates under a \textit{fixed fiscal envelope}, a constraint absent in both papers.
 \end{frame}
 
 % ------ Q3: TIGHT VS LOOSE BUDGET CONSTRAINT ------
@@ -733,11 +743,11 @@
     \setlength{\itemsep}{6pt}
     \item The $4 \times 44$ structure follows Aguilar et al.\ (2025), calibrated to the \textbf{OECD ICIO 2019 tables} (Inter-Country Input-Output).
     \item 4 countries: a practical choice balancing model tractability with open-economy realism (e.g., US, EA, CN, RoW).
-    \item 44 sectors: the full ISIC Rev.~4 classification available in ICIO---no aggregation required.
+    \item 44 sectors: the full ISIC Rev.~4 classification available in ICIO (no aggregation required).
     \item \textbf{Robustness considerations:}
     \begin{itemize}
       \item Coarser aggregations (e.g., 10--15 sectors) can be tested by collapsing IO tables.
-      \item The key qualitative predictions---relative reallocation, countercyclicality---should survive aggregation.
+      \item The key qualitative predictions (relative reallocation, countercyclicality) should survive aggregation.
       \item Quantitative magnitudes (welfare gaps) are likely sensitive to granularity, as network effects depend on the density of the IO matrix.
     \end{itemize}
   \end{itemize}
@@ -857,10 +867,10 @@
     \frac{1}{\omega_{g,k}}\,\frac{\partial \mathcal{W}}{\partial g_{k,t}} = \frac{1}{\omega_{g,i}}\,\frac{\partial \mathcal{W}}{\partial g_{i,t}}
   \]
 
-  Substituting the Phillips curve $\pi_{k,t} = \lambda_k\bigl[(1{+}\varphi)\,y_{k,t} + \chi_k\,g_{k,t}\bigr] + \beta\,\mathbb{E}_t\pi_{k,t+1}$ and solving for $g_{k,t}$ in terms of $g_{i,t}$, $y_{k,t}$, $\pi_{k,t}$, $y_{i,t}$, $\pi_{i,t}$ yields the relative allocation rule.
+  Substituting the Phillips curve $\pi_{k,t} = \lambda_k\bigl[(1{+}\varphi{+}\chi_k^*)\,y_{k,t} - \chi_k^*\,g_{k,t}\bigr] + \beta\,\mathbb{E}_t\pi_{k,t+1}$ (using the resource constraint $\hat{c}_{k,t} = (\hat{y}_{k,t} - \chi_k\,g_{k,t})/(1{-}\chi_k)$) and solving for $g_{k,t}$ in terms of $g_{i,t}$, $y_{k,t}$, $\pi_{k,t}$, $y_{i,t}$, $\pi_{i,t}$ yields the relative allocation rule.
 
   \medskip
-  \textit{See Appendix A4 for the full structural coefficients.}
+  \textit{See \hyperlink{structural-coefficients}{\beamergotobutton{Structural coefficients}} for the full extended form.}
 \end{frame}
 
 

@@ -63,6 +63,14 @@ When a mistake is corrected, append a `[LEARN:category]` entry below.
 
 [LEARN:memory] Post-merge hooks prompt reflection, don't auto-append → user maintains control while building habit.
 
+## PDF & Reference Processing
+
+[LEARN:pdf] On Windows, use PyMuPDF (`import fitz`) for PDF text extraction — the Read tool's built-in PDF reader requires `pdftoppm` which is not installed. Always set `sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')` to handle academic Unicode.
+
+[LEARN:pdf] Use `glob.glob()` for filenames with special characters (umlauts, accents) — Python string literals may not match the filesystem encoding.
+
+[LEARN:references] ALWAYS check `master_supporting_docs/` BEFORE going online. The local folder contains authoritative paper copies. Only use WebSearch/WebFetch if the paper is not available locally or supplementary info is needed.
+
 ## Meta-Governance
 
 [LEARN:meta] Repository dual nature requires explicit governance: what's generic (commit) vs specific (gitignore) → prevents template pollution.

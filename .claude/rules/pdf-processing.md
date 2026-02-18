@@ -5,56 +5,59 @@ paths:
 
 # Robust PDF Processing
 
+## Local-First Principle
+
+**ALWAYS check `master_supporting_docs/supporting_papers/` and `master_supporting_docs/supporting_slides/` BEFORE searching the web.** These folders contain the authoritative copies of papers and slides. Only go online if the file is not available locally or if you need supplementary information not in the local copy.
+
+## Preferred PDF Text Extraction: PyMuPDF (fitz)
+
+This machine has **PyMuPDF** (`import fitz`) and **pypdf** installed. Use PyMuPDF for text extraction — it handles academic PDFs well and preserves structure.
+
+```python
+import fitz, sys, io, glob
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+doc = fitz.open(r'path/to/paper.pdf')
+for i in range(min(25, len(doc))):
+    text = doc[i].get_text()
+    print(f'=== PAGE {i+1} ===')
+    print(text[:3000])
+doc.close()
+```
+
+**Important notes:**
+- Always set `encoding='utf-8', errors='replace'` on stdout (Windows cp1252 fails on academic Unicode)
+- Use `glob.glob()` for filenames with special characters (e.g., umlauts: Müller)
+- Process 20-30 pages at a time to stay within output limits
+- The `Read` tool's built-in PDF reader requires `pdftoppm` which is NOT installed on this machine
+
 ## The Safe Processing Workflow
 
-**Step 1: Receive PDF Upload**
-- User uploads PDF to `master_supporting_docs/supporting_papers/` or `supporting_slides/`
-- Claude DOES NOT attempt to read it directly
+**Step 1: Check Local Files First**
+- Look in `master_supporting_docs/supporting_papers/` and `supporting_slides/`
+- Use `Glob` tool to find papers by partial name match
 
-**Step 2: Check PDF Properties**
-```bash
-pdfinfo paper_name.pdf | grep "Pages:"
-ls -lh paper_name.pdf
-```
+**Step 2: Extract Text with PyMuPDF**
+- Use the Python snippet above via Bash tool
+- Adjust page range as needed for the specific verification task
 
-**Step 3: Create Subfolder and Split**
-```bash
-mkdir -p paper_name/
+**Step 3: Process Selectively**
+- Extract key information from relevant sections
+- For claim verification: target abstract, results sections, and tables
+- Don't try to hold all pages in working memory
 
-for i in {0..9}; do
-  start=$((i*5 + 1))
-  end=$(((i+1)*5))
-  gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
-     -dFirstPage=$start -dLastPage=$end \
-     -sOutputFile="paper_name/paper_name_p$(printf '%03d' $start)-$(printf '%03d' $end).pdf" \
-     paper_name.pdf 2>/dev/null
-done
-```
-
-**Step 4: Process Chunks Intelligently**
-- Read chunks ONE AT A TIME using the Read tool
-- Extract key information from each chunk
-- Build understanding progressively
-- Don't try to hold all chunks in working memory
-
-**Step 5: Selective Deep Reading**
-- After scanning all chunks, identify the most relevant sections
-- Only read those sections in detail for slide development
-- Skip appendices, references, or less relevant sections unless needed
+**Step 4: Only Go Online If Needed**
+- If the paper is not in supporting docs, THEN use WebSearch/WebFetch
+- If you need supplementary materials or appendices not in the local PDF
 
 ## Error Handling Protocol
 
-**If a chunk fails to process:**
-1. Note the problematic chunk (e.g., "Chunk p021-025 failed")
-2. Try splitting into 1-2 page pieces
-3. If still failing, skip and document the gap
+**If PyMuPDF fails:**
+1. Check the file path (use `glob.glob()` for special characters)
+2. Try `pypdf` as fallback: `from pypdf import PdfReader`
+3. If encoding issues persist, ensure `errors='replace'` is set
 
-**If splitting fails:**
-1. Check if Ghostscript is installed: `gs --version`
-2. Try alternative: `pdftk paper.pdf burst output paper_%03d.pdf`
-3. If all else fails, ask user to upload specific page ranges manually
-
-**If memory/token issues persist:**
-1. Process only 2-3 chunks per session
-2. Focus on specific sections user identifies as most important
+**If the PDF is not in supporting docs:**
+1. Ask the user if they have the paper
+2. Search online as last resort
+3. Document what you found and where
 

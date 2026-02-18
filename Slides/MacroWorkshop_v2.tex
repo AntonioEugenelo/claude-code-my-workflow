@@ -1,0 +1,750 @@
+\documentclass[10pt,aspectratio=169]{beamer}
+
+% ============================================================
+% SHARED PREAMBLE
+% ============================================================
+\input{../Preambles/header.tex}
+
+% ============================================================
+% PRESENTATION-SPECIFIC: FOOTLINE
+% ============================================================
+\setbeamertemplate{footline}{%
+  \vskip2pt%
+  \hbox{%
+    \begin{beamercolorbox}[wd=\paperwidth,ht=2.8ex,dp=1.6ex,leftskip=1.2em,rightskip=1.2em]{footline}%
+      {\usebeamerfont{footnote}\color{oxfordgrey}%
+        A.\,Eugenelo%
+        \hfill%
+        Fiscal Policy in Production Networks%
+        \hfill%
+        \insertframenumber\,/\,\inserttotalframenumber%
+      }%
+    \end{beamercolorbox}%
+  }%
+}
+
+% ============================================================
+% METADATA
+% ============================================================
+\title[Fiscal Policy in Production Networks]{%
+  Fiscal Policy in Multi-Sector Economies\\[3pt]
+  with Production Networks}
+\author[A.\,Eugenelo]{Antonio Eugenelo}
+\institute{University of Oxford\\ Department of Economics}
+\date{Macro Workshop, February 2026}
+
+% ============================================================
+\begin{document}
+% ============================================================
+
+% ------ TITLE ------
+{
+\setbeamertemplate{footline}{}
+\begin{frame}[plain]
+  \vfill
+  \begin{beamercolorbox}[wd=\paperwidth,ht=0.45\paperheight,dp=0pt,center]{title}
+    \vskip1.5em
+    \usebeamerfont{title}\inserttitle\\[12pt]
+    \usebeamerfont{author}\insertauthor\\[4pt]
+    \usebeamerfont{institute}\insertinstitute\\[8pt]
+    \usebeamerfont{date}\insertdate
+    \vskip1em
+  \end{beamercolorbox}
+  \vfill
+\end{frame}
+}
+
+% ============================================================
+% SLIDE 1 --- MOTIVATION: THE DEBATE
+% ============================================================
+
+\begin{frame}{Motivation: Sectoral Heterogeneity and Stabilisation Policy}
+  \textbf{Question.} How important is sectoral heterogeneity for the design of stabilisation policy, and what role should fiscal instruments play?
+
+  \medskip
+  \begin{columns}[T]
+    \begin{column}{0.47\textwidth}
+      \begin{block}{Networks matter}
+        In input-output (IO) economies, intermediate-input linkages are a \textit{fundamental} driver of cross-sectoral spillovers.  Monetary policy targeting \textbf{CPI inflation} is suboptimal (Rubbo,~2023).
+      \end{block}
+    \end{column}
+    \begin{column}{0.47\textwidth}
+      \begin{block}{Fiscal policy restores divine coincidence}
+        Without IO, \textbf{optimal sectoral fiscal policy} makes zero-inflation monetary targeting approximately optimal.  Without fiscal, the standard result holds (Cox et al.,~2024).
+      \end{block}
+    \end{column}
+  \end{columns}
+
+  \medskip
+  \textbf{This talk:} recent theoretical benchmarks (La'O \& Tahbaz-Salehi, 2025; Antonova \& M\"{u}ller, 2025) show that rich fiscal instruments restore efficiency --- but under assumptions that break in realistic environments.  The gap between benchmark and reality is precisely where fiscal policy design becomes essential.
+\end{frame}
+
+% ============================================================
+% SLIDE 2 --- RUBBO (2023)
+% ============================================================
+
+\begin{frame}{Rubbo (2023): Networks, Phillips Curves, and Monetary Policy}
+  \textbf{Setup.} Multi-sector New Keynesian economy with input-output linkages and heterogeneous price stickiness.
+
+  \medskip
+  \textbf{Key mechanism:} intermediate-input propagation.  Under Cobb--Douglas production ($\psi{=}1$):
+  \begin{align*}
+    \pi_{i,t} &= \kappa_i\!\left(\widehat{\mathrm{mc}}_{i,t} - \hat{p}_{i,t}\right) + \beta\,\mathbb{E}_t\pi_{i,t+1} \\
+    \widehat{\mathrm{mc}}_{i,t} &= \alpha_i\,\hat{w}_t + \sum_j \omega_{ij}\,\hat{p}_{j,t} - a_{i,t}
+  \end{align*}
+  The IO term $\sum_j \omega_{ij}\,\hat{p}_{j,t}$ links sectoral marginal costs: sticky prices in upstream sectors distort downstream costs even when the downstream sector has flexible prices.
+
+  \smallskip
+  \begin{alertblock}{Central result}
+    \textbf{Divine coincidence fails} in IO economies.  The optimal monetary rule targets the \red{divine coincidence index}: a weighted inflation index (not CPI).  Monetary policy alone cannot close all sectoral gaps simultaneously.
+  \end{alertblock}
+\end{frame}
+
+% ============================================================
+% SLIDE 3 --- COX ET AL. (2024)
+% ============================================================
+
+\begin{frame}{Cox et al.\ (2024): Optimal Monetary and Fiscal Policies}
+  \textbf{Setup.} Multi-sector New Keynesian economy \textit{without} IO linkages.  Sectors differ in Calvo parameter $\theta^p_k$ and public-good share $\chi_k$.
+
+  \medskip
+  \textbf{Key result:} when sectoral fiscal policy is optimally conducted, zero-inflation monetary targeting is close to optimal.  The welfare approximation:
+  \[
+    \mathcal{W} \approx -\frac{1}{2}\sum_k \mu_k\left[(1{+}\varphi)\,y_{k,t}^2 + \frac{\theta(1{-}\chi_k)}{\lambda_k}\,\pi_{k,t}^2 + \chi_k^*\,(g_{k,t} - y_{k,t})^2\right]
+  \]
+
+  \medskip
+  \begin{columns}[T]
+    \begin{column}{0.47\textwidth}
+      \textbf{What they find:}
+      \begin{itemize}
+        \item Optimal policy: MP stabilises aggregates; fiscal stabilises sectors
+        \item With optimal fiscal, zero-inflation MP is near-optimal (welfare 3.1 vs.\ 2.8)
+        \item With \red{passive fiscal}, MP must target divine coincidence index (welfare 4.7 vs.\ 6.3)
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.47\textwidth}
+      \textbf{What they assume:}
+      \begin{itemize}
+        \item \red{No input-output linkages}
+        \item Linear-in-labour production
+        \item Sectoral shocks do not propagate through intermediate goods
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ============================================================
+% SLIDE 4 --- THE THEORETICAL BENCHMARK
+% ============================================================
+
+\begin{frame}{The Theoretical Benchmark: $2N$ Instruments Restore Efficiency}
+  Two recent papers establish the \textbf{polar case}: with sufficiently many fiscal instruments, production efficiency is achievable even in IO economies.
+
+  \smallskip
+  \begin{columns}[T]
+    \begin{column}{0.47\textwidth}
+      \begin{block}{La'O \& Tahbaz-Salehi (2025)}
+        \small $2N$ sector-specific taxes implement the \textbf{Ramsey optimum} (production efficiency) in multi-sector IO economies.
+        \begin{itemize}
+          \setlength{\itemsep}{2pt}
+          \item Extends Correia, Nicolini \& Teles (2008) to networks
+          \item Optimal taxes \red{independent of Calvo parameters}
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{0.47\textwidth}
+      \begin{block}{Antonova \& M\"{u}ller (2025)}
+        \small $2N$ targeted taxes replicate the \textbf{flexible-price allocation} in a Rubbo-style IO framework.
+        \begin{itemize}
+          \setlength{\itemsep}{2pt}
+          \item ``Prices move as if fully flexible''
+          \item Closed-economy, $N$-sector Calvo model
+        \end{itemize}
+      \end{block}
+    \end{column}
+  \end{columns}
+
+  \medskip
+  \textbf{Critical shared assumption:} both assume \red{flexible wages} (competitive labour market).  The restoration result relies on price-side instruments being sufficient to close all distortionary wedges.
+\end{frame}
+
+% ============================================================
+% SLIDE 5 --- THE GAP: FROM BENCHMARK TO REALITY
+% ============================================================
+
+\begin{frame}{The Gap: From Benchmark to Reality}
+  \begin{columns}[T]
+    \begin{column}{0.47\textwidth}
+      \begin{block}{Benchmark (L\&TS, A\&M)}
+        \begin{itemize}
+          \setlength{\itemsep}{4pt}
+          \item $2N$ fiscal instruments
+          \item \red{Flexible wages} (competitive labour market)
+          \item Closed economy (A\&M)
+          \item Production efficiency achievable
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{0.47\textwidth}
+      \begin{block}{Our setting (Aguilar et al.)}
+        \begin{itemize}
+          \setlength{\itemsep}{4pt}
+          \item Restricted instruments: $\tau^w_k$, $\tau^s_{ki}$
+          \item \red{Calvo wages} ($\theta^w_k = 0.75$)
+          \item Open economy ($K{=}4$ countries)
+          \item Quantitative IO ($I{=}44$ sectors)
+        \end{itemize}
+      \end{block}
+    \end{column}
+  \end{columns}
+
+  \medskip
+  \begin{alertblock}{Why staggered wages change everything}
+    L\&TS's $2N$ instruments are all price-side taxes; with flexible wages, the wage adjusts freely to clear labour misallocation.  With \textbf{Calvo wage setting}, the wage is a state variable that price-side instruments cannot directly control.  The flexible-price restoration of L\&TS and A\&M is \red{off the table}.
+  \end{alertblock}
+
+  \medskip
+  {\small \textbf{Our question:} what can \textit{restricted} fiscal instruments achieve in this richer friction environment?}
+\end{frame}
+
+% ============================================================
+% SLIDE 6 --- AGUILAR ET AL. (2025): THE FRAMEWORK
+% ============================================================
+
+\begin{frame}[label=production-network]{Aguilar et al.\ (2025): A Rubbo-Style Economy with Staggered Wages}
+  \begin{columns}[T]
+    \begin{column}{0.55\textwidth}
+      \begin{itemize}
+        \setlength{\itemsep}{4pt}
+        \item $K{=}4$ countries, $I{=}44$ sectors
+        \item Nested CES production with IO linkages (OECD ICIO)
+        \item Sector-specific Calvo pricing \textbf{+ Calvo wages} ($\theta^w_k{=}0.75$)
+        \item Country-specific Taylor rules
+      \end{itemize}
+
+      \smallskip
+      Marginal cost in sector $i$, country $k$:
+      \[
+        \widehat{\mathrm{mc}}_{ki,t} = -a_{ki,t} + \underbrace{\mathcal{M}_{ki}\alpha_{ki}\,\widehat{w}_{k,t}}_{\text{labour}} + \underbrace{\textstyle\sum_{l,j} \mathcal{M}_{ki}\omega_{klij}\,\widehat{p}_{klij,t}}_{\red{\text{IO inputs}}}
+      \]
+    \end{column}
+    \begin{column}{0.40\textwidth}
+      \centering
+      \begin{tikzpicture}[
+        node distance=1.2cm and 1.4cm,
+        sector/.style={circle, draw=oxfordblue, fill=oxfordblue!10, thick,
+                       minimum size=0.8cm, font=\footnotesize},
+        >=Stealth
+      ]
+        \node[sector] (s1) {$i$};
+        \node[sector, below right=0.8cm and 1.2cm of s1] (s2) {$j$};
+        \node[sector, below left=0.8cm and 1.2cm of s1] (s3) {$m$};
+        \draw[->, thick, oxfordblue] (s1) -- node[right, font=\scriptsize] {$\omega_{kkij}$} (s2);
+        \draw[->, thick, oxfordblue] (s2) -- node[below, font=\scriptsize] {$\omega_{kkjm}$} (s3);
+        \draw[->, thick, oxfordblue] (s3) -- node[left, font=\scriptsize] {$\omega_{kkmi}$} (s1);
+        \draw[->, thick, oxfordaccent] ([xshift=-0.6cm, yshift=0.6cm]s3.north west) -- node[left, font=\scriptsize, text=oxfordaccent] {$G_{km}$} (s3);
+      \end{tikzpicture}
+
+      \smallskip
+      {\footnotesize IO network with fiscal entry point}
+    \end{column}
+  \end{columns}
+
+  \medskip
+  {\small This is exactly the IO structure Rubbo identifies as breaking divine coincidence, now at $K{\times}I$ scale --- with the additional complication of staggered wages (\hyperlink{tariff-propagation}{\beamergotobutton{Details}}).}
+\end{frame}
+
+% ============================================================
+% SLIDE 6 --- OUR CONTRIBUTION: FISCAL INSTRUMENTS
+% ============================================================
+
+\begin{frame}{Our Contribution: Restricted Fiscal Instruments in the Network}
+  We extend Aguilar et al.\ with two instruments --- a \textbf{restricted subset} of L\&TS's $2N$ instrument set.
+
+  \medskip
+  \textbf{Wage Phillips curve} --- country-level labour income tax $\tau^w_k$:
+  \[
+    \pi_{wk,t} = \kappa_{wk}\Big(\sigma\,\hat{c}_{k,t} + \varphi\,\hat{n}_{k,t} - \hat{w}_{k,t} + \red{\hat{\tau}^w_{k,t}}\Big) + \beta\,\mathbb{E}_t\pi_{wk,t+1} + u^w_{k,t}
+  \]
+  {\small $\to$ Addresses \red{wage rigidity} that L\&TS and A\&M do not face (flexible wages).}
+
+  \medskip
+  \textbf{Price Phillips curve} --- sector-specific production subsidy $\tau^s_{ki}$:
+  \[
+    \pi_{ki,t} = \kappa_{ki}\Big(\widehat{\mathrm{mc}}_{ki,t} - \hat{p}_{ki,t} \;\red{-\; \hat{\tau}^s_{ki,t}}\Big) + \beta\,\mathbb{E}_t\pi_{ki,t+1} + u^p_{ki,t}
+  \]
+  {\small $\to$ Same channel as A\&M, but \red{fewer degrees of freedom} ($K{+}K{\times}I$ vs.\ $2K{\times}I$).}
+
+  \medskip
+  \textbf{Key distinction:} we operate where the flexible-price restoration of L\&TS and A\&M is impossible.  Both instruments propagate through the IO network that makes monetary policy insufficient.
+\end{frame}
+
+% ============================================================
+% SLIDE 7 --- RESEARCH AGENDA
+% ============================================================
+
+\begin{frame}{Research Agenda}
+  \textbf{Goal:} what can restricted fiscal instruments achieve when flexible-price restoration is off the table?
+
+  \medskip
+  \begin{enumerate}
+    \setlength{\itemsep}{6pt}
+    \item \textbf{Sector-specific government purchases} in goods market clearing:
+    \[
+      Y_{ki,t} = \sum_l C_{lki,t} + \sum_l\sum_j X_{lkji,t} + \red{G_{ki,t}}
+    \]
+
+    \item \textbf{Optimal fiscal rule} in the networked economy with staggered wages: characterise how IO structure and wage rigidity jointly shape optimal spending allocation.
+
+    \item \textbf{The critical test:} do the L\&TS/A\&M efficiency results survive under (a)~restricted instruments, (b)~Calvo wage setting, (c)~open-economy spillovers?
+
+    \item \textbf{Two policy regimes:} fully endogenous spending (level + composition) vs.\ fixed aggregate budget (composition only).  Quantify the welfare gap relative to the $2N$-instrument benchmark.
+  \end{enumerate}
+\end{frame}
+
+% ============================================================
+% SLIDE 8 --- SUMMARY + THANK YOU
+% ============================================================
+
+\begin{frame}{Summary}
+  \begin{enumerate}
+    \setlength{\itemsep}{8pt}
+    \item \textbf{The polar case:} La'O \& Tahbaz-Salehi (2025) and Antonova \& M\"{u}ller (2025) show that $2N$ fiscal instruments restore production efficiency in multi-sector IO economies --- under \red{flexible wages}.
+
+    \item \textbf{The break:} Aguilar et al.'s \textbf{Calvo wage setting} fundamentally changes the problem.  Price-side instruments alone cannot close wage-rigidity-induced misallocation.  The benchmark restoration result is off the table.
+
+    \item \textbf{Our agenda:} test what \textit{restricted} fiscal instruments (labour tax + production subsidy) can achieve in this richer environment --- a quantitative open-economy IO model with staggered wages.
+  \end{enumerate}
+
+  \bigskip
+  \textbf{Conjecture:} restricted instruments cannot fully restore production efficiency, but sectoral \textit{composition} of spending will matter more than its aggregate level.
+\end{frame}
+
+% ============================================================
+% THANK YOU
+% ============================================================
+{
+\setbeamertemplate{footline}{}
+\begin{frame}[plain]
+  \vfill
+  \begin{center}
+    {\Large\color{oxfordblue}\textbf{Thank you}}
+  \end{center}
+  \vfill
+\end{frame}
+}
+
+% ============================================================
+%
+%                        APPENDIX
+%
+% ============================================================
+\appendix
+
+% ------ A1: RELATED LITERATURE ------
+
+\begin{frame}[noframenumbering]{Appendix: Related Literature}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Production Networks \& NK}
+        \begin{itemize}
+          \item Acemoglu et al.\ (2012)
+          \item Baqaee \& Farhi (2020, 2024)
+          \item Pasten, Schoenle \& Weber (2020)
+          \item \textbf{Rubbo (2023)}
+          \item La'O \& Tahbaz-Salehi (2024)
+        \end{itemize}
+      \end{block}
+      \vspace{4pt}
+      \begin{block}{Tariffs \& Open-Economy NK}
+        \begin{itemize}
+          \item Gal\'{i} \& Monacelli (2005)
+          \item Comin \& Johnson (2023)
+          \item \textbf{Aguilar et al.\ (2025)}
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Fiscal Policy in Disaggregated Economies}
+        \begin{itemize}
+          \item Aoki (2001)
+          \item \textbf{La'O \& Tahbaz-Salehi (2025, WP)}
+          \item \textbf{Antonova \& M\"{u}ller (2025)}
+          \item \textbf{Cox et al.\ (2024)}
+        \end{itemize}
+      \end{block}
+      \vspace{4pt}
+      \begin{block}{Fiscal--Price Effects (Empirical)}
+        \begin{itemize}
+          \item Nekarda \& Ramey (2020)
+          \item Ben Zeev \& Pappa (2017)
+        \end{itemize}
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ------ A2: RUBBO (2023) IN DETAIL ------
+
+\begin{frame}[noframenumbering]{Appendix: Rubbo (2023) --- Model Detail}
+  \small
+  \textbf{Network Phillips curve.}  Under Cobb--Douglas production ($\psi = 1$) and Calvo pricing:
+  \[
+    \boldsymbol{\pi}_t = \boldsymbol{\kappa}\,\boldsymbol{\Psi}\,\hat{\mathbf{w}}_t + \beta\,\mathbb{E}_t\boldsymbol{\pi}_{t+1}
+  \]
+  where $\boldsymbol{\Psi} = (\mathbf{I} - \boldsymbol{\Omega})^{-1}$ is the Leontief inverse and $\boldsymbol{\kappa} = \mathrm{diag}(\kappa_1,\ldots,\kappa_N)$.  (The general CES case involves additional relative-price terms.)
+
+  \medskip
+  \textbf{Key insight:} the Leontief inverse maps wage costs into sectoral inflation.  A sector with flexible prices but upstream sticky suppliers still experiences inflation distortions through $\boldsymbol{\Psi}$.
+
+  \medskip
+  \textbf{Optimal monetary policy (divine coincidence index):}
+  \[
+    \sum_i \tilde{\mu}_i\,\hat{y}_{i,t} = 0
+    \qquad\text{where weights } \tilde{\mu}_i \text{ depend on sales shares } \lambda_i \text{ and price adjustment frequencies}
+  \]
+  Equivalently, the planner targets a specific weighted inflation index (the ``divine coincidence index''), not CPI.  The weights over-weight sectors that are: (i)~large (high Domar weight $\lambda_i$), (ii)~sticky (low price adjustment frequency), and (iii)~upstream (high influence through the Leontief inverse).
+
+  \medskip
+  \textbf{Failure of zero inflation:}  targeting $\pi_{i,t} = 0 \;\forall\, i$ requires all marginal cost gaps to be zero.  With IO linkages, this is generically impossible because upstream price distortions propagate to downstream costs.
+\end{frame}
+
+% ------ A3: COX ET AL. (2024) IN DETAIL ------
+
+\begin{frame}[noframenumbering]{Appendix: Cox et al.\ (2024): Key Quantitative Results}
+  \small
+  \textbf{Model.}  $N$ sectors, no IO.  Production: $Y_{k,t} = A_{k,t}\,N_{k,t}$.  Calvo pricing ($\theta^p_k$), government share $\chi_k$.
+
+  \medskip
+  \textbf{Four policy regimes} (Table 3, baseline U.S.\ calibration, welfare loss):
+
+  \smallskip
+  \begin{center}
+  \begin{tabular}{lcc}
+    & Optimal fiscal & Passive fiscal ($\tilde{f}_{kt}=0$) \\
+    \hline
+    Optimal MP & 2.8 & 4.7 \\
+    Zero-inflation MP & 3.1 & 6.3 \\
+  \end{tabular}
+  \end{center}
+
+  \smallskip
+  \textbf{Interpretation:} with optimal sectoral fiscal, zero-inflation MP is approximately optimal (3.1 vs.\ 2.8).  Without fiscal, the standard result holds: optimal MP must target the divine coincidence index (4.7 vs.\ 6.3).
+
+  \medskip
+  \textbf{Critical assumption:} without IO, sectoral marginal costs depend only on own wages and productivity.  There is \textit{no channel} for upstream price distortions to affect downstream sectors, precisely the mechanism Rubbo identifies as first-order.
+\end{frame}
+
+% ------ A4: WELFARE WITH SIGMA != 1 ------
+
+\begin{frame}[noframenumbering]{Appendix: Welfare with $\sigma \neq 1$ and $\kappa \neq 0$}
+  When CRRA preferences and government-demand pass-through are active:
+  \small
+  \begin{align*}
+    -\frac{1}{2}\sum_k\mu_k\Biggl(&
+      (1{+}\varphi)\,y_{k,t}^2
+      + \frac{\theta(1{-}\chi_k)}{\lambda_k}\,\pi_{k,t}^2
+      + \chi_k^*\,(g_{k,t}{-}y_{k,t})^2 \\
+    & + \red{(\sigma{-}1)}\Biggl[
+        (1{-}\chi_k)\,\omega_{c,k}\!\left(\frac{y_{k,t}}{1{-}\chi_k} - \chi_k^*\,g_{k,t}\right)^{\!2}
+        + \omega_{g,k}\,\chi_k\,g_{k,t}^2
+      \Biggr]\Biggr)
+  \end{align*}
+
+  \begin{itemize}
+    \item The $\sigma{-}1$ term introduces an \textbf{insurance motive}: the planner uses sectoral fiscal policy to hedge against aggregate risk.
+    \item $\kappa > 0$ steepens Phillips curves ($\lambda'_k > \lambda_k$), making fiscal policy a supply-side instrument.
+  \end{itemize}
+\end{frame}
+
+% ------ A5: STRUCTURAL COEFFICIENTS ------
+
+\begin{frame}[noframenumbering,label=structural-coefficients]{Appendix: Relative Allocation Rule --- Structural Coefficients}
+  \small
+  Under exogenous $\bar{G}_t$ (with $\sigma=1$, $\kappa=0$):
+  \begingroup\footnotesize
+  \begin{align*}
+    g_{k,t} \;&=\; \tfrac{1{-}\chi_k}{1{-}\chi_i}\biggl(\tfrac{1{+}\lambda_i{+}\varphi\lambda_i}{1{+}\lambda_i{+}\varphi\lambda_i(1{-}\chi_i)}\biggr) \biggl(\tfrac{\omega_{g,k}}{\omega_{g,i}}\biggr)^{\!\rho} \biggl(\tfrac{1{+}\lambda_k{+}\varphi\lambda_k}{1{+}\lambda_k{+}\varphi\lambda_k(1{-}\chi_k)}\biggr)^{\!-1} g_{i,t} \\
+    &\quad -\; \tfrac{\varphi\,y_{k,t}}{1{+}\lambda_k{+}\varphi\lambda_k}
+    \;-\; \tfrac{\theta\,\varphi\,(1{-}\chi_k)\,\pi_{k,t}}{1{+}\lambda_k{+}\varphi\lambda_k} \\
+    &\quad +\; \tfrac{1{-}\chi_k}{1{-}\chi_i}\biggl(\tfrac{\omega_{g,k}}{\omega_{g,i}}\biggr)^{\!\rho}
+    \biggl(\tfrac{1{+}\lambda_k{+}\varphi\lambda_k}{1{+}\lambda_k{+}\varphi\lambda_k(1{-}\chi_k)}\biggr)^{\!-1} \\
+    &\qquad \times\biggl(
+      \tfrac{\varphi\,y_{i,t}}{1{+}\lambda_i{+}\varphi\lambda_i(1{-}\chi_i)}
+      + \tfrac{\theta\,\varphi\,(1{-}\chi_i)\,\pi_{i,t}}{1{+}\lambda_i{+}\varphi\lambda_i(1{-}\chi_i)}
+    \biggr)
+  \end{align*}
+  \endgroup
+
+  $\omega_{g,k}$: weight of sector $k$ in the government Cobb--Douglas aggregator.\quad $\rho$: CES elasticity of public-good bundle.
+\end{frame}
+
+% ------ A6: AGUILAR HOUSEHOLD ------
+
+\begin{frame}[noframenumbering]{Appendix: Aguilar et al.\ ---Household Problem}
+  \small
+  Per-period utility: $U_t = \bigl(C_{k,t}^{1-\sigma}/(1{-}\sigma) - \int_0^1 \mathcal{N}_{gk,t}^{1+\varphi}/(1{+}\varphi)\,dg\bigr)Z_{k,t}$
+
+  \medskip
+  Consumption nested CES (energy/non-energy, domestic/foreign):
+  \[
+    C_{k,t} = \left[\widetilde{\beta}_k^{1/\gamma}\,C_{kE,t}^{(\gamma-1)/\gamma} + (1{-}\widetilde{\beta}_k)^{1/\gamma}\,C_{kM,t}^{(\gamma-1)/\gamma}\right]^{\gamma/(\gamma-1)}
+  \]
+
+  Euler equations:
+  \begin{align*}
+    C_{k,t}^{-\sigma} &= \beta\,\mathbb{E}_t\,C_{k,t+1}^{-\sigma}\,\frac{1+i_{k,t}}{1+\pi_{kC,t+1}}\,\frac{Z_{k,t+1}}{Z_{k,t}} \\[2pt]
+    i_{k,t} - i_{K,t} &= \mathbb{E}_t\Delta e_{kK,t+1} - \gamma_*\,\mathrm{nfa}_{k,t} + \varepsilon^e_{kK,t} \qquad\text{(UIP)}
+  \end{align*}
+
+  Calvo wage setting yields:
+  \[
+    \pi_{wk,t} = \kappa_{wk}\bigl(\sigma\hat{c}_{k,t} + \varphi\hat{n}_{k,t} - \hat{w}_{k,t}\bigr) + \beta\,\mathbb{E}_t\pi_{wk,t+1} + u^w_{k,t}
+  \]
+\end{frame}
+
+% ------ A7: AGUILAR FIRM ------
+
+\begin{frame}[noframenumbering]{Appendix: Aguilar et al.\ ---Firm Problem}
+  \small
+  CES production: $Y_{ki,f,t} = A_{ki,t}\!\left[\widetilde{\alpha}_{ki}^{1/\psi}\,N_{fki,t}^{(\psi-1)/\psi} + \widetilde{\vartheta}_{ki}^{1/\psi}\,X_{fki,t}^{(\psi-1)/\psi}\right]^{\psi/(\psi-1)}$
+
+  \medskip
+  Intermediate bundle mirrors the household CES nesting (energy/non-energy, domestic/foreign).
+
+  \medskip
+  Log-linearised marginal cost:
+  \[
+    \widehat{\mathrm{mc}}_{ki,t} = -a_{ki,t} + \mathcal{M}_{ki}\alpha_{ki}\,\widehat{w}_{k,t} + \sum_{l=1}^K\sum_{j=1}^I \mathcal{M}_{ki}\omega_{klij}\,\widehat{p}_{klij,t}
+  \]
+  where $\alpha_{ki}$: labour share, $\omega_{klij}$: IO expenditure share, $\mathcal{M}_{ki}$: steady-state markup.
+
+  \medskip
+  Calvo pricing yields:
+  \[
+    \pi_{ki,t} = \kappa_{ki}\bigl(\widehat{\mathrm{mc}}_{ki,t} - \widehat{p}_{ki,t}\bigr) + \beta\,\mathbb{E}_t\pi_{ki,t+1} + u^p_{ki,t}
+    \qquad
+    \kappa_{ki} = \frac{(1-\theta^p_{ki})(1-\beta\theta^p_{ki})}{\theta^p_{ki}}
+  \]
+\end{frame}
+
+% ------ A8: TARIFF PROPAGATION ------
+
+\begin{frame}[noframenumbering,label=tariff-propagation]{Appendix: Aguilar et al.\ ---Tariff Propagation}
+  \small
+  Tariffs enter as price wedges on final and intermediate goods:
+  \[
+    P_{k,l,i,t} = (1+\tau_{k,l,i,t})\,\widetilde{P}_{l,k,i,t}
+  \]
+
+  \textbf{Propagation:}
+  \begin{enumerate}
+    \setlength{\itemsep}{4pt}
+    \item Tariff on country~$l$ raises input prices $\widehat{p}_{klij,t}$ for domestic sectors sourcing from sector~$j$ in~$l$.
+    \item Higher input costs raise $\widehat{\mathrm{mc}}_{ki,t}$, feeding into $\pi_{ki,t}$.
+    \item Cost increases cascade downstream through the IO network.
+    \item Tariff revenue accrues to the government; currently rebated lump-sum.
+  \end{enumerate}
+
+  \medskip
+  Government budget constraint:
+  \begin{multline*}
+    \frac{B_{k,t}}{1+i_{k,t}} + T_{k,t} + \sum_{l\neq k}\sum_i \tau_{kli,t}\,P^l_{kli,t}\!\left(C_{kli,t} + \textstyle\sum_j X_{klji,t}\right) \\
+    = B_{k,t-1} + \sum_i \tau^s_{ki,t}\,\mathrm{MC}_{ki,t}\,Y_{ki,t}
+  \end{multline*}
+
+  \vfill
+  \hfill\hyperlink{production-network}{\beamerreturnbutton{Back}}
+\end{frame}
+
+% ------ A9: CALIBRATION ------
+
+\begin{frame}[noframenumbering]{Appendix: Aguilar et al.\ ---Calibration}
+  \small
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \textbf{Households}
+      \begin{itemize}
+        \item $\beta=0.99$, $\sigma=1$, $\varphi=1$
+        \item Energy/non-energy elast.\ $\gamma=0.4$
+        \item Trade elasticity $\delta=1$
+        \item Calvo wage $\theta^w_k=0.75$
+        \item Consumption shares from OECD ICIO (2019)
+      \end{itemize}
+
+      \medskip
+      \textbf{Monetary policy}
+      \begin{itemize}
+        \item $\rho_r=0.7$, $\phi_\pi=1.5$, $\phi_y=0.125$
+        \item Target: headline inflation
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \textbf{Firms}
+      \begin{itemize}
+        \item Labour/input elast.\ $\psi=0.5$
+        \item Energy/non-energy elast.\ $\phi=0.4$
+        \item Trade elasticity $\mu=1$
+        \item IO shares from OECD ICIO (2019)
+        \item Markups from Eurostat Figaro
+        \item Calvo prices from ECB PRISMA
+      \end{itemize}
+
+      \medskip
+      \textbf{Tariff shocks}
+      \begin{itemize}
+        \item $\rho^\tau=0.96$, $\sigma^\tau=1$
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ------ A10: DERIVATION --- WAGE PC WITH TAX ------
+
+\begin{frame}[noframenumbering]{Appendix: Derivation ---Wage Phillips Curve with Tax}
+  \small
+  Household FOC with labour income tax $\tau^w_{k,t}$:
+  \[
+    \sum_{l=0}^{\infty}(\beta\theta^w_k)^l\,\mathbb{E}_t\!\left[N_{k,t+l|t}\,C_{k,t+l|t}^{-\sigma}\!\left(\frac{(1{-}\tau^w_{k,t+l})\,W^*_{k,t}}{P_{kC,t+l}} - \mathcal{M}_{wk,t}\,\mathrm{MRS}_{k,t+l|t}\right)\right] = 0
+  \]
+
+  Log-linearised reset wage:
+  \[
+    w^*_{k,t} = (1{-}\beta\theta^w_k)\sum_{l=0}^{\infty}(\beta\theta^w_k)^l\,\mathbb{E}_t\!\left[\mathrm{mrs}_{t+l|t} + \mu^n_{wk,t+l} + p_{kC,t+l} + \hat{\tau}^w_{k,t+l}\right]
+  \]
+
+  Calvo aggregation ($\pi_{wk,t} = w_{k,t} - w_{k,t-1}$):
+  \[
+    \pi_{wk,t} = \kappa_{wk}\bigl(\sigma\hat{c}_{k,t} + \varphi\hat{n}_{k,t} - \hat{w}_{k,t} + \hat{\tau}^w_{k,t}\bigr) + \beta\,\mathbb{E}_t\pi_{wk,t+1} + u^w_{k,t}
+  \]
+  Tax deviation enters additively: wage-setters pass the wedge through to the pre-tax wage.
+\end{frame}
+
+% ------ A11: DERIVATION --- PRICE PC WITH SUBSIDY ------
+
+\begin{frame}[noframenumbering]{Appendix: Derivation ---Price Phillips Curve with Subsidy}
+  \small
+  Firm FOC with time-varying production subsidy $\tau^s_{ki,t}$:
+  \[
+    \sum_{l=0}^{\infty}(\beta\theta^p_{ki})^l\,\mathbb{E}_t\!\left[\Lambda_{t,t+l}\,Y_{ki,t+l|t}\!\left(P^*_{ki,t} - \mathcal{M}_{pk,t+l}\,(1{-}\tau^s_{ki,t+l})\,\mathrm{MC}^n_{ki,t+l|t}\right)\right] = 0
+  \]
+
+  Log-linearised reset price:
+  \[
+    p^*_{ki,t} = (1{-}\beta\theta^p_{ki})\sum_{l=0}^{\infty}(\beta\theta^p_{ki})^l\,\mathbb{E}_t\!\left[\mathrm{mc}^n_{ki,t+l|t} + \mu^n_{pki,t+l} - \hat{\tau}^s_{ki,t+l}\right]
+  \]
+
+  Calvo aggregation ($\pi_{ki,t} = p_{ki,t} - p_{ki,t-1}$):
+  \[
+    \pi_{ki,t} = \kappa_{ki}\bigl(\widehat{\mathrm{mc}}_{ki,t} - \hat{p}_{ki,t} - \hat{\tau}^s_{ki,t}\bigr) + \beta\,\mathbb{E}_t\pi_{ki,t+1} + u^p_{ki,t}
+  \]
+  Subsidy increase lowers effective marginal cost $\to$ disinflationary cost-push.
+\end{frame}
+
+% ------ A12: Q&A SLIDES ------
+
+\begin{frame}[noframenumbering]{Q\&A: Why Not Derive the Ramsey Problem Directly?}
+  \begin{block}{The question}
+    Why modify Phillips curves with fiscal instruments rather than solving a full Ramsey taxation problem?
+  \end{block}
+
+  \medskip
+  \begin{itemize}
+    \setlength{\itemsep}{6pt}
+    \item The Phillips-curve approach is a \textbf{reduced-form shortcut}: it isolates the cost-push channel of taxation while preserving the existing IO structure of Aguilar et al.\ (2025).
+    \item A full Ramsey problem in a $4 \times 44$ networked model is computationally demanding: it requires solving for $K \times I$ optimal tax instruments simultaneously.
+    \item The \textbf{research agenda goal} is precisely to move toward the full Ramsey characterisation.  The current extensions are a tractable first step.
+    \item La'O \& Tahbaz-Salehi (2025) show that even in simpler networks, the Ramsey problem has a rich structure --- $2N$ instruments implement production efficiency.  Our approach builds intuition before scaling up.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[noframenumbering]{Q\&A: How Does This Relate to Antonova \& M\"{u}ller (2025)?}
+  \begin{block}{The question}
+    Antonova \& M\"{u}ller already study fiscal policy in Rubbo's IO framework.  What is your contribution?
+  \end{block}
+
+  \medskip
+  \begin{columns}[T]
+    \begin{column}{0.47\textwidth}
+      \textbf{Antonova \& M\"{u}ller (2025):}
+      \begin{itemize}
+        \setlength{\itemsep}{3pt}
+        \item $2N$ targeted taxes replicate flexible-price allocation
+        \item \red{Flexible wages} (competitive labour market)
+        \item Closed-economy framework
+        \item The \textbf{polar case}: sufficient instruments + simple frictions
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.47\textwidth}
+      \textbf{Our contribution:}
+      \begin{itemize}
+        \setlength{\itemsep}{3pt}
+        \item Restricted instruments ($\tau^w_k + \tau^s_{ki}$)
+        \item \red{Calvo wages} ($\theta^w_k = 0.75$)
+        \item Quantitative open economy ($K{\times}I$)
+        \item What can restricted instruments achieve?
+      \end{itemize}
+    \end{column}
+  \end{columns}
+
+  \bigskip
+  \textbf{Key distinction:} A\&M establish the polar case (flexible-price restoration with $2N$ instruments and flexible wages).  We test what restricted instruments can achieve when staggered wages make that restoration impossible.
+\end{frame}
+
+\begin{frame}[noframenumbering]{Q\&A: Relation to La'O \& Tahbaz-Salehi}
+  \begin{block}{The question}
+    La'O \& Tahbaz-Salehi have two relevant papers.  How do they relate to your work?
+  \end{block}
+
+  \smallskip
+  \small
+  \begin{columns}[T]
+    \begin{column}{0.47\textwidth}
+      \textbf{Econometrica (2024):} optimal \textit{monetary} policy in production networks; network structure shapes the optimal inflation target.
+
+      \smallskip
+      \textbf{``Missing Tax Instruments'' (2025 WP):}
+      \begin{itemize}
+        \setlength{\itemsep}{2pt}
+        \item $2N$ taxes implement Ramsey optimum (production efficiency)
+        \item Optimal taxes \red{independent of Calvo parameters}
+        \item Extends Correia, Nicolini \& Teles (2008) to IO
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.47\textwidth}
+      \textbf{Our contribution:}
+      \begin{itemize}
+        \setlength{\itemsep}{2pt}
+        \item Restricted instruments ($\tau^w_k + \tau^s_{ki}$, not $2N$)
+        \item \red{Calvo wages} break their flexible-wage assumption
+        \item Quantitative open economy ($K \times I$)
+        \item Their Ramsey optimum is our benchmark
+      \end{itemize}
+    \end{column}
+  \end{columns}
+
+  \smallskip
+  \textbf{Key distinction:} L\&TS provide the theoretical ceiling.  We ask how far restricted instruments can go when wage rigidity makes that ceiling unattainable.
+\end{frame}
+
+\begin{frame}[noframenumbering]{Q\&A: Why Not Just Use $2N$ Instruments?}
+  \begin{block}{The question}
+    La'O \& Tahbaz-Salehi show $2N$ taxes implement production efficiency.  Why not use them?
+  \end{block}
+
+  \small
+  \begin{enumerate}
+    \setlength{\itemsep}{4pt}
+    \item \textbf{Instrument restriction:} $2N$ sector-specific taxes require the government to target each sector individually.  In practice, labour income taxes are set at \textit{country level} ($\tau^w_k$).  Our instrument set ($K + K{\times}I$) is a strict subset of $2N$.
+
+    \item \textbf{Staggered wages:} L\&TS and A\&M assume \textbf{flexible wages}.  With Calvo wage setting ($\theta^w_k = 0.75$), wage-rigidity misallocation creates distortions that \textit{no price-side taxes} can address.
+
+    \item \textbf{Open economy:} L\&TS study a closed economy.  Cross-border IO linkages and exchange rate dynamics introduce additional channels absent from the benchmark.
+  \end{enumerate}
+
+  \smallskip
+  {\small \textbf{Bottom line:} the $2N$-instrument result is the polar case.  We study the realistic setting where that ceiling is unattainable.}
+\end{frame}
+
+\end{document}
