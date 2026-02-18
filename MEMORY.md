@@ -78,3 +78,7 @@ When a mistake is corrected, append a `[LEARN:category]` entry below.
 [LEARN:meta] Dogfooding principles must be enforced: plan-first, spec-then-plan, quality gates, session logs → we follow our own guide.
 
 [LEARN:meta] Template development work (building infrastructure, docs) doesn't create session logs in quality_reports/ → those are for user work (slides, analysis), not meta-work. Keeps template clean for users who fork.
+
+## Verification & Review
+
+[LEARN:verification] After EVERY successful compilation of slides (.tex or .qmd), the adversarial review loop MUST run automatically — never present work as "done" without a scored review report. Previous mistake: compiled slides, ran reviews manually without the orchestrator loop, and missed issues. The loop is: review → score → fix → recompile → re-review → re-score → loop until ≥ 90/100.

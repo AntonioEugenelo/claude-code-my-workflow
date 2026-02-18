@@ -22,6 +22,26 @@ paths:
 1. Compile with xelatex and check for errors
 2. Open the PDF to verify figures render
 3. Check for overfull hbox warnings
+4. **MANDATORY: Run adversarial review loop** (see below)
+
+## Adversarial Review Loop (NON-NEGOTIABLE)
+
+**After EVERY successful compilation of a `.tex` or `.qmd` file, the agent MUST run the full adversarial review loop as defined in `orchestrator-protocol.md`.** This is not optional. Skipping this step is a protocol violation.
+
+### The Loop:
+1. **REVIEW** — Run all applicable review agents (proofreader, slide-auditor, pedagogy-reviewer, domain-reviewer, tikz-reviewer if TikZ present)
+2. **SCORE** — Compute quality score per `quality-gates.md` rubrics
+3. **FIX** — Apply fixes for any CRITICAL or MAJOR issues found
+4. **RE-COMPILE** — Verify fixes compile cleanly
+5. **RE-REVIEW** — Run review agents again on the fixed file
+6. **RE-SCORE** — Confirm score ≥ 90/100
+7. **LOOP** — If score < 90, repeat from step 3 (max 5 rounds)
+8. **REPORT** — Save scored report to `quality_reports/`
+
+### Exit Conditions:
+- Score ≥ 90 → present report to user with remaining recommendations
+- 5 rounds exhausted → present report with all remaining issues listed
+- **NEVER present work as "done" without a scored review report**
 
 ## For TikZ Diagrams in HTML/Quarto:
 1. Browsers **cannot** display PDF images inline — ALWAYS convert to SVG

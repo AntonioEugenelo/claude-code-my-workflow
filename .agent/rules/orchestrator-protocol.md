@@ -1,5 +1,8 @@
 # Orchestrator Protocol: Contractor Mode
 
+> [!CAUTION]
+> **The adversarial review loop (Steps 3–6) is NON-NEGOTIABLE.** After ANY successful compilation of slides (.tex or .qmd), the agent MUST run the full review-fix-score loop before presenting work as complete. Skipping the loop is a protocol violation. See `verification-protocol.md` for enforcement details.
+
 **After a plan is approved, the orchestrator takes over autonomously.**
 
 ## The Loop

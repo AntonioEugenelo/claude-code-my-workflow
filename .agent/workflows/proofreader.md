@@ -40,6 +40,21 @@ Review the specified file thoroughly and produce a detailed report of all issues
 - Claims without citations
 - Citations pointing to the wrong paper
 - Verify that citation keys match the intended paper in the bibliography file
+- **Disambiguation:** When two different papers share the same author-year (e.g., Cox et al. 2024a vs 2024b), flag if the slides do not disambiguate
+
+### 6. BEAMER-SPECIFIC PITFALLS (CRITICAL — .tex files only)
+- **Stray `\\` inside itemize/enumerate:** `\\` inside `\item` forces unintended line breaks and can garble text
+- **`\\` before `$`:** This escapes the dollar sign, printing a literal `$` instead of entering math mode. Search for `\\\$` patterns.
+- **Missing shock/error terms:** When an equation appears in a main slide AND in an appendix derivation, both must contain the same terms (or the main slide must explicitly note "shock terms omitted for clarity")
+- **`\begingroup\small` without `\endgroup`:** Check every `\begingroup` has a matching `\endgroup`
+- **Orphaned hyperlinks:** Every `\hyperlink{label}` must have a corresponding `label=label` on some frame
+- **Inconsistent equation numbering:** If some equations are `\[...\]` and others `\begin{align*}`, ensure the choice is consistent within the same slide
+
+### 7. CROSS-SLIDE CONSISTENCY
+- Same equation appearing on multiple slides must be identical (or differences flagged)
+- Notation introduced on slide N must match all subsequent uses
+- **Paper names and dates** must be consistent throughout (e.g., don't switch between "La'O & Tahbaz-Salehi (2025)" and "L&TS (2024)")
+- Abbreviations (L&TS, A&M) must be defined before first use
 
 ## Report Format
 
@@ -55,8 +70,21 @@ For each issue found, provide:
 - **Severity:** [High / Medium / Low]
 ```
 
+## Scoring (aligned with quality-gates.md)
+
+At the end of the report, compute a score starting from 100:
+
+| Severity | Deduction per issue |
+|----------|--------------------|
+| Critical (wrong math, garbled output, `\\$` typo) | -10 |
+| Major (missing citation, notation inconsistency, disambiguation) | -5 |
+| Medium (awkward phrasing, missing context, optional terms omitted) | -2 |
+| Minor (style preference, could be slightly better) | -1 |
+
+**Threshold:** Score ≥ 90 to pass. If < 90, the orchestrator loop must fix issues and re-review.
+
 ## Save the Report
 
-Save to `quality_reports/[FILENAME_WITHOUT_EXT]_report.md`
+Save to `quality_reports/[FILENAME_WITHOUT_EXT]_proofread_report.md`
 
-For `.qmd` files, append `_qmd` to the name: `quality_reports/[FILENAME]_qmd_report.md`
+For `.qmd` files, append `_qmd` to the name: `quality_reports/[FILENAME]_qmd_proofread_report.md`

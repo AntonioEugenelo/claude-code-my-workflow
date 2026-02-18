@@ -72,6 +72,9 @@ For every claim attributed to a specific paper:
 - [ ] Is the result attributed to the **correct paper**?
 - [ ] Is the theorem/proposition number correct (if cited)?
 - [ ] Are "X (Year) show that..." statements actually things that paper shows?
+- [ ] **Disambiguation:** Are same-year papers by overlapping author groups clearly distinguished? (e.g., "Cox et al. (2024a)" vs "Cox et al. (2024b)" or descriptive labels like "Big G")
+- [ ] **Quantitative claims:** Are specific numbers (e.g., ">35%", "welfare loss 3.1") traceable to a specific table/figure in the cited paper?
+- [ ] **Scope accuracy:** When citing a result, does the slide correctly characterise the paper's assumptions? (e.g., don't say "X show Y" if X show Y only under assumption Z that the slide omits)
 
 **Cross-reference with:**
 - The project bibliography file
@@ -169,6 +172,20 @@ Save report to `quality_reports/[FILENAME_WITHOUT_EXT]_substance_review.md`:
 ## Positive Findings
 [2-3 things the deck gets RIGHT — acknowledge rigor where it exists]
 ```
+
+---
+
+## Scoring (aligned with quality-gates.md)
+
+At the end of the report, compute a score starting from 100:
+
+| Severity | Deduction per issue |
+|----------|--------------------|
+| Critical (math error, wrong attribution, misleading claim) | -15 |
+| Major (missing assumption, scope inaccuracy, undisambiguated citation) | -5 |
+| Minor (could be clearer, pedagogical simplification noted) | -1 |
+
+**Threshold:** Score ≥ 90 to pass. If < 90, the orchestrator loop must fix issues and re-review.
 
 ---
 
