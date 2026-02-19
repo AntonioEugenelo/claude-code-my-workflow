@@ -76,7 +76,7 @@
       \begin{itemize}
         \setlength{\itemsep}{5pt}
         \item Sectoral fiscal instruments can target individual sectors and lead to constrained optimality (Cox et al.,~2024)
-        \item But: How many instruments? And Which?
+        \item But: How many instruments? And which?
       \end{itemize}
     \end{column}
   \end{columns}
@@ -84,70 +84,46 @@
 \end{frame}
 
 % ============================================================
-% SLIDE 2 --- RUBBO + COX (TECHNICAL DETAIL)
+% SLIDE 2 --- DIVINE COINCIDENCE FAILS (CONSOLIDATED)
 % ============================================================
 
-\begin{frame}{IO Economies: Divine Coincidence Fails, Fiscal Policy Helps}
-  {\small Two key results establish the tension between these literatures.}
-
-  \medskip
+\begin{frame}{IO Economies: Divine Coincidence Fails}
   \begin{columns}[T]
     \begin{column}{0.47\textwidth}
-      \begin{block}{Rubbo (2023)}
-        \small Multi-sector NK with IO linkages.  The network Phillips curve:
+      \begin{block}{Rubbo (2023): The Problem}
+        \small Network Phillips curve:
         \[
           \widehat{\mathrm{mc}}_{i,t} = \alpha_i\,\hat{w}_t + \textstyle\sum_j \omega_{ij}\,\hat{p}_{j,t} - a_{i,t}
         \]
-        IO linkages break divine coincidence: monetary policy alone cannot close all sectoral gaps.
+        IO linkages propagate cost distortions across sectors. \red{Monetary policy cannot close all sectoral gaps simultaneously.}
       \end{block}
     \end{column}
     \begin{column}{0.47\textwidth}
-      \begin{block}{Cox et al.\ (2024, ``Optimal FP'')}
-        \small Multi-sector NK \textit{without} IO.  With optimal sectoral fiscal policy, zero-inflation MP is near-optimal.
+      \begin{block}{The Polar Case}
+        \small La'O \& Tahbaz-Salehi (2025); Antonova \& M\"{u}ller (2025):
         \begin{itemize}
-          \setlength{\itemsep}{2pt}
-          \item With fiscal: welfare loss 3.1 vs.\ 2.8 (Table~3)
-          \item Without fiscal: 6.3 vs.\ 4.7
-          \item \red{No IO linkages} assumed
+          \setlength{\itemsep}{5pt}
+          \item $2N$ sector-specific taxes (sales + production) implement production efficiency
+          \item Requires: full instrument set + \red{flexible wages}
         \end{itemize}
       \end{block}
     \end{column}
   \end{columns}
 
-  \medskip
-  \textbf{The open question:} Rubbo shows IO breaks divine coincidence.  Cox et al.\ show fiscal policy approximately restores it, but assume \red{no IO linkages}.  What happens when we combine both features?
-\end{frame}
-
-% ============================================================
-% SLIDE 3 --- THE THEORETICAL BENCHMARK
-% ============================================================
-
-\begin{frame}{The Theoretical Benchmark: $2N$ Instruments Restore Efficiency}
-  Two papers establish the \textbf{polar case}: with sufficiently many fiscal instruments, production efficiency is achievable even in IO economies.
-
-  \medskip
-  \textbf{La'O \& Tahbaz-Salehi (2025) and Antonova \& M\"{u}ller (2025):}
-  \smallskip
-  \begin{itemize}
-    \setlength{\itemsep}{4pt}
-    \item \textbf{Result:} $2N$ sector-specific taxes (sales + production) implement the \textbf{efficient allocation}.
-    \item \textbf{Mechanism:} Jointly stabilizing seller prices and generating efficient relative-price movements for buyers.
-  \end{itemize}
-
   \bigskip
-  The restoration result relies on the government having access to demand- and supply-side price instruments: production and sales taxes/subsidies.
+  \textbf{The gap:} in practice, wages are sticky and instruments are restricted. What can limited fiscal tools achieve?
 \end{frame}
 
 % ============================================================
 % SLIDE 4 --- THE GAP (SHARPENED FOR PHASE 1)
 % ============================================================
 
-\begin{frame}{The Gap: From Benchmark to a more realistic Economy}
+\begin{frame}{The Gap: From Benchmark to a More Realistic Economy}
   \begin{columns}[T]
     \begin{column}{0.47\textwidth}
       \begin{block}{Benchmark (L\&TS, A\&M)}
         \begin{itemize}
-          \setlength{\itemsep}{4pt}
+          \setlength{\itemsep}{6pt}
           \item $2N$ fiscal instruments
           \item Full set of sales and production taxes
           \item \red{Flexible wages} (competitive labour)
@@ -158,8 +134,8 @@
     \begin{column}{0.47\textwidth}
       \begin{block}{Our setting (Aguilar et al.)}
         \begin{itemize}
-          \setlength{\itemsep}{4pt}
-          \item Restricted instruments: $\tau^w_k$, $\tau^s_{k}$
+          \setlength{\itemsep}{6pt}
+          \item Restricted instruments: $\tau^w_k$, $\tau^s_{ki}$
           \item \red{Calvo wages} ($\theta^w_k = 0.75$)
           \item Open economy ($K{=}4$ countries)
           \item Quantitative IO ($I{=}44$ sectors)
@@ -168,8 +144,8 @@
     \end{column}
   \end{columns}
 
-  \medskip
-  \textbf{The friction interaction:} L\&TS's $2N$ instruments are all \textbf{price-side} taxes.  With flexible wages, the wage adjusts freely to absorb labour misallocation.  With \red{Calvo wage setting}, the wage is a state variable: the labour tax $\tau^w_k$ \textit{interacts} with the wage friction, creating a key distortion that price-side instruments alone cannot address.
+  \bigskip
+  With \red{Calvo wages}, the wage is a state variable: price-side instruments cannot absorb wage misallocation. The labour tax $\tau^w_k$ is essential, unnecessary in the benchmark but critical here.
 \end{frame}
 
 % ============================================================
@@ -185,7 +161,7 @@
     \begin{column}{0.48\textwidth}
       {\small\textbf{Aguilar et al.\ (2025):} $K{=}4$ countries, $I{=}44$ sectors, nested CES with IO (OECD ICIO), Calvo pricing \textbf{+ Calvo wages}.}
 
-      \smallskip
+      \medskip
       \textbf{Wage PC:} labour tax $\tau^w_k$:
       \begingroup\small
       \[
@@ -205,22 +181,62 @@
       \begin{tikzpicture}[
         node distance=1.2cm and 1.4cm,
         sector/.style={circle, draw=oxfordblue, fill=oxfordblue!10, thick,
-                       minimum size=0.8cm, font=\footnotesize},
+                       minimum size=1.0cm, font=\small},
         >=Stealth
       ]
         \node[sector] (s1) {$i$};
-        \node[sector, below right=0.8cm and 1.2cm of s1] (s2) {$j$};
-        \node[sector, below left=0.8cm and 1.2cm of s1] (s3) {$m$};
-        \draw[->, thick, oxfordblue] (s1) -- node[right, font=\scriptsize] {$\omega_{kkij}$} (s2);
-        \draw[->, thick, oxfordblue] (s2) -- node[below, font=\scriptsize] {$\omega_{kkjm}$} (s3);
-        \draw[->, thick, oxfordblue] (s3) -- node[left, font=\scriptsize] {$\omega_{kkmi}$} (s1);
-        \draw[->, thick, oxfordaccent] ([xshift=-0.6cm, yshift=0.6cm]s3.north west) -- node[left, font=\scriptsize, text=oxfordaccent] {$\tau^s_{km}$} (s3);
+        \node[sector, below right=1.0cm and 1.4cm of s1] (s2) {$j$};
+        \node[sector, below left=1.0cm and 1.4cm of s1] (s3) {$m$};
+        \draw[->, thick, oxfordblue] (s2) -- node[right, font=\scriptsize] {$\omega_{ij}$} (s1);
+        \draw[->, thick, oxfordblue] (s3) -- node[below, font=\scriptsize] {$\omega_{jm}$} (s2);
+        \draw[->, thick, oxfordblue] (s1) -- node[left, font=\scriptsize] {$\omega_{mi}$} (s3);
+        \draw[->, thick, oxfordaccent] ([xshift=-1.2cm]s3.west) -- node[above, font=\scriptsize, text=oxfordaccent] {$\tau^s_{m}$} (s3);
       \end{tikzpicture}
 
       \medskip
       {\footnotesize IO network with fiscal entry}
+
+      \smallskip
+      {\scriptsize $i,j,m$: sectors in country $k$;\enspace $\omega_{ij}$: IO expenditure share ($i$ sources from $j$);\enspace \red{$\tau^s_m$}: production subsidy on $m$}
     \end{column}
   \end{columns}
+\end{frame}
+
+% ============================================================
+% SLIDE 6 --- COX ET AL. (2024)
+% ============================================================
+
+\begin{frame}{Cox et al.\ (2024): Sectoral Procurement as Stabilisation}
+  \begin{columns}[T]
+    \begin{column}{0.47\textwidth}
+      \textbf{Model}
+      \small
+      \begin{itemize}
+        \setlength{\itemsep}{5pt}
+        \item Multi-sector NK, \red{no IO linkages}
+        \item Calvo pricing, flexible wages
+        \item Fiscal instrument: \textbf{sectoral procurement} $G_{k,t}$
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.47\textwidth}
+      \textbf{Key Result} {\small(Table 3, welfare loss)}
+
+      \medskip
+      \small\centering
+      \begin{tabular}{lcc}
+        & Opt.\ $G$ & No $G$ \\
+        \midrule
+        Opt.\ MP & 2.8 & 4.7 \\[3pt]
+        Zero-$\pi$ MP & \textbf{3.1} & 6.3 \\
+      \end{tabular}
+
+      \medskip
+      \raggedright Sectoral $G$ approximately restores divine coincidence under zero-inflation MP.
+    \end{column}
+  \end{columns}
+
+  \bigskip
+  \textbf{Critical assumption:} no IO linkages. Upstream cost distortions absent by construction.
 \end{frame}
 
 % ============================================================
@@ -240,15 +256,15 @@
 \begin{frame}{Research Agenda: Fiscal Policy as Demand Composition}
   \textbf{Goal:} Characterise optimal sectoral government spending in a networked economy.
 
-  \medskip
+  \bigskip
   \textbf{Market clearing with $G$:}
   \[
     Y_{ki,t} = \sum_l C_{lki,t} + \sum_l\sum_j X_{lkji,t} + \red{G_{ki,t}}
   \]
 
-  \medskip
+  \bigskip
   \begin{enumerate}
-    \setlength{\itemsep}{5pt}
+    \setlength{\itemsep}{7pt}
     \item \textbf{Revenue-neutral fiscal policy:} sectoral spending $G_{ki}$ funded by aggregate labour taxes $\tau^w$.
 
     \item \textbf{Network amplification:} Upstream vs.\ downstream spending; interaction with heterogeneous price stickiness.
@@ -260,6 +276,32 @@
 \end{frame}
 
 
+
+% ============================================================
+% FINAL SLIDE --- PAPER COMPARISON
+% ============================================================
+
+\begin{frame}{Paper Comparison}
+  \vfill
+  \centering
+  \renewcommand{\arraystretch}{1.6}
+  \begin{tabular}{l c ccc c}
+    \toprule
+    & & \multicolumn{3}{c}{Sector-specific fiscal} & \\
+    \cmidrule(lr){3-5}
+    & IO & Sales & Prod.\ & Procure.\ & Wages \\
+    \midrule
+    Rubbo (2023)                  & $\checkmark$ &              &              &              & Rigid    \\
+    Antonova \& M\"{u}ller (2025) & $\checkmark$ & $\checkmark$ & $\checkmark$ &              & Flexible \\
+    Aguilar et al.\ + ext.        & $\checkmark$ & $\checkmark$ & $\checkmark$ &              & Rigid    \\
+    Cox et al.\ (2024)            &              &              &              & $\checkmark$ & Flexible \\
+    \midrule
+    \textbf{Eugenelo}             & $\checkmark$ &              &              & $\checkmark$ & Rigid    \\
+    \bottomrule
+  \end{tabular}
+  \renewcommand{\arraystretch}{1.0}
+  \vfill
+\end{frame}
 
 % ============================================================
 % THANK YOU
@@ -307,7 +349,7 @@
         \begin{itemize}
           \setlength{\itemsep}{3pt}
           \item Subsidies ($\tau^w_k$, $\tau^s_{ki}$) enter as cost-push wedges in Phillips curves
-          \item Government \textit{spending} $G_{ki}$ enters goods market clearing --- a \textbf{demand-side} instrument
+          \item Government \textit{spending} $G_{ki}$ enters goods market clearing: a \textbf{demand-side} instrument
           \item Revenue-neutral policy: $G$ funded by $\tau^w$ links both channels
         \end{itemize}
       \end{block}
@@ -327,7 +369,7 @@
   \end{columns}
 
   \medskip
-  \textbf{Implication:} $G$ is not a uniform demand shifter.  Its sectoral composition interacts with the IO network and heterogeneous price stickiness --- precisely the frictions that break divine coincidence.
+  \textbf{Implication:} $G$ is not a uniform demand shifter.  Its sectoral composition interacts with the IO network and heterogeneous price stickiness, precisely the frictions that break divine coincidence.
 \end{frame}
 
 \begin{frame}[noframenumbering]{Appendix: Related Literature}
@@ -641,7 +683,7 @@
     \item The Phillips-curve approach is a \textbf{reduced-form shortcut}: it isolates the cost-push channel of taxation while preserving the existing IO structure of Aguilar et al.\ (2025).
     \item A full Ramsey problem in a $4 \times 44$ networked model is computationally demanding: it requires solving for $K \times I$ optimal tax instruments simultaneously.
     \item The \textbf{research agenda goal} is precisely to move toward the full Ramsey characterisation.  The current extensions are a tractable first step.
-    \item La'O \& Tahbaz-Salehi (2025) show that even in simpler networks, the Ramsey problem has a rich structure --- $2N$ instruments implement production efficiency.  Our approach builds intuition before scaling up.
+    \item La'O \& Tahbaz-Salehi (2025) show that even in simpler networks, the Ramsey problem has a rich structure: $2N$ instruments implement production efficiency.  Our approach builds intuition before scaling up.
   \end{itemize}
 \end{frame}
 
