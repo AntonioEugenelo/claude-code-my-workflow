@@ -58,39 +58,30 @@
 % SLIDE 1 --- MOTIVATION
 % ============================================================
 
-\begin{frame}{Motivation: Stabilisation Policy in Multi-Sector Economies}
-  \textbf{Starting point.} In one-sector New Keynesian models, monetary policy achieves the first-best.
+\begin{frame}{Motivation: Sectoral Heterogeneity and Stabilisation Policy}
+  \textbf{Question.} How important is sectoral heterogeneity for the design of stabilisation policy, and what role should fiscal instruments play?
 
-  \bigskip
+  \medskip
   \begin{columns}[T]
     \begin{column}{0.47\textwidth}
-      \textbf{The monetary policy problem}
-      \begin{itemize}
-        \setlength{\itemsep}{5pt}
-        \item IO linkages amplify misallocation (Acemoglu et al.,~2012; Baqaee \& Farhi,~2020)
-        \item \red{Divine coincidence fails}: no single interest rate closes all sectoral gaps (Rubbo,~2023; La'O \& Tahbaz-Salehi,~2024)
-      \end{itemize}
+      \begin{block}{Networks matter}
+        In input-output linked multisectoral economies, intermediate-input linkages are a fundamental driver of cross-sectoral spillovers.  Monetary policy targeting \textbf{CPI inflation} is suboptimal (Rubbo,~2023).
+      \end{block}
     \end{column}
     \begin{column}{0.47\textwidth}
-      \textbf{Can fiscal policy help?}
-      \begin{itemize}
-        \setlength{\itemsep}{5pt}
-        \item Sectoral fiscal instruments can target individual sectors and lead to constrained optimality (Cox et al.,~2024)
-        \item But: How many instruments? And Which?
-      \end{itemize}
+      \begin{block}{Fiscal policy restores divine coincidence}
+        Without IO, \textbf{optimal sectoral fiscal policy} makes zero-inflation monetary targeting approximately optimal.  Without fiscal, the standard result holds (Cox et al.,~2024).
+      \end{block}
     \end{column}
   \end{columns}
 
 \end{frame}
 
 % ============================================================
-% SLIDE 2 --- RUBBO + COX (TECHNICAL DETAIL)
+% SLIDE 2 --- LITERATURE: RUBBO + COX (MERGED)
 % ============================================================
 
 \begin{frame}{IO Economies: Divine Coincidence Fails, Fiscal Policy Helps}
-  {\small Two key results establish the tension between these literatures.}
-
-  \medskip
   \begin{columns}[T]
     \begin{column}{0.47\textwidth}
       \begin{block}{Rubbo (2023)}
@@ -115,7 +106,9 @@
   \end{columns}
 
   \medskip
-  \textbf{The open question:} Rubbo shows IO breaks divine coincidence.  Cox et al.\ show fiscal policy approximately restores it, but assume \red{no IO linkages}.  What happens when we combine both features?
+  \begin{alertblock}{The open question}
+    Rubbo shows IO breaks divine coincidence.  Cox et al. show fiscal policy approximately restores it; however, they assume \red{no IO linkages}.  Both models rely on multisectoral heterogeneity.  What happens when we combine both features?
+  \end{alertblock}
 \end{frame}
 
 % ============================================================
@@ -123,19 +116,34 @@
 % ============================================================
 
 \begin{frame}{The Theoretical Benchmark: $2N$ Instruments Restore Efficiency}
-  Two papers establish the \textbf{polar case}: with sufficiently many fiscal instruments, production efficiency is achievable even in IO economies.
+  Two recent papers establish the \textbf{polar case}: with sufficiently many fiscal instruments, production efficiency is achievable even in IO economies.
 
-  \medskip
-  \textbf{La'O \& Tahbaz-Salehi (2025) and Antonova \& M\"{u}ller (2025):}
   \smallskip
-  \begin{itemize}
-    \setlength{\itemsep}{4pt}
-    \item \textbf{Result:} $2N$ sector-specific taxes (sales + production) implement the \textbf{efficient allocation}.
-    \item \textbf{Mechanism:} Jointly stabilizing seller prices and generating efficient relative-price movements for buyers.
-  \end{itemize}
+  \begin{columns}[T]
+    \begin{column}{0.47\textwidth}
+      \begin{block}{La'O \& Tahbaz-Salehi (2025)}
+        \small $2N$ sector-specific taxes implement the \textbf{Ramsey optimum} (production efficiency) in multi-sector IO economies.
+        \begin{itemize}
+          \setlength{\itemsep}{2pt}
+          \item Extends Correia et al. (2008) to networks
+          \item Optimal taxes \red{independent of Calvo parameters}
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{0.47\textwidth}
+      \begin{block}{Antonova \& M\"{u}ller (2025)}
+        \small $2N$ targeted taxes replicate the \textbf{flexible-price allocation} in a Rubbo-style IO framework.
+        \begin{itemize}
+          \setlength{\itemsep}{2pt}
+          \item ``Prices move as if fully flexible''
+          \item Closed-economy, $N$-sector Calvo model
+        \end{itemize}
+      \end{block}
+    \end{column}
+  \end{columns}
 
   \bigskip
-  The restoration result relies on the government having access to demand- and supply-side price instruments: production and sales taxes/subsidies.
+ The restoration result relies on the government having access to demand- and supply-side price instruments: production and sales taxes/subsidies. The set of production tax instruments includes capital, labour, and intermediate input taxes, but it is unclear whether the result would be robust to a staggered wage-setting regime.
 \end{frame}
 
 % ============================================================
@@ -169,7 +177,9 @@
   \end{columns}
 
   \medskip
-  \textbf{The friction interaction:} L\&TS's $2N$ instruments are all \textbf{price-side} taxes.  With flexible wages, the wage adjusts freely to absorb labour misallocation.  With \red{Calvo wage setting}, the wage is a state variable: the labour tax $\tau^w_k$ \textit{interacts} with the wage friction, creating a key distortion that price-side instruments alone cannot address.
+  \begin{alertblock}{The friction interaction}
+    L\&TS's $2N$ instruments are all \textbf{price-side} taxes.  With flexible wages, the wage adjusts freely to absorb labour misallocation.  With \textbf{Calvo wage setting}, the wage is a state variable: the labour tax $\tau^w_k$ \textit{interacts} with the wage friction, creating a key distortion that price-side instruments alone cannot address.
+  \end{alertblock}
 \end{frame}
 
 % ============================================================
@@ -231,14 +241,40 @@
 % SLIDE 6 --- TRANSITION: FROM WEDGES TO GOVERNMENT SPENDING
 % ============================================================
 
+\begin{frame}{From Subsidies to Government Spending}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Aguilar et al. (2026)}
+        \begin{itemize}
+          \setlength{\itemsep}{3pt}
+          \item Rubbo: Network Phillips curve allows MP to target a divine coincidence index.
+          \item Here: \red{Wage rigidity} creates endogenous wedges. Fiscal policy must address separate price and wage distortions.
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{alertblock}{Government Procurement ($G$)}
+        \small Cox et al.\ (2024, ``Big~G'') show procurement is key:
+        \begin{itemize}
+          \setlength{\itemsep}{3pt}
+          \item Accounts for the bulk of variation in $G$.
+          \item \textbf{Highly concentrated:} specific sectors (defense, healthcare) receive >35\% of contracts.
+          \item \textbf{Compositionally distinct} from private consumption.
+        \end{itemize}
+      \end{alertblock}
+    \end{column}
+  \end{columns}
 
+  \medskip
+  \textbf{Implication:} We cannot treat $G$ as a uniform aggregate demand shifter.  In a production network, the \textit{sectoral composition} of procurement determines how demand propagates.
+\end{frame}
 
 % ============================================================
 % SLIDE 7 --- RESEARCH AGENDA
 % ============================================================
 
 \begin{frame}{Research Agenda: Fiscal Policy as Demand Composition}
-  \textbf{Goal:} Characterise optimal sectoral government spending in a networked economy.
+  \textbf{Goal:} Characterise optimal sectoral government spending in a networked economy with dual price--wage rigidities.
 
   \medskip
   \textbf{Market clearing with $G$:}
@@ -249,9 +285,9 @@
   \medskip
   \begin{enumerate}
     \setlength{\itemsep}{5pt}
-    \item \textbf{Revenue-neutral fiscal policy:} sectoral spending $G_{ki}$ funded by aggregate labour taxes $\tau^w$.
+    \item \textbf{Revenue-neutral fiscal policy:} sectoral spending $G_{ki}$ funded by labour taxes $\tau^w$. The government reallocates demand across the network while wage-setters face the tax wedge.
 
-    \item \textbf{Network amplification:} Upstream vs.\ downstream spending; interaction with heterogeneous price stickiness.
+    \item \textbf{Network amplification:} how does the IO structure shape the optimal sectoral allocation of $G$?  Upstream vs.\ downstream spending; interaction with heterogeneous price stickiness.
 
     \item \textbf{Two policy regimes:} endogenous level and composition of government procurements vs.\ fixed aggregate budget (composition only). The end goal is to quantify the welfare gap.
 
@@ -259,7 +295,20 @@
 
 \end{frame}
 
+% ============================================================
+% SLIDE 8 --- SUMMARY
+% ============================================================
 
+\begin{frame}{Summary}
+  \begin{enumerate}
+    \setlength{\itemsep}{6pt}
+    \item \textbf{The benchmark:} L\&TS and A\&M show $2N$ fiscal instruments restore efficiency in IO economies. Critical assumption: government controls both sales and production taxes, and wages are flexible.
+
+    \item \textbf{The Initial Project:} Extending Aguilar et al.\ with $(\tau^w_k, \tau^s_{ki})$.  Staggered wages create a second friction: even flexible price-side instruments cannot fully address wage misallocation.
+
+    \item \textbf{The Research Agenda:} Moving from subsidies to government spending $G$ funded by labour taxes. Obtain the optimal fiscal policy and compare it with a constrained "Big G" version of the model.
+  \end{enumerate}
+\end{frame}
 
 % ============================================================
 % THANK YOU
@@ -282,53 +331,7 @@
 % ============================================================
 \appendix
 
-
-% ============================================================
-% SLIDE 8 --- SUMMARY
-% ============================================================
-
-\begin{frame}{Summary}
-  \begin{enumerate}
-    \setlength{\itemsep}{6pt}
-    \item \textbf{The benchmark:} L\&TS and A\&M show $2N$ fiscal instruments restore efficiency in IO economies. Critical assumption: government controls both sales and production taxes, and wages are flexible.
-
-    \item \textbf{The Initial Project:} Extending Aguilar et al.\ with $(\tau^w_k, \tau^s_{k})$.  Staggered wages create a second friction: even flexible price-side instruments cannot fully address wage misallocation.
-
-    \item \textbf{The Research Agenda:} Moving from subsidies to government spending $G$ funded by labour taxes. Obtain the optimal fiscal policy and compare it with a constrained "Big G" version of the model.
-  \end{enumerate}
-\end{frame}
-
 % ------ A1: RELATED LITERATURE ------
-
-\begin{frame}{From Subsidies to Government Spending}
-  \begin{columns}[T]
-    \begin{column}{0.48\textwidth}
-      \begin{block}{Why government spending?}
-        \begin{itemize}
-          \setlength{\itemsep}{3pt}
-          \item Subsidies ($\tau^w_k$, $\tau^s_{ki}$) enter as cost-push wedges in Phillips curves
-          \item Government \textit{spending} $G_{ki}$ enters goods market clearing --- a \textbf{demand-side} instrument
-          \item Revenue-neutral policy: $G$ funded by $\tau^w$ links both channels
-        \end{itemize}
-      \end{block}
-    \end{column}
-    \begin{column}{0.48\textwidth}
-      \begin{alertblock}{Cox et al.\ (2024, ``Big~G''): facts}
-        \small
-        \begin{itemize}
-          \setlength{\itemsep}{2pt}
-          \item \textbf{Concentrated:} top 3 sectors $>$60\% of procurement; top 10 firms $=$\,35\%
-          \item \textbf{Biased:} manufacturing 31\% of $G$ vs.\ 6\% of VA; real estate 13\% of VA vs.\ ${<}$1\% of $G$
-          \item \textbf{Sticky:} $G$ targets sectors with 9\% monthly price adjustment (vs.\ 20\% economy-wide)
-          \item \textbf{Granular:} idiosyncratic shocks explain ${>}$50\% of $G$ growth
-        \end{itemize}
-      \end{alertblock}
-    \end{column}
-  \end{columns}
-
-  \medskip
-  \textbf{Implication:} $G$ is not a uniform demand shifter.  Its sectoral composition interacts with the IO network and heterogeneous price stickiness --- precisely the frictions that break divine coincidence.
-\end{frame}
 
 \begin{frame}[noframenumbering]{Appendix: Related Literature}
   \begin{columns}[T]
