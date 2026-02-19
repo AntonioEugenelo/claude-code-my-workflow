@@ -1,0 +1,437 @@
+--- EXTRACTING FROM Networks_Phillips_Curves_and_Monetary_Policy_Elisa_Rubbo_2023_Econometrica.pdf ---
+Econometrica, Vol. 91, No. 4 (July, 2023), 1417–1455
+NETWORKS, PHILLIPS CURVES, AND MONETARY POLICY
+ELISA RUBBO
+Booth School of Business, University of Chicago
+This paper revisits the New Keynesian framework, theoretically and quantitatively,
+in an economy with multiple sectors and input-output linkages. Analytical expressions
+for the Phillips curve and welfare, derived as a function of primitives, show that the
+slope of all sectoral and aggregate Phillips curves is decreasing in intermediate in-
+put shares, while productivity ﬂuctuations endogenously generate an inﬂation-output
+tradeoff—except when inﬂation is measured according to the novel divine coincidence
+index. Consistent with the theory, the divine coincidence index provides a better ﬁt
+in Phillips curve regressions than consumer prices. Monetary policy can no longer
+achieve the ﬁrst-best, resulting in a welfare loss of 2.9% of per-period GDP under the
+constrained-optimal policy, which increases to 3.8% when targeting consumer inﬂation.
+The constrained-optimal policy must tolerate relative price distortions across ﬁrms and
+sectors in order to stabilize the output gap, and it can be implemented via a Taylor rule
+that targets the divine coincidence index.
+KEYWORDS: Input-output networks, Phillips curve, monetary policy, price index, in-
+ﬂation targeting, welfare cost of business cycles.
+1. INTRODUCTION
+THE NEW KEYNESIAN FRAMEWORK PROVIDES THE THEORETICAL UNDERPINNING of
+modern monetary policy. Yet, the workhorse version of this framework rests on a simpli-
+ﬁed representation of production, with only one industry and no intermediate inputs. In
+reality, production happens across multiple sectors, which buy intermediate inputs from
+each other and sell to ﬁnal consumers. To introduce these realistic features in the New
+Keynesian framework, this paper combines it with a multi-sector model of production,
+and systematically revisits its three pillars—the IS curve, the Phillips curve, and the wel-
+fare function—both theoretically and quantitatively.
+While the IS curve remains unaffected, the Phillips curve and the welfare function are
+drastically changed, with crucial implications for monetary policy. Even when ﬂuctuations
+are driven only by productivity, the central bank can no longer achieve the efﬁcient equi-
+librium. Moreover, consumer price inﬂation is neither a good proxy for the output gap,
+nor a good policy target. Instead, monetary policy should aim at stabilizing a novel in-
+ﬂation measure—the divine coincidence index—which weights sectors according to sales
+shares and price adjustment frequencies, and is a sufﬁcient statistic for the output gap.
+Elisa Rubbo: elisarubbo@uchicago.edu
+I am grateful to my advisors—Emmanuel Farhi, Elhanan Helpman, Gita Gopinath, and Gabriel Chodorow-
+Reich—for invaluable guidance and continuous support. I am indebted to Andrew Lilley and Giselle Mon-
+tamat for many insightful conversations all throughout the development of this paper. I thank for their com-
+ments three anonymous referees, Mark Aguiar, Pol Antràs, Adrien Auclert, Gadi Barlevy, David Baqaee, Kirill
+Borusyak, Ashley Craig, Francois Gourio, Erik Hurst, Rohan Kekre, Greg Mankiw, Mikkel Plagborg-Møller,
+Richard Rogerson, Ken Rogoff, Raphael Schoenle, Jim Stock, and Ludwig Straub, and seminar participants at
+the Chicago Fed, the Cleveland Fed, the European Central Bank, Harvard, Princeton, Chicago, MIT, Columbia
+GSB, LSE, UCL, CREi, Yale, Boston University, UC San Diego, the San Francisco Fed, the Minneapolis Fed,
+the St Louis Fed, Rochester University, Brown University, Bocconi University, Mannheim University, NUS,
+Bank of England, Bank of Israel, NYUAD, and the Virtual Macro Seminar Series. I thank Erin Eidschun for
+excellent research assistance.
+© 2023 The Author. Econometrica published by John Wiley & Sons Ltd on behalf of The Econometric Soci-
+ety. Elisa Rubbo is the corresponding author on this paper. This is an open access article under the terms of
+the Creative Commons Attribution-NonCommercial-NoDerivs License, which permits use and distribution in
+any medium, provided the original work is properly cited, the use is non-commercial and no modiﬁcations or
+adaptations are made.
+1418
+ELISA RUBBO
+The multi-sector model, introduced in Section 2, allows for an arbitrary number of in-
+dustries, with general constant-returns-to-scale production functions, which take as inputs
+labor and any combination of intermediate goods. As Section 3 illustrates, the new frame-
+work is tractable enough that its log-linearized version can be solved analytically, while at
+the same time it can be calibrated to fully match disaggregated input-output data.
+Section 4 then turns to studying the Phillips curve. In multi-sector economies, one can
+construct inﬂation rates and Phillips curves for every sector. Since prices across sectors are
+differentially affected by changes in the output gap, the Phillips curve slopes are sector-
+speciﬁc. Moreover, in sharp contrast with the one-sector benchmark, in the multi-sector
+economy productivity ﬂuctuations generate a tradeoff between closing the output gap and
+eliminating inﬂation, both at the sector level and in the aggregate. This tradeoff manifests
+as sector-speciﬁc, productivity-driven residuals in the Phillips curves, and it affects all
+inﬂation measures, except for the divine coincidence index.
+The slopes of all sectoral Phillips curves get ﬂatter as producers use more intermediate
+inputs, because price rigidities get compounded at each step along the production chain.
+Hence, by properly accounting for input-output linkages, the multi-sector model has the
+potential to reconcile relatively high micro level frequencies of price adjustment with the
+ﬂat Phillips curves measured in empirical studies. Section 4 formalizes this argument,1
+deriving an expression for the slope of sectoral and aggregate Phillips curves as a function
+of micro level intermediate input shares and price adjustment probabilities.
+A key result in the one-sector economy, often referred to as the divine coincidence,
+states that productivity ﬂuctuations do not generate an inﬂation-output tradeoff, and
+therefore they do not affect the residual of the Phillips curve. In the multi-sector econ-
+omy, instead, productivity shocks affect the residual term of all sectoral and aggregate
+Phillips curves, except the divine coincidence one. Hence, the divine coincidence index is
+the unique inﬂation-based sufﬁcient statistic for the output gap, and the corresponding
+empirical Phillips curve is the only well-speciﬁed one.
+In the one-sector economy, the divine coincidence holds because of an equilibrating
+mechanism, whereby, whenever productivity falls (increases), wages always also fall (in-
+crease), mirroring the marginal product of labor. The wage response stabilizes marginal
+costs, thereby offsetting any inﬂationary pressure. In economies with sticky wages or mul-
+tiple sectors, however, the wage adjustment may be dampened, and industries may be
+differentially exposed to wage and productivity changes. Therefore, prices rise in sectors
+which suffer more from decreasing productivity than they beneﬁt from decreasing wages,
+and vice versa. Section 4 analytically characterizes the effect of sectoral productivity
+shocks on sectoral and aggregate inﬂation. In particular, the multi-sector model predicts
+positive consumer price inﬂation whenever productivity falls in downstream industries—
+which means closer to ﬁnal consumers—or in industries with more ﬂexible prices.
+Having characterized the positive properties of the multi-sector model, Section 5 then
+turns to welfare and optimal monetary policy. Like in the one-sector model, in multi-
+sector economies too there is a welfare loss whenever employment or relative prices de-
+viate from the efﬁcient level. The welfare loss function expresses the cost of employment
+and price distortions in terms of the network primitives. In multi-sector economies, rela-
+tive price distortions occur both within and across sectors, and cause producers and ﬁnal
+consumers to inefﬁciently shift demand towards the ﬁrms and sectors whose relative price
+1The argument was ﬁrst made by Basu (1995) in a simpler model, and later by Christiano (2016). Quan-
+titatively, Carvalho (2006) and Nakamura and Steinsson (2013) showed that input-output linkages increase
+monetary non-neutrality signiﬁcantly.
+NETWORKS, PHILLIPS CURVES, AND MONETARY POLICY
+1419
+is too low given their productivity. The demand response is governed by sectoral elastic-
+ities of substitution. For within-sector distortions, the welfare cost is the same function
+of sectoral inﬂation, price adjustment probabilities, and substitution elasticities as in the
+one-sector model. In the multi-sector model, the welfare function further weights each
+sector according to the relevant sale share. Price distortions across sectors are new to
+the multi-sector model, and their welfare cost depends on the interaction between dis-
+tortions originating in different sectors. Two distortions offset each other if they move
+downstream prices in the same direction, because on net they produce smaller deviations
+from the efﬁcient relative prices, and vice versa.
+Beyond deriving the welfare loss function, Section 5 also draws the implications for
+monetary policy. Given the multiple production sectors, the central bank has consider-
+ably limited power, because it has only one instrument, the nominal interest rate. There-
+fore, it can only move prices along one direction—parallel to the slope of sectoral Phillips
+curves—which is unlikely to coincide, when there are multiple sectors, with the efﬁcient
+relative price change. Moreover, given that Phillips curves are ﬂatter with input-output
+linkages, the central bank must consequently move employment far away from the efﬁ-
+cient level in order to affect prices. For all these reasons, in the multi-sector economy
+monetary policy should focus on closing the output gap. Nonetheless, this does not mean
+the end of inﬂation targeting, because, as Section 5 demonstrates, the central bank can
+close the output gap at all periods by replacing consumer price inﬂation with the divine
+coincidence index in the Taylor rule. However, since it cannot correct relative prices, the
+central bank must tolerate a welfare loss.
+Having elaborated the theoretical aspects in Sections 4 and 5, Sections 6 and 7 explore
+the empirical properties of the multi-sector framework. Section 6 calibrates the multi-
+sector model to the U.S. input-output data. By properly accounting for intermediate in-
+put linkages and wage rigidity, in the multi-sector model the slope of the consumer price
+Phillips curve is reduced by one order of magnitude, reconciling micro level measures of
+price adjustment frequencies with macro level estimates. To evaluate how changes in the
+input-output structure over time affected the Phillips curve, we calibrate the multi-sector
+model to historical input-output data for 1947–2017. Although the slope remains one or-
+der of magnitude smaller than in the one-sector benchmark throughout the whole period,
+during this period it has further ﬂattened by about 30% due to growing intermediate input
+ﬂows relative to labor compensation.
+Section 6 also estimates the welfare loss from business cycles, when the central bank
+follows alternative policy rules. In the multi-sector economy, the welfare loss is several
+orders of magnitude larger than in the one-sector benchmark. It is a well-known result
+that, in frictionless economies, the welfare loss from business cycles is tiny—about 005%
+of per-period GDP according to the famous Lucas (1977) estimate. Moreover, in the
+one-sector New Keynesian model, welfare is the same as in the frictionless economy,
+because monetary policy can replicate the efﬁcient equilibrium. By contrast, in the multi-
+sector economy the central bank cannot eliminate relative price distortions—even when it
+adopts the optimal policy—leading to an average loss of 29% of per-period GDP relative
+to the efﬁcient ﬂex-price equilibrium. If instead the central bank targets consumer prices,
+the welfare loss increases to 38% of per-period GDP.
+Finally, Section 7 compares Phillips curve estimates for the divine coincidence index
+and several common measures of consumer price inﬂation (the CPI, the PCE, and their
+core versions), based on time series data for sector-level inﬂation. As predicted by the
+theoretical model, the divine coincidence speciﬁcation outperforms all consumer price
+speciﬁcations over the sample period 1984–2018, in several dimensions. First, the divine
+1420
+ELISA RUBBO
+coincidence speciﬁcation yields a two to four times larger R-squared than the consumer
+price speciﬁcations. Second, estimated in 20-year rolling regressions, the Phillips curve
+slope always has the correct sign, and it is signiﬁcant and stable over time. By contrast,
+when using the consumer price speciﬁcations, the slope is often insigniﬁcant and has the
+wrong sign. Both results are consistent with the model prediction that the divine coinci-
+dence index is more robustly correlated with the output gap, because it does not suffer
+from productivity-driven cost-push shocks.
+Readers can refer to the Supplement for proofs of the theoretical results and more
+detail about the Phillips curve regressions. The additional Additional Online Materials
+(Rubbo (2023)) included in the replication ﬁles reports further calibration exercises and
+robustness checks for the empirical results, referenced throughout the text.
+1.1. Related Literature
+The framework in this paper builds on Baqaee and Farhi (2019, 2020b),2 who studied
+the implications of exogenous markups in input-output models. Compared to Baqaee
+and Farhi (2020b), this paper further characterizes the endogenous evolution of sectoral
+markups determined by price rigidities, and the consequent inﬂation response.
+In previous work on monetary policy in multi-sector economies, researchers focused on
+either small-scale analytical models (Gali (2015), Woodford (2003), Gali and Monacelli
+(2008), Kara (2009, 2010)), or on large-scale quantitative models (Carvalho (2006), Car-
+valho and Nechio (2011), Cagliarini, Robinson, and Tran (2011), Nakamura and Steinsson
+(2013), Pasten, Schoenle, and Weber (2017), Pasten, Schoenle, and Weber (2019), Castro
+Cienfuegos (2019), Hoynck (2020), Ghassibe (2021)). The current paper combines the
+two approaches by revisiting and extending previous analytical results in a quantitatively
+realistic production network. This allows us to formalize in a general network the insight
+that input-output linkages ﬂatten the Phillips curve (Basu (1995), Christiano (2016)), ex-
+pressing sectoral and aggregate slopes in terms of micro level input-output data and price
+adjustment frequencies. Moreover, our approach allows us to provide analytical expres-
+sions for the cost-push shocks which affect sectoral Phillips curves as a result of changes
+in productivity. Building on this novel result, we can construct the divine coincidence in-
+ﬂation index and show that it is a better sufﬁcient statistic for the output gap.
+Discussing the optimal monetary policy, Section 5 below generalizes previous results
+from New Keynesian models with two sectors or wage rigidities (Erceg, Henderson, and
+Levin (2000), Blanchard and Gali (2007)), and it thus conﬁrms that consumer prices are a
+suboptimal policy target in multi-sector economies (Aoki (2001), Benigno (2004), Huang
+and Liu (2005)). Our general approach allows us to establish that the output gap is always
+a nearly optimal policy target, regardless of the network structure. Moreover, our ap-
+proach demonstrates that one can always stabilize the output gap by targeting the divine
+coincidence inﬂation index. Compared to previous quantitative studies of the optimal
+inﬂation target (Mankiw and Reis (2003), Eusepi, Hobijn, and Tambalotti (2011)), this
+paper characterizes analytically the weighting scheme for the divine coincidence index,
+showing that it does not depend directly on micro level input-output shares, but only on
+sectoral sales shares and price adjustment frequencies.
+In parallel and independent work, La’O and Tahbaz-Salehi (2019) also studied optimal
+monetary policy in multi-sector economies with an input-output network. This paper dif-
+fers from La’O and Tahbaz-Salehi (2019) in two main dimensions. First, while La’O and
+Tahbaz-Salehi (2019) focused only on optimal policy, this paper discusses the Phillips
+2Jones (2013) and Bigio and La’O (2020) also adopted similar models.
+NETWORKS, PHILLIPS CURVES, AND MONETARY POLICY
+1421
+curve as well.3 Second, La’O and Tahbaz-Salehi (2019) microfounded price rigidities
+as arising from incomplete information, and characterized information structures under
+which monetary policy can replicate the efﬁcient equilibrium. These results complement
+the analysis in the current paper, which adopts the Calvo model. Our modeling of price
+rigidities is more restrictive, but it allows us to work with a dynamic multi-period model.
+Other studies have also considered New Keynesian economies with heterogeneous
+ﬁrms, focusing on different elements than those emphasized in this paper. Baqaee and
+Farhi (2020a) introduced downward nominal wage rigidity, and studied its interaction
+with sector-speciﬁc supply and demand shocks. Baqaee, Farhi, and Sangani (2021) in-
+stead showed that, when allowing for non-CES demand, monetary shocks have ﬁrst-order
+effects on allocative efﬁciency.
+A large empirical literature has documented the shortcomings of consumer price in-
+ﬂation in Phillips curve regressions and forecasting (Orphanides and van Norden (2002),
+Mavroeidis, Plagborg-Moller, and Stock (2014)), and has sought to construct indicators
+with better statistical properties (Stock and Watson (1999), Bernanke and Boivin (2003),
+Stock and Watson (2016)). This paper shows that replacing consumer prices with the di-
+vine coincidence index improves the ﬁt of Phillips curve regressions, yielding stable and
+signiﬁcant estimates over time and across speciﬁcations.
+2. ENVIRONMENT
+2.1. Consumers
+There is an inﬁnitely-lived representative agent, who enjoys consumption (C) and dis-
+likes labor (L). The agent’s per-period preferences are described by the utility function
+Ut = C1−γ
+t
+1 −γ −L1+ϕ
+t
+1 + ϕ
+(1)
+There are N industries in the economy, and the consumer has homothetic prefer-
+ences over their products. The consumption aggregator is C ≡C(Q1QN), where
+Q1QN denote the quantities consumed of the various goods.
+The agent maximizes the present discounted value of per-period utility ﬂows, with dis-
+count factor ρ, subject to the budget constraint
+PC
+t Ct + Bt+1 ≤WtLt + t −Tt + (1 + it)Bt
+(2)
+where PC
+t is the price index implied by the consumption aggregator C, Wt is the nominal
+wage, t are ﬁrm proﬁts (rebated lump-sum to the household), Tt is a lump-sum tax, Bt
+is the quantity of risk-free bonds paying off in period t owned by the household, and it is
+the nominal interest rate.
+The representative worker is hired by labor unions, who then sell his labor services to
+other ﬁrms. Labor is undifferentiated and fully mobile across industries and labor unions;
+therefore, all unions pay the same ﬂexible wage to the worker. The labor unions are
+treated like any other production sector (see Section 2.2), and in particular, there is a
+3The modeling of production is also slightly different between the two papers, as this paper allows for
+arbitrary constant-returns-to-scale production functions, while La’O and Tahbaz-Salehi (2019) imposed Cobb–
+Douglas. This matters for the welfare cost of relative price distortions across sectors, which is proportional to
+the elasticities of substitution between inputs in production and between consumption goods.
+
+==================================================
+--- EXTRACTING FROM Missing_Tax_Instruments_LaO_Tahbaz-Salehi_2024_WP.pdf ---
+Missing Tax Instruments:
+Attaining Production Efficiency in Disaggregated,
+Production Network Economies with Nominal Rigidities*
+Jennifer La’O†
+Alireza Tahbaz-Salehi‡
+January 6, 2025
+Abstract
+We study optimal fiscal and monetary policy in multi-sector, input-output
+economies with nominal rigidities and a rich set of tax instruments. Irrespective
+of the network structure, with N>1 sectors, production efficiency can be achieved
+with 2N state-contingent, sector-specific tax instruments. The optimal tax scheme
+involves jointly stabilizing all prices set by sellers while generating efficient move-
+ments in after-tax prices faced by buyers. Optimal fiscal and monetary policy are
+independent of the vector of price rigidities; optimal sector-specific tax rates are
+moreover independent of the availability of lump-sum taxes. We provide several tax
+equivalences and non-equivalences.
+Keywords: fiscal policy, monetary policy, production efficiency, production net-
+works, misallocation.
+JEL codes: E32, E52, E62, E63, D61
+*This paper is the direct product of a lively and insightful post-seminar discussion at the Federal Re-
+serve Bank of Minneapolis in January 2021 following a presentation of our paper, “Optimal Monetary
+Policy in Production Networks.” We thank Manuel Amador, V.V. Chari, Patrick Kehoe, Juanpa Nicolini,
+and Pedro Teles for pushing us in this direction and for their constructive comments and questions. We
+also thank Hassan Afrouzi for helpful conversations and insights on this paper.
+†Columbia University, NBER, and CEPR. jenlao@columbia.edu.
+‡Northwestern University and CEPR. alirezat@kellogg.northwestern.edu.
+1
+Introduction
+In multi-sector, input-output economies with nominal rigidities, the first best allocation
+is generically unattainable with monetary policy alone (Aoki, 2001; Woodford, 2003b,
+2010; La’O and Tahbaz-Salehi, 2022). Even when shocks are exclusively technological,
+as long as tax instruments are non-state-contingent, monetary policy can attain at most
+a “third-best” allocation: one that features production inefficiency and an endogenous,
+state-contingent labor wedge (La’O and Tahbaz-Salehi, 2022; Rubbo, 2023). Optimal
+monetary policy in multi-sector economies thereby contrasts sharply to its one-sector
+counterpart: in the standard New Keynesian (NK) model with technology shocks, the
+first best is achievable with price level stabilization and a constant sales subsidy.
+From this observation one might conclude that there are “missing” tax instru-
+ments in the multi-sector, input-output NK framework. Indeed, it is clear that a state-
+contingent labor income or consumption tax could eliminate the state-contingent labor
+wedge. It is less clear, however, what tax instruments would restore production effi-
+ciency. The heart of the problem is the following. In this class of models, monetary pol-
+icy can target at most one price index. But with sector-specific technology shocks and
+nominal rigidities, no price index can eliminate misallocation both within and across
+sectors. To this end, finer-tuned fiscal instruments appear necessary.
+But what instruments? And in what manner should they to be used? We address
+these questions in this paper. Within a broad class of multi-sector NK models with
+input-output linkages, and allowing for a rich set of fiscal instruments, we jointly char-
+acterize optimal monetary and fiscal policy. Our main result is to demonstrate how dis-
+tortionary taxation can be used to restore production efficiency and thereby circumvent
+the problem faced by monetary policy. The tax scheme we engineer involves jointly sta-
+bilizing all prices set by sellers while generating efficient movements in after-tax prices
+faced by buyers.
+In any environment with nominal rigidities, fiscal and monetary policy interact:
+the efficacy and optimality of monetary policy depend on the details of fiscal policy.
+The contribution of this paper is to thereby establish the theoretical benchmark of
+sufficiently rich fiscal instruments within the class of multi-sector, input-output NK
+economies. Our benchmark differs markedly from—and, in fact, constitutes the polar
+opposite of—the standard benchmark of “inactive” fiscal policy in which subsidies are
+used only to eliminate steady-state markups. As argued above, the distance between the
+two benchmarks is small to non-existent in the one-sector NK framework but widens
+with multiple sectors and intermediate good trade. Recent papers consider environ-
+ments in the interior of this gap.
+Prior to studying monetary policy in environments featuring restricted sets of “ac-
+1
+tive” fiscal instruments, it would be useful to first understand the sufficiently rich fiscal
+instruments benchmark. What are the missing fiscal tools that restricted sets may or
+may not compensate for? Answering this question, characterizing these instruments,
+and establishing this benchmark is what we do in this paper.
+The Model and Results. Firms are linked to one another via an input-output network.
+They produce goods using labor, capital, and intermediate inputs and are subject to
+industry-level productivity shocks, demand shocks, and shocks to elasticities of substi-
+tution (or markups). Following the NK framework, firms set prices and face Calvo price
+rigidities; we allow the Calvo parameter to vary by sector. A representative household
+consumes the final good, supplies labor, saves, and invests in capital. A government
+finances exogenous public expenditure and sets fiscal and monetary policy jointly.
+We take the standard Ramsey approach and assume the government has access to
+a rich set of distortionary, linear tax instruments—including multiple types of sector-
+specific, state-contingent tax rates—but cannot raise money with lump-sum taxation.
+The latter restriction on fiscal instruments implies that full efficiency, i.e. the “first best,”
+cannot be achieved; we later relax this restriction in an extension.
+Our main analysis centers on implementation of the Ramsey optimum, which in our
+economy coincides with the canonical Lucas and Stokey (1983) benchmark. We focus
+on the Ramsey optimum for the following reason: this benchmark exhibits production
+efficiency in the sense of Diamond and Mirrlees (1971); see Chari and Kehoe (1999).
+Implementation of the Ramsey optimum therefore demonstrates how a sufficiently rich
+set of fiscal instruments can restore production efficiency in this class of economies.
+Our main theorem characterizes monetary and fiscal policy that jointly implement
+the Ramsey optimum. Without loss of generality, we focus on implementations in which
+monetary policy stabilizes the final good price level. Our characterization of optimal
+fiscal policy yields the following six lessons:
+1. The optimal tax structure achieves production efficiency. In order to do so, sector-
+specific tax rates play two roles: they stabilize seller prices and generate efficient
+fluctuations in after-tax prices.
+2. Optimal sector-specific tax rates are state-contingent. They depend on the real-
+ized nominal wage, sectoral technologies, and sectoral elasticities of substitution,
+but they do not depend on sectoral demand shocks and government spending.
+Optimal monetary and fiscal policy are invariant to the vector of price rigidities.
+3. Regardless of the network structure, with N sectors production efficiency can be
+attained with 2N sector-specific tax instruments: N sales taxes levied on sellers
+and N sales taxes levied on buyers. Unlike in standard models with price flexibil-
+2
+ity, taxes levied on sellers and on buyers when sellers face price rigidities are not
+equivalent.
+4. Sector-specific input taxes on labor, capital, and intermediate goods can substi-
+tute for the seller-imposed sales taxes. In this implementation, intermediate good
+input taxes are destination-specific but not origin-specific.
+5. Sector-specific intermediate good and final good taxes can substitute for the
+buyer-imposed sales taxes. In this implementation, intermediate good input taxes
+are origin-specific but not destination-specific.
+6. Optimal sector-specific tax rates are independent of the availability of lump-sum
+taxes.
+What roles do the sector-specific tax instruments play in restoring production effi-
+ciency? Lesson 1 answers this question. Production efficiency requires no misalloca-
+tion within and across sectors—a goal unattainable with monetary policy alone. The
+tax scheme we engineer involves jointly stabilizing seller prices while simultaneously
+generating efficient movements in after-tax prices faced by buyers. This tax scheme
+eliminates misallocation within and across sectors, ensuring efficient production of the
+final good.
+These dual roles require tax state-contingency. Lesson 2 tells us what dimensions of
+the state space the optimal sector-specific taxes are contingent upon. It also answers
+the more practical question of what information is needed by the fiscal authority in
+order to administer such taxes. We find that the optimal tax rates are contingent on
+realized marginal costs and elasticities of substitution or, more generally, desired mark-
+ups. While this is arguably a heavy information burden for the fiscal authority, what is
+perhaps more surprising are the dimensions of the state space the optimal tax rates are
+not contingent upon. Conditional on realized marginal costs, sector-specific tax rates
+are independent of sector-specific demand and government spending.
+We find that for any implementation of the Ramsey optimum, tax rates are inde-
+pendent of the vector of sectoral price rigidities (Calvo parameters). The irrelevance
+of sectoral price rigidities for optimal fiscal and monetary policy, even when the opti-
+mal allocation does not coincide with the first best, generalizes previously-established
+results by Correia, Nicolini and Teles (2008) to multi-sector NK economies with input-
+output linkages.
+Lessons 1 and 2 are general in that they apply to all implementations of the Ramsey
+optimum. Moving on, we explore specific tax implementations. The first is the “least
+instruments” implementation: we show that, irrespective of the input-output structure,
+3
+with N>1 sectors and two roles for taxes, 2N sector-specific taxes can implement the
+Ramsey optimum (Lesson 3). This implementation requires N sales taxes levied on
+sellers and N sales taxes levied on buyers. We thus exploit a non-equivalence between
+sales taxes collected on sellers and on buyers when sellers face nominal rigidities, as
+highlighted by Poterba, Rotemberg and Summers (1986).
+Despite this particular tax non-equivalence, we present two more implementations
+that showcase two different tax equivalences. In the first, we assume that the seller-
+imposed sales tax is unavailable.
+The Ramsey optimum can still be implemented:
+sector-specific taxes on labor, capital, and intermediate good inputs can substitute for
+the missing seller-imposed sales tax (Lesson 4). In the second, we assume that the
+buyer-imposed sales tax instrument is unavailable. The Ramsey optimum can again
+be implemented: sector-specific intermediate good and final good taxes can substitute
+for the missing buyer-imposed sales tax (Lesson 5).
+Whether or not the first-best is attainable depends on the availability of lump-sum
+tax instruments. A question arises as to whether the availability of lump-sum taxa-
+tion alters the optimal sector-specific tax instruments. We show that the answer is no:
+whether or not the Ramsey optimum coincides with the first-best changes only the op-
+timal aggregate tax rates—it has no effect on the optimal sector-specific tax rates (Les-
+son 6). The irrelevance of lump-sum taxation for the optimal sector-specific tax rates
+drives home the point that their main function is to restore within-period production
+efficiency.
+Related literature. This paper demonstrates how a rich set of distortionary tax instru-
+ments can be used to implement the Ramsey optimum and completely circumvent the
+problem faced by monetary policy. In this sense, our paper is closest in spirit to Correia,
+Nicolini and Teles (2008) and Correia, Farhi, Nicolini and Teles (2013). Our contribution
+vis-`a-vis their work is to extend this insight to multi-sector, input-output NK economies
+and, specifically, to characterize within this class of models the sector-level tax rates that
+attain production efficiency.
+Our results apply to a broad class of multi-sector NK models with or without input-
+output linkages. Our framework is fairly general in that it can flexibly nest the economic
+environments found in Erceg, Henderson and Levin (2000); Aoki (2001); Mankiw and
+Reis (2003); Benigno (2004); Huang and Liu (2005); Woodford (2010); Eusepi, Hobijn and
+Tambalotti (2011); Ozdagli and Weber (2017); Past´en, Schoenle and Weber (2020, 2024);
+Ghassibe (2021); La’O and Tahbaz-Salehi (2022); Rubbo (2023); Bouakez, Rachedi and
+Santoro (2023); Afrouzi and Bhattarai (2023); Xu and Yu (2024), among others.1 Relative
+1Related, too, is the work of Faria-e-Castro (2021), Guerrieri et al. (2022), Baqaee and Farhi (2022), and
+Rubbo (2024). These papers focus on disaggregated, multi-sector NK models with and without input-
+output linkages but feature some form of household heterogeneity. For this reason, our model does not
+4
+
+==================================================

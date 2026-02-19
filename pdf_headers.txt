@@ -1,0 +1,91 @@
+--- FILE: 2025_Antonova_Müller_NK-Network-Targeted-Taxes.pdf ---
+Antonova, Anastasiia; Müller, Gernot
+Working Paper
+Distorted Prices and Targeted Taxes in the New Keynesian
+Network Model
+CESifo Working Paper, No. 12144
+Provided in Cooperation with:
+Ifo Institute – Leibniz Institute for Economic Research at the University of Munich
+Suggested Citation: Antonova, Anastasiia; Müller, Gernot (2025) : Distorted Prices and Targeted Taxes
+in the New Keynesian Network Model, CESifo Working Paper, No. 12144, Munich Society for the
+Promotion of Economic Research - CESif
+==================================================
+--- FILE: Missing_Tax_Instruments_LaO_Tahbaz-Salehi_2024_WP.pdf ---
+Missing Tax Instruments:
+Attaining Production Efficiency in Disaggregated,
+Production Network Economies with Nominal Rigidities*
+Jennifer La’O†
+Alireza Tahbaz-Salehi‡
+January 6, 2025
+Abstract
+We study optimal fiscal and monetary policy in multi-sector, input-output
+economies with nominal rigidities and a rich set of tax instruments. Irrespective
+of the network structure, with N>1 sectors, production efficiency can be achieved
+with 2N state-contingent, sector-specific tax instruments. The optimal
+==================================================
+--- FILE: 72-3-707.pdf ---
+Review of Economic Studies (2005) 72, 707–734
+0034-6527/05/00290707$02.00
+c⃝2005 The Review of Economic Studies Limited
+Monetary Policy and Exchange Rate
+Volatility in a Small Open Economy
+JORDI GAL´I
+CREI, UPF, CEPR and NBER
+and
+TOMMASO MONACELLI
+IGIER, Universit`a Bocconi and CEPR
+First version received November 2002; ﬁnal version accepted October 2004 (Eds.)
+We lay out a small open economy version of the Calvo sticky price model, and show how the
+equilibrium dynamics can be reduced to a simpl
+==================================================
+--- FILE: w31179.pdf ---
+NBER WORKING PAPER SERIES
+SUPPLY CHAIN CONSTRAINTS AND INFLATION
+Diego A. Comin
+Robert C. Johnson
+Callum J. Jones
+Working Paper 31179
+http://www.nber.org/papers/w31179
+NATIONAL BUREAU OF ECONOMIC RESEARCH
+1050 Massachusetts Avenue
+Cambridge, MA 02138
+April 2023, Revised August 2024
+We thank Gabriel Chodorow-Reich, Guido Lorenzoni, Emi Nakamura, Brent Neiman, Sebastian 
+Graves, Robert Kollmann, Werner Roeger, Borağan Aruoba, Andreas Hornstein, Şebnem 
+Kalemli-Özcan, Narayana Kocherlakota, Stephan
+==================================================
+--- FILE: w31680.rev0.pdf ---
+NBER WORKING PAPER SERIES
+ESTIMATING THE EFFECTS OF GOVERNMENT SPENDING 
+THROUGH THE PRODUCTION NETWORK
+Alessandro Barattieri
+Matteo Cacciatore
+Nora Traum
+Working Paper 31680
+http://www.nber.org/papers/w31680
+NATIONAL BUREAU OF ECONOMIC RESEARCH
+1050 Massachusetts Avenue
+Cambridge, MA 02138
+September 2023
+Funding from the Canadian Social Sciences and Humanities Research Council is gratefully 
+acknowledged. The views expressed herein are those of the authors and do not necessarily reflect 
+the vi
+==================================================
+--- FILE: w32914.pdf ---
+NBER WORKING PAPER SERIES
+OPTIMAL MONETARY AND FISCAL POLICIES IN DISAGGREGATED ECONOMIES
+Lydia Cox
+Jiacheng Feng
+Gernot Müller
+Ernesto Pastén
+Raphael Schoenle
+Michael Weber
+Working Paper 32914
+http://www.nber.org/papers/w32914
+NATIONAL BUREAU OF ECONOMIC RESEARCH
+1050 Massachusetts Avenue
+Cambridge, MA 02138
+September 2024
+Schoenle and Weber gratefully acknowledge support from the National Science Foundation under
+grant number 1756997. We thank participants in conferences and seminars in severa
+==================================================

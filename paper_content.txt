@@ -1,0 +1,435 @@
+--- FILE: 2025_Antonova_Müller_NK-Network-Targeted-Taxes.pdf ---
+Antonova, Anastasiia; Müller, Gernot
+Working Paper
+Distorted Prices and Targeted Taxes in the New Keynesian
+Network Model
+CESifo Working Paper, No. 12144
+Provided in Cooperation with:
+Ifo Institute – Leibniz Institute for Economic Research at the University of Munich
+Suggested Citation: Antonova, Anastasiia; Müller, Gernot (2025) : Distorted Prices and Targeted Taxes
+in the New Keynesian Network Model, CESifo Working Paper, No. 12144, Munich Society for the
+Promotion of Economic Research - CESifo GmbH, Munich
+This Version is available at:
+https://hdl.handle.net/10419/331610
+Standard-Nutzungsbedingungen:
+Die Dokumente auf EconStor dürfen zu eigenen wissenschaftlichen
+Zwecken und zum Privatgebrauch gespeichert und kopiert werden.
+Sie dürfen die Dokumente nicht für öffentliche oder kommerzielle
+Zwecke vervielfältigen, öffentlich ausstellen, öffentlich zugänglich
+machen, vertreiben oder anderweitig nutzen.
+Sofern die Verfasser die Dokumente unter Open-Content-Lizenzen
+(insbesondere CC-Lizenzen) zur Verfügung gestellt haben sollten,
+gelten abweichend von diesen Nutzungsbedingungen die in der dort
+genannten Lizenz gewährten Nutzungsrechte.
+Terms of use:
+Documents in EconStor may be saved and copied for your personal
+and scholarly purposes.
+You are not to copy documents for public or commercial purposes, to
+exhibit the documents publicly, to make them publicly available on the
+internet, or to distribute or otherwise use the documents in public.
+If the documents have been made available under an Open Content
+Licence (especially Creative Commons Licences), you may exercise
+further usage rights as specified in the indicated licence.
+ 
+ 
+ 
+ 
+Distorted Prices and Targeted 
+Taxes in the New Keynesian 
+Network Model 
+Anastasiia Antonova, Gernot Müller 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Working Papers 
+12144
+2025 
+ September 2025 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Imprint: 
+CESifo Working Papers 
+ISSN 2364-1428 (digital) 
+Publisher and distributor: Munich Society for the Promotion  
+of Economic Research - CESifo GmbH 
+Poschingerstr. 5, 81679 Munich, Germany 
+Telephone +49 (0)89 2180-2740 
+  
+Email office@cesifo.de 
+https://www.cesifo.org  
+Editor: Clemens Fuest 
+An electronic version of the paper may be downloaded free of charge 
+· from the CESifo website: www.ifo.de/en/cesifo/publications/cesifo-working-papers 
+· from the SSRN website: www.ssrn.com/index.cfm/en/cesifo/   
+· from the RePEc website: https://ideas.repec.org/s/ces/ceswps.html  
+Distorted Prices and Targeted Taxes
+in the New Keynesian Network Model∗
+Anastasiia Antonova and Gernot J. Müller
+September 2025
+Abstract
+When confronted with sectoral shocks, policymakers often resort to targeted, sector-
+specific taxes in an ad hoc fashion. Based on the New Keynesian Network model, we
+characterize the optimal tax response to sectoral shocks: it features twice as many tax
+instruments as there are sectors, is budget-neutral, and not confined to the sector where
+the shock originates. We show that the optimal policy can be approximated by a simple
+rule that responds to inflation in the shocked sector and adjusts tax instruments in other
+sectors according to input-output linkages. We study its quantitative performance in
+a calibrated version of the model.
+Keywords:
+Sectoral shocks, sales taxes, production subsides, optimal
+tax policy, simple rules, network, pricing frictions
+JEL-Codes:
+E32, E62
+∗Antonova: Aix-Marseille Université (email: anastasiia.antonova@univ-amu.fr); Müller: University of
+Tübingen, CEPR and CESifo (email: gernot.mueller@uni-tuebingen.de). We thank Eric Swanson, an anony-
+mous referee, Luis Huxel, Raphael Schoenle, and seminar participants at KU Leuven, Maastricht University,
+the Riksbank, the Bundesbank, the University of Lausanne, and the Macro Committee of the German
+Economic Association for helpful comments and suggestions. The usual disclaimer applies.
+1
+Introduction
+Macroeconomic shocks often originate in specific sectors of the economy or impact them
+disproportionally (Foerster et al. 2011; Gabaix 2011; Cox et al. 2024a).
+In response to
+such shocks, governments frequently implement targeted subsidies or taxes. For example,
+governments provided transfers and subsidies to address the energy crisis triggered by the
+Russian invasion of Ukraine, offered support to the financial sector during the global financial
+crisis, and extended financial aid to the service sector during the Covid-19 pandemic. Such
+targeted fiscal measures appear appropriate, particularly because monetary policy cannot
+be tailored to specific sectors, except through unconventional measures that have a distinct
+fiscal flavor.
+However, these tax policies are typically implemented on an ad hoc basis, and little is
+known about how they should be optimally adjusted in response to sectoral shocks. For
+instance, should the response be confined to the sector where the shock originates, or should
+upstream and downstream sectors also be considered? What are the budgetary implications
+of the optimal policy? Does the nature of the shock—supply versus demand—matter? Can
+an efficient allocation be achieved, and if so, how many tax instruments are necessary to
+achieve it? Lastly, concerns may arise about the feasibility of the optimal policy. Specifically,
+what kind of information must policymakers have to execute the optimal policy?
+We address these questions within a variant of the New Keynesian Network (NKN) model
+of Rubbo (2023). We augment the model by allowing for sector-specific and potentially time-
+varying sales taxes and production subsidies. As a result it becomes possible for the optimal
+policy to restore the efficient allocation in the presence of sectoral shocks. Crucially, the
+first-best policy requires the joint adjustment of both instruments across all sectors. This
+is essential: since only a subset of firms adjusts prices, relative prices are distorted both
+within and across sectors. Thus, in line with the principles of Tinbergen (1952), replicating
+the flexible-price allocation necessitates using two instruments to address both sides of the
+1
+distortion.
+This involves subsidizing firms’ production while simultaneously taxing their
+sales. We propose a simple rule that responds solely to sectoral inflation and show that it
+approximates the first-best policy arbitrarily well. This policy is budget-neutral and adjusts
+taxes and subsidies across all sectors based on their proximity to the sector where the shock
+originates and depending on the nature of the shock.
+The NKN model offers a framework to systematically analyze sectoral stabilization poli-
+cies. It features N sectors which are connected through input-output linkages. Production
+in each sector uses labor and intermediate goods, potentially sourced from all sectors. In
+each sector, there is a continuum of monopolistically competitive firms that operate identical
+technologies but adjust prices only infrequently and, importantly, asynchronously. Factor
+inputs within a sector are adjusted flexibly and instantaneously in order to meet demand
+at posted prices. Households allocate spending across sectors in order to minimize expendi-
+tures subject to sectoral demand shocks. There are also sector-specific shocks to total factor
+productivity, or “supply shocks,” for short. We derive the canonical representation of the
+model featuring a set of dynamic IS-curves and Phillips curves.
+The relation between sectoral inflation and the sectoral output gap features a tradeoff
+because adjusting a sector’s relative price to close its output gap creates price dispersion
+within the sector, as not all firms adjust their prices simultaneously. Conversely, keeping
+prices constant to avoid within-sector price dispersion results in output gaps due to the lack
+of an adjustment of relative prices. A key property of the optimal policy follows directly: It
+relies on two instruments in each sector (2N policy). Intuitively, by subsidizing production
+in a sector, the policy incentivizes firms that can adjust prices to keep them stable. Through
+sales taxes, which apply to consumers and intermediate goods trade alike, it steers demand
+across sectors to close sectoral output gaps.
+As a result, seller prices do not change in
+equilibrium under the optimal tax policy.1 The network structure determines the response of
+1Sales taxes effectively take over the job of ensuring allocative efficiency across sectors by altering buyer
+prices. In this sense, our results turn the “socialist calculation debate” about the allocative role of prices
+on its head (Von Mises 1953; Lerner 1934; Lange 1936). As prices fail to respond sufficiently, taxes can be
+adjusted in their stead to signal scarcity to buyers.
+2
+
+==================================================
+--- FILE: Missing_Tax_Instruments_LaO_Tahbaz-Salehi_2024_WP.pdf ---
+Missing Tax Instruments:
+Attaining Production Efficiency in Disaggregated,
+Production Network Economies with Nominal Rigidities*
+Jennifer La’O†
+Alireza Tahbaz-Salehi‡
+January 6, 2025
+Abstract
+We study optimal fiscal and monetary policy in multi-sector, input-output
+economies with nominal rigidities and a rich set of tax instruments. Irrespective
+of the network structure, with N>1 sectors, production efficiency can be achieved
+with 2N state-contingent, sector-specific tax instruments. The optimal tax scheme
+involves jointly stabilizing all prices set by sellers while generating efficient move-
+ments in after-tax prices faced by buyers. Optimal fiscal and monetary policy are
+independent of the vector of price rigidities; optimal sector-specific tax rates are
+moreover independent of the availability of lump-sum taxes. We provide several tax
+equivalences and non-equivalences.
+Keywords: fiscal policy, monetary policy, production efficiency, production net-
+works, misallocation.
+JEL codes: E32, E52, E62, E63, D61
+*This paper is the direct product of a lively and insightful post-seminar discussion at the Federal Re-
+serve Bank of Minneapolis in January 2021 following a presentation of our paper, “Optimal Monetary
+Policy in Production Networks.” We thank Manuel Amador, V.V. Chari, Patrick Kehoe, Juanpa Nicolini,
+and Pedro Teles for pushing us in this direction and for their constructive comments and questions. We
+also thank Hassan Afrouzi for helpful conversations and insights on this paper.
+†Columbia University, NBER, and CEPR. jenlao@columbia.edu.
+‡Northwestern University and CEPR. alirezat@kellogg.northwestern.edu.
+1
+Introduction
+In multi-sector, input-output economies with nominal rigidities, the first best allocation
+is generically unattainable with monetary policy alone (Aoki, 2001; Woodford, 2003b,
+2010; La’O and Tahbaz-Salehi, 2022). Even when shocks are exclusively technological,
+as long as tax instruments are non-state-contingent, monetary policy can attain at most
+a “third-best” allocation: one that features production inefficiency and an endogenous,
+state-contingent labor wedge (La’O and Tahbaz-Salehi, 2022; Rubbo, 2023). Optimal
+monetary policy in multi-sector economies thereby contrasts sharply to its one-sector
+counterpart: in the standard New Keynesian (NK) model with technology shocks, the
+first best is achievable with price level stabilization and a constant sales subsidy.
+From this observation one might conclude that there are “missing” tax instru-
+ments in the multi-sector, input-output NK framework. Indeed, it is clear that a state-
+contingent labor income or consumption tax could eliminate the state-contingent labor
+wedge. It is less clear, however, what tax instruments would restore production effi-
+ciency. The heart of the problem is the following. In this class of models, monetary pol-
+icy can target at most one price index. But with sector-specific technology shocks and
+nominal rigidities, no price index can eliminate misallocation both within and across
+sectors. To this end, finer-tuned fiscal instruments appear necessary.
+But what instruments? And in what manner should they to be used? We address
+these questions in this paper. Within a broad class of multi-sector NK models with
+input-output linkages, and allowing for a rich set of fiscal instruments, we jointly char-
+acterize optimal monetary and fiscal policy. Our main result is to demonstrate how dis-
+tortionary taxation can be used to restore production efficiency and thereby circumvent
+the problem faced by monetary policy. The tax scheme we engineer involves jointly sta-
+bilizing all prices set by sellers while generating efficient movements in after-tax prices
+faced by buyers.
+In any environment with nominal rigidities, fiscal and monetary policy interact:
+the efficacy and optimality of monetary policy depend on the details of fiscal policy.
+The contribution of this paper is to thereby establish the theoretical benchmark of
+sufficiently rich fiscal instruments within the class of multi-sector, input-output NK
+economies. Our benchmark differs markedly from—and, in fact, constitutes the polar
+opposite of—the standard benchmark of “inactive” fiscal policy in which subsidies are
+used only to eliminate steady-state markups. As argued above, the distance between the
+two benchmarks is small to non-existent in the one-sector NK framework but widens
+with multiple sectors and intermediate good trade. Recent papers consider environ-
+ments in the interior of this gap.
+Prior to studying monetary policy in environments featuring restricted sets of “ac-
+1
+tive” fiscal instruments, it would be useful to first understand the sufficiently rich fiscal
+instruments benchmark. What are the missing fiscal tools that restricted sets may or
+may not compensate for? Answering this question, characterizing these instruments,
+and establishing this benchmark is what we do in this paper.
+The Model and Results. Firms are linked to one another via an input-output network.
+They produce goods using labor, capital, and intermediate inputs and are subject to
+industry-level productivity shocks, demand shocks, and shocks to elasticities of substi-
+tution (or markups). Following the NK framework, firms set prices and face Calvo price
+rigidities; we allow the Calvo parameter to vary by sector. A representative household
+consumes the final good, supplies labor, saves, and invests in capital. A government
+finances exogenous public expenditure and sets fiscal and monetary policy jointly.
+We take the standard Ramsey approach and assume the government has access to
+a rich set of distortionary, linear tax instruments—including multiple types of sector-
+specific, state-contingent tax rates—but cannot raise money with lump-sum taxation.
+The latter restriction on fiscal instruments implies that full efficiency, i.e. the “first best,”
+cannot be achieved; we later relax this restriction in an extension.
+Our main analysis centers on implementation of the Ramsey optimum, which in our
+economy coincides with the canonical Lucas and Stokey (1983) benchmark. We focus
+on the Ramsey optimum for the following reason: this benchmark exhibits production
+efficiency in the sense of Diamond and Mirrlees (1971); see Chari and Kehoe (1999).
+Implementation of the Ramsey optimum therefore demonstrates how a sufficiently rich
+set of fiscal instruments can restore production efficiency in this class of economies.
+Our main theorem characterizes monetary and fiscal policy that jointly implement
+the Ramsey optimum. Without loss of generality, we focus on implementations in which
+monetary policy stabilizes the final good price level. Our characterization of optimal
+fiscal policy yields the following six lessons:
+1. The optimal tax structure achieves production efficiency. In order to do so, sector-
+specific tax rates play two roles: they stabilize seller prices and generate efficient
+fluctuations in after-tax prices.
+2. Optimal sector-specific tax rates are state-contingent. They depend on the real-
+ized nominal wage, sectoral technologies, and sectoral elasticities of substitution,
+but they do not depend on sectoral demand shocks and government spending.
+Optimal monetary and fiscal policy are invariant to the vector of price rigidities.
+3. Regardless of the network structure, with N sectors production efficiency can be
+attained with 2N sector-specific tax instruments: N sales taxes levied on sellers
+and N sales taxes levied on buyers. Unlike in standard models with price flexibil-
+2
+ity, taxes levied on sellers and on buyers when sellers face price rigidities are not
+equivalent.
+4. Sector-specific input taxes on labor, capital, and intermediate goods can substi-
+tute for the seller-imposed sales taxes. In this implementation, intermediate good
+input taxes are destination-specific but not origin-specific.
+5. Sector-specific intermediate good and final good taxes can substitute for the
+buyer-imposed sales taxes. In this implementation, intermediate good input taxes
+are origin-specific but not destination-specific.
+6. Optimal sector-specific tax rates are independent of the availability of lump-sum
+taxes.
+What roles do the sector-specific tax instruments play in restoring production effi-
+ciency? Lesson 1 answers this question. Production efficiency requires no misalloca-
+tion within and across sectors—a goal unattainable with monetary policy alone. The
+tax scheme we engineer involves jointly stabilizing seller prices while simultaneously
+generating efficient movements in after-tax prices faced by buyers. This tax scheme
+eliminates misallocation within and across sectors, ensuring efficient production of the
+final good.
+These dual roles require tax state-contingency. Lesson 2 tells us what dimensions of
+the state space the optimal sector-specific taxes are contingent upon. It also answers
+the more practical question of what information is needed by the fiscal authority in
+order to administer such taxes. We find that the optimal tax rates are contingent on
+realized marginal costs and elasticities of substitution or, more generally, desired mark-
+ups. While this is arguably a heavy information burden for the fiscal authority, what is
+perhaps more surprising are the dimensions of the state space the optimal tax rates are
+not contingent upon. Conditional on realized marginal costs, sector-specific tax rates
+are independent of sector-specific demand and government spending.
+We find that for any implementation of the Ramsey optimum, tax rates are inde-
+pendent of the vector of sectoral price rigidities (Calvo parameters). The irrelevance
+of sectoral price rigidities for optimal fiscal and monetary policy, even when the opti-
+mal allocation does not coincide with the first best, generalizes previously-established
+results by Correia, Nicolini and Teles (2008) to multi-sector NK economies with input-
+output linkages.
+Lessons 1 and 2 are general in that they apply to all implementations of the Ramsey
+optimum. Moving on, we explore specific tax implementations. The first is the “least
+instruments” implementation: we show that, irrespective of the input-output structure,
+3
+with N>1 sectors and two roles for taxes, 2N sector-specific taxes can implement the
+Ramsey optimum (Lesson 3). This implementation requires N sales taxes levied on
+sellers and N sales taxes levied on buyers. We thus exploit a non-equivalence between
+sales taxes collected on sellers and on buyers when sellers face nominal rigidities, as
+highlighted by Poterba, Rotemberg and Summers (1986).
+Despite this particular tax non-equivalence, we present two more implementations
+that showcase two different tax equivalences. In the first, we assume that the seller-
+imposed sales tax is unavailable.
+The Ramsey optimum can still be implemented:
+sector-specific taxes on labor, capital, and intermediate good inputs can substitute for
+the missing seller-imposed sales tax (Lesson 4). In the second, we assume that the
+buyer-imposed sales tax instrument is unavailable. The Ramsey optimum can again
+be implemented: sector-specific intermediate good and final good taxes can substitute
+for the missing buyer-imposed sales tax (Lesson 5).
+Whether or not the first-best is attainable depends on the availability of lump-sum
+tax instruments. A question arises as to whether the availability of lump-sum taxa-
+tion alters the optimal sector-specific tax instruments. We show that the answer is no:
+whether or not the Ramsey optimum coincides with the first-best changes only the op-
+timal aggregate tax rates—it has no effect on the optimal sector-specific tax rates (Les-
+son 6). The irrelevance of lump-sum taxation for the optimal sector-specific tax rates
+drives home the point that their main function is to restore within-period production
+efficiency.
+Related literature. This paper demonstrates how a rich set of distortionary tax instru-
+ments can be used to implement the Ramsey optimum and completely circumvent the
+problem faced by monetary policy. In this sense, our paper is closest in spirit to Correia,
+Nicolini and Teles (2008) and Correia, Farhi, Nicolini and Teles (2013). Our contribution
+vis-`a-vis their work is to extend this insight to multi-sector, input-output NK economies
+and, specifically, to characterize within this class of models the sector-level tax rates that
+attain production efficiency.
+Our results apply to a broad class of multi-sector NK models with or without input-
+output linkages. Our framework is fairly general in that it can flexibly nest the economic
+environments found in Erceg, Henderson and Levin (2000); Aoki (2001); Mankiw and
+Reis (2003); Benigno (2004); Huang and Liu (2005); Woodford (2010); Eusepi, Hobijn and
+Tambalotti (2011); Ozdagli and Weber (2017); Past´en, Schoenle and Weber (2020, 2024);
+Ghassibe (2021); La’O and Tahbaz-Salehi (2022); Rubbo (2023); Bouakez, Rachedi and
+Santoro (2023); Afrouzi and Bhattarai (2023); Xu and Yu (2024), among others.1 Relative
+1Related, too, is the work of Faria-e-Castro (2021), Guerrieri et al. (2022), Baqaee and Farhi (2022), and
+Rubbo (2024). These papers focus on disaggregated, multi-sector NK models with and without input-
+output linkages but feature some form of household heterogeneity. For this reason, our model does not
+4
+to most multi-sector NK models, we add physical capital as a factor of production.
+As we have noted, the contribution of our paper vis-`a-vis the multi-sector, input-
+output NK literature is to establish a benchmark in which the set of tax instruments
+is sufficiently rich to achieve production efficiency. A standard benchmark in this lit-
+erature is to assume non-state-contingent sales subsidies that eliminate steady-state
+markups (as in Woodford, 2003b; Gal´ı, 2008). Recent papers, however, move past this
+benchmark and consider the implications of sector-specific and state-contingent gov-
+ernment purchases: see Proebsting (2022); Cox et al. (2024); Flynn et al. (2024); Bouakez
+et al. (2024) as well as Ramey and Shapiro (1998). In a taxonomy of models, one can
+think of these environments as featuring a set of fiscal instruments that is strictly larger
+than in the standard benchmark, yet restricted relative to our sufficiently rich fiscal
+instrument benchmark.
+We complement this growing body of work but focus instead on linear tax instru-
+ments. Furthermore, an understanding of both benchmarks—or, both extremes—is
+useful for interpreting the interior.
+Layout. This paper is organized as follows. In Section 2 we describe the economic
+environment; in Section 3 we characterize equilibria. In Section 4 we state and solve the
+Ramsey problem, and in Section 5 we study its implementation. In Section 6 we explore
+several specific implementations that illustrate the main results of the paper. In Section
+7 we conclude. All proofs are found in the Appendix.
+2
+The Environment
+Time is discrete, indexed by t = 0, 1, . . . , ∞. We denote the aggregate state at time t by
+st ∈S where S is a finite set. We let st = {s0, ..., st} ∈St denote a history of states up
+to and including st. We let µ(st|st−1) denote the probability of history st conditional on
+st−1, and with slight abuse of notation we let µ(st) denote the unconditional probability
+of history st.
+There is a representative household with time-separable utility:
+∞
+X
+t=0
+X
+st
+βtµ(st)U(C(st), L(st)),
+(1)
+explicitly capture these environments. In another related vein, Ghassibe and Ferrari (2024) develop and
+analyze a multi-sector, production network model with endogenous price rigidities due to menu costs.
+Our model instead features exogenous nominal rigidities: in our baseline we assume Calvo pricing, but
+our model can also accommodate informational frictions. Finally, Qiu, Wang, Xu and Zanetti (2024) study
+monetary policy in a small open economy with domestic and cross-border input-output linkages. Our
+model is closely related but features no international trade.
+5
+
+==================================================

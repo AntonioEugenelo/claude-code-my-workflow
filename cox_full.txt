@@ -1,0 +1,2154 @@
+=== Page 0 ===
+NBER WORKING PAPER SERIES
+OPTIMAL MONETARY AND FISCAL POLICIES IN DISAGGREGATED ECONOMIES
+Lydia Cox
+Jiacheng Feng
+Gernot Müller
+Ernesto Pastén
+Raphael Schoenle
+Michael Weber
+Working Paper 32914
+http://www.nber.org/papers/w32914
+NATIONAL BUREAU OF ECONOMIC RESEARCH
+1050 Massachusetts Avenue
+Cambridge, MA 02138
+September 2024
+Schoenle and Weber gratefully acknowledge support from the National Science Foundation under
+grant number 1756997. We thank participants in conferences and seminars in several institutions for
+comments and discussions. The views expressed herein are those of the authors and do not necessarily
+reflect the views of the Central Bank of Chile. The views expressed herein are those of the authors
+and do not necessarily reflect the views of the National Bureau of Economic Research.
+NBER working papers are circulated for discussion and comment purposes. They have not been peer-
+reviewed or been subject to the review by the NBER Board of Directors that accompanies official
+NBER publications.
+© 2024 by Lydia Cox, Jiacheng Feng, Gernot Müller, Ernesto Pastén, Raphael Schoenle, and Michael
+Weber. All rights reserved. Short sections of text, not to exceed two paragraphs, may be quoted without
+explicit permission provided that full credit, including © notice, is given to the source.
+
+=== Page 1 ===
+Optimal Monetary and Fiscal Policies in Disaggregated Economies
+Lydia Cox, Jiacheng Feng, Gernot Müller, Ernesto Pastén, Raphael Schoenle, and Michael
+Weber
+NBER Working Paper No. 32914
+September 2024
+JEL No. E32, E62
+ABSTRACT
+The jointly optimal monetary and fiscal policy mix in a multi-sector New Keynesian model with 
+sectoral government spending and productivity shocks entails a separation of roles: Sectoral 
+government spending optimally adjusts to sectoral output gaps and inflation rates---a policy 
+supported by evidence from sectoral federal procurement data. Monetary policy optimally focuses 
+on aggregate stabilization, but deviates from a zero-inflation target; in a model calibration to the 
+U.S., however, it effectively approximates a zero-inflation target.  Because monetary policy is a 
+blunt instrument and government spending trades off stabilization against the optimal-level public 
+good provision, the first best is not achieved.
+Lydia Cox
+Department of Economics 
+University of Wisconsin-Madison 
+1180 Observatory Drive 
+Madison, WI 53715
+and NBER
+lydia.cox@wisc.edu
+Jiacheng Feng
+Jane Street Capital
+jackfeng6@hotmail.com
+Gernot Müller
+University of Tuebingen and CEPR 
+Mohlstr. 36,
+72074 Tuebingen,
+Germany
+gernot.mueller@uni-tuebingen.de
+Ernesto Pastén
+Central Bank of Chile
+Agustinas 1180
+Santiago
+Chile
+and Toulouse School of Economics
+epasten@bcentral.cl
+Raphael Schoenle
+Brandeis University
+Department of Economics
+415 South Street
+Waltham, MA 02454
+and CEPR
+schoenle@brandeis.edu
+Michael Weber
+Booth School of Business
+University of Chicago
+5807 South Woodlawn Avenue
+Chicago, IL 60637
+and NBER
+michael.weber@chicagobooth.edu
+
+=== Page 2 ===
+1
+Introduction
+Business cycle ﬂuctuations are not perfectly synchronized across sectors. Sectors
+may be hit differently by shocks, as the COVID-19 pandemic so forcefully illus-
+trated (Guerrieri et al., 2022; Baqaee and Farhi, 2022), or they have distinct charac-
+teristics that determine their responsiveness even to identical shocks.1 These fea-
+tures raise challenges for stabilization policy. If productivity shocks are perfectly
+correlated across and propagate in the same way in all sectors, a zero-inﬂation
+policy attains the ﬁrst best by closing the output gap; the so-called “divine coin-
+cidence.” But when these conditions are not met, monetary policy is too blunt of
+a tool. Then, central banks must target a second-best inﬂation index that gives
+higher weight to sectors in which shocks manifest in larger output deviations from
+efﬁcient levels. This policy closes the aggregate output gap but tolerates subopti-
+mal inﬂation volatility and levels of sectoral output.
+Goodfriend and King (1997) articulate this challenge, Aoki (2001) formally shows
+it, Benigno (2004) apply these insights in a monetary union, Eusepi et al. (2011)
+explore this issue quantitatively, and La’O and Tahbaz-Salehi (2022) and Rubbo
+(2023) extend it to production networks.
+We revisit this policy prescription in
+light of the fact that monetary policy interacts with sectoral government demand
+in shaping economic ﬂuctuations. Our analysis builds on and leverages insights
+from earlier work in Cox et al. (2024). They use the universe of federal procure-
+ment contracts in the U.S. to show that government demand is not a monolithic
+aggregate—big G—but is the sum of rich, disaggregated policy decisions, giving
+rise to challenges but also opportunities for stabilization policy.
+Against this background we shift the focus of ﬁscal stabilization from the ag-
+gregate to the sectoral level and ask: What is the optimal policy mix if monetary
+policy and sectoral ﬁscal policy are jointly determined? Moreover, we derive pre-
+dictions for sectoral government spending under optimal policy and ﬁnd sugges-
+tive evidence that they are borne out in U.S. data. Thus, the stabilization role of
+disaggregated ﬁscal policy is not just a theoretical possibility and we can contrast
+it empirically with an optimal benchmark. We then trace out the implications for
+monetary policy, in particular, the optimality of a zero-inﬂation policy to deal with
+1See, among others, Pastén et al. (2020, 2024) and Bouakez et al. (2023).
+1
+
+=== Page 3 ===
+disaggregated productivity shocks, and the desirability of the acyclical aggregate
+ﬁscal policy observed in U.S. data.
+We derive our insights in a New Keynesian multi-sector setup in which, build-
+ing on the multi-country model of Galí and Monacelli (2008), the government de-
+mands goods that contribute to welfare. The optimal, time-consistent mix of mone-
+tary and ﬁscal policy prescribes a separation of roles: monetary policy takes care of
+aggregate stabilization, whereas ﬁscal policy focuses on the sectoral level. We ob-
+tain an intuitive rule for optimal sectoral ﬁscal policy: government demand should
+be expansionary relative to the ﬁrst-best in sectors with negative inﬂation and out-
+put gaps, that is, those sectors which experience positive productivity shocks.
+The separation of roles hinges on the key trade-off in the design of joint mone-
+tary and sectoral ﬁscal policies: Monetary policy is superior as a stabilization tool
+to deal with productivity shocks, but government demand can be ﬁne tuned at
+any required disaggregated level, contrary to monetary policy. The intuition holds
+in a single-sector model: A positive productivity shock decreases prices and the
+output gap. If monetary policy engineers a demand stimulus, the output gap can
+be closed exactly when prices do not respond—a “divine coincidence”. The same
+conclusion does not hold if government demand engineers the stimulus, because
+it additionally crowds out consumption and thus affects labor supply. In addition,
+monetary policy per se does not enter in welfare, whereas government demand
+does by providing goods valued by households. Hence, even if a “divine coinci-
+dence” were to exist for ﬁscal policy, it might be suboptimal to fully exploit it.2
+In our model, optimal monetary policy deviates from a zero-inﬂation target.
+Both monetary and sectoral ﬁscal policy give higher weight to sectors with stickier
+prices, that is, those in which a given shock yields larger output gaps. However,
+numerical exercises suggest that the deviation of optimal monetary policy from a
+zero-inﬂation target is quantitatively small relative to a case when monetary policy
+is the only stabilization tool. Yet, the ﬁrst best is never attained.
+Complementary to these theoretical results, the following question naturally
+arises: Is the disaggregated stabilization role of ﬁscal policy just a theoretical pos-
+sibility or can we ﬁnd empirical support for it in U.S. data? First, as Cox et al. (2024)
+2“Divine coincidence” may exist for ﬁscal policy but requires assuming a suboptimal ﬁscal
+rule in a frictionless economy. We discuss this possibility in Appendix D.
+2
+
+=== Page 4 ===
+argue, government purchases of goods and services are the most volatile compo-
+nent of total government spending and exhibit substantial sectoral reallocation.
+These facts suggest that government spending is ﬂexible enough to perform such
+a stabilizing role. Second, the joint correlation of sectoral government demand, sec-
+toral inﬂation and sectoral output in the data is indeed broadly consistent with the
+theoretical optimal sectoral ﬁscal rule, but not with a purely aggregate ﬁscal sta-
+bilization policy. We establish this result based on regression analyses, construct-
+ing measures of government demand at the 4-digit NAICS sector level from US-
+Aspending.gov, which covers the universe of federal procurement contracts from
+2001 onwards, using Compustat sales data, producer price inﬂation from the BLS,
+and a sectoral measure of the average frequency of price changes constructed by
+Pastén et al. (2020, 2024). In particular, consistent with the theoretical optimal ﬁscal
+rule, we ﬁnd that ﬁscal policy is more active in sectors in which prices are stickier.
+We want to stress that we do not argue ﬁscal policy decisions follow the rules
+we derive in the model. In reality, the allocation of government demand follows a
+complicated political process involving Congress, lobbying and stakeholders inter-
+acting in many layers, things we all abstract from in the model. A distinct literature
+studies several aspects of such a process, see, for instance, Bisin et al. (2015) and
+Halac and Yared (2022). Yet, we consider it useful to contrast the outcome of such
+a process with an optimal ﬁscal policy that balances its direct welfare effects with
+stabilization purposes. Remarkably, the model rules and its empirical counterparts
+are similar. Given this alignment, we study the implications of optimal ﬁscal policy
+on monetary policy and the cyclicality of aggregate government demand.
+We also study the implications of our setting through the lens of the aggregate
+Phillips curve. As stressed by Rubbo (2023), Guerrieri et al. (2021) and Afrouzi and
+Bhattarai (2023), aggregation of sectoral Phillips curves yields an extra term akin to
+an “aggregate cost-push shock" in setups with sectoral input-output interconnec-
+tions and no ﬁscal policy. Such a result holds in any economy in which aggregation
+is not trivial, including ours. In numerical exercises, we ﬁnd the volatility of the
+“aggregate cost-push shock" is six times larger if monetary policy follows a zero-
+inﬂation target instead of its optimal rule. Thus, even if a zero-inﬂation policy does
+almost as well as optimal monetary policy when the government follows optimal
+sectoral ﬁscal policy, it faces the practical challenge of dealing with highly volatile
+3
+
+=== Page 5 ===
+“aggregate cost-push shocks.”
+Finally, we highlight the implications of optimal ﬁscal policy for the cyclical-
+ity of aggregate government demand. A well-established fact for advanced economies,
+including the U.S., is that ﬁscal spending is largely acyclical (for instance, Talvi and
+Vegh, 2005). This feature has been regarded as suggestive that ﬁscal policy does
+not play a stabilization role (Chari et al., 2007). We ﬁnd a muted cyclicality is not
+inconsistent with government demand playing a stabilization role; it just does it
+at a disaggregated level. In our setup, if sectors were symmetric and the economy
+were efﬁcient, optimal ﬁscal policy is perfectly cyclical. However, a milder cycli-
+cality arises when the economy is inefﬁcient and the composition of private and
+public demand differs across sectors, as in the U.S., with public demand tilted to-
+wards stickier sectors (Cox et al., 2024). Cyclicality is even lower if monetary policy
+follows standard inﬂation targeting as ﬁscal policy is even more active in this case.
+The paper is structured as follows. The remainder of this introduction discusses
+the related literature and our contribution. Section 2 lays out the model. Section 3
+discusses the trade-offs which govern optimal policy, its objective function, and the
+optimal ﬁscal and monetary policy rules we obtain. Section 4 presents the data and
+empirical results supporting the idea that sectoral government demand does play
+a disaggregated stabilization role. Section 5 studies its implications for monetary
+policy and aggregate government demand. Section 6 concludes.
+Related Literature.
+In addition to work cited above, our analysis relates to four
+strands of the literature. First, a line of work conducts a positive analysis on the
+importance of sectors in ﬁscal policy transmission, notably the inﬂuential study
+of Ramey and Shapiro (1998) and more recent work by Proebsting (2022), Flynn
+et al. (2022) and Bouakez et al. (2022). Bouakez et al. (2023) develop richer multi-
+sector models with input-output structures to shed light on the ﬁscal transmission
+mechanism. In contrast to these papers, we offer a normative perspective.
+Second, to do so, our analysis builds on work about the optimal adjustment of
+government spending in aggregate economies if monetary policy is constrained by
+the zero lower bound, or an exchange-rate target. Bianchi et al. (2023) study the
+optimal adjustment of government spending in the presence of nominal rigidities
+and sovereign risk in a open economy with an exchange rate peg. Such a setting
+4
+
+=== Page 6 ===
+calls for a modiﬁed Samuelson rule which, absent frictions, requires optimal pol-
+icy to equate the marginal beneﬁts of higher government spending to the marginal
+costs of reduced private consumption. Hettig and Müller (2018) study the optimal
+response of country-level government spending in a model of a monetary union
+in which monetary policy is constrained by the effective lower bound. Bilbiie et
+al. (2024) revisit the trade-offs for monetary and ﬁscal policy in a model that em-
+phasizes household heterogeneity and inequality. Our analysis, instead, considers
+a multi-sector closed-economy model and is focused on heterogeneities along the
+production side of the economy.
+Third, several papers show how taxes should adjust when monetary policy is
+constrained by the zero lower bound (Eggertsson et al., 2004; Correia et al., 2013);
+as well as the possibility of “non-conventional” ﬁscal policy to replicate a ﬁrst-best
+when monetary policy is constrained by the zero lower bound as well as empir-
+ical evidence (Correia et al., 2013; D’Acunto et al., 2018, 2022; Bachmann et al.,
+2021). Farhi et al. (2014), in turn, consider a monetary union and study the opti-
+mal tax policy which brings about a “ﬁscal devaluation” in response to country-
+speciﬁc shocks; and Antonova and Müller (2024) study the optimal tax response
+to sectoral shocks in the New Keynesian model with network structure. Woodford
+(2022) studies transfers as a way to stabilize effective demand in a multi-sector
+model. We focus instead on government spending ﬁnanced through lump-sum
+taxes to isolate its optimal stabilization role.
+Our analysis relates to earlier and recent work on ﬁscal rules. Galí and Per-
+otti (2003), in particular, study how various ﬁscal instruments adjust to the cy-
+cle based on a sample of European countries. Kliem and Kriwoluzky (2014) offer
+a normative model-based assessment of alternative ﬁscal rules, Halac and Yared
+(2018) study international coordination of ﬁscal rules, and Hatchondo et al. (2022)
+focus on the performance of ﬁscal rules in a model of sovereign risk. In contrast,
+assuming optimal policy, we establish a link between sectoral government spend-
+ing, sectoral output gaps and sectoral inﬂation and show that granular data for
+federal purchases is largely consistent with this relationship. Finally, we focus on
+discretionary optimal monetary and ﬁscal policy. A large literature exists studying
+policy without commitment in more complex environments, with Afrouzi et al.
+(2023) being a recent example. We leave such extensions for future research.
+5
+
+=== Page 7 ===
+2
+A New Keynesian multi-sector model
+We model the optimal allocation of government sectoral demand building on the
+multi-country setup of Galí and Monacelli (2008). In our model, though, the sec-
+toral composition of private and public demand is ﬂexible in line with the evidence
+in Cox et al. (2024) and we consider time-consistent policies. Our model has K
+sectors with a continuum of monopolistic competitive ﬁrms operating in each of
+them. Prices are adjusted infrequently. A representative household provides labor
+in competitive sectoral markets. Government purchases are ﬁnanced via lump-
+sum taxes with its budget balanced at all times. Finally, monetary policy adjusts
+the short-term nominal interest rate.
+2.1
+Setup
+We now introduce the problem of the representative household, the allocation of
+the government demand within and across sectors, and the ﬁrms’ problem.
+Households.
+The economy is populated by an inﬁnitely-lived representative house-
+hold with expected utility given by
+E0
+∞
+∑
+t=0
+βt
+"
+(1 −χ)log(Ct) + χlog(Gt) −
+K
+∑
+k=1
+νk
+N1+ϕ
+kt
+1 + ϕ
+#
+,
+(2.1)
+where β ∈(0,1) is the time-discount factor, E0 is the expectation operator, Ct and
+Gt are indexes of private and public consumption, and Nkt denotes hours worked
+in sector k = 1,...,K. The parameter χ determines the weight of each type of con-
+sumption on per-period utility. Private and public consumption are Cobb-Douglas
+aggregates:
+Ct ≡
+K
+∏
+k
+
+ω−1
+ck Ckt
+ωck and Gt ≡
+K
+∏
+k
+
+ω−1
+gk Gkt
+ωgk ,
+(2.2)
+where ϕ > 0,νk > 0 and the subscript k refers to the sector in which bundles Ckt
+and Gkt are assembled. Parameters ωck and ωgk measure the weight of sector k in
+the private and public consumption index, respectively. For the sectoral bundles,
+6
+
+=== Page 8 ===
+we assume a CES structure:
+Ckt ≡
+
+µ−1/θ
+k
+Z
+j∈Jk
+Ckt(j)1−1
+θ dj
+
+θ
+θ−1
+and Gkt ≡
+
+µ−1/θ
+k
+Z
+j∈Jk
+Gkt(j)1−1
+θ dj
+
+θ
+θ−1
+.
+(2.3)
+Inﬁnite varieties of private and public goods exist, each indexed by j with to-
+tal mass equal to 1; ﬁrm j produces variety j. A sector k is deﬁned as the set of
+ﬁrms producing goods with index belonging to the set Jk with mass µk such that
+∑K
+k=1 µk = 1. The elasticity of substitution across varieties within sectors is θ > 1
+for private and public goods, which is assumed to be the same across all sectors.
+The household maximizes equation (2.1) subject to a period budget constraint
+∑
+k
+PktCkt + ∑
+k
+PG
+ktGkt + Qt−1Bt−1 = ∑
+k
+WktNkt + Bt + Πt,
+(2.4)
+where Pkt, PG
+kt and Wkt are sector-k prices paid by households, prices paid by the
+government, and nominal wages paid by ﬁrms, respectively. Equation (2.4) fea-
+tures the government’s total expenditures rather than taxes as we assume a bal-
+anced government budget throughout. In turn, Qt−1 is the period-t price of a one-
+period discount bond, Bt, and Πt are dividends. In addition, we rule out Ponzi
+schemes.
+Pkt(j) denotes the price of variety j in sector k, and Pct is the consumer price
+index. Household’s demand for the sectoral consumption and varieties within
+sectors are given by:
+Ckt = ωck
+Pkt
+Pct
+−1
+Ct and Ckt(j) = 1
+µk
+Pkt(j)
+Pkt
+−θ
+Ckt,
+(2.5)
+where the respective price indices are:
+Pct = ∏
+k
+(Pkt)ωck and Pkt =
+Z
+j∈Jk
+Pkt(j)1−θ
+1/(1−θ)
+.
+(2.6)
+7
+
+=== Page 9 ===
+Sectoral labor supply, in turn, satisﬁes
+νkCtNϕ
+kt = (1 −χ)Wkt
+Pct
+(2.7)
+and households’ consumption satisﬁes the Euler equation:
+1 = βEt
+"
+It
+Ct+1
+Ct
+−1 Pct
+Pct+1
+#
+(2.8)
+where It = 1/Et(Qt) is the gross nominal interest rate.
+Firms.
+A generic ﬁrm j in sector k specializes in the production of a unique vari-
+ety, using labor Nkt(j) as the sole input:
+Ykt(j) = AktNkt(j),
+(2.9)
+where Akt is exogenous, sector-speciﬁc productivity. The government subsidizes
+labor at a constant rate τk, such that nominal marginal costs are given by:
+MCn
+kt(j) = (1 −τk)Wkt
+Akt
+.
+(2.10)
+Firms set prices every period à la Calvo and with associated probability of price
+adjustment 1 −αk. In doing so a generic ﬁrms solves
+max
+P∗
+kt
+Et
+"
+∞
+∑
+τ=0
+(αkβ)τ
+CktPkt
+Ck,t+τPk,t+τ
+
+PktYd
+k,t+τ|t(j) −Wk,t+τNk,t+τ|t(j)
+#
+.
+Optimality requires
+0 = Et
+"
+∞
+∑
+τ=0
+(αkβ)τ
+CktPkt
+Ck,t+τPk,t+τ
+Yd
+k,t+τ|t
+
+P∗
+kt −
+θ
+θ −1 MCn
+k,t+τ|t
+#
+,
+(2.11)
+where Yd
+k,t+τ|t is the total demand at period t + τ relevant for the pricing problem of
+a ﬁrm j that last reset prices in period t. We assume the government buys goods in
+separated markets and are agnostic in that the government directly chooses its real
+8
+
+=== Page 10 ===
+sectoral demand without taking a stand on the degree of nominal rigidity prices
+that the government faces.3
+Government.
+The government jointly determines ﬁscal and monetary policy to
+maximize social welfare. Its policy instruments are the nominal interest rate, It =
+1/Et(Qt), and sectoral government spending, in real terms, [Gkt]K
+k=1.
+Equilibrium conditions.
+Bonds are in zero net supply. Goods and labor markets
+all clear:
+Ykt(j) = Ckt(j) + Gkt(j)
+(2.12)
+Ykt = Ckt + Gkt
+(2.13)
+Nkt =
+Z
+j∈Jk
+Nkt(j)dj
+(2.14)
+such that the aggregation of ﬁrms’ proﬁts is
+Πt =
+K
+∑
+k=1
+h
+PkCkt + PG
+k Gkt −WktNkt
+i
+.
+2.2
+Efﬁcient allocation
+To determine the efﬁcient allocation, we take a planner perspective and maximize
+equation (2.1) subject to the aggregation technologies of private and public goods
+in equations (2.2), the production technology in equation(2.9) and sectoral resource
+constraints in equations (2.13). The optimality condition is
+νk
+Nϕ
+kt
+Akt
+= (1 −χ)ωck
+Ckt
+= χωgk
+Gkt
+.
+(2.15)
+This condition is consistent with the Samuelson (1954) rule: efﬁciency requires the
+marginal product of labor equals the marginal beneﬁts of government demand.
+This condition implies that working hours are invariant to sectoral productiv-
+ity shocks in the ﬁrst best, which is a convenient feature that facilitates the op-
+timal policy analysis below. We obtain this result because of two assumptions:
+3Cox et al. (2024) show that lump-sum taxes and Ricardian households imply that prices paid
+by the government do not affect real variables up to a log-linear approximation.
+9
+
+=== Page 11 ===
+the subsidy τk = θ−1 offsetting the effect of imperfect competition, and the optimal
+steady-state provision of public goods. Using this latter assumption, we normalize
+parameters νk to obtain that all ﬁrms are symmetric in steady state, so Nk(j) = 1,
+and in the aggregate N = 1. Thus, the measure of ﬁrms in a sector, µk, is the only
+source of cross-sectoral variation in steady-state output. The solution to the plan-
+ner’s problem is then given by:
+¯Nkt
+=
+µk
+(2.16)
+¯Ykt
+=
+µkAkt
+(2.17)
+¯Ckt
+=
+(1 −χ)ωck
+(1 −χ)ωck + χωgk
+¯Ykt ≡(1 −χk) ¯Ykt
+(2.18)
+¯Gkt
+=
+χωgk
+(1 −χ)ωck + χωgk
+¯Ykt ≡χk ¯Ykt.
+(2.19)
+where µk = (1 −χ)ωck + χωgk, νk ≡µ−ϕ
+k
+, χk ≡χωgk/µk and 1 −χk = (1 −χ)ωck/µk
+and upper bars denote efﬁcient levels.
+2.3
+Approximate equilibrium dynamics
+We now characterize the approximate log-linear equilibrium dynamics for an ar-
+bitrary level of government demand in each sector. In a steady state with op-
+timal public good provision, ωck = Ck/C with ∑K
+k=1 ωck = 1, ωgk = Gk/G with
+∑K
+k=1 ωgk = 1, and µk = Yk/Y with ∑K
+k=1 µk = 1.4 The ﬁrst-order approximation
+of market-clearing conditions at sectoral and aggregate levels are
+ykt = (1 −χk)ckt + χkgkt
+and
+yt = (1 −χ)ct + χgt.
+(2.20)
+The approximation of the Euler equation (2.8) is:
+ct = Et(ct+1) −(it −Et(πt+1) −ρ),
+where ρ = −logβ such that the log-linear approximation of sectoral demand in
+4Minuscules denote log-linear deviations from steady state levels. Appendix A provides a full
+solution of the steady state.
+10
+
+=== Page 12 ===
+equation (2.5) and sectoral market clearing in equation (2.20) yield
+ˆykt = Et ˆykt+1 −(1 −χk)(it −Et(πkt+1) −ρ) −χkEt∆ˆgkt+1.
+(2.21)
+Next, we express variables in terms of deviations from the efﬁcient allocation.
+Deﬁne sectoral output gaps as ˜ykt ≡ykt −¯ykt and sectoral ﬁscal gaps as
+˜fkt ≡(gkt −¯gkt) −(ykt −¯ykt) = gkt −ykt.
+The last equality holds given that ¯ykt = ¯gkt = akt. Thus, (2.21) becomes
+˜ykt = Et ˜ykt+1 −(it −Etπkt+1 −¯rkt) −χ∗
+kEt∆˜fkt+1,
+(2.22)
+where χ∗
+k ≡χk/(1 −χk) and ¯rkt is the sectoral natural rate of interest:
+¯rkt ≡(1 −χk)−1 [Et∆¯ykt+1 −χkEt∆¯gkt+1] = Et∆akt+1.
+We turn next to the optimal price setting in equation (2.11), which implies a
+sectoral New Keynesian Phillips Curve. Using equations (2.5), (2.7), and (2.9), and
+the deﬁnitions of sectoral output and ﬁscal gaps,
+πkt = βEtπkt+1 + λk (1 + ϕ) ˜ykt −λkχ∗
+k ˜fkt.
+(2.23)
+where πkt = ∆pkt and λk ≡(1 −αk)(1 −βαk)/αk. Sectoral Phillips curves do not
+directly depend on sectoral price distortions, but instead are reﬂected in the cross-
+sectoral dispersion of sectoral output gaps. To see this, we use the expressions
+in equations (2.5) and (2.20) to obtain a relationship between sectoral output and
+ﬁscal gaps:
+˜ykt −˜yt = χ∗
+k ˜fkt −χ∗˜ft −(pkt −pct) −(akt −at) + χ∗
+K
+∑
+k
+(µk −ωgk)akt
+(2.24)
+where χ∗≡χ/(1 −χ) and ˜ft is the aggregate ﬁscal gap; pkt and pct are household-
+11
+
+=== Page 13 ===
+paid prices at sectoral and aggregate levels, respectively:
+pkt = πkt + pkt−1,
+(2.25)
+pct =
+K
+∑
+k
+ωckpk,t,
+(2.26)
+πt =
+K
+∑
+k
+ωckπk,t,
+(2.27)
+˜ft =
+K
+∑
+k
+ωgk( ˜fkt + ˜ykt) −˜yt.
+(2.28)
+Aggregate dynamics are characterized by equations (2.22), (2.23), (2.24) and
+(2.25) for all sectors k = 1,...,K and equations (2.26), (2.27), and (2.28). Note that
+the aggregation of sectoral equations (2.24) and equation (2.28) yield
+˜yt =
+K
+∑
+k
+µk ˜ykt.
+(2.29)
+To close this section, we want to make three remarks. First, sectoral productiv-
+ity shocks and sectorally segmented labor markets imply that marginal costs are
+perfectly correlated for ﬁrms within sectors but independent across sectors. In this
+way, we rule out direct spillovers across sectors in order to focus on the degrees
+of freedom due to sectoral ﬁscal policy in a disaggregated economy. Second, the
+model allows for sector-speciﬁc nominal rigidity, which allows us to accommo-
+date the empirical evidence for the U.S. documented by Pastén et al. (2020). In this
+way, our analysis generalizes the setup of Aoki (2001), Benigno (2004), Eusepi et al.
+(2011) and, although abstracting from input-output relationships, we connect with
+La’O and Tahbaz-Salehi (2022), Guerrieri et al. (2021), Rubbo (2023), and Afrouzi
+and Bhattarai (2023). Third, the model provides ﬂexibility to accommodate the
+unequal sectoral composition of ﬁnal private demand (here, households) and gov-
+ernment demand documented for the U.S. in Cox et al. (2024). In what follows, we
+study how this sectoral bias affects the design of the optimal joint monetary and
+sectoral ﬁscal policies.
+12
+
+=== Page 14 ===
+3
+The Optimal Policy Mix under Sticky Prices
+We now present our main theoretical result: the joint, time-consistent optimal mon-
+etary and sectoral ﬁscal policies, based on a second-order approximation of house-
+hold’s welfare and log-linearly approximated dynamics.
+3.1
+Trade-offs
+To set the stage, we start highlighting the trade-offs involved in the optimal policy
+mix, ﬁrst for the one-sector special case and then for the multi-sector economy.
+Single-sector economy.
+Our model trivially collapses to a single-sector economy
+if K = 1. This setup is equivalent to a multi-sector economy with aggregate pro-
+ductivity shocks and perfectly symmetric sectors.
+The Phillips curves in equation (2.23) imply that divine coincidence holds: mon-
+etary policy can fully stabilize aggregate inﬂation, πt = 0, and closing the (aggre-
+gate) output gap, ˜yt = 0, with no need of ﬁscal policy to deviate from the ﬁrst-best
+provision of public goods, ˜ft = 0. Monetary policy dominates ﬁscal policy as stabi-
+lization tool because the latter does not enjoy a divine coincidence: The ﬁscal rule
+χ∗˜ft = (1 + ϕ) ˜yt that sets πt = 0 in equation (2.23) is inconsistent with ˜yt = 0 in
+equation (2.22) if monetary policy remains passive, it = 0. Intuitively, government
+demand can engineer the same nominal aggregate demand expansion as monetary
+policy but, as it crowds out consumption, it affects labor supply, and thus it yields
+a different response of inﬂation and the output gap.
+Multi-sector economy.
+We now consider a multi-sector economy, that is, K > 1.
+If monetary policy were the only stabilization instrument with ˜fkt = 0 for all k, then
+the aggregation of sectoral Phillips curves in equation (2.23) implies that divine co-
+incidence breaks down. Instead, a modiﬁed version of divine coincidence applies,
+extensively shown in different contexts in the literature (Rubbo, 2023; Afrouzi et
+al., 2024, for example). In our setup, the aggregation of equation (2.23) implies that
+monetary policy alone can close the aggregate output gap, ˜yt = 0, if it targets an
+inﬂation index
+πDC
+t
+≡
+K
+∑
+k=1
+λ−1
+k µk
+∑K
+k=1 λ−1
+k µk
+πkt
+(3.30)
+13
+
+=== Page 15 ===
+which gives higher weight to sectors with sticker prices, i.e., those with larger ex-
+pected output gaps. However, inﬂation πt relevant for households is not stabilized
+under this monetary policy rule; sectoral inﬂation and sectoral output gaps are not
+stabilized either. This is where sectoral ﬁscal policy can play a complementary
+role: unlike aggregate monetary policy, sectoral ﬁscal policy can be tailored at the
+required disaggregated, in this case, sectoral level.
+As in the single sector economy, ﬁscal policy does not enjoy an “aggregate di-
+vine coincidence”. As such, it is a complement and not substitute of monetary
+policy. Fiscal policy does not enjoy a “disaggregated divine coincidence” either.5
+To see this point, note that the ﬁscal rule that sets πkt = 0 in equation (2.23) is incon-
+sistent with ˜ykt = 0 in equation (2.22) for all sectors k for any monetary policy rule.
+The intuition is the same as in the single sector economy above: to deal with pro-
+ductivity shocks, pure sectoral nominal demand management is required, which
+is unfeasible for ﬁscal policy as it affects labor supply. Therefore, the ﬁrst best is
+not attainable. Yet, disaggregated ﬁscal policy can improve outcomes by deviating
+from ﬁrst-best government demand when jointly working with monetary policy.
+This is what we turn to next.
+3.2
+Optimal Policy
+Given these trade-offs, we now derive the optimal time-consistent mix of monetary
+and sectoral ﬁscal policies. Appendix B solves for the second-order approximation
+of the welfare function which is
+Wt =
+∞
+∑
+t=0
+βtUt = −1
+2
+∞
+∑
+t=0
+βt∑
+k
+µk
+θ(1 −χk)
+λk
+π2
+kt + (1 + ϕ) ˜y2
+kt + χ∗
+k ˜f 2
+kt
+
+(3.31)
+where we abstract from terms independent of monetary and ﬁscal policy. This wel-
+fare function has three main components. Sectoral inﬂation is a proxy for the inef-
+ﬁciency introduced by intra-sector dispersion of prices due to the nominal rigidity.
+Thus, this term is eliminated if a sector has fully ﬂexible prices, in which case
+λk −→∞. This inefﬁciency affects the allocation of intra-sectoral household con-
+sumption, which, in steady state is a share 1 −χ∗
+k of total sectoral output. Note a
+5Appendix D shows that divine coincidence, at aggregate and disaggregated levels, does hold
+for sectoral ﬁscal policy if frictionless output is inefﬁcient due to suboptimal ﬁscal policy.
+14
+
+=== Page 16 ===
+given level of intra-sectoral price dispersion yields a larger distortion as the intra-
+sectoral elasticity of substitution of consumption θ is larger. The second term is
+related to sectoral output gaps capturing the inter-sectoral dispersion of consump-
+tion. Finally, sectoral ﬁscal gaps encapsulate the sectoral provision of public goods
+and, together with sectoral output gaps, the equilibrium working hours that the
+household provides in each sector.
+We focus on time-consistent policies. To solve this problem, we follow the stan-
+dard approach of directly choosing allocations {pkt,πkt, ˜ykt, ˜fkt, pct, ˜yt, ˜ft} by opti-
+mizing equation (3.31) subject to sectoral Phillips curves in equation (2.23), sectoral
+demand in equation (2.24) and the relation between sectoral prices and sectoral in-
+ﬂation in equation (2.25) for all sectors, plus the aggregation equations (2.26), (2.28)
+and (2.29). Aggregate inﬂation πt is deﬁned in equation (2.27) and the monetary
+policy rule that solves for this allocation is implicitly deﬁned in the aggregation of
+sectoral IS curves in equation (2.22).
+A few observations follow from the expression for welfare in equation (3.31).
+First, even though we allow the sectoral composition of consumption and aggre-
+gate government demand to differ, the relative importance of sectors in welfare is
+given only by steady-state sectoral size, µk = Yk/Y. Second, no aggregate variable
+enters the welfare function. Thus, closing the aggregate output gap is not neces-
+sarily a target for optimal policy. Third, inter-sectoral price dispersion does not
+explicitly enter welfare and instead is captured by equation (2.24), which enters
+in the optimal policy problem as a restriction. Appendix C presents the detailed
+solution. The optimal sectoral ﬁscal rule prescribes that, in equilibrium,
+˜f ∗
+kt = −(1 + ϕ)(1 + λk)
+1 + (1 + ϕ)λk
+˜y∗
+kt −
+θ(1 −χk)ϕ
+1 + (1 + ϕ)λk
+π∗
+kt.
+(3.32)
+The intuition is that, when a positive productivity shock hits in a sector, marginal
+costs of ﬁrms in that sector decrease, and so do sectoral prices, to the extent that
+nominal price rigidity allows it, the latter introducing inefﬁcient price dispersion.
+In addition, output increases but not as much as in a ﬂex-price economy, so the sec-
+toral output gap is negative. In this situation, as discussed in section 3.1, an expan-
+sionary sectoral ﬁscal policy simultaneously reduces the response of the sectoral
+15
+
+=== Page 17 ===
+inﬂation and the gap in the response of output relative to the ﬂex-price response –
+although it can not set both to zero at the same time.
+Equation (3.32) prescribes that sectoral ﬁscal policy is more aggressive in sec-
+tors with stickier prices, which is inversely captured by λk ≡(1 −αk)(1 −βαk)/αk,
+where the government represents a smaller share of sectoral steady-state demand
+χk, the intra-sectoral elasticity of substitution θ is larger and when the inverse-
+Frisch elasticity ϕ is larger. More stickiness implies that sectoral inﬂation yields
+higher intra-sectoral price dispersion which affects only private demand. Thus,
+when the share χk of government demand is larger, price dispersion has smaller
+effect on welfare. In addition, larger θ implies that a given intra-sectoral price
+dispersion generates larger distortion and larger ϕ implies a stronger response of
+sectoral labor supply. Moreover, in stickier sectors, the output gap and inﬂation
+have stronger and weaker responses to shocks, respectively.
+Turning to optimal monetary policy, the following condition holds
+θ
+K
+∑
+k=1
+(1 −χk)µk
+1 + λk(1 + ϕ)πkt = −
+K
+∑
+k=1
+µk
+1 + λk(1 + ϕ) ˜ykt.
+(3.33)
+This is a variation of the usual “leaning against the wind” policy. If all sec-
+tors were symmetric in the steady state, such that λk = λ and ωck = ωgk = µk for
+k = 1,...,K, optimal monetary policy splits the aggregate effect of sectoral shocks
+between aggregate inﬂation and the aggregate output gap. However, in general,
+sectoral inﬂation and sectoral output gaps are weighted according to steady-state
+output shares adjusted by their degree of nominal price rigidity and the steady-
+state share of private consumption on sectoral output, (1 −χk).
+To see how monetary policy, aggregate in nature, and sectoral ﬁscal policy in-
+teract, mixing equation (3.32) and equation (3.33) yields
+K
+∑
+k=1
+µk(gkt −¯gkt) = 0.
+(3.34)
+If sectors were symmetric in steady state, the aggregate provision of public
+goods would not deviate from the ﬁrst best. The intuition is related to our discus-
+sion above: monetary policy is superior to ﬁscal policy as an aggregate stabiliza-
+16
+
+=== Page 18 ===
+tion tool, resulting in a separation of roles: ﬁscal policy stabilizes at a disaggregated
+level and monetary policy stabilizes at the aggregate level.
+Up to log-linear approximation, aggregate government demand weights sec-
+tors by [ωgk]K
+k=1, whereas equation (3.34) weights them by [µk]K
+k=1. In words, in
+the aggregate, ﬁscal policy gives higher weight to deviations from ﬁrst-best public
+good provision in sectors in which households’ steady-state demand is higher than
+the government’s, ωck > µk > ωgk. A corollary of this result is that equation (3.34)
+does not imply that aggregate government demand gt is unresponsive to shocks.
+We come back to this feature when we discuss the implications of optimal ﬁscal
+policy on a muted cyclicality of aggregate government demand.
+4
+Empirical Evidence
+This section provides evidence that a disaggregated stabilization role for govern-
+ment demand is plausible empirically – suggesting that optimal policy and its im-
+plications are more than just abstract theoretical possibilities. We ﬁrst motivate that
+government demand is ﬂexible and rich enough to play such a role by referring to
+Cox et al. (2024). Second, we present empirical evidence that the sectoral alloca-
+tion of government demand is indeed broadly consistent with the optimal sectoral
+ﬁscal policy in equation (3.32). The latter ﬁnding is remarkable if not surprising
+because, in practice, the allocation of government demand follows an involved
+decision-making process that may not align with our simple model.
+4.1
+Government demand is ﬂexible
+Based on the insights in Cox et al. (2024), government appears ﬂexible and disag-
+gregated enough to potentially play a stabilization role at the sectoral level.6 Cox et
+al. (2024) use the universe of U.S. federal procurement contracts from USASpend-
+ing.gov to establish two facts that provide validity in this regard:
+1. Although federal procurement—the purchases of goods and services con-
+ducted by the U.S. federal Government—corresponds to only 16 percent of
+total government spending, it accounts for half of the variation of the growth
+6More detail about the sources, features of and cleaning of these data can be found in Cox et
+al. (2024).
+17
+
+=== Page 19 ===
+rate of total government spending. Conceptually, procurement is the com-
+ponent of government spending that directly speaks to the way that govern-
+ment spending is typically introduced in macro models. In addition, pro-
+curement is the most ﬂexible component at the aggregate level.
+2. Most of the variation in federal procurement is idiosyncratic across sectors.
+This fact suggests the presence of large sectoral reallocation of government
+spending period by period. If instead this sectoral government demand were
+in ﬁxed proportions, it would sufﬁce to model aggregate government de-
+mand.
+The other three facts Cox et al. (2024) document are: (i) the government con-
+ducts its purchases in competitive auctions in segregated markets relative to pri-
+vate agents. This fact is the reason why the government in our model directly
+decides its real demand in a setup in which procurement prices play no role, as dis-
+cussed above; (ii) duration of contracts that guide the persistence of ﬁscal shocks
+at the ﬁrm and sectoral levels – we abstract from such shocks in the paper at hand;
+(iii) distinct sectoral composition of government demand relative to private de-
+mand. We incorporate this fact in numerical exercises presented in section 5.
+4.2
+Government demand indeed plays a stabilization role
+The sectoral allocation of government demand is indeed broadly consistent with
+the optimal sectoral ﬁscal policy in equation (3.32), which postulates a correlation
+of sectoral government demand with sectoral inﬂation and sectoral output gaps.
+Note that after rearranging equation (3.32), we can write the sectoral ﬁscal gap as:
+˜gkt = −
+ϕ
+1 + (1 + ϕ)λk
+˜ykt −
+θ(1 −χ∗
+k)
+1 + (1 + ϕ)λk
+πkt,
+such that government demand is expansionary relative to the ﬁrst best when the
+sectoral output gap and/or sectoral inﬂation are negative. In contrast, an expan-
+sionary ﬁscal shock yields a positive correlation to both sectoral inﬂation and out-
+put gap, because it increases labor costs, pushing up inﬂation in the sector, whereas
+price stickiness generates an expansion in sectoral output relative to its frictionless
+18
+
+=== Page 20 ===
+counterpart. Therefore, negative estimated parameters are indicative of a stabiliza-
+tion role behind the allocation of sectoral government demand.
+With this logic in mind, we estimate the reduced form counterpart of equation
+(4.2), speciﬁcally:
+˜gkt = ηk + γt + β1 ˜ykt + β2πkt + νkt.
+Importantly, we are not attempting to identify a causal effect, but instead to put
+a sign on the correlations represented by β1 and β2. This is because equation
+(4.2) is an equilibrium condition. Thus, we estimate variations of equation (4.2)
+by OLS and by an instrumental variables approach. We construct all variables at
+the NAICS 4-digit industry level, at a quarterly frequency. Sectoral government
+demand is computed from the federal procurement data from USASpending.gov
+from 2001 to 2019.7 We calculate sectoral inﬂation using the conﬁdential microdata
+data used by the Bureau of Labor Statistics (BLS) to construct the Producer Price
+Index (PPI), whereas for output we use sales reported by publicly listed U.S. ﬁrms
+in each sector, obtained from Compustat. We deﬂate both the government con-
+tracts and sales series using sectoral PPI. We also add sector and time ﬁxed effects,
+respectively denoted as ηk and γt, and weight the regressions by average annual
+sectoral government spending.
+In the model, sectoral government demand and sectoral output in equation
+(4.2) are expressed as log gaps from frictionless counterparts, which are unobserv-
+able. We therefore estimate the baseline regressions with various proxy variables to
+show the robustness of the estimates and report the results in Table 1. Regardless,
+a very consistent message arises from the estimation results: Column (1) shows re-
+sults when the sectoral government demand and output gaps are approximated by
+log-deviations from HP-ﬁltered series with the conventional smoothing parameter
+of 1600. Consistent with the model, the estimated coefﬁcients are both negative
+and highly signiﬁcant, as prescribed in equation (4.2). In column (3), the spec-
+iﬁcation exploits the result from the model that frictionless sectoral government
+demand is a ﬁxed proportion of sectoral output, so the sectoral ﬁscal gap does not
+depend on its frictionless counterpart up to a constant. Thus, we use the sectoral
+7The start of the sample is determined by data availability, and we choose the end of the
+sample to alleviate on concerns arising due to the COVID-19 period.
+19
+
+=== Page 21 ===
+Table 1:
+Sectoral Relationship between Government Demand, Output and
+Inﬂation
+OLS
+IV
+(lr)2-5(lr)6-7
+(1)
+(2)
+(3)
+(4)
+(5)
+(6)
+gkt
+gkt
+fkt
+fkt
+gkt
+fkt
+ykt
+-0.113***
+-0.120***
+-1.416***
+-1.425***
+-0.348***
+-1.428***
+(0.032)
+(0.032)
+(0.043)
+(0.044)
+(0.093)
+(0.122)
+πkt
+-0.011***
+-0.011***
+-0.007*
+-0.007*
+0.002
+-0.004
+(0.002)
+(0.002)
+(0.003)
+(0.003)
+(0.007)
+(0.009)
+TFP (Cyclical)
+0.074*
+0.087
+(0.037)
+(0.050)
+Observations
+8954
+8953
+8954
+8953
+8389
+8389
+R2
+0.242
+0.243
+0.930
+0.930
+—
+—
+Note: All regressions contain time (year × quarter) and sector (NAICS 4) ﬁxed ef-
+fects and are weighted by sectoral government spending. In columns (1), (2), and
+(5), the dependent variable is log git. In columns (3), (4), and (6), the dependent
+variable is log ˜fkt = loggit −logyit. The instruments for column (5) and (6) are
+constructed by estimating regressions of the type Xkt = β0 + ∑k β1kDx × Zt + ϵkt
+where Xkt ∈( ˜ykt,πkt), Zt denotes one of the exogenous shocks, and instrumen-
+tation uses predicted ˆXkt. This procedure is based on the baseline speciﬁcation
+in Nakamura and Steinsson (2014). The partial R2s for the excluded instruments
+are between 14 and 15 percent for each endogenous variable.
+Because our
+speciﬁcation relies on such a large number of instruments (one per industry x
+exogenous shock), the Stock and Yogo (2005) F-Statistic is roughly 3.5 for each
+endogenous variable.
+ﬁscal gap, fkt, as the dependent variable in results reported in column (3): once
+again, parameters are negative and signiﬁcant.
+In columns (2) and (4), we show that the results continue to hold when we
+estimate the same speciﬁcation, but include sectoral TFP shocks as controls. The
+inclusion of this variable exploits the property in our model that frictionless gov-
+ernment demand and output are functions of productivity shocks. To calculate a
+proxy for productivity in period t for industry k, we aggregate ﬁrm-level estimates
+of TFP, which we calculate using Compustat data, to the sector level. Speciﬁcally,
+we estimate ﬁrm-level TFP as the protoptyical Solow residual, εit, of the following
+20
+
+=== Page 22 ===
+speciﬁcation:
+log(yit) = ϱi + ϱt + αk
+s log(kit−1) + αn
+s log(nit) + εit,
+where yit denotes the real sales of ﬁrm i in sector k in quarter t, kit−1 denotes its
+real capital stock, and nit denotes its employment. We include ﬁrm and time ﬁxed
+effects, ϱi and ϱt. We construct ﬁrms’ real capital stock from Compustat data on the
+change in gross property plant and equipment (PPE) and net investment. Columns
+(2) and (4) of Table 1 report results with the TFP control for speciﬁcations with gkt
+and fkt as dependent variables, respectively. The estimated parameters are again
+negative and signiﬁcant, though slightly less so for inﬂation.
+Finally, as columns (5) and (6) show, results of an instrumental variables ap-
+proach align with the results from the other speciﬁcations. Here, our goal is to
+use instruments for both ˜ykt and πkt that are not correlated with sectoral produc-
+tivity shocks. We have two endogenous variables so the analysis requires at least
+two instruments. We borrow three shocks from the literature that have been iden-
+tiﬁed as exogenous shifters of output and inﬂation: a monetary policy shock—
+speciﬁcally, the 30-minute change in expectations of the Federal Funds rate around
+FOMC meetings from Acosta (2023); a credit shock—speciﬁcally, the excess bond
+premium measure from Gilchrist and Zakrajšek (2012); and oil supply shocks from
+Känzig (2021).8 To use these aggregate shocks to instrument for sectoral variables,
+we follow Nakamura and Steinsson (2014) such that the independent variable is
+the aggregate shock interacted with an industry dummy. Hence, in a ﬁrst stage
+we regress industry output on the aggregate shock and ﬁxed effects, allowing in-
+dustry outcomes to vary differently with the three shocks. We then use the ﬁtted
+values as an instrument in the second stage. With this approach, we can no longer
+estimate the coefﬁcient on inﬂation precisely, but the negative coefﬁcient on output
+is robust also in this IV setting, again consistent with a sectoral stabilization role
+for ﬁscal policy.
+A different possible concern may arise from the fact that the sectoral ﬁscal rule
+in equation (3.32) is conceptually similar to a Taylor rule. Thus, a standard issue
+in the estimation of Taylor rules may also apply in our context: shocks to the rule
+8We can exactly identify or overidentify the speciﬁcation and obtain similar results.
+21
+
+=== Page 23 ===
+could affect parameter estimates. We belief this concern is small in our setting
+for two reasons. First, Carvalho et al. (2021) shows the bias obtained from OLS
+estimation of Taylor rules is rather small. Second, as the response of both sec-
+toral inﬂation and output gap are positive to an expansionary sectoral ﬁscal shock,
+the potential bias is likely upwards. As our estimated parameters are negative,
+this potential bias therefore does not affect our conclusion that our results provide
+suggestive evidence that government demand does play a stabilization role at the
+disaggregate level broadly consistent with the optimal sectoral ﬁscal policy rule.
+Relation with price stickiness.
+Pastén et al. (2020, 2024) show that sectors in U.S.
+data differ in their frequency of price changes. The optimal sectoral ﬁscal rule in
+(3.32) prescribes a stronger reaction to sectoral output gaps and sectoral inﬂation
+in “stickier” sectors. We explicitly take this source of heterogeneity into account
+by dividing sectors into sticky and ﬂexible sectors using data on the frequency of
+price adjustment calculated from the conﬁdential micro-data underlying the BLS
+producer price index. We deﬁne a sector to be a “sticky” sector if it is characterized
+by a below-median frequency of price adjustment. Doing so conﬁrms the role of
+optimal ﬁscal policy in line with the mechanisms at work in the model: Table 2
+shows that the estimated coefﬁcients are negative, signiﬁcant, and larger in mag-
+nitude for “sticky” sectors relative to more ﬂexible sectors. This result holds for
+both our OLS and instrumental-variable speciﬁcations, and across alternative de-
+pendent variables, either sectoral government demand, gkt or sectoral ﬁscal gaps,
+fkt. In particular, it holds in the sticky price sectors – aligning with the New Keyne-
+sian intuition of effectiveness of government spending in sectors in which pricing
+frictions are present.
+5
+Implications
+This section highlights the implications of the optimal mix of monetary and sec-
+toral ﬁscal policies for inﬂation targeting and aggregate ﬁscal policy. To do so, we
+rely on a calibrated version of our model for the U.S.
+Two main results arise: First, divine coincidence approximately holds as zero-
+inﬂation targeting yields small welfare losses relative to the optimal monetary pol-
+icy when sectoral ﬁscal policy is optimally conducted in both cases. At the same
+22
+
+=== Page 24 ===
+Table 2: Sectoral Relationship and Price Stickiness
+OLS
+IV
+(lr)2-3(lr)4-5
+gkt
+fkt
+gkt
+fkt
+Flex × ykt
+0.232***
+-0.887***
+-0.232
+-1.321***
+(0.058)
+(0.078)
+(0.135)
+(0.179)
+Sticky × ykt
+-0.255***
+-1.606***
+-0.585***
+-1.683***
+(0.038)
+(0.051)
+(0.139)
+(0.184)
+Flex × πkt
+-0.011***
+-0.020***
+0.008
+0.005
+(0.003)
+(0.004)
+(0.007)
+(0.010)
+Sticky × πkt
+-0.017***
+0.018**
+-0.121***
+-0.157***
+(0.004)
+(0.006)
+(0.026)
+(0.034)
+Observations
+8954
+8954
+8389
+8389
+R2
+0.247
+0.931
+-0.066
+0.038
+Notes: All regressions contain time (year × quarter) and sector (NAICS 4) ﬁxed
+effects and are weighted by average sectoral government contracts. In columns
+(1) and (3), the dependent variable is the cyclical component of log git. In columns
+(2) and (4) is loggit −logyit. A “sticky” sector is deﬁned as a sector in which
+the frequency of producer price adjustment is below the median of all 4-digit
+sectors.
+The instruments are constructed by estimating regression of the type
+Xkt = β0 + ∑k β1kDx × Zt + ϵkt where Xkt ∈( fkt,πkt), Zt denotes one of the
+exogenous shocks, and instrumentation uses predicted ˆXkt.
+time, our exercise shows that targeting a standard inﬂation index results in cen-
+tral banks having to deal with seemingly large and volatile cost-push shocks as
+interpreted through the lens of an aggregate Phillips curve. Second, our optimal
+monetary and ﬁscal policy mix naturally prescribes a mild cyclicality of aggregate
+government demand, a feature observed in U.S. data and often interpreted as ﬁscal
+policy not playing a stabilization role. We show that it does, just not at the aggre-
+gate but rather at the disaggregated level.
+23
+
+=== Page 25 ===
+5.1
+Calibration
+The model is monthly, so β = 0.997. The inverse-Frisch elasticity is set at ϕ = 4, as
+in Chetty et al. (2011). Steady-state government total demand as share of GDP is
+χ = 18.5% as in Cox et al. (2024). The persistence of productivity shocks is ρ = 0.85.
+For steady-state sectoral shares of private consumption, we calculate the sectoral
+value-added shares using the “Use Table” from the Bureau of Economic Analysis
+(BEA) Input-Output accounts. Speciﬁcally, we calculate the average share for 121
+NAICS 4-digit sectors between 2007 and 2012—the years in which the input-output
+table is available at its most disaggregated level. Sectoral shares of government de-
+mand are calculated as the share of government procurement contracts allocated to
+each NAICS 4-digit sector, also an annual average across 2007 and 2012 to match
+private consumption shares. The government procurement data come from US-
+ASpending.gov. Lastly, to calculate the sectoral degree of nominal price rigidity,
+we utilize the frequency of producer price changes derived from the micro data
+that underlie the construction of the Producer Price Index (PPI) by the Bureau of
+Labor Statistics (BLS), as in Pastén et al. (2020, 2024).
+5.2
+Divine coincidence
+A well-established result is that time-consistent optimal monetary policy to deal
+with productivity shocks in disaggregated economies deviates from targeting zero
+inﬂation. If sectors are all identical and productivity shocks are aggregate, such
+that the modelling a multi-sector economy is immaterial, monetary policy can
+achieve the ﬁrst best by targeting on zero inﬂation as it also closes the aggregate
+output gap – the so-called “divine coincidence". However, this result does not hold
+when either sectors respond differently to aggregate shocks, for instance because
+of heterogeneous degrees of nominal price rigidity, and/or if productivity shocks
+are idiosyncratic. Optimal monetary policy does not attain the ﬁrst best, and to
+close the aggregate output gap it needs to target a modiﬁed aggregate inﬂation
+index that gives more weight to sectors with stickier prices.
+When revisiting these results in a disaggregated economy in which monetary
+policy is coupled to sectoral ﬁscal policy, our analysis recovers divine coincidence
+in the sense that inﬂation targeting is quantitatively approximately optimal for our
+24
+
+=== Page 26 ===
+model calibration to the U.S. economy. To establish this result, our analysis runs
+simulations for four alternative policy schemes under four alternative parametriza-
+tions, shown in Table 3 by combinations of columns (policy schemes) and rows
+(parametrizations). The baseline exercise is shown in column (1) and the ﬁrst row
+in each block of Table 3. Here, we assume jointly optimal monetary and sectoral
+ﬁscal policy, as prescribed in equations (3.32) and (3.33), under a parameterization
+that sets the sectoral frequency of price changes and the sectoral composition of
+private and government demand consistent with U.S. data.
+Column (2) assumes optimal monetary policy consistent with equation (3.33),
+whereas sectoral ﬁscal policy is “passive”, that is, ˜fkt = 0 for any k. Column (3) as-
+sumes monetary policy targets zero-inﬂation, whereas sectoral ﬁscal policy is con-
+sistent with equation (3.32). Finally, column (4) assumes monetary policy targets
+zero inﬂation, whereas ˜fkt = 0 for any k. Each policy scheme is evaluated under the
+baseline parameterization—shown in the ﬁrst row of each block in Table 3—and
+three alternative parameterizations. In the second row of each block, we assume
+an equal sectoral composition of public and private demands in steady state; in the
+third row, we assume an identical frequency of price changes for all sectors; and in
+the fourth row, we assume both. These alternative parameterizations allow us to
+study which of the sectoral features that we allow to vary across sectors are most
+relevant.
+Table 3 and all following tables report “variance multipliers”, which map the
+variance of shocks into the variance of the respective variable. Thus, for instance,
+if the variance multiplier of endogenous variable Xt is one, then its variance equal
+that of productivity shocks, which are assumed the same for all sectors.
+The main takeaway in Table 3 is that the optimal monetary and sectoral ﬁscal
+policies approximately recover divine coincidence. We start, in the ﬁrst block of
+Table 3, reporting the variance multiplier of aggregate inﬂation and the aggregate
+output gap. Column (1) reports that, under the optimal policy mix, the variance
+multiplier of aggregate inﬂation is 0.14% and of the output gap is 0.35%. In words,
+as stressed in Section 3.1, the optimal mix of monetary and sectoral ﬁscal policies
+does not attain the ﬁrst best.
+In turn, if sectoral ﬁscal policy is passive ( ˜fkt = 0), ﬁrst row in column (2), the
+optimal monetary policy closes the aggregate output gap. Notice this result holds
+25
+
+=== Page 27 ===
+Table 3: Variance Multipliers and Welfare Loss of Sectoral Productivity Shocks
+(1)
+(2)
+(3)
+(4)
+Policy mix:
+i∗
+t , ˜f ∗
+kt
+i∗
+t , ˜fkt = 0
+πt = 0, ˜f ∗
+kt
+πt = 0, ˜fkt = 0
+Variance of aggregate inﬂation and output gap, var(πt),var( ˜yt)
+(a) αk,ωck,ωgk
+0.14%, 0.35%
+0.35%, 0%
+0%, 1.7%
+0%, 7.8%
+(b) αk,ωgk = ωck
+0.08%, 0.21%
+0.33%, 0%
+0%, 0.81%
+0%, 4.4%
+(c) αk = ¯α,ωck,ωgk
+0%, 0%
+0.16%, 0%
+0%, 0.07%
+0%, 0.95%
+(d) αk = ¯α,ωgk = ωck
+0%, 0%
+0%, 0%
+0%, 0%
+0%, 0%
+Average variance of sectoral inﬂation and output gaps, var(πkt),var( ˜ykt)
+(a) αk,ωck,ωgk
+14.6%, 53.9%
+17.9%, 117%
+14.5%, 55.8%
+17.7%, 127%
+(b) αk,ωgk = ωck
+9.1%, 16.1%
+17.9%, 116%
+9.0%, 16.7%
+17.5%, 120%
+(c) αk = ¯α,ωck,ωgk
+11.3%, 25.7%
+13.2%, 78.6%
+8.8%, 35.2%
+13.1%, 77.6%
+(d) αk = ¯α,ωgk = ωck
+5.1%, 4.2%
+12.5%, 74.5%
+5.1%, 4.2%
+12.5%, 74.5%
+Per-period welfare loss
+(a) αk,ωck,ωgk
+2.8
+4.7
+3.1
+6.3
+(b) αk,ωgk = ωck
+2.8
+4.4
+2.9
+4.6
+(c) αk = ¯α,ωck,ωgk
+2.2
+4.3
+2.5
+4.5
+(d) αk = ¯α,ωgk = ωck
+2.8
+3.4
+2.8
+3.4
+Note: This table reports variance multipliers of aggregate inﬂation and output gap
+(ﬁrst block), the simple average of variance multipliers of sectoral inﬂation and
+output gap (middle block) and per-period welfare (bottom block). Columns report
+results for four alternative policy schemes: (1) optimal monetary and sectoral ﬁscal
+policies mix, (2) optimal monetary policy and passive sectoral ﬁscal policy, (3) zero-
+inﬂation targeting and optimal sectoral ﬁscal policy and (4) zero-inﬂation targeting
+and passive sectoral ﬁscal policy. Rows in each block report results four alternative
+calibrations: (a) baseline calibration with Calvo parameters matching the sectoral
+average frequency of price changes in U.S. data and steady-state sectoral composi-
+tion of private and public demand match U.S. data, (b) when only Calvo parameters
+match sectoral frequency of price changes in U.S. data and equal sectoral composi-
+tions of private and public demand are assumed, (c) when Calvo parameters match
+the overall average of frequency of price changes in U.S. data and steady-state sec-
+toral composition of private and public demand match U.S. data, and (d) when when
+Calvo parameters match the overall average of frequency of price changes in U.S.
+data and equal sectoral compositions of private and public demand are assumed.
+26
+
+=== Page 28 ===
+even when the aggregate output gap does not explicitly enter in sectoral marginal
+costs. To do so, monetary policy targets the modiﬁed aggregate inﬂation index
+in equation (3.30) such that aggregate inﬂation has a variance multiplier of 0.35%.
+The ﬁrst row in column (3) reports that an optimal sectoral ﬁscal policy coupled
+with zero-inﬂation targeting yields a variance multiplier of the aggregate output
+gap of 1.7% – higher than the 0.35% reported in the ﬁrst row of column (1). Finally,
+comparing the ﬁrst row of columns (3) and (4) shows that optimal sectoral ﬁscal
+policy contributes to decreasing the variance multiplier of the aggregate output
+gap under zero-inﬂation monetary policy: if ﬁscal policy is passive, the variance
+multiplier of the aggregate output gap is 7.8%.
+The ﬁrst row of the second block of Table 3 reports the simple mean of the
+variance multipliers of sectoral inﬂation and output gaps under our baseline cal-
+ibration. Unsurprisingly, the joint optimal monetary and ﬁscal policy setup, in
+column (1), is the one that delivers the lowest mean of the sectoral variance multi-
+pliers, 14.6% and 53.9% for sectoral inﬂation and output gaps, respectively. What
+is perhaps more surprising is that, under the optimal sectoral ﬁscal policy, zero-
+inﬂation targeting in column (3) gets very close, respectively to 14.5% and 55.8%.
+We conﬁrm this result when computing per-period welfare losses, shown in the
+third block of the Table. Welfare losses are 2.8% for the optimal mix of monetary
+and ﬁscal policy—column (1)–and 3.1% for zero-inﬂation monetary policy and op-
+timal ﬁscal policy—column (3). Still focusing on the baseline calibration (ﬁrst row),
+columns (2) and (4) of the second and third blocks, show that a passive sectoral
+ﬁscal policy has a strong effect on the volatility of sectoral inﬂation and sectoral
+output gaps regardless of whether monetary policy is acting optimally in column
+(2) or targeting zero inﬂation in column (4).
+Looking at alternative parameterizations reported in rows 2-4 in all blocks of
+Table 3, results indicate that sectoral bias in the steady-state composition of private
+and government demand has a stronger impact on the welfare loss than heteroge-
+neous frequency of price changes across sector.
+5.3
+Cost-push shocks
+As stressed by Rubbo (2023) in the context of production networks with no ﬁscal
+policy, the aggregation of sectoral Phillips curves yields an additional term akin
+27
+
+=== Page 29 ===
+to an aggregate cost-push shock even when with only productivity shocks at the
+sectoral level. Although our economy does not have input-output linkages, qual-
+itatively, the same result arises when any source of sectoral heterogeneity makes
+aggregation not trivial – input-output linkages is one of them, but a similar result
+arises from nominal price rigidities and the unequal composition of private and
+government demand. We now explore the implications of optimal sectoral ﬁscal
+policy over this “aggregate cost-push shock” when monetary policy is optimally
+set versus when it follows zero-inﬂation targeting.
+Aggregating the sectoral Phillips curves in equation (2.23) using equations (2.27),
+(2.28) and (2.29), and deﬁning ¯λ = ∑K
+k=1 ωckλk yields:
+πt = βEtπt+1 + ¯λ
+(1 −ϕ) ˜yt −χ∗˜ft
+ + ut,
+where ut ≡∑K
+k′=1 ωck′λk′
+(1 −ϕ) ˜yk′t −χ∗
+k′ ˜fk′t
+ −¯λ
+(1 −ϕ) ˜yt −χ∗˜ft
+
+. Table 4 re-
+ports the variance multiplier of ut for all four monetary and sectoral ﬁscal policies
+mixes we report in Table 3, as well as all four alternatives for the setup of sectoral
+nominal price rigidity and the sectoral composition of private and public demand.
+When all sectors are symmetric, the aggregate cost push shock is trivially zero,
+as reported in the last row of Table 4 and can be veriﬁed in the deﬁnition of ut
+above. When the only source of sectoral heterogeneity is the sectoral composition
+of private and public demand, reported in the third row of Table 4, the aggregate
+cost push shock is almost zero for all policy mixes we analyze. Thus, although it
+theoretically can generate a so called “aggregate cost push shock" ut, the sectoral
+composition of private and public demand, alone, has little quantitative force. In
+turn, when sectors only differ in their degree of nominal rigidity, reported in the
+second row of Table 4, the aggregate cost-push shock becomes somewhat stronger.
+We report the main result in this subsection in the ﬁrst row of Table 4. When
+both sources of sectoral heterogeneity are present, the variance multiplier of ut is
+the largest. This reﬂects a reinforcing effect between the two sources of sectoral het-
+erogeneity we consider, nominal price rigidity and the composition of public and
+private demands. The ﬁrst row of Table 4 shows that optimal monetary policy has
+a strong effect on reducing the variance multiplier of ut relative to a zero-inﬂation
+policy – compare columns (1) and (2) with columns (3) and (4). In turn, the optimal
+28
+
+=== Page 30 ===
+Table 4: Variance Multiplier of Aggregate Cost-Push Shock
+(1)
+(2)
+(3)
+(4)
+Policy mix:
+i∗
+t , ˜f ∗
+kt
+i∗
+t , ˜fkt = 0
+πt = 0, ˜f ∗
+kt
+πt = 0, ˜fkt = 0
+(a) αk,ωck,ωgk
+0.35%
+0.14%
+0.89%
+7.1%
+(b) αk,ωgk = ωck
+0.08%
+0.07%
+0.12%
+3.3%
+(c) αk = ¯α,ωck,ωgk
+0%
+0.03%
+0%
+0.03%
+(d) αk = ¯α,ωgk = ωck
+0%
+0%
+0%
+0%
+Note: This table reports the variance multiplier of an aggregate cost-push shock ut.
+Columns report results for four alternative policy schemes: (1) optimal monetary
+and sectoral ﬁscal policies mix, (2) optimal monetary policy and passive sectoral
+ﬁscal policy, (3) zero-inﬂation targeting and optimal sectoral ﬁscal policy and (4)
+zero-inﬂation targeting and passive sectoral ﬁscal policy. Rows report results four
+alternative calibrations: (a) baseline calibration with Calvo parameters matching
+the sectoral average frequency of price changes in U.S. data and steady-state
+sectoral composition of private and public demand match U.S. data, (b) when
+only Calvo parameters match sectoral frequency of price changes in U.S. data and
+equal sectoral compositions of private and public demand are assumed, (c) when
+Calvo parameters match the overall average of frequency of price changes in U.S.
+data and steady-state sectoral composition of private and public demand match
+U.S. data, and (d) when when Calvo parameters match the overall average of
+frequency of price changes in U.S. data and equal sectoral compositions of private
+and public demand are assumed.
+sectoral ﬁscal policy increases the variance multiplier of ut when monetary policy
+is optimal – compare ﬁrst row, columns (1) and (2) – but reduces the variance mul-
+tiplier of ut for a zero-inﬂation monetary policy – compare ﬁrst row, columns (3)
+and (4).
+5.4
+Cyclicality of aggregate government spending
+Finally, our analysis offers a new perspective on the cyclicality of aggregate gov-
+ernment demand. In doing so, we also compare the implications of the optimal
+monetary and sectoral ﬁscal policy mix to the implications of a zero-inﬂation mon-
+29
+
+=== Page 31 ===
+etary policy and optimal sectoral ﬁscal policy.
+A well-documented fact is that government spending is largely acyclical in ad-
+vanced economies (see, for instance, Talvi and Vegh (2005)). In contrast, the basic
+theory of the optimal provision of public goods, as pioneered by Samuelson (1954),
+implies pro-cyclicality by equalizing the marginal willingness to pay for the public
+good and its marginal rate of transformation. In our setup, with additive sepa-
+rability in preferences between consumption, leisure and public goods as well as
+lump-sum taxation, the optimal provision of sectoral public goods in the ﬁrst best
+is a ﬁxed proportion of sectoral output, and thus, indeed, perfect pro-cyclicality
+at the sectoral level arises. Yet, in our fully calibrated baseline model, the correla-
+tion between aggregate output and government demand is lower, 0.62, when both
+monetary and sectoral ﬁscal policies are optimal and 0.43 when monetary policy
+targets zero inﬂation and sectoral ﬁscal policy is optimal. The following discussion
+highlights the key features that generate such mild aggregate cyclicality despite the
+perfect pro-cyclicality at the sectoral level in the ﬁrst best.
+Two ingredients are key for this pattern: the unequal composition of aggregate
+output and government demand, and the stabilizing role of disaggregated ﬁscal
+policy. Under the optimal monetary and ﬁscal policy mix, government demand
+must satisfy the condition in equation (3.34) which, for convenience, we reproduce
+here after some algebra to facilitate the discussion:
+K
+∑
+k=1
+µkgkt =
+K
+∑
+k=1
+µk ¯gkt,
+where gkt and ¯gkt denote actual and ﬁrst-best sectoral government demand, and
+[µk]K
+k=1 are steady-state sectoral shares of aggregate output. This result stems from
+the optimal separation between monetary policy and ﬁscal policy as aggregate and
+disaggregated stabilizers, respectively. Note that, in general, the log-linear approx-
+imation of aggregate government demand weights sectors by its steady-state sec-
+toral composition denoted by [ωgk]K
+k=1. If the sectoral composition of private and
+public demand are the same, then µk = ωgk for all k. As the Samuelson (1954) rule
+implies in our setup that ¯gkt = ¯ykt, that is, perfect sectoral pro-cyclicality in the ﬁrst
+best, and output aggregates sectors by [µk]K
+k=1. Aggregate government demand in
+30
+
+=== Page 32 ===
+this case is perfectly correlated with ﬁrst-best aggregate output.
+However, if µk ̸= ωgk, this correlation between aggregate government demand
+and ﬁrst-best output can be lower, amounting to 0.73 in our baseline calibration
+– which accounts for the long-run sectoral composition of private and public de-
+mand in the U.S.. Then, the correlation with actual output can be even lower de-
+pending on the optimal sectoral ﬁscal policy rule in equation (3.32), also repro-
+duced here after some algebra as follows:
+gkt = ¯gkt −
+ϕ
+1 + (1 + ϕ)λk
+˜ykt −
+θ(1 −χ∗
+k)
+1 + (1 + ϕ)λk
+πkt,
+where ˜ykt denotes the sectoral output gap, πkt denotes sectoral inﬂation and λk ≡
+(1 −αk)(1 −βαk)/αk is decreasing in Calvo parameters αk. In the U.S., aggregate
+government demand is tilted to stickier sectors relative to private demand (Cox et
+al., 2024). Hence, aggregate government demand puts higher weight than aggre-
+gate output to sectors in which ﬁscal policy has on average larger deviations from
+the ﬁrst best. In turn, those are also the sectors in which idiosyncratic productivity
+shocks yield larger output gaps. As a result, the correlation of aggregate output
+and government demand is 0.62 in our baseline calibration.
+If instead monetary policy targets zero inﬂation, this correlation is 0.43 in the
+baseline calibration, because in this case the optimal sectoral ﬁscal rule implies
+even larger deviations of government demand at the sectoral level as well as larger
+volatility of the aggregate output gap. This effect further lowers the correlation be-
+tween output and government demand. A perhaps interesting observation is that,
+in contrast to results under the optimal policy mix, here, the unequal composi-
+tion of private and government demand and the sectoral heterogeneity in nominal
+price rigidity do not reinforce each other in lowering aggregate pro-cyclicality. In
+our numerical exercises, if we assume µk = ωgk and calibrate sectoral Calvo pa-
+rameters to match the average sectoral frequency of price changes in the U.S., the
+correlation of aggregate government demand with aggregate output only is 0.20.
+These mechanisms do not fully explain the acyclicality observed in U.S. data:
+The correlation between GDP and aggregate real purchases of the federal U.S. gov-
+ernment, based on our procurement data, both at quarterly frequency, in logs, de-
+31
+
+=== Page 33 ===
+trended and seasonally adjusted, is −0.05; likewise, the correlation of GDP with
+Government Consumption Expenditures and Gross Investment, both obtained from
+National Income and Product Accounts (NIPA) is 0.19 for the longest sample avail-
+able, for 1947 to 2023. Still, the pro-cyclicality we obtain is quite mild consider-
+ing the perfect pro-cyclicality at the sectoral level in the ﬁrst best. This perfect
+pro-cyclicality also holds at the aggregate level when prices are sticky and mone-
+tary policy is optimal if all sectors are identical, a corollary of divine coincidence.
+Hence, disaggregated stabilization is key for aggregate ﬁscal policy to align theory
+and data.
+6
+Conclusion
+A common recommendation for monetary policy when shocks are disaggregated
+and/or sectors are heterogeneous is to target an inﬂation index that gives higher
+weight to sectors with larger deviations from efﬁcient output. We revisit this con-
+clusion when sectoral government demand is used as a stabilization tool in a con-
+ventional multi-sector New Keynesian model, deriving several new insights.
+The optimal mix of monetary and ﬁscal policy takes a simple form: monetary
+policy takes care of aggregate stabilization, whereas sectoral ﬁscal policy focuses
+on sectors. Speciﬁcally, we derive an optimal ﬁscal rule which characterizes opti-
+mal sectoral government spending. Optimal monetary policy deviates from a zero-
+inﬂation target, and both monetary and sectoral ﬁscal policy give higher weight to
+sectors in which a given shock yields larger deviations of output from efﬁcient lev-
+els. However, numerical exercises show that the deviation of optimal monetary
+policy from a zero-inﬂation target is quantitatively small relative to a case when
+monetary policy is the only stabilization tool. In line with our optimal ﬁscal rule,
+we ﬁnd that the relationship of sectoral government demand, sectoral inﬂation and
+sectoral output implied by the model is broadly conﬁrmed in the U.S. data.
+Finally, we show that aggregation of sectoral Phillips curves yields an extra
+term akin to an aggregate cost-push shock that is much more volatile under mon-
+etary policy targeting zero inﬂation than under its an optimal rule. We also show
+that a mild cyclicality of aggregate government demand is not inconsistent with
+the optimality of ﬁscal policy playing a stabilization role; it just does so at a disag-
+32
+
+=== Page 34 ===
+gregated level. Future work may be able to ﬁne-tune the alignment of the model
+predictions with the data, for example by incorporating the role of the zero-lower
+bound for monetary policy or by incorporating alternative taxation schemes rela-
+tive to the lump-sum taxes in our analysis.
+33
+
+=== Page 35 ===
+References
+Acosta, Miguel, “The Perceived Causes of Monetary Policy Surprises,” 2023.
+Afrouzi, Hassan and Saroj Bhattarai, “Inﬂation and GDP Dynamics in Produc-
+tion Networks: A Sufﬁcient Statistics Approach,” NBER Working Papers 31218,
+National Bureau of Economic Research, Inc May 2023.
+, Marina Halac, Kenneth S. Rogoff, and Pierre Yared, “Monetary Policy with-
+out Commitment,” NBER Working Papers 31207, National Bureau of Economic
+Research, Inc May 2023.
+, Saroj Bhattarai, and Edson Wu, “Relative-Price Changes as Aggregate Supply
+Shocks Revisited: Theory and Evidence,” Working Paper, NBER Inﬂation in the
+COVID Era and Beyond Conference 2024.
+Antonova, Anastassia and Gernot J. Müller, “Distorted Prices and Sectoral Taxes
+in the New Keyensian Network model,” 2024. mimeo.
+Aoki, Kosuke, “Optimal monetary policy responses to relative-price changes,”
+Journal of Monetary Economics, August 2001, 48 (1), 55–80.
+Bachmann,
+Ruedigera,
+Benjamin
+Born,
+Olga
+Goldfayn-Frank,
+Georgi
+Kocharkov,
+Ralph Luetticke,
+and Michael Weber,
+“A Temporary VAT
+Cut as Unconventional Fiscal Policy,” NBER Working Paper 29442 2021.
+Baqaee, David and Emmanuel Farhi, “Supply and Demand in Disaggregated
+Keynesian Economies with an Application to the COVID-19 Crisis,” American
+Economic Review, 2022, 112 (5), 1397–1436.
+Benigno, Pierpaolo, “Optimal monetary policy in a currency area,” Journal of In-
+ternational Economics, July 2004, 63 (2), 293–320.
+Bianchi, Javier, Pablo Ottonello, and Ignacio Presno, “Fiscal Stimulus under
+Sovereign Risk,” Journal of Political Economy, 2023, 131 (9), 2328–2369.
+Bilbiie, Florin, Tommaso Monacelli, and Roberto Perotti, “Stabilization vs. Re-
+distribution: The Optimal Monetary-Fiscal Mix,” Journal of Monetary Economics,
+forthcoming 2024.
+Bisin, Alberto, Alessandro Lizzeri, and Leeat Yariv, “Government Policy with
+Time Inconsistent Voters,” American Economic Review, June 2015, 105 (6), 1711–
+1737.
+34
+
+=== Page 36 ===
+Bouakez, Hafedh, Omar Rachedi, and Emiliano Santoro, “The Government
+Spending Multiplier in a Multisector Economy,” American Economic Journal:
+Macroeconomics, 2023, 15 (1), 209–39.
+,
+, and Santoro Emiliano, “The Sectoral Origins of the Spending Multiplier,”
+2022. mimeo.
+Carvalho, Carlos, Fernanda Nechio, and Tiago Tristao, “Taylor rule estimation by
+OLS,” Journal of Monetary Economics, 2021, 124, 140–154.
+Chari, V. V., Patrick J. Kehoe, and Ellen R. McGrattan, “Business Cycle Account-
+ing,” Econometrica, May 2007, 75 (3), 781–836.
+Chetty, Raj, Adam Guren, Day Manoli, and Andrea Weber, “Are Micro and
+Macro Labor Supply Elasticities Consistent?,” American Economic Review, 2011,
+101 (3), 471–475.
+Correia, Isabel, Emmanuel Farhi, Juan Pablo Nicolini, and Pedro Teles, “Uncon-
+ventional ﬁscal policy at the zero bound,” American Economic Review, 2013, 103
+(4), 1172–1211.
+Cox, Lydia, Gernot Müller, Ernesto Pasten, Raphael Schoenle, and Michael We-
+ber, “Big G,” Journal of Political Economy, forthcoming, 2024.
+D’Acunto, Francesco, Daniel Hoang, and Michael Weber, “Unconventional ﬁscal
+policy,” in “AEA Papers and Proceedings,” Vol. 108 American Economic Asso-
+ciation 2014 Broadway, Suite 305, Nashville, TN 37203 2018, pp. 519–523.
+,
+, and
+, “Managing householdsâ€™expectations with unconventional poli-
+cies,” The Review of Financial Studies, 2022, 35 (4), 1597–1642.
+Eggertsson, Gauti B, Michael Woodford, Tor Einarsson, and Eric M Leeper, “Op-
+timal Monetary and Fiscal Policy in a Liquidity Trap [with Comments],” in
+“NBER international seminar on macroeconomics,” Vol. 2004 The University of
+Chicago Press Chicago, IL 2004, pp. 75–144.
+Eusepi, Stefano, Bart Hobijn, and Andrea Tambalotti, “CONDI: A Cost-of-
+Nominal-Distortions Index,” American Economic Journal: Macroeconomics, July
+2011, 3 (3), 53–91.
+Farhi, Emmanuel, Gita Gopinath, and Oleg Itskhoki, “Fiscal Devaluations,” Re-
+view of Economic Studies, 2014, 81 (2), 725–760.
+Flynn, Joel, Christina Patterson, and John Sturm, “Fiscal Policy in a Networked
+Economy,” Working Paper 20339, National Bureau of Economic Research 2022.
+35
+
+=== Page 37 ===
+Galí, Jordi and Roberto Perotti, “Fiscal Policy and Monetary Integration in Eu-
+rope,” Economic Policy, 2003, 18 (37), 535–572.
+and Tommaso Monacelli, “Optimal monetary and ﬁscal policy in a currency
+union,” Journal of International Economics, September 2008, 76 (1), 116–132.
+Gilchrist, Simon and Egon Zakrajšek, “Credit spreads and business cycle ﬂuctu-
+ations,” American economic review, 2012, 102 (4), 1692–1720.
+Goodfriend, Marvin and Robert G. King, “The New Neoclassical Synthesis and
+the Role of Monetary Policy,” in “NBER Macroeconomics Annual 1997, Volume
+12” NBER Chapters, National Bureau of Economic Research, Inc, October 1997,
+pp. 231–296.
+Guerrieri, Veronica, Guido Lorenzoni, Ludwig Straub, and IvÃ¡n Werning,
+“Monetary Policy in Times of Structural Reallocation,” Proceedings of the 2021
+Jackson Hole Symposium, 2021.
+,
+,
+, and
+, “Macroeconomic Implications of COVID-19: Can Negative Sup-
+ply Shocks Cause Demand Shortages?,” American Economic Review, 2022, 112 (5),
+1437–74.
+Halac, Mariana and Pierre Yared, “Fiscal Rules and Discretion in a World Econ-
+omy,” American Economic Review, 2018, 8 (108), 2305–2334.
+and
+, “Fiscal Rules and Discretion Under Limited Enforcement,” Econometrica,
+September 2022, 90 (5), 2093–2127.
+Hatchondo, Juan Carlos, Leonardo Martinez, and Francisco Roch, “Fiscal Rules
+and the Sovereign Default Premium,” American Economic Journal: Macroeco-
+nomics, October 2022, 14 (4), 244–73.
+Hettig, Thomas and Gernot J. Müller, “Fiscal policy coordination in currency
+unions at the effective lower bound,” Journal of International Economics, 2018, 115
+(C), 80–98.
+Känzig, Diego R, “The macroeconomic effects of oil supply news: Evidence from
+OPEC announcements,” American Economic Review, 2021, 111 (4), 1092–1125.
+Kliem, Martin and Alexander Kriwoluzky, “Toward a Taylor rule for ﬁscal pol-
+icy,” Review of Economic Dynamics, 2014, 17 (2), 294–302.
+La’O, Jennifer and Alireza Tahbaz-Salehi, “Optimal Monetary Policy in Produc-
+tion Networks,” Econometrica, 2022, 90 (3), 1295–1336.
+36
+
+=== Page 38 ===
+Nakamura, Emi and Jón Steinsson, “Fiscal Stimulus in a Monetary Union: Evi-
+dence from US Regions,” American Economic Review, March 2014, 104 (3), 753–
+792.
+Pastén, Ernesto, Raphael Schoenle, and Michael Weber, “The propagation of
+monetary policy shocks in a heterogeneous production economy,” Journal of
+Monetary Economics, 2020, 116 (C), 1–22.
+,
+, and
+, “Sectoral Heterogeneity in Nominal Price Rigidity and the Origin
+of Aggregate Fluctuations,” American Economic Journal: Macroeconomics, 2024, 16
+(2), 318–52.
+Proebsting, Christian, “Market segmentation and spending multipliers,” Journal
+of Monetary Economics, 2022, 128, 1–19.
+Ramey, Valerie A. and Matthew D. Shapiro, “Costly capital reallocation and the
+effects of government spending,” Carnegie-Rochester Conference Series on Public
+Policy, June 1998, 48, 145–194.
+Rubbo, Elisa, “Networks, Phillips curves, and monetary policy,” Econometrica,
+2023, 91 (4), 1417–1455.
+Samuelson, Paul A., “The Theory of Public Expenditure,” Review of Economics and
+Statistics, 1954, (36), 386–389.
+Stock, James H and Motohiro Yogo, “Testing for weak instruments in linear IV
+regression,” 2005.
+Talvi, Ernesto and Carlos A. Vegh, “Tax base variability and procyclical ﬁscal pol-
+icy in developing countries,” Journal of Development Economics, 2005, 78 (1), 156–
+190.
+Woodford, Michael, “Simple analytics of the government expenditure multiplier,”
+American Economic Journal: Macroeconomics, 2011, 3 (1), 1–35.
+, “Effective Demand Failures and the Limits of Monetary Stabilization Policy,”
+American Economic Review, 2022, 112 (5), 1475–1521.
+37
+
+=== Page 39 ===
+Online Appendix:
+Optimal Monetary and Fiscal Policies in
+Disaggregated Economies
+Lydia Cox, Jiacheng
+Feng, Gernot J. Müller, Ernesto Pastén, Raphael Schoenle, and Michael Weber
+July 2024
+A
+Steady-State Solution
+We focus on a symmetric steady state at the ﬁrm level with all ﬁrms setting the
+same prices Pk(j) = P. Then, from equations in (2.6), Pk = Pc = P. Further, using
+the convention that Ak = 1, the optimal pricing rule is such that
+P =
+θ
+θ −1 MCn
+k = Wk
+once we impose the proper subsidy τk to offset markups in the steady state. This
+result implies that sectoral wages should be all equal in the steady state, which is
+conﬁrmed by the household’s ﬁrst order condition on leisure in (2.7) after impos-
+ing νk = µ−ϕ
+k
+since Wk only relates to aggregate variables. These two latter results
+together with (2.16) yield
+C = 1 −χ
+such that (2.5) solves Ck = ωck(1 −χ). As (2.16) implies Y = 1, the aggregation of
+(2.13) implies G = χ. Further, the efﬁcient allocation in (2.15) implies Gk = ωgkχ).
+Finally, constant consumption and prices imply from (2.3) that I = β−1.
+B
+Welfare function
+Per-period household utility is given by
+Ut ≡(1 −χ)logCt + χlogGt −∑
+k
+N1+ϕ
+kt
+1 + ϕ.
+In the following we obtain second-order expansions for all its components.
+First, putting together the ﬂow utility function of consumption with the Cobb-
+Douglas aggregator of sectoral consumption yields
+logCt = ∑ωck logCkt
+38
+
+=== Page 40 ===
+Since χk may be interpreted as the optimal share of sectoral real public con-
+sumption on sectoral production, the second-order Taylor expansion of the ﬂow
+utility of consumption is9
+logCkt = log(Ykt −Gkt) ≃log[(1 −χk)Yk] +
+1
+1 −χk
+( ˆykt −χk ˆgkt) −1
+2
+χk
+(1 −χk)2( ˆgkt −ˆykt)2.
+Using deﬁnitions ˜ykt = ykt −¯ykt and ˜gkt = gkt −¯gkt, yields that ˆgkt −ˆykt = ( ˜gkt −
+˜ykt) + ( ¯gkt −¯ykt) −(gk −yk) = ˜gkt −˜ykt yields
+logCkt ≃
+1
+1 −χk
+( ˆykt −χk ˆgkt) −1
+2
+χk
+(1 −χk)2( ˜gkt −˜ykt)2 + t.i.p.
+where the t.i.p. are constants and third order and above terms that are ignored in
+the Taylor expansion. Aggregating across Ckt,
+logCt ≃∑
+k
+ωck
+
+1
+1 −χ( ˆykt −χk ˆgkt) −1
+2
+χk
+(1 −χk)2( ˜gkt −˜ykt)2
+
++ t.i.p.
+(B.35)
+Second, for public consumption, the second order Taylor expansion is
+logGkt ≃logGk + ( ˆgkt + 1
+2 ˆg2
+kt) −1
+2 ˆg2
+kt = ˆgkt + t.i.p.
+logGt ≃∑
+k
+ωgk ˆgkt + t.i.p.
+(B.36)
+Third, to obtain the second-order expansion of disutility of labor, we start from
+disutility in each sector
+νkN1+ϕ
+kt
+1 + ϕ ≃µk
+
+ˆnkt + 1
+2(1 + ϕ) ˆn2
+kt
+
++ t.i.p.
+where working hours in sector k is the aggregation across all ﬁrms in set Jk
+Nkt =
+Z
+j∈Jk
+Nkt(j)dj =
+1
+Akt
+Z
+j∈Jk
+[Ckt(j) + Gkt(j)]dj = Ckt
+Akt
+Z
+j∈Jk
+Pkt(j)
+Pkt
+−θ
+dj + Gkt
+Akt
+which log-linearization is
+ˆnkt ≃ˆykt −akt + (1 −χk)zkt = ˜ykt + (1 −χk)zkt
+9Here, we use ˆxkt = log Xkt
+Xk ≃Xkt−Xk
+Xk
+−1
+2
+
+Xkt−Xk
+Xk
+2
+≃Xkt−Xk
+Xk
+−1
+2 ˆx2
+kt
+39
+
+=== Page 41 ===
+for Zkt = R
+j∈Jk
+ Pkt(j)
+Pkt
+−θ
+dj such that zkt = logZkt ≃θ
+2var{pkt(j)} is a second or-
+der term around a steady state with zero inﬂation. Then, since z2
+kt ≃0 and µk =
+Nk/N = Yk/Y = (1 −χ)ωck + χωgk,
+∑
+k
+νkN1+ϕ
+kt
+1 + ϕ ≃∑
+k
+[(1 −χ)ωck + χωgk]
+
+˜ykt + (1 −χk)zkt + 1
+2(1 + ϕ) ˜y2
+kt
+
++ t.i.p.
+(B.37)
+Using (B.35), (B.36) and (B.37), the per-period utility can be written as
+Ut = (1 −χ)logCt + χlogGt −∑
+k
+νkN1+ϕ
+kt
+1 + ϕ
+≃(1 −χ)∑
+k
+ωck
+
+1
+1 −χk
+( ˆykt −χk ˆgkt) −1
+2
+χk
+(1 −χk)2( ˜gkt −˜ykt)2
+
++ χ∑
+k
+ωgk ˆgkt −∑
+k
+(1 −χ)ωck + χωgk
+
+˜ykt + (1 −χk)zkt + 1
+2(1 + ϕ) ˜y2
+kt
+
++ t.i.p.
+Since (1 −χ)ωck
+χk
+1−χk = χωgk, the terms ˆgkt cancels out in the utility. Furthermore,
+since (1 −χ)ωck
+1
+1−χk = χωgk + (1 −χ)ωck, ˆykt cancels with ˜ykt, as their difference is
+the exogenous productivity shock akt, so it goes in t.i.p. Simplifying the equation,
+writing ˜gkt −˜ykt as the ﬁscal gap, using µk = (1 −χ)ωck + χωgk and plugging in
+∑t βtzkt = ∑t βt θ
+λk (πkt)2 from Woodford (2001),
+Wt = E0
+∞
+∑
+t=0
+βtUt ≃−1
+2E0
+∞
+∑
+t=0
+βt∑
+k
+µk
+θ(1 −χk)
+λk
+π2
+kt + (1 + ϕ) ˜y2
+kt + χ∗
+k ˜f 2
+kt
+
++ t.i.p.
+C
+Solution for Time-Consistent Optimal Policy
+The system of ﬁrst order conditions is characterized by
+θ(1 −χk)
+λk
+πkt + φπ
+kt + φp
+kt = 0
+(C.38)
+(1 + ϕ) ˜ykt −(1 + ϕ)λkφπ
+kt + φy
+kt −νyt −ωgk
+µk
+νf t = 0
+(C.39)
+˜fkt + λkφπ
+kt −φy
+kt −(χ∗)−1 ωgk
+µk
+νf t = 0
+(C.40)
+40
+
+=== Page 42 ===
+φp
+kt = φy
+kt + ωck
+µk
+νπt
+(C.41)
+νpt =
+K
+∑
+k=1
+µkφy
+kt
+(C.42)
+νyt + νf t =
+K
+∑
+k=1
+µkφy
+kt
+(C.43)
+(χ∗)−1νf t = −
+K
+∑
+k=1
+µkφy
+kt
+(C.44)
+Combining (C.42), (C.43) and (C.44) yields
+νπt = (1 −χ)νyt = −χ∗−1νf t = −(1 −χ)νpt.
+Using these expressions in (C.38), (C.39), (C.40) and plugging (C.41) in, we ob-
+tain a simpliﬁed system of ﬁrst-order conditions:
+θ(1 −χk)
+λk
+πkt + φπ
+kt + φy
+kt −(1 −χk)νyt = 0
+(C.45)
+(1 + ϕ) ˜ykt −(1 + ϕ)λkφπ
+kt + φy
+kt −(1 −χk)νyt = 0
+(C.46)
+˜fkt + λkφπ
+kt −φy
+kt + (1 −χk)νyt = 0
+(C.47)
+(1 −χk)νyt =
+K
+∑
+k=1
+µkφy
+kt
+(C.48)
+Optimal ﬁscal policy.
+Start by mixing (C.45) and (C.46) to obtain
+φπ
+kt =
+1 + ϕ
+1 + (1 + ϕ)λk
+˜ykt −
+θ/λk
+1 + (1 + ϕ)λk
+πkt
+Now sum equation (C.46) and (C.47) up to obtain
+ϕλkφπ
+kt = (1 + ϕ) ˜ykt + ˜fkt
+and combining these two expressions yield (3.32) which describes the equilibrum
+relationship between sectoral ﬁscal gap, sectoral output gap and inﬂation under
+the optimal policy labelled as “optimal sectoral ﬁscal policy".
+Optimal monetary policy.
+Take the solution for φπ
+kt obtained above and plug it in
+(C.46) and use (C.48) to obtain equation (3.33) which describes an aggregate rela-
+41
+
+=== Page 43 ===
+tionship under optimal policy between sectoral output gaps and sectoral inﬂation
+labelled as “optimal monetary policy".
+Optimal aggregate ﬁscal policy.
+Equation (3.34) can be obtained by replacing
+sectoral inﬂation in (3.33) by using (3.32).
+D
+Feasibility of a Fiscal Divine Coincidence
+The key in this analysis is to relax the assumption that the ﬁscal rule in the
+frictionless economy is optimal. Deﬂated marginal costs are given by
+mckt −pkt
+=
+ct + pt + ϕ(ykt −akt) −akt −pkt
+mckt −pkt
+=
+ckt + ϕykt −(1 + ϕ)akt −pkt
+mckt −pkt
+=
+1 + ϕ(1 −χk)
+1 −χk
+ykt −
+χk
+1 −χk
+gkt −(1 + ϕ)akt
+after using that ckt = (ykt −χkgkt)/(1 −χk). Deﬁne yn
+kt as the log-deviations of out-
+put in a frictionless economy from steady state for an arbitrary sectoral ﬁscal rule
+gkt. Setting mckt = pkt yields
+yn
+kt = χkgkt + (1 + ϕ)(1 −χk)akt
+1 + ϕ(1 −χk)
+(D.49)
+such that yn
+kt = ¯ykt = akt if gkt = ¯gkt = akt. Plugging (D.49) in deﬂated marginal costs
+yields
+mckt −pkt = 1 + ϕ(1 −χk)
+1 −χk
+(ykt −yn
+kt)
+such that πkt = 0 if ykt = yn
+kt. The last piece is the solution of ykt in (2.22) after
+assuming that it = 0 and πkt = 0 for all k,t. After some algebra, equation (2.22)
+becomes
+ykt −χkgkt = Et(ykt+1 −χkgkt+1)
+which solves ykt = yn
+kt if χkgkt = yn
+kt. Using (D.49), this is equivalent to: gkt = 1+ϕ
+ϕχk akt.
+This sectoral ﬁscal rule closes the output gap, that is, output is equal to its ﬂex price
+level, and at the same time inﬂation is stabilized. Yet the ﬂex price level of sectoral
+output is not efﬁcient because government demand deviates from the Samuelson
+rule which calls for government spending to be adjusted one-for-one with produc-
+tivity, see Section 2.2.The same results hold for an aggregate economy if K = 1. See
+also the discussion in Woodford (2011).
+42
+

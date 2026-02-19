@@ -1,0 +1,1446 @@
+=== Cox_OptimalFP (Optimal_Monetary_and_Fiscal_Policies_in_Disaggregated_Economies_Cox_et_al_2024_NBER.pdf) ===
+NBER WORKING PAPER SERIES
+OPTIMAL MONETARY AND FISCAL POLICIES IN DISAGGREGATED ECONOMIES
+Lydia Cox
+Jiacheng Feng
+Gernot Müller
+Ernesto Pastén
+Raphael Schoenle
+Michael Weber
+Working Paper 32914
+http://www.nber.org/papers/w32914
+NATIONAL BUREAU OF ECONOMIC RESEARCH
+1050 Massachusetts Avenue
+Cambridge, MA 02138
+September 2024
+Schoenle and Weber gratefully acknowledge support from the National Science Foundation under
+grant number 1756997. We thank participants in conferences and seminars in several institutions for
+comments and discussions. The views expressed herein are those of the authors and do not necessarily
+reflect the views of the Central Bank of Chile. The views expressed herein are those of the authors
+and do not necessarily reflect the views of the National Bureau of Economic Research.
+NBER working papers are circulated for discussion and comment purposes. They have not been peer-
+reviewed or been subject to the review by the NBER Board of Directors that accompanies official
+NBER publications.
+© 2024 by Lydia Cox, Jiacheng Feng, Gernot Müller, Ernesto Pastén, Raphael Schoenle, and Michael
+Weber. All rights reserved. Short sections of text, not to exceed two paragraphs, may be quoted without
+explicit permission provided that full credit, including © notice, is given to the source.
+Optimal Monetary and Fiscal Policies in Disaggregated Economies
+Lydia Cox, Jiacheng Feng, Gernot Müller, Ernesto Pastén, Raphael Schoenle, and Michael
+Weber
+NBER Working Paper No. 32914
+September 2024
+JEL No. E32, E62
+ABSTRACT
+The jointly optimal monetary and fiscal policy mix in a multi-sector New Keynesian model with 
+sectoral government spending and productivity shocks entails a separation of roles: Sectoral 
+government spending optimally adjusts to sectoral output gaps and inflation rates---a policy 
+supported by evidence from sectoral federal procurement data. Monetary policy optimally focuses 
+on aggregate stabilization, but deviates from a zero-inflation target; in a model calibration to the 
+U.S., however, it effectively approximates a zero-inflation target.  Because monetary policy is a 
+blunt instrument and government spending trades off stabilization against the optimal-level public 
+good provision, the first best is not achieved.
+Lydia Cox
+Department of Economics 
+University of Wisconsin-Madison 
+1180 Observatory Drive 
+Madison, WI 53715
+and NBER
+lydia.cox@wisc.edu
+Jiacheng Feng
+Jane Street Capital
+jackfeng6@hotmail.com
+Gernot Müller
+University of Tuebingen and CEPR 
+Mohlstr. 36,
+72074 Tuebingen,
+Germany
+gernot.mueller@uni-tuebingen.de
+Ernesto Pastén
+Central Bank of Chile
+Agustinas 1180
+Santiago
+Chile
+and Toulouse School of Economics
+epasten@bcentral.cl
+Raphael Schoenle
+Brandeis University
+Department of Economics
+415 South Street
+Waltham, MA 02454
+and CEPR
+schoenle@brandeis.edu
+Michael Weber
+Booth School of Business
+University of Chicago
+5807 South Woodlawn Avenue
+Chicago, IL 60637
+and NBER
+michael.weber@chicagobooth.edu
+1
+Introduction
+Business cycle ﬂuctuations are not perfectly synchronized across sectors. Sectors
+may be hit differently by shocks, as the COVID-19 pandemic so forcefully illus-
+trated (Guerrieri et al., 2022; Baqaee and Farhi, 2022), or they have distinct charac-
+teristics that determine their responsiveness even to identical shocks.1 These fea-
+tures raise challenges for stabilization policy. If productivity shocks are perfectly
+correlated across and propagate in the same way in all sectors, a zero-inﬂation
+policy attains the ﬁrst best by closing the output gap; the so-called “divine coin-
+cidence.” But when these conditions are not met, monetary policy is too blunt of
+a tool. Then, central banks must target a second-best inﬂation index that gives
+higher weight to sectors in which shocks manifest in larger output deviations from
+efﬁcient levels. This policy closes the aggregate output gap but tolerates subopti-
+mal inﬂation volatility and levels of sectoral output.
+Goodfriend and King (1997) articulate this challenge, Aoki (2001) formally shows
+it, Benigno (2004) apply these insights in a monetary union, Eusepi et al. (2011)
+explore this issue quantitatively, and La’O and Tahbaz-Salehi (2022) and Rubbo
+(2023) extend it to production networks.
+We revisit this policy prescription in
+light of the fact that monetary policy interacts with sectoral government demand
+in shaping economic ﬂuctuations. Our analysis builds on and leverages insights
+from earlier work in Cox et al. (2024). They use the universe of federal procure-
+ment contracts in the U.S. to show that government demand is not a monolithic
+aggregate—big G—but is the sum of rich, disaggregated policy decisions, giving
+rise to challenges but also opportunities for stabilization policy.
+Against this background we shift the focus of ﬁscal stabilization from the ag-
+gregate to the sectoral level and ask: What is the optimal policy mix if monetary
+policy and sectoral ﬁscal policy are jointly determined? Moreover, we derive pre-
+dictions for sectoral government spending under optimal policy and ﬁnd sugges-
+tive evidence that they are borne out in U.S. data. Thus, the stabilization role of
+disaggregated ﬁscal policy is not just a theoretical possibility and we can contrast
+it empirically with an optimal benchmark. We then trace out the implications for
+monetary policy, in particular, the optimality of a zero-inﬂation policy to deal with
+1See, among others, Pastén et al. (2020, 2024) and Bouakez et al. (2023).
+1
+disaggregated productivity shocks, and the desirability of the acyclical aggregate
+ﬁscal policy observed in U.S. data.
+We derive our insights in a New Keynesian multi-sector setup in which, build-
+ing on the multi-country model of Galí and Monacelli (2008), the government de-
+mands goods that contribute to welfare. The optimal, time-consistent mix of mone-
+tary and ﬁscal policy prescribes a separation of roles: monetary policy takes care of
+aggregate stabilization, whereas ﬁscal policy focuses on the sectoral level. We ob-
+tain an intuitive rule for optimal sectoral ﬁscal policy: government demand should
+be expansionary relative to the ﬁrst-best in sectors with negative inﬂation and out-
+put gaps, that is, those sectors which experience positive productivity shocks.
+The separation of roles hinges on the key trade-off in the design of joint mone-
+tary and sectoral ﬁscal policies: Monetary policy is superior as a stabilization tool
+to deal with productivity shocks, but government demand can be ﬁne tuned at
+any required disaggregated level, contrary to monetary policy. The intuition holds
+in a single-sector model: A positive productivity shock decreases prices and the
+output gap. If monetary policy engineers a demand stimulus, the output gap can
+be closed exactly when prices do not respond—a “divine coincidence”. The same
+conclusion does not hold if government demand engineers the stimulus, because
+it additionally crowds out consumption and thus affects labor supply. In addition,
+monetary policy per se does not enter in welfare, whereas government demand
+does by providing goods valued by households. Hence, even if a “divine coinci-
+dence” were to exist for ﬁscal policy, it might be suboptimal to fully exploit it.2
+In our model, optimal monetary policy deviates from a zero-inﬂation target.
+Both monetary and sectoral ﬁscal policy give higher weight to sectors with stickier
+prices, that is, those in which a given shock yields larger output gaps. However,
+numerical exercises suggest that the deviation of optimal monetary policy from a
+zero-inﬂation target is quantitatively small relative to a case when monetary policy
+is the only stabilization tool. Yet, the ﬁrst best is never attained.
+Complementary to these theoretical results, the following question naturally
+arises: Is the disaggregated stabilization role of ﬁscal policy just a theoretical pos-
+sibility or can we ﬁnd empirical support for it in U.S. data? First, as Cox et al. (2024)
+2“Divine coincidence” may exist for ﬁscal policy but requires assuming a suboptimal ﬁscal
+rule in a frictionless economy. We discuss this possibility in Appendix D.
+2
+argue, government purchases of goods and services are the most volatile compo-
+nent of total government spending and exhibit substantial sectoral reallocation.
+These facts suggest that government spending is ﬂexible enough to perform such
+a stabilizing role. Second, the joint correlation of sectoral government demand, sec-
+toral inﬂation and sectoral output in the data is indeed broadly consistent with the
+theoretical optimal sectoral ﬁscal rule, but not with a purely aggregate ﬁscal sta-
+bilization policy. We establish this result based on regression analyses, construct-
+ing measures of government demand at the 4-digit NAICS sector level from US-
+Aspending.gov, which covers the universe of federal procurement contracts from
+2001 onwards, using Compustat sales data, producer price inﬂation from the BLS,
+and a sectoral measure of the average frequency of price changes constructed by
+Pastén et al. (2020, 2024). In particular, consistent with the theoretical optimal ﬁscal
+rule, we ﬁnd that ﬁscal policy is more active in sectors in which prices are stickier.
+We want to stress that we do not argue ﬁscal policy decisions follow the rules
+we derive in the model. In reality, the allocation of government demand follows a
+complicated political process involving Congress, lobbying and stakeholders inter-
+acting in many layers, things we all abstract from in the model. A distinct literature
+studies several aspects of such a process, see, for instance, Bisin et al. (2015) and
+Halac and Yared (2022). Yet, we consider it useful to contrast the outcome of such
+a process with an optimal ﬁscal policy that balances its direct welfare effects with
+stabilization purposes. Remarkably, the model rules and its empirical counterparts
+are similar. Given this alignment, we study the implications of optimal ﬁscal policy
+on monetary policy and the cyclicality of aggregate government demand.
+We also study the implications of our setting through the lens of the aggregate
+Phillips curve. As stressed by Rubbo (2023), Guerrieri et al. (2021) and Afrouzi and
+Bhattarai (2023), aggregation of sectoral Phillips curves yields an extra term akin to
+an “aggregate cost-push shock" in setups with sectoral input-output interconnec-
+tions and no ﬁscal policy. Such a result holds in any economy in which aggregation
+is not trivial, including ours. In numerical exercises, we ﬁnd the volatility of the
+“aggregate cost-push shock" is six times larger if monetary policy follows a zero-
+inﬂation target instead of its optimal rule. Thus, even if a zero-inﬂation policy does
+almost as well as optimal monetary policy when the government follows optimal
+sectoral ﬁscal policy, it faces the practical challenge of dealing with highly volatile
+3
+“aggregate cost-push shocks.”
+Finally, we highlight the implications of optimal ﬁscal policy for the cyclical-
+ity of aggregate government demand. A well-established fact for advanced economies,
+including the U.S., is that ﬁscal spending is largely acyclical (for instance, Talvi and
+Vegh, 2005). This feature has been regarded as suggestive that ﬁscal policy does
+not play a stabilization role (Chari et al., 2007). We ﬁnd a muted cyclicality is not
+inconsistent with government demand playing a stabilization role; it just does it
+at a disaggregated level. In our setup, if sectors were symmetric and the economy
+were efﬁcient, optimal ﬁscal policy is perfectly cyclical. However, a milder cycli-
+cality arises when the economy is inefﬁcient and the composition of private and
+public demand differs across sectors, as in the U.S., with public demand tilted to-
+wards stickier sectors (Cox et al., 2024). Cyclicality is even lower if monetary policy
+follows standard inﬂation targeting as ﬁscal policy is even more active in this case.
+The paper is structured as follows. The remainder of this introduction discusses
+the related literature and our contribution. Section 2 lays out the model. Section 3
+discusses the trade-offs which govern optimal policy, its objective function, and the
+optimal ﬁscal and monetary policy rules we obtain. Section 4 presents the data and
+empirical results supporting the idea that sectoral government demand does play
+a disaggregated stabilization role. Section 5 studies its implications for monetary
+policy and aggregate government demand. Section 6 concludes.
+Related Literature.
+In addition to work cited above, our analysis relates to four
+strands of the literature. First, a line of work conducts a positive analysis on the
+importance of sectors in ﬁscal policy transmission, notably the inﬂuential study
+of Ramey and Shapiro (1998) and more recent work by Proebsting (2022), Flynn
+et al. (2022) and Bouakez et al. (2022). Bouakez et al. (2023) develop richer multi-
+sector models with input-output structures to shed light on the ﬁscal transmission
+mechanism. In contrast to these papers, we offer a normative perspective.
+Second, to do so, our analysis builds on work about the optimal adjustment of
+government spending in aggregate economies if monetary policy is constrained by
+the zero lower bound, or an exchange-rate target. Bianchi et al. (2023) study the
+optimal adjustment of government spending in the presence of nominal rigidities
+and sovereign risk in a open economy with an exchange rate peg. Such a setting
+4
+calls for a modiﬁed Samuelson rule which, absent frictions, requires optimal pol-
+icy to equate the marginal beneﬁts of higher government spending to the marginal
+costs of reduced private consumption. Hettig and Müller (2018) study the optimal
+response of country-level government spending in a model of a monetary union
+in which monetary policy is constrained by the effective lower bound. Bilbiie et
+al. (2024) revisit the trade-offs for monetary and ﬁscal policy in a model that em-
+phasizes household heterogeneity and inequality. Our analysis, instead, considers
+a multi-sector closed-economy model and is focused on heterogeneities along the
+production side of the economy.
+Third, several papers show how taxes should adjust when monetary policy is
+constrained by the zero lower bound (Eggertsson et al., 2004; Correia et al., 2013);
+as well as the possibility of “non-conventional” ﬁscal policy to replicate a ﬁrst-best
+when monetary policy is constrained by the zero lower bound as well as empir-
+ical evidence (Correia et al., 2013; D’Acunto et al., 2018, 2022; Bachmann et al.,
+2021). Farhi et al. (2014), in turn, consider a monetary union and study the opti-
+mal tax policy which brings about a “ﬁscal devaluation” in response to country-
+speciﬁc shocks; and Antonova and Müller (2024) study the optimal tax response
+to sectoral shocks in the New Keynesian model with network structure. Woodford
+(2022) studies transfers as a way to stabilize effective demand in a multi-sector
+model. We focus instead on government spending ﬁnanced through lump-sum
+taxes to isolate its optimal stabilization role.
+Our analysis relates to earlier and recent work on ﬁscal rules. Galí and Per-
+otti (2003), in particular, study how various ﬁscal instruments adjust to the cy-
+cle based on a sample of European countries. Kliem and Kriwoluzky (2014) offer
+a normative model-based assessment of alternative ﬁscal rules, Halac and Yared
+(2018) study international coordination of ﬁscal rules, and Hatchondo et al. (2022)
+focus on the performance of ﬁscal rules in a model of sovereign risk. In contrast,
+assuming optimal policy, we establish a link between sectoral government spend-
+ing, sectoral output gaps and sectoral inﬂation and show that granular data for
+federal purchases is largely consistent with this relationship. Finally, we focus on
+discretionary optimal monetary and ﬁscal policy. A large literature exists studying
+policy without commitment in more complex environments, with Afrouzi et al.
+(2023) being a recent example. We leave such extensions for future research.
+5
+2
+A New Keynesian multi-sector model
+We model the optimal allocation of government sectoral demand building on the
+multi-country setup of Galí and Monacelli (2008). In our model, though, the sec-
+toral composition of private and public demand is ﬂexible in line with the evidence
+in Cox et al. (2024) and we consider time-consistent policies. Our model has K
+sectors with a continuum of monopolistic competitive ﬁrms operating in each of
+them. Prices are adjusted infrequently. A representative household provides labor
+in competitive sectoral markets. Government purchases are ﬁnanced via lump-
+sum taxes with its budget balanced at all times. Finally, monetary policy adjusts
+the short-term nominal interest rate.
+2.1
+Setup
+We now introduce the problem of the representative household, the allocation of
+the government demand within and across sectors, and the ﬁrms’ problem.
+Households.
+The economy is populated by an inﬁnitely-lived representative house-
+hold with expected utility given by
+E0
+∞
+∑
+t=0
+βt
+"
+(1 −χ)log(Ct) + χlog(Gt) −
+K
+∑
+k=1
+νk
+N1+ϕ
+kt
+1 + ϕ
+#
+,
+(2.1)
+where β ∈(0,1) is the time-discount factor, E0 is the expectation operator, Ct and
+Gt are indexes of private and public consumption, and Nkt denotes hours worked
+in sector k = 1,...,K. The parameter χ determines the weight of each type of con-
+sumption on per-period utility. Private and public consumption are Cobb-Douglas
+aggregates:
+Ct ≡
+K
+∏
+k
+
+ω−1
+ck Ckt
+ωck and Gt ≡
+K
+∏
+k
+
+ω−1
+gk Gkt
+ωgk ,
+(2.2)
+where ϕ > 0,νk > 0 and the subscript k refers to the sector in which bundles Ckt
+and Gkt are assembled. Parameters ωck and ωgk measure the weight of sector k in
+the private and public consumption index, respectively. For the sectoral bundles,
+6
+
+============================================================
+
+=== Cox_BigG (Big_G_Cox_et_al_2024.pdf) ===
+NBER WORKING PAPER SERIES
+BIG G
+Lydia Cox
+Gernot Müller
+Ernesto Pastén
+Raphael Schoenle
+Michael Weber
+Working Paper 27034
+http://www.nber.org/papers/w27034
+NATIONAL BUREAU OF ECONOMIC RESEARCH
+1050 Massachusetts Avenue
+Cambridge, MA 02138
+April 2020
+We acknowledge outstanding research assistance by Jiacheng Feng. We thank Klaus Adam, 
+Regis Barnichon, Christian Bayer, Benjamin Born, Gabriel Chodorow-Reich, Zeno Enders, 
+Emmanuel Farhi, Yuriy Gorodnichenko, Edward Knotek, Ludwig Straub and conference and 
+seminar participants at the Banco Central de Chile Heterogeneity in Macroeconomics 
+Conference, Federal Reserve Bank of Cleveland, PUC Santiago, the University of Tuebingen, 
+and the VfS Monetary Meeting Frankfurt for valuable comments. Weber also thanks the Fama-
+Miller Center at the University of Chicago Booth School of Business for financial support. 
+Schoenle and Weber also gratefully acknowledge support from the National Science Foundation 
+under grant number 1756997. The views expressed herein are solely those of the authors and do 
+not necessarily reflect the views of the Central Bank of Chile, the Federal Reserve Bank of 
+Cleveland, the Federal Reserve System, or the National Bureau of Economic Research.
+NBER working papers are circulated for discussion and comment purposes. They have not been 
+peer-reviewed or been subject to the review by the NBER Board of Directors that accompanies 
+official NBER publications.
+© 2020 by Lydia Cox, Gernot Müller, Ernesto Pastén, Raphael Schoenle, and Michael Weber. 
+All rights reserved. Short sections of text, not to exceed two paragraphs, may be quoted without 
+explicit permission provided that full credit, including © notice, is given to the source.
+Big G
+Lydia Cox, Gernot Müller, Ernesto Pastén, Raphael Schoenle, and Michael Weber
+NBER Working Paper No. 27034
+April 2020
+JEL No. E32,E62
+ABSTRACT
+Big G typically refers to aggregate government spending on a homogeneous good. In this paper, 
+we open up this construct by analyzing the entire universe of procurement contracts of the US 
+government and establish five facts. First, government spending is granular, that is, it is 
+concentrated in relatively few firms and sectors. Second, relative to private expenditures its 
+composition is biased. Third, procurement contracts are short-lived. Fourth, idiosyncratic 
+variation dominates the fluctuation of spending. Last, government spending is concentrated in 
+sectors with relatively sticky prices. Accounting for these facts within a stylized New Keynesian 
+model offers new insights into the fiscal transmission mechanism: fiscal shocks hardly impact 
+inflation, little crowding out of private expenditure exists, and the multiplier tends to be larger 
+compared to a one-sector benchmark aligning the model with the empirical evidence.
+Lydia Cox
+Harvard University
+lcox@nber.org
+Gernot Müller
+University of Tuebingen and CEPR
+Mohlstr. 36,
+72074 Tuebingen,
+Germany
+gernot.mueller@uni-tuebingen.de
+Ernesto Pastén
+Central Bank of Chile
+Agustinas 1180
+Santiago
+Chile
+and Toulouse School of Economics
+epasten@bcentral.cl
+Raphael Schoenle
+Brandeis University
+Department of Economics
+415 South Street
+Waltham, MA 02454
+and CEPR
+schoenle@brandeis.edu
+Michael Weber
+Booth School of Business
+University of Chicago
+5807 South Woodlawn Avenue
+Chicago, IL 60637
+and NBER
+michael.weber@chicagobooth.edu
+An online appendix is available at http://www.nber.org/data-appendix/w27034
+1
+Introduction
+What is “Big G”? In the national accounts G refers to “government spending”—the part of
+GDP that comprises government expenditures.
+This convention possibly helps explain why
+research on ﬁscal policy typically entertains a somewhat crude notion of government spending
+as a homogeneous good, isomorphic to GDP. In empirical and theoretical work, we frequently
+refer to it as Big G, and the literature assumes policy makers can freely adjust it over time—in
+response to the business cycle, or for other reasons. The recent “renaissance of ﬁscal research”
+survey by Ramey (2019) has changed little in this regard. A number of recent contributions
+have started to study the role of heterogeneity for the ﬁscal transmission mechanism but focus
+exclusively on heterogeneity on the household side (McKay and Reis, 2016; Auclert et al., 2018;
+Hagedorn et al., 2019).
+Starting point of our paper is the observation that Big G itself is fundamentally
+heterogeneous. Government spending is not simply one large transaction. It is composed of
+a large number of smaller transactions whose composition diﬀers from the other components
+of aggregate demand. Empirically, we ﬁrst establish ﬁve facts about government spending by
+characterizing the underlying components of Big G. In the second part of the paper, we then
+study the role of these facts for the ﬁscal transmission mechanism through the lens of a stylized
+two-sector New Keynesian model. Accounting for the heterogeneity of government spending has
+ﬁrst-order eﬀects on the transmission mechanism aligning the model prediction with empirical
+evidence.
+We construct our empirical anatomy of Big G using a database that has only recently
+become accessible: USASpending.gov. The database provides detailed information on the entire
+universe of procurement contracts by the US federal government since 2001. These data capture
+about half of federal consumption expenditures which, in turn, account for about one half of
+general government spending. For each year, the database records several million government
+procurement transactions. We establish ﬁve facts on the basis of detailed analysis of these data.1
+The ﬁrst of our ﬁve facts is government spending is granular in the sense of Gabaix (2011).
+Few ﬁrms and sectors supply a large share of government consumption: (i) The largest 20% of
+suppliers supply 99% of government consumption. (ii) The top 10 ﬁrms—or the top 0.01% —
+among all ﬁrms supplying goods and services to the federal government receive more than 35% of
+all procurement contracts by value and the top 0.1% of ﬁrms receive almost 60%. (iii) The most
+important suppliers to the federal government are concentrated in few sectors: ﬁrms in the largest
+three out of the roughly 20 two-digit NAICS industries supply more than 60% of all government
+1Defense spending accounts for more than one half of the transactions by value in our data set. We replicate
+the ﬁve facts separately for defense and non-defense spending in Online Appendix A.5.
+1
+Figure 1: Consumption Shares: Government vs Household
+GG
+G
+GG
+GG
+GGG
+G
+GG
+G
+G
+G
+G
+G
+GG
+GGG
+GGG
+G
+GG
+G G G
+G G
+G
+GG
+G
+GGG G
+G
+G
+G
+G
+GG
+GG
+G
+GG
+GGG
+G
+GGG
+GGGG
+GG
+G
+G
+G
+G
+GG
+G
+GGG
+G
+G
+G
+G
+G
+G
+GGG
+GG
+G
+G
+GG
+GGG
+G
+G
+G
+GG
+GG
+G
+G
+G
+G
+G
+G
+G
+GG
+G G
+G
+G
+GG
+GG
+G
+GGGGG
+GGG
+G
+GG
+GG
+GGG
+GG
+G
+GGG
+GG
+G
+GGG
+GG
+GG
+GG
+GGG
+GGG
+GG
+G
+GG
+G
+G
+G
+GG
+G
+GG
+GG
+G
+G
+GGG
+G
+GG
+GG
+G
+GG
+G
+G
+GG
+G
+GG
+GGG
+GG
+G
+G
+G
+GG
+G
+G
+G
+G
+G
+G
+G
+GGG
+G
+G
+GG
+G
+GG
+GGG
+G
+GGGG
+G
+GG
+GGG
+G
+G
+G
+G
+G
+G
+G
+G
+G
+G
+G
+G
+G
+G
+G
+G
+G
+G
+G
+G
+G
+G
+G
+G
+G
+G
+G
+G
+G
+G
+G
+G
+G
+G
+G
+G
+G
+G
+G
+G
+G
+0.00
+0.05
+0.10
+0.15
+0.00
+0.05
+0.10
+0.15
+Private Consumption Shares
+Government Consumption Shares
+0.00
+0.05
+0.10
+0.15
+0.00
+0.05
+0.10
+0.15
+0.00
+0.05
+0.10
+0.15
+0.00
+0.05
+0.10
+0.15
+G Total Federal
+Federal Defense
+Federal Non−Defense
+Notes. This ﬁgure shows the fraction of government spending in a certain sector on the y-axis and the fraction
+of private spending in a certain sector over total private spending on the x-axis. We separate total federal
+spending (blue circles) into defense spending (red asterisks) and non-defense spending (green triangles). We use
+the BEA Use Table to calculate private consumption shares. The sample represents averages over the period
+between 2001 and 2018.
+contracts and the top 1 percent of just over 1,000 six-digit NAICS industries make up around
+40% of all government spending. Decomposing the total cross-sectional variance of government
+contracts, we ﬁnd almost 100% of the variation is “within” ﬁrms or sectors and almost none
+is “across” ﬁrms or sectors providing further evidence of the granular nature of government
+spending. The underlying cross-sectional size distribution of contracts is characterized by fat
+tails, providing the basis for these facts.
+The second fact is the existence of a sectoral bias in government spending: the share of
+government spending in each sector diﬀers substantially from the share consumers spend on
+the goods and services of that sector. Figure 1 shows the share of government spending in a
+certain sector on the vertical axis, and the same ratio for private consumption on the horizontal
+axis.
+We separate total federal spending (blue circles) into defense spending (red asterisks)
+and non-defense spending (green triangles).
+Both for overall federal spending, but also for
+both subcomponents, a substantial diﬀerence in the spending patterns of consumers and the
+government exists. Some sectors that are negligible for the government make up about 14% of
+private consumption, whereas sectors that are unimportant for consumers are big suppliers to the
+2
+government. This sectoral bias also holds for non-defense spending. Hence, government spending
+varies across sectors and does not purely mimic consumer spending. In earlier work, Ramey and
+Shapiro (1998) stressed the importance of sectoral bias for the ﬁscal transmission mechanism.
+Until now, however, no data was available to establish the sectoral bias of government spending
+systematically.
+Third, we show government contracts have a short duration and are often modiﬁed. The
+median contract has a duration of 36 days, 80 percent of contracts last less than one year, and
+about 30 percent of contract transactions represent modiﬁcations to initial contracts. Hence,
+the government does not tend to enter long-term contracts with suppliers. Only few contracts
+lasts very long. The median ﬁrm supplying goods to the government is in the dataset for 2
+years, while the ﬁrm with the median value of average annual obligations is in the dataset for
+only 1 year.
+Fourth, idiosyncratic shocks dominate the ﬂuctuations in government spending over time
+– rather than in the cross section (which the ﬁrst fact studies).
+To establish this fact, we
+decompose growth rates following Gabaix (2011) and Foerster et al. (2011) and ﬁnd idiosyncratic
+shocks, both at the ﬁrm and the sectoral level, are again key drivers of variation in government
+spending over time. In addition, when we estimate AR(1) processes for government spending
+at the sectoral level and study the correlations in the residual spending across sectors, we ﬁnd
+aggregate shocks play a negligible role for changes in sectoral government spending over time.
+Hence, large variation of government spending over time exists that variation in Big G cannot
+account for. Instead, if an innovation occurs, it is idiosyncratic at the sectoral level. These
+innovations have both large negative as well as large positive correlations for many sector pairs.
+Overall, sectoral government spending is generally relatively persistent, consistent with our
+cross-sectional variance decomposition.
+Fifth, government consumption tends to be concentrated in sectors with a relatively high-
+degree of price stickiness. The frequency of price changes in the top two two-digit NAICS sectors
+is 9% while it is on average 20% for the remaining sectors in the economy. We use the micro
+data underlying the producer price index at the Bureau of Labor Statistics to estimate these
+frequencies. The average frequency of price adjustment overall is 16% which corresponds to
+prices adjusting approximately every 6 months. Our detailed contract data allow us to further
+characterize the way in which prices are sticky. The contract data contain information on the
+types of contracts between buyer (the government) and sellers. The majority of contracts—over
+85 percent— are “ﬁxed-price” in nature.
+The facts we establish might not appear surprising but so far, no systematic evaluation
+exists. To better understand whether they matter from a macro perspective, we feed these facts
+into a two-sector New Keynesian model with government spending a la Woodford (2011) and
+3
+compare the implications of the model to a one-sector benchmark. The model is deliberately
+stylized in order to account for the ﬁve facts as clearly as possible while only minimally departing
+from the conventional one-sector model. Importantly, rather than postulating a process for Big
+G, as is commonly done, we model government spending in each sector as a distinct variable.
+Sectoral heterogeneity induces profound changes in the ﬁscal transmission mechanism in
+our two-sector model relative to the benchmark economy. We derive a number of closed-form
+results for the limiting case in which prices are completely ﬂexible in one sector. If government
+spending is biased towards the ﬂex-price sector, crowding out of private expenditure can be
+inﬁnite. Empirically, however, government spending is biased towards the sticky-price sector. An
+increase of government spending in the sticky-price sector induces little crowding out of private
+expenditure, and hence the output multiplier is considerably larger relative to the one-sector
+benchmark.
+We also run model simulations and show the sectoral heterogeneity of government spending
+matters quantitatively. Specially, we calibrate the model to capture key features of the data,
+including the actual degree of price rigidities as well as the sectoral composition of government
+spending and the relative size of sectors. A ﬁscal shock in the relatively small and sticky-price
+sector towards which government spending is biased induces a multiplier eﬀect about three times
+larger than a shock in the other sector. Moreover, the multiplier becomes even bigger if prices
+are more ﬂexible in the sector in which private expenditure is concentrated. Hence, just like
+Barsky et al. (2007) and Barsky et al. (2016) show for the transmission of monetary policy, we
+ﬁnd the degree of price stickiness in the sector in which government spending is concentrated is
+essential and not the economy-wide stickiness.
+In the New Keynesian model, monetary policy is also key for the ﬁscal transmission
+mechanism (Woodford, 2011; Christiano et al., 2011; Farhi and Werning, 2016). Government
+spending is inﬂationary and thus (generally) triggers a response of the central bank.
+The
+resulting interest rate increase crowds out private expenditure because of intertemporal
+substitution.
+As a result, the multiplier is smaller than unity—in contrast to the textbook
+IS-LM model in which no intertemporal substitution takes place.
+In related work, Boehm
+(2019) distinguishes between government consumption and government investment and ﬁnds the
+multiplier is particularly small for government investment precisely because the intertemporal
+elasticity of substitution of investment demand tends to be high. Auerbach and Gorodnichenko
+(2012a,b) and Ramey and Zubairy (2018) discuss empirically whether government spending
+multipliers are larger in recessions and periods of low interest rates when monetary policy
+might be less responsive to government spending. A number of recent contributions introduce
+household heterogeneity and credit frictions in New Keynesian models in order to limit
+intertemporal substitution (Gal´ı et al., 2007; McKay et al., 2016; Kaplan et al., 2018).
+As
+4
+a result, multipliers tend to be larger.
+We show sectoral heterogeneity in spending by households and the government combined
+with sectoral heterogeneity in pricing frictions has a similar eﬀect and as a result, the New
+Keynesian model becomes “more Keynesian.” In a nutshell, since the government spends in
+relatively sticky-price sectors and the private sector spends in relatively ﬂexible-price sectors,
+inﬂation is more responsive to private expenditure than to government spending.
+Such
+diﬀerential heterogeneity in turn dampens the monetary response to a ﬁscal impulse:
+less
+intertemporal substitution occurs, less crowding out, and the multiplier is larger.
+We also
+show, however, things are turned up-side down at the zero lower bound (ZLB). The ranking
+of multipliers across sectors ﬂips: raising government spending in the relatively ﬂexible sector
+has now a larger impact because no interest rate response occurs to curb the larger inﬂationary
+pressure and hence more crowding in of private consumption happens.
+Empirically, accounting for sectoral heterogeneity helps the model to generate predictions
+that align better with the time series evidence than predictions from the conventional one-sector
+model. Many studies have established the response of interest rates, both nominal and real, as
+well as the response of inﬂation to ﬁscal shocks tends to be weak or even negative (Mountford
+and Uhlig, 2009; Corsetti et al., 2012; Ramey, 2016) which is exactly what our model generates.
+Once we modify the model to account for the evidence on government spending at the micro
+level, the model also gets the macro evidence right. Our data also allow studying whether ﬁscal
+multipliers diﬀer for defense versus non-defense spending but we leave a systematic analysis of
+ﬁscal multipliers for future work.
+Our paper is related to recent work on the eﬀect of regional ﬁscal policies in monetary
+unions (Gal´ı and Monacelli, 2008; Nakamura and Steinsson, 2014; Hettig and M¨uller, 2018). In
+this literature, government spending is concentrated in some spatial partition of the economy,
+and its composition is biased relative to the composition of private expenditures. Just like in our
+analysis, the eﬀects of ﬁscal policy turn out to be highly sensitive to the conduct of monetary
+policy. In contrast to this earlier work, we model private expenditure as being determined at the
+aggregate level rather than at the regional/ sectoral level. Chodorow-Reich (2019) surveys the
+recent empirical work on government spending multipliers based on cross-sectional data. Last,
+we also share modeling features with a number of recent papers that account for heterogeneity
+on the production side across sectors and ﬁrms, tracing out the implications for the business
+cycle (Acemoglu et al., 2012; Pasten et al., 2019a,b; Baqaee and Farhi, 2019; Ozdagli and Weber,
+2017). Bouakez et al. (2018), in particular, study theoretically the transmission of ﬁscal policy
+shocks in a rich model featuring heterogeneity in sector size and input-output structure.
+5
+2
+Data
+2.1
+Background on USASpending
+In the ﬁrst part of this paper, we undertake a comprehensive analysis of the USASpending.gov
+database—the oﬃcial source for federal spending data.2
+We ﬁrst detail and deﬁne several
+fundamental concepts before we move on to analyze the data. The database was created in
+response to the Federal Funding Accountability and Transparency Act (FFATA), which was
+signed into law on September 26, 2006.
+FFATA requires federal contract, grant, loan, and
+other ﬁnancial assistance awards of more than $25,000 are publicly accessible on a searchable
+website, in an eﬀort to provide transparency to the American people on how the government
+spends their tax dollars. In accordance with FFATA, federal agencies are required to collect
+and report data on federal procurement. Agencies must report award data—contracts, grants,
+loans, and other ﬁnancial assistance— on a monthly basis through various government systems
+such as the Federal Procurement Data System (FPDS-NG) for contract data and the Data Act
+Broker for grant, loan, and other ﬁnancial assistance data. Some agencies report frequently
+during a month, while others report once a month or even less frequently if they do not issue
+awards on a monthly basis. The USASpending.gov database which the Treasury Department
+hosts, compiles the data from the various government reporting systems. In addition to directly
+uploading the information which the federal agencies report to systems like the FPDS-NG, the
+site also utilizes information collected from the recipients of the awards themselves. Though
+FFATA was not signed into law until 2006, data are available back to 2001 through an external
+organization.
+2.2
+What are Government Contracts?
+Our data focus on a subset of federal spending—spending on goods and services via government
+contracts. The Federal Acquisition Regulation (FAR) deﬁnes “Contract actions” as “any oral or
+written action that results in the purchase, rent, or lease of supplies or equipment, services, or
+construction using appropriated dollars over the micro-purchase threshold, or modiﬁcations to
+these actions regardless of dollar value.” The micro-purchase threshold is in general $3,500.
+As the deﬁnition suggests, the goods and services that the government consumes through
+contracts span a wide range, from janitorial services for federal buildings to IT support services
+to airplanes and rockets. Contracts can be short-term—e.g., a one-month contact awarded by
+the Department of Agriculture Rural Housing Service to Sikes Property And Appraisal Service
+2Demyanyk et al. (2019) and Auerbach et al. (2019) also rely on this database but their focus is on estimating
+ﬁscal multipliers. They rely exclusively on contracts awarded by the Department of Defense. On average, these
+account for about half of the transactions in the database by count and for about two thirds by value. Appendix A.2
+provides an overview of other similar data that have been used in the literature.
+6
+
+============================================================
+
+=== LTS_2025 (Missing_Tax_Instruments_LaO_Tahbaz-Salehi_2024_WP.pdf) ===
+Missing Tax Instruments:
+Attaining Production Efficiency in Disaggregated,
+Production Network Economies with Nominal Rigidities*
+Jennifer La’O†
+Alireza Tahbaz-Salehi‡
+January 6, 2025
+Abstract
+We study optimal fiscal and monetary policy in multi-sector, input-output
+economies with nominal rigidities and a rich set of tax instruments. Irrespective
+of the network structure, with N>1 sectors, production efficiency can be achieved
+with 2N state-contingent, sector-specific tax instruments. The optimal tax scheme
+involves jointly stabilizing all prices set by sellers while generating efficient move-
+ments in after-tax prices faced by buyers. Optimal fiscal and monetary policy are
+independent of the vector of price rigidities; optimal sector-specific tax rates are
+moreover independent of the availability of lump-sum taxes. We provide several tax
+equivalences and non-equivalences.
+Keywords: fiscal policy, monetary policy, production efficiency, production net-
+works, misallocation.
+JEL codes: E32, E52, E62, E63, D61
+*This paper is the direct product of a lively and insightful post-seminar discussion at the Federal Re-
+serve Bank of Minneapolis in January 2021 following a presentation of our paper, “Optimal Monetary
+Policy in Production Networks.” We thank Manuel Amador, V.V. Chari, Patrick Kehoe, Juanpa Nicolini,
+and Pedro Teles for pushing us in this direction and for their constructive comments and questions. We
+also thank Hassan Afrouzi for helpful conversations and insights on this paper.
+†Columbia University, NBER, and CEPR. jenlao@columbia.edu.
+‡Northwestern University and CEPR. alirezat@kellogg.northwestern.edu.
+1
+Introduction
+In multi-sector, input-output economies with nominal rigidities, the first best allocation
+is generically unattainable with monetary policy alone (Aoki, 2001; Woodford, 2003b,
+2010; La’O and Tahbaz-Salehi, 2022). Even when shocks are exclusively technological,
+as long as tax instruments are non-state-contingent, monetary policy can attain at most
+a “third-best” allocation: one that features production inefficiency and an endogenous,
+state-contingent labor wedge (La’O and Tahbaz-Salehi, 2022; Rubbo, 2023). Optimal
+monetary policy in multi-sector economies thereby contrasts sharply to its one-sector
+counterpart: in the standard New Keynesian (NK) model with technology shocks, the
+first best is achievable with price level stabilization and a constant sales subsidy.
+From this observation one might conclude that there are “missing” tax instru-
+ments in the multi-sector, input-output NK framework. Indeed, it is clear that a state-
+contingent labor income or consumption tax could eliminate the state-contingent labor
+wedge. It is less clear, however, what tax instruments would restore production effi-
+ciency. The heart of the problem is the following. In this class of models, monetary pol-
+icy can target at most one price index. But with sector-specific technology shocks and
+nominal rigidities, no price index can eliminate misallocation both within and across
+sectors. To this end, finer-tuned fiscal instruments appear necessary.
+But what instruments? And in what manner should they to be used? We address
+these questions in this paper. Within a broad class of multi-sector NK models with
+input-output linkages, and allowing for a rich set of fiscal instruments, we jointly char-
+acterize optimal monetary and fiscal policy. Our main result is to demonstrate how dis-
+tortionary taxation can be used to restore production efficiency and thereby circumvent
+the problem faced by monetary policy. The tax scheme we engineer involves jointly sta-
+bilizing all prices set by sellers while generating efficient movements in after-tax prices
+faced by buyers.
+In any environment with nominal rigidities, fiscal and monetary policy interact:
+the efficacy and optimality of monetary policy depend on the details of fiscal policy.
+The contribution of this paper is to thereby establish the theoretical benchmark of
+sufficiently rich fiscal instruments within the class of multi-sector, input-output NK
+economies. Our benchmark differs markedly from—and, in fact, constitutes the polar
+opposite of—the standard benchmark of “inactive” fiscal policy in which subsidies are
+used only to eliminate steady-state markups. As argued above, the distance between the
+two benchmarks is small to non-existent in the one-sector NK framework but widens
+with multiple sectors and intermediate good trade. Recent papers consider environ-
+ments in the interior of this gap.
+Prior to studying monetary policy in environments featuring restricted sets of “ac-
+1
+tive” fiscal instruments, it would be useful to first understand the sufficiently rich fiscal
+instruments benchmark. What are the missing fiscal tools that restricted sets may or
+may not compensate for? Answering this question, characterizing these instruments,
+and establishing this benchmark is what we do in this paper.
+The Model and Results. Firms are linked to one another via an input-output network.
+They produce goods using labor, capital, and intermediate inputs and are subject to
+industry-level productivity shocks, demand shocks, and shocks to elasticities of substi-
+tution (or markups). Following the NK framework, firms set prices and face Calvo price
+rigidities; we allow the Calvo parameter to vary by sector. A representative household
+consumes the final good, supplies labor, saves, and invests in capital. A government
+finances exogenous public expenditure and sets fiscal and monetary policy jointly.
+We take the standard Ramsey approach and assume the government has access to
+a rich set of distortionary, linear tax instruments—including multiple types of sector-
+specific, state-contingent tax rates—but cannot raise money with lump-sum taxation.
+The latter restriction on fiscal instruments implies that full efficiency, i.e. the “first best,”
+cannot be achieved; we later relax this restriction in an extension.
+Our main analysis centers on implementation of the Ramsey optimum, which in our
+economy coincides with the canonical Lucas and Stokey (1983) benchmark. We focus
+on the Ramsey optimum for the following reason: this benchmark exhibits production
+efficiency in the sense of Diamond and Mirrlees (1971); see Chari and Kehoe (1999).
+Implementation of the Ramsey optimum therefore demonstrates how a sufficiently rich
+set of fiscal instruments can restore production efficiency in this class of economies.
+Our main theorem characterizes monetary and fiscal policy that jointly implement
+the Ramsey optimum. Without loss of generality, we focus on implementations in which
+monetary policy stabilizes the final good price level. Our characterization of optimal
+fiscal policy yields the following six lessons:
+1. The optimal tax structure achieves production efficiency. In order to do so, sector-
+specific tax rates play two roles: they stabilize seller prices and generate efficient
+fluctuations in after-tax prices.
+2. Optimal sector-specific tax rates are state-contingent. They depend on the real-
+ized nominal wage, sectoral technologies, and sectoral elasticities of substitution,
+but they do not depend on sectoral demand shocks and government spending.
+Optimal monetary and fiscal policy are invariant to the vector of price rigidities.
+3. Regardless of the network structure, with N sectors production efficiency can be
+attained with 2N sector-specific tax instruments: N sales taxes levied on sellers
+and N sales taxes levied on buyers. Unlike in standard models with price flexibil-
+2
+ity, taxes levied on sellers and on buyers when sellers face price rigidities are not
+equivalent.
+4. Sector-specific input taxes on labor, capital, and intermediate goods can substi-
+tute for the seller-imposed sales taxes. In this implementation, intermediate good
+input taxes are destination-specific but not origin-specific.
+5. Sector-specific intermediate good and final good taxes can substitute for the
+buyer-imposed sales taxes. In this implementation, intermediate good input taxes
+are origin-specific but not destination-specific.
+6. Optimal sector-specific tax rates are independent of the availability of lump-sum
+taxes.
+What roles do the sector-specific tax instruments play in restoring production effi-
+ciency? Lesson 1 answers this question. Production efficiency requires no misalloca-
+tion within and across sectors—a goal unattainable with monetary policy alone. The
+tax scheme we engineer involves jointly stabilizing seller prices while simultaneously
+generating efficient movements in after-tax prices faced by buyers. This tax scheme
+eliminates misallocation within and across sectors, ensuring efficient production of the
+final good.
+These dual roles require tax state-contingency. Lesson 2 tells us what dimensions of
+the state space the optimal sector-specific taxes are contingent upon. It also answers
+the more practical question of what information is needed by the fiscal authority in
+order to administer such taxes. We find that the optimal tax rates are contingent on
+realized marginal costs and elasticities of substitution or, more generally, desired mark-
+ups. While this is arguably a heavy information burden for the fiscal authority, what is
+perhaps more surprising are the dimensions of the state space the optimal tax rates are
+not contingent upon. Conditional on realized marginal costs, sector-specific tax rates
+are independent of sector-specific demand and government spending.
+We find that for any implementation of the Ramsey optimum, tax rates are inde-
+pendent of the vector of sectoral price rigidities (Calvo parameters). The irrelevance
+of sectoral price rigidities for optimal fiscal and monetary policy, even when the opti-
+mal allocation does not coincide with the first best, generalizes previously-established
+results by Correia, Nicolini and Teles (2008) to multi-sector NK economies with input-
+output linkages.
+Lessons 1 and 2 are general in that they apply to all implementations of the Ramsey
+optimum. Moving on, we explore specific tax implementations. The first is the “least
+instruments” implementation: we show that, irrespective of the input-output structure,
+3
+with N>1 sectors and two roles for taxes, 2N sector-specific taxes can implement the
+Ramsey optimum (Lesson 3). This implementation requires N sales taxes levied on
+sellers and N sales taxes levied on buyers. We thus exploit a non-equivalence between
+sales taxes collected on sellers and on buyers when sellers face nominal rigidities, as
+highlighted by Poterba, Rotemberg and Summers (1986).
+Despite this particular tax non-equivalence, we present two more implementations
+that showcase two different tax equivalences. In the first, we assume that the seller-
+imposed sales tax is unavailable.
+The Ramsey optimum can still be implemented:
+sector-specific taxes on labor, capital, and intermediate good inputs can substitute for
+the missing seller-imposed sales tax (Lesson 4). In the second, we assume that the
+buyer-imposed sales tax instrument is unavailable. The Ramsey optimum can again
+be implemented: sector-specific intermediate good and final good taxes can substitute
+for the missing buyer-imposed sales tax (Lesson 5).
+Whether or not the first-best is attainable depends on the availability of lump-sum
+tax instruments. A question arises as to whether the availability of lump-sum taxa-
+tion alters the optimal sector-specific tax instruments. We show that the answer is no:
+whether or not the Ramsey optimum coincides with the first-best changes only the op-
+timal aggregate tax rates—it has no effect on the optimal sector-specific tax rates (Les-
+son 6). The irrelevance of lump-sum taxation for the optimal sector-specific tax rates
+drives home the point that their main function is to restore within-period production
+efficiency.
+Related literature. This paper demonstrates how a rich set of distortionary tax instru-
+ments can be used to implement the Ramsey optimum and completely circumvent the
+problem faced by monetary policy. In this sense, our paper is closest in spirit to Correia,
+Nicolini and Teles (2008) and Correia, Farhi, Nicolini and Teles (2013). Our contribution
+vis-`a-vis their work is to extend this insight to multi-sector, input-output NK economies
+and, specifically, to characterize within this class of models the sector-level tax rates that
+attain production efficiency.
+Our results apply to a broad class of multi-sector NK models with or without input-
+output linkages. Our framework is fairly general in that it can flexibly nest the economic
+environments found in Erceg, Henderson and Levin (2000); Aoki (2001); Mankiw and
+Reis (2003); Benigno (2004); Huang and Liu (2005); Woodford (2010); Eusepi, Hobijn and
+Tambalotti (2011); Ozdagli and Weber (2017); Past´en, Schoenle and Weber (2020, 2024);
+Ghassibe (2021); La’O and Tahbaz-Salehi (2022); Rubbo (2023); Bouakez, Rachedi and
+Santoro (2023); Afrouzi and Bhattarai (2023); Xu and Yu (2024), among others.1 Relative
+1Related, too, is the work of Faria-e-Castro (2021), Guerrieri et al. (2022), Baqaee and Farhi (2022), and
+Rubbo (2024). These papers focus on disaggregated, multi-sector NK models with and without input-
+output linkages but feature some form of household heterogeneity. For this reason, our model does not
+4
+to most multi-sector NK models, we add physical capital as a factor of production.
+As we have noted, the contribution of our paper vis-`a-vis the multi-sector, input-
+output NK literature is to establish a benchmark in which the set of tax instruments
+is sufficiently rich to achieve production efficiency. A standard benchmark in this lit-
+erature is to assume non-state-contingent sales subsidies that eliminate steady-state
+markups (as in Woodford, 2003b; Gal´ı, 2008). Recent papers, however, move past this
+benchmark and consider the implications of sector-specific and state-contingent gov-
+ernment purchases: see Proebsting (2022); Cox et al. (2024); Flynn et al. (2024); Bouakez
+et al. (2024) as well as Ramey and Shapiro (1998). In a taxonomy of models, one can
+think of these environments as featuring a set of fiscal instruments that is strictly larger
+than in the standard benchmark, yet restricted relative to our sufficiently rich fiscal
+instrument benchmark.
+We complement this growing body of work but focus instead on linear tax instru-
+ments. Furthermore, an understanding of both benchmarks—or, both extremes—is
+useful for interpreting the interior.
+Layout. This paper is organized as follows. In Section 2 we describe the economic
+environment; in Section 3 we characterize equilibria. In Section 4 we state and solve the
+Ramsey problem, and in Section 5 we study its implementation. In Section 6 we explore
+several specific implementations that illustrate the main results of the paper. In Section
+7 we conclude. All proofs are found in the Appendix.
+2
+The Environment
+Time is discrete, indexed by t = 0, 1, . . . , ∞. We denote the aggregate state at time t by
+st ∈S where S is a finite set. We let st = {s0, ..., st} ∈St denote a history of states up
+to and including st. We let µ(st|st−1) denote the probability of history st conditional on
+st−1, and with slight abuse of notation we let µ(st) denote the unconditional probability
+of history st.
+There is a representative household with time-separable utility:
+∞
+X
+t=0
+X
+st
+βtµ(st)U(C(st), L(st)),
+(1)
+explicitly capture these environments. In another related vein, Ghassibe and Ferrari (2024) develop and
+analyze a multi-sector, production network model with endogenous price rigidities due to menu costs.
+Our model instead features exogenous nominal rigidities: in our baseline we assume Calvo pricing, but
+our model can also accommodate informational frictions. Finally, Qiu, Wang, Xu and Zanetti (2024) study
+monetary policy in a small open economy with domestic and cross-border input-output linkages. Our
+model is closely related but features no international trade.
+5
+with β ∈(0, 1), where C(st) and L(st) denote the household’s consumption basket and
+labor supply at date t, history st. The function U satisfies the typical regularity condi-
+tions: it is continuous, twice-differentiable, strictly increasing and strictly concave in
+(Ct, −Lt), and satisfies Inada conditions. Throughout, we let UC(st) ≡∂U(·)/∂C(st) and
+UL(st) ≡∂U(·)/∂L(st).
+The household supplies labor, consumes, saves, and invests in capital. The house-
+hold’s nominal budget constraint at time t, history st is given by:
+(1 + τ C(st))P(st)C(st) + P(st)H(st) + B(st) +
+X
+st+1|st
+Q(st+1|st)Z(st+1|st)
+≤(1 −τ L(st))W(st)L(st) + (1 −τ K(st))R(st)K(st−1) + (1 + ι(st−1))B(st−1) + Z(st|st−1)
+(2)
+where P(st) is the price of the final good, W(st) is the nominal wage, and R(st) is the
+nominal rental rate on capital. The household faces taxes on consumption, labor in-
+come, and capital income, denoted by τ C(st), τ L(st), and τ K(st), respectively.
+The household can borrow and save via three separate instruments. The first is a
+one-period, risk-free nominal bond, B(st), which the household can buy or sell at time
+t, history st, and which pays (1 + ι(st))B(st) units of money one period later. The house-
+hold’s debt holdings are bounded by B(st) ≥−D for some large constant D. We let B−1
+denote initial holdings of government debt. The second instrument is a complete set of
+state-contingent Arrow securities, indexed by st+1|st. We let Q(st+1|st) denote the price
+at time t, history st, of an Arrow security that pays 1 unit of money in t + 1 if st+1 is
+realized and 0 otherwise. The corresponding quantity purchased of this Arrow security
+is denoted by Z(st+1|st).
+Third, the household can invest in capital; we let H(st) denote the household’s in-
+vestment in capital at date t, history st. The law of motion of capital is given by:
+K(st) = (1 −δ)K(st−1) + H(st),
+(3)
+where δ ∈(0, 1] is the rate of depreciation. We assume the household is endowed with
+K−1 > 0 initial units of capital at time 0. The household solves the following problem.
+Household’s
+Problem.
+Given
+initial
+capital
+and
+bond
+holdings,
+K−1
+and
+B−1,
+the
+household
+chooses
+a
+complete
+contingent
+plan,
+{C(st), L(st), K(st), H(st), B(st), (Z(st+1|st))st+1}t≥0,st∈St,
+in
+order
+to
+maximize
+its
+lifetime expected utility (1) subject to (2), (3), and B(st) ≥−D, for all t ≥0, st ∈St.
+Intermediate good production.
+Production takes place in a finite set of N>1 indus-
+tries indexed by i ∈I ≡{1, . . . , N}. Each industry consists of two types of firms: (i)
+6
+a measure one continuum of monopolistically-competitive, differentiated good firms,
+indexed by m ∈[0, 1], and (ii) a perfectly-competitive producer that aggregates the
+industry’s differentiated goods and produces a uniform sectoral good. We begin by
+describing the latter.
+Sectoral good production. Within each industry i ∈I, a perfectly-competitive firm
+produces a uniform, sectoral good using a constant returns to scale, constant elasticity
+of substitution (CES) production technology over the sector’s differentiated varieties,
+m ∈[0, 1], given by:
+Yi(st) =
+ 1
+0
+ym
+i (st)
+θi(st)−1
+θi(st) dm
+
+θi(st)
+θi(st)−1
+,
+(4)
+where θi(st) > 1 denotes the elasticity of substitution across varieties in state st, and
+ym
+i (st) denotes the quantity purchased of variety m. The sectoral good producer takes
+prices as given and maximizes profits, given by:
+Pi(st)Yi(st) −(1 + ˆτ y
+i (st))
+ 1
+0
+pm
+i (st)ym
+i (st)dm
+where Pi(st) is the price of sectoral good i, ˆτ y
+i (st) is the sales tax the firm pays on its
+purchases of the differentiated varieties, and pm
+i (st) is the price of differentiated good m.
+Profit maximization yields the following CES demand curves:
+ym
+i (st) =
+(1 + ˆτ y
+i (st))pm
+i (st)
+Pi(st)
+−θi(st)
+Yi(st).
+(5)
+By constant returns to scale, this producer makes zero profits.2 The good produced by
+sector i can be used for final good purposes or as an intermediate input to production.
+Differentiated goods production. Within each industry i ∈I, a measure one con-
+tinuum of monopolistically-competitive firms use a common constant-returns-to-scale
+technology to transform labor, capital, and intermediate inputs into differentiated vari-
+eties. The production function of firm m in industry i is given by
+ym
+i (st) = Ai(st)Fi(ℓm
+i (st), km
+i (st), xm
+i1(st), . . . , xm
+iN(st)),
+(6)
+where ym
+i (st) is firm output, ℓm
+i (st) and km
+i (st) are the firm’s labor and capital inputs, and
+for every j ∈I, xm
+ij(st) is the firm’s usage of intermediate good j. We let Ai(st) denote
+an industry-specific productivity shock. The production function Fi is homogeneous of
+degree one. Throughout, we assume that labor is an essential input for the production
+2We include this producer to ensure that a homogeneous sectoral good is produced while also allowing
+for monopolistic competition among the differentiated good firms.
+7
+
+============================================================
+
+=== Antonova_Muller (2025_Antonova_Müller_NK-Network-Targeted-Taxes.pdf) ===
+Antonova, Anastasiia; Müller, Gernot
+Working Paper
+Distorted Prices and Targeted Taxes in the New Keynesian
+Network Model
+CESifo Working Paper, No. 12144
+Provided in Cooperation with:
+Ifo Institute – Leibniz Institute for Economic Research at the University of Munich
+Suggested Citation: Antonova, Anastasiia; Müller, Gernot (2025) : Distorted Prices and Targeted Taxes
+in the New Keynesian Network Model, CESifo Working Paper, No. 12144, Munich Society for the
+Promotion of Economic Research - CESifo GmbH, Munich
+This Version is available at:
+https://hdl.handle.net/10419/331610
+Standard-Nutzungsbedingungen:
+Die Dokumente auf EconStor dürfen zu eigenen wissenschaftlichen
+Zwecken und zum Privatgebrauch gespeichert und kopiert werden.
+Sie dürfen die Dokumente nicht für öffentliche oder kommerzielle
+Zwecke vervielfältigen, öffentlich ausstellen, öffentlich zugänglich
+machen, vertreiben oder anderweitig nutzen.
+Sofern die Verfasser die Dokumente unter Open-Content-Lizenzen
+(insbesondere CC-Lizenzen) zur Verfügung gestellt haben sollten,
+gelten abweichend von diesen Nutzungsbedingungen die in der dort
+genannten Lizenz gewährten Nutzungsrechte.
+Terms of use:
+Documents in EconStor may be saved and copied for your personal
+and scholarly purposes.
+You are not to copy documents for public or commercial purposes, to
+exhibit the documents publicly, to make them publicly available on the
+internet, or to distribute or otherwise use the documents in public.
+If the documents have been made available under an Open Content
+Licence (especially Creative Commons Licences), you may exercise
+further usage rights as specified in the indicated licence.
+ 
+ 
+ 
+ 
+Distorted Prices and Targeted 
+Taxes in the New Keynesian 
+Network Model 
+Anastasiia Antonova, Gernot Müller 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Working Papers 
+12144
+2025 
+ September 2025 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Imprint: 
+CESifo Working Papers 
+ISSN 2364-1428 (digital) 
+Publisher and distributor: Munich Society for the Promotion  
+of Economic Research - CESifo GmbH 
+Poschingerstr. 5, 81679 Munich, Germany 
+Telephone +49 (0)89 2180-2740 
+  
+Email office@cesifo.de 
+https://www.cesifo.org  
+Editor: Clemens Fuest 
+An electronic version of the paper may be downloaded free of charge 
+· from the CESifo website: www.ifo.de/en/cesifo/publications/cesifo-working-papers 
+· from the SSRN website: www.ssrn.com/index.cfm/en/cesifo/   
+· from the RePEc website: https://ideas.repec.org/s/ces/ceswps.html  
+Distorted Prices and Targeted Taxes
+in the New Keynesian Network Model∗
+Anastasiia Antonova and Gernot J. Müller
+September 2025
+Abstract
+When confronted with sectoral shocks, policymakers often resort to targeted, sector-
+specific taxes in an ad hoc fashion. Based on the New Keynesian Network model, we
+characterize the optimal tax response to sectoral shocks: it features twice as many tax
+instruments as there are sectors, is budget-neutral, and not confined to the sector where
+the shock originates. We show that the optimal policy can be approximated by a simple
+rule that responds to inflation in the shocked sector and adjusts tax instruments in other
+sectors according to input-output linkages. We study its quantitative performance in
+a calibrated version of the model.
+Keywords:
+Sectoral shocks, sales taxes, production subsides, optimal
+tax policy, simple rules, network, pricing frictions
+JEL-Codes:
+E32, E62
+∗Antonova: Aix-Marseille Université (email: anastasiia.antonova@univ-amu.fr); Müller: University of
+Tübingen, CEPR and CESifo (email: gernot.mueller@uni-tuebingen.de). We thank Eric Swanson, an anony-
+mous referee, Luis Huxel, Raphael Schoenle, and seminar participants at KU Leuven, Maastricht University,
+the Riksbank, the Bundesbank, the University of Lausanne, and the Macro Committee of the German
+Economic Association for helpful comments and suggestions. The usual disclaimer applies.
+1
+Introduction
+Macroeconomic shocks often originate in specific sectors of the economy or impact them
+disproportionally (Foerster et al. 2011; Gabaix 2011; Cox et al. 2024a).
+In response to
+such shocks, governments frequently implement targeted subsidies or taxes. For example,
+governments provided transfers and subsidies to address the energy crisis triggered by the
+Russian invasion of Ukraine, offered support to the financial sector during the global financial
+crisis, and extended financial aid to the service sector during the Covid-19 pandemic. Such
+targeted fiscal measures appear appropriate, particularly because monetary policy cannot
+be tailored to specific sectors, except through unconventional measures that have a distinct
+fiscal flavor.
+However, these tax policies are typically implemented on an ad hoc basis, and little is
+known about how they should be optimally adjusted in response to sectoral shocks. For
+instance, should the response be confined to the sector where the shock originates, or should
+upstream and downstream sectors also be considered? What are the budgetary implications
+of the optimal policy? Does the nature of the shock—supply versus demand—matter? Can
+an efficient allocation be achieved, and if so, how many tax instruments are necessary to
+achieve it? Lastly, concerns may arise about the feasibility of the optimal policy. Specifically,
+what kind of information must policymakers have to execute the optimal policy?
+We address these questions within a variant of the New Keynesian Network (NKN) model
+of Rubbo (2023). We augment the model by allowing for sector-specific and potentially time-
+varying sales taxes and production subsidies. As a result it becomes possible for the optimal
+policy to restore the efficient allocation in the presence of sectoral shocks. Crucially, the
+first-best policy requires the joint adjustment of both instruments across all sectors. This
+is essential: since only a subset of firms adjusts prices, relative prices are distorted both
+within and across sectors. Thus, in line with the principles of Tinbergen (1952), replicating
+the flexible-price allocation necessitates using two instruments to address both sides of the
+1
+distortion.
+This involves subsidizing firms’ production while simultaneously taxing their
+sales. We propose a simple rule that responds solely to sectoral inflation and show that it
+approximates the first-best policy arbitrarily well. This policy is budget-neutral and adjusts
+taxes and subsidies across all sectors based on their proximity to the sector where the shock
+originates and depending on the nature of the shock.
+The NKN model offers a framework to systematically analyze sectoral stabilization poli-
+cies. It features N sectors which are connected through input-output linkages. Production
+in each sector uses labor and intermediate goods, potentially sourced from all sectors. In
+each sector, there is a continuum of monopolistically competitive firms that operate identical
+technologies but adjust prices only infrequently and, importantly, asynchronously. Factor
+inputs within a sector are adjusted flexibly and instantaneously in order to meet demand
+at posted prices. Households allocate spending across sectors in order to minimize expendi-
+tures subject to sectoral demand shocks. There are also sector-specific shocks to total factor
+productivity, or “supply shocks,” for short. We derive the canonical representation of the
+model featuring a set of dynamic IS-curves and Phillips curves.
+The relation between sectoral inflation and the sectoral output gap features a tradeoff
+because adjusting a sector’s relative price to close its output gap creates price dispersion
+within the sector, as not all firms adjust their prices simultaneously. Conversely, keeping
+prices constant to avoid within-sector price dispersion results in output gaps due to the lack
+of an adjustment of relative prices. A key property of the optimal policy follows directly: It
+relies on two instruments in each sector (2N policy). Intuitively, by subsidizing production
+in a sector, the policy incentivizes firms that can adjust prices to keep them stable. Through
+sales taxes, which apply to consumers and intermediate goods trade alike, it steers demand
+across sectors to close sectoral output gaps.
+As a result, seller prices do not change in
+equilibrium under the optimal tax policy.1 The network structure determines the response of
+1Sales taxes effectively take over the job of ensuring allocative efficiency across sectors by altering buyer
+prices. In this sense, our results turn the “socialist calculation debate” about the allocative role of prices
+on its head (Von Mises 1953; Lerner 1934; Lange 1936). As prices fail to respond sufficiently, taxes can be
+adjusted in their stead to signal scarcity to buyers.
+2
+fiscal instruments across sectors: The optimal policy adjusts the sales tax and the production
+subsidy in all sectors, but the strength of the adjustment depends on the “distance” of a
+sector to the sector where the shock originates, as well as on the nature of the shock. The
+optimal policy is budget neutral as the subsidy is funded by the sales tax.
+The first-best policy requires observing a rich set of sectoral shocks, which might be
+infeasible in practice. Hence, we propose a simple rule that also features 2N sectoral instru-
+ments but responds to sectoral inflation only rather than to the shock itself. As such, it is a
+generalization of a familiar result from the normative analysis of monetary policy. A policy
+reaction to inflation brings the economy closer to the efficient allocation when tracing the
+natural rate directly is infeasible (Galí 2015). In the NKN model, the implementation of the
+simple rule actually does not require observing inflation in every sector of the economy. It
+is sufficient to respond to the inflationary impact in the shocked sector and to adjust taxes
+and subsidies in the other sectors proportionally to their use of inputs from or their sales to
+the shocked sector.
+We perform a quantitative assessment of 2N policies, as we calibrate the model to cap-
+ture key features of the production network in the U.S. economy. Specifically, we consider
+N = 373 sectors based on the 6-digit classification of the Bureau of Economic Analysis and
+allow pricing frictions to differ in line with existing empirical evidence. We contrast policy
+responses to supply and demand shocks, highlighting how downstream and upstream prox-
+imity to the shocked sector shapes the strength of the response in each case. We also show
+that the simple 2N rule entails a substantial welfare improvement over rules that employ
+only a single instrument.
+Finally, we show that our results extend to an open-economy setting with import-price
+shocks, which act as both supply and demand shocks and require distinct policy responses
+depending on a country’s import dependence. We illustrate this by contrasting scenarios of
+high and low energy dependence, capturing—in a highly stylized way—the situations of the
+U.S. and Europe during the energy crisis following the Russian invasion of Ukraine.
+3
+The paper is structured as follows. In the remainder of the introduction, we place the
+paper in the context of the literature. Section 2 presents the model and derives its canonical
+representation, which we use to characterize the optimal policy in closed form and to analyze
+its features in Section 3. In Section 4 we characterize simple rules polices that could be
+implemented in practice.
+We calibrate and simulate the model in order to quantify our
+results in Section 5. Section 6 generalizes our results to an open economy setting. A final
+section concludes.
+Related literature.
+Closest to our analysis is La’O & Tahbaz-Salehi (2025), who shows
+that fiscal instruments can ensure efficiency in economies with production networks and nom-
+inal rigidities. Using the Ramsey approach, the authors also find that the first-best policy
+involves 2N instruments, highlighting the connection with the literature on monetary–fiscal
+equivalence (Correia et al. 2008). Our analysis differs in that we derive the canonical rep-
+resentation of the NKN model to capture the relevant trade-offs and examine second-best
+fiscal policies that are more realistically implementable through simple rules. Cox et al.
+(2024b) focus on sectoral government spending—which we abstract from—and show, in a
+New Keynesian multi-sector model, that the optimal policy does not fully restore the first-
+best allocation because, when the level of public-good provision is initially set optimally,
+running “fiscal gaps” entails welfare costs.
+More broadly, our paper relates to work on how sectoral shocks propagate through net-
+works, typically with a focus on TFP shocks and in models without nominal frictions (Hor-
+vath 1998, 2000; Acemoglu et al. 2012; Caliendo et al. 2017), but also in versions of the
+NKN model (Pastén et al. 2024). The effects of sectoral government spending shocks are
+also investigated, in models with and without pricing frictions (Proebsting 2022; Bouakez et
+al. 2025; Flynn et al. 2022; Devereux et al. 2023), as well as the sectoral transmission of the
+economic impact of the Covid-19 pandemic (Guerrieri et al. 2022; Baqaee & Farhi 2022).2
+2Woodford (2022) shows, assuming pre-set prices, that fiscal transfers can restore the first-best outcome
+in this context when incomplete markets prevent risk sharing across sectors.
+4
+
+============================================================
+
