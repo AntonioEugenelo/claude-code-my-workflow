@@ -100,6 +100,16 @@ When scripts exist for the lecture:
 - Calvo parameter vs frequency of price change: $\theta$ vs $1-\theta$ confusion
 - Log-deviation vs percentage-point scaling mismatches in IRF plots
 
+**Tariff/trade-specific checks:**
+- Tariff incidence: verify who bears the cost (consumer price wedge vs producer cost)
+- IO cascade logic: marginal cost propagation must match b4_declare_model.mod equations
+- Currency invoicing: PCP/LCP/DCP implications for price pass-through correctly stated
+- Calibration consistency: parameters cited in text match a1_calibration.m values
+- Country index $K_\text{num}=4=\text{USA}$: all USD-anchor equations reference correct country
+- Only US-involving tariff pairs have active innovations — other bilateral tariffs are zero
+- Energy sector near-flexibility ($\theta^p=0.01$): results should not claim sticky energy prices
+- Domar weight / IO share magnitudes: cross-check against OECD ICIO data claims
+
 ---
 
 ## Lens 5: Backward Logic Check

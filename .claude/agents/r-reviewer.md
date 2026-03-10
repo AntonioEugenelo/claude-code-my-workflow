@@ -57,15 +57,20 @@ Produce a thorough, actionable code review report. You do NOT edit files — you
 
 **Flag:** Undocumented functions, magic numbers, unnamed return values, code duplication.
 
-### 5. DOMAIN CORRECTNESS
-<!-- Customize this section for your field -->
-- [ ] Estimator implementations match the formulas shown on slides
-- [ ] Standard errors use the appropriate method
-- [ ] DGP specifications in simulations match the paper being replicated
-- [ ] Treatment effects are the correct estimand (e.g., ATT vs ATE)
+### 5. DOMAIN CORRECTNESS (Macroeconomics / DSGE / Trade)
+- [ ] IRF sign conventions: positive tariff shock → negative GDP, positive inflation
+- [ ] Country index mapping: data order (EA=1, USA=2, CHI=3, ROW=4) vs model order (EA=1, CHN=2, ROW=3, USA=4) handled correctly
+- [ ] IO matrix ordering: $\Omega_X$(buyer-country, seller-country, buyer-sector, seller-sector)
+- [ ] Calvo parameter interpretation: $\theta^p$ = prob of NOT resetting (higher = stickier)
+- [ ] Domar weights $\Lambda_{k,i}$ sum to GDP ratio for each country
+- [ ] Cumulative IRFs computed correctly (cumsum alignment, period 0 vs 1)
+- [ ] Log-deviation vs percentage-point scaling: Dynare outputs log-deviations, multiply by 100 for pp
+- [ ] Energy sectors ($\theta^p = 0.01$) handled separately from non-energy
+- [ ] Trade balance sign convention: positive = surplus
+- [ ] Invoicing regime (PCP/LCP/DCP) correctly reflected in price pass-through computations
 - [ ] Check `.claude/rules/r-code-conventions.md` for known pitfalls
 
-**Flag:** Implementation doesn't match theory, wrong estimand, known bugs.
+**Flag:** Wrong country mapping, IRF sign error, scaling mismatch, IO ordering bug.
 
 ### 6. FIGURE QUALITY
 - [ ] Consistent color palette (check your project's standard colors)

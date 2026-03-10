@@ -27,27 +27,31 @@ paths:
 
 ## 3. Domain Correctness
 
-<!-- Customize for your field's known pitfalls -->
-- Verify estimator implementations match slide formulas
-- Check known package bugs (document below in Common Pitfalls)
+- Verify IRF computations match Dynare output (sign conventions, scaling)
+- Calvo $\theta^p$ = prob of NOT resetting; higher = stickier prices
+- IO matrix ordering: $\Omega_X$(buyer-country, seller-country, buyer-sector, seller-sector)
+- Country reordering: data (EA=1, USA=2, CHI=3, ROW=4) vs model (EA=1, CHN=2, ROW=3, USA=4)
+- Domar weights $\Lambda$ must sum correctly per country
+- Trade balance sign: positive = surplus (exports > imports)
 
 ## 4. Visual Identity
 
 ```r
-# --- Your institutional palette ---
-primary_blue  <- "#012169"
-primary_gold  <- "#f2a900"
+# --- ECB institutional palette ---
+ecb_blue      <- "#003299"
+ecb_gold      <- "#FFD700"
+ecb_orange    <- "#FF6600"
+ecb_green     <- "#009900"
 accent_gray   <- "#525252"
-positive_green <- "#15803d"
 negative_red  <- "#b91c1c"
 ```
 
 ### Custom Theme
 ```r
-theme_custom <- function(base_size = 14) {
+theme_ecb <- function(base_size = 14) {
   theme_minimal(base_size = base_size) +
     theme(
-      plot.title = element_text(face = "bold", color = primary_blue),
+      plot.title = element_text(face = "bold", color = ecb_blue),
       legend.position = "bottom"
     )
 }
@@ -68,11 +72,14 @@ saveRDS(result, file.path(out_dir, "descriptive_name.rds"))
 
 ## 6. Common Pitfalls
 
-<!-- Add your field-specific pitfalls here -->
 | Pitfall | Impact | Prevention |
 |---------|--------|------------|
 | Missing `bg = "transparent"` | White boxes on slides | Always include in ggsave() |
 | Hardcoded paths | Breaks on other machines | Use relative paths |
+| Wrong country index after reorder | IRFs plotted for wrong country | Always map through `new_country_order` |
+| Cumulative IRF off-by-one | Cumsum starts from period 0 vs 1 | Verify first-period value matches Dynare |
+| Percentage points vs log-deviation | 10x scaling error in IRF plots | Dynare outputs log-deviations; multiply by 100 for pp |
+| Energy sector Calvo $\theta=0.01$ | Near-flexible prices treated as sticky | Handle energy sectors separately in analysis |
 
 ## 7. Line Length & Mathematical Exceptions
 

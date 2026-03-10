@@ -19,7 +19,9 @@ You deeply understand both formats and translate between them preserving:
 
 ### Environment Mapping
 
-<!-- Customize this table for your project's custom environments -->
+<!-- Project: Tariffs ECB Paper. Style files: paper.sty, math.sty in Tariffs_ECB/0_clean/ -->
+<!-- The paper uses standard article class with custom .sty files, not Beamer.
+     Translation is primarily for supplementary presentation slides, not the paper itself. -->
 | Beamer | Quarto |
 |--------|--------|
 | `\begin{methodbox}...\end{methodbox}` | `::: {.methodbox}\n...\n:::` |

@@ -12,7 +12,7 @@
 - [ ] Compilation/execution succeeds
 - [ ] Tolerance checks PASS (if applicable)
 - [ ] Tests pass (if applicable)
-- [ ] Quality gates >= 80
+- [ ] Quality gates >= 90
 
 ## Status
 MERGED
