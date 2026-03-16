@@ -1,11 +1,6 @@
-# CLAUDE.MD -- Academic Project Development with Claude Code
+# CLAUDE.MD -- Academic Applications with Claude Code
 
-<!-- HOW TO USE: Replace [BRACKETED PLACEHOLDERS] with your project info.
-     Customize Beamer environments and CSS classes for your theme.
-     Keep this file under ~150 lines — Claude loads it every session.
-     See the guide at docs/workflow-guide.html for full documentation. -->
-
-**Project:** Macro Workshop — Fiscal Policy in Multisectoral Economies
+**Project:** Academic Applications -- Nuffield College Yale Exchange
 **Institution:** University of Oxford, Department of Economics
 **Branch:** main
 
@@ -14,9 +9,9 @@
 ## Core Principles
 
 - **Plan first** -- enter plan mode before non-trivial tasks; save plans to `quality_reports/plans/`
-- **Verify after** -- compile/render and confirm output at the end of every task
-- **Single source of truth** -- Beamer `.tex` is authoritative; Quarto `.qmd` derives from it
-- **Quality gates** -- nothing ships below 90/100
+- **Verify after** -- compile and confirm output at the end of every task
+- **Single source of truth** -- LaTeX `.tex` is authoritative; PDF is derived
+- **Quality gates** -- see `quality-gates.md` for thresholds (default: 90/100 commit)
 - **[LEARN] tags** -- when corrected, save `[LEARN:category] wrong → right` to MEMORY.md
 
 ---
@@ -24,20 +19,19 @@
 ## Folder Structure
 
 ```
-workshop-presentation/
+claude-code-my-workflow/
 ├── CLAUDE.MD                    # This file
 ├── .claude/                     # Rules, skills, agents, hooks
-├── Bibliography_base.bib        # Centralized bibliography
-├── Figures/                     # Figures and images
-├── Preambles/header.tex         # LaTeX headers
-├── Slides/                      # Beamer .tex files
-├── Quarto/                      # RevealJS .qmd files + theme
-├── docs/                        # GitHub Pages (auto-generated)
-├── scripts/                     # Utility scripts + R code
-├── quality_reports/             # Plans, session logs, merge reports
+├── Letters/                     # Cover letters (LaTeX)
+│   └── nuffield-yale-exchange/  # Yale exchange application
+│       └── cover-letter.tex     # Main cover letter
+├── master_supporting_docs/      # Papers, CVs, and existing slides
+│   ├── supporting_papers/       # Research papers, CVs
+│   └── supporting_slides/       # Presentation materials
+├── quality_reports/             # Plans, session logs, reviews
 ├── explorations/                # Research sandbox (see rules)
 ├── templates/                   # Session log, quality report templates
-└── master_supporting_docs/      # Papers and existing slides
+└── scripts/                     # Utility scripts
 ```
 
 ---
@@ -45,17 +39,8 @@ workshop-presentation/
 ## Commands
 
 ```bash
-# LaTeX (3-pass, XeLaTeX only)
-cd Slides && TEXINPUTS=../Preambles:$TEXINPUTS xelatex -interaction=nonstopmode file.tex
-BIBINPUTS=..:$BIBINPUTS bibtex file
-TEXINPUTS=../Preambles:$TEXINPUTS xelatex -interaction=nonstopmode file.tex
-TEXINPUTS=../Preambles:$TEXINPUTS xelatex -interaction=nonstopmode file.tex
-
-# Deploy Quarto to GitHub Pages
-./scripts/sync_to_docs.sh LectureN
-
-# Quality score
-python scripts/quality_score.py Quarto/file.qmd
+# LaTeX (single-pass XeLaTeX for letters)
+cd Letters/nuffield-yale-exchange && xelatex -interaction=nonstopmode cover-letter.tex
 ```
 
 ---
@@ -64,9 +49,9 @@ python scripts/quality_score.py Quarto/file.qmd
 
 | Score | Gate | Meaning |
 |-------|------|---------|
-| 90 | Commit | Minimum for this project (critical audience) |
-| 95 | PR | Ready for deployment |
-| 98 | Excellence | Aspirational |
+| 90 | Commit | Minimum for this project (high-stakes application) |
+| 95 | Submission review | Ready for supervisor/peer review |
+| 98 | Send | Ready to submit to recipient |
 
 ---
 
@@ -74,52 +59,21 @@ python scripts/quality_score.py Quarto/file.qmd
 
 | Command | What It Does |
 |---------|-------------|
-| `/compile-latex [file]` | 3-pass XeLaTeX + bibtex |
-| `/deploy [LectureN]` | Render Quarto + sync to docs/ |
-| `/extract-tikz [LectureN]` | TikZ → PDF → SVG |
-| `/proofread [file]` | Grammar/typo/overflow review |
-| `/visual-audit [file]` | Slide layout audit |
-| `/pedagogy-review [file]` | Narrative, notation, pacing review |
-| `/review-r [file]` | R code quality review |
-| `/qa-quarto [LectureN]` | Adversarial Quarto vs Beamer QA |
-| `/slide-excellence [file]` | Combined multi-agent review |
-| `/translate-to-quarto [file]` | Beamer → Quarto translation |
-| `/validate-bib` | Cross-reference citations |
-| `/devils-advocate` | Challenge slide design |
-| `/create-lecture` | Full lecture creation |
+| `/compile-letter [file]` | Single-pass XeLaTeX, verify 1 page |
+| `/draft-letter [application]` | Guided drafting: context → gaps → questions → draft |
+| `/review-letter [file]` | Multi-agent review: proofreader + cover-letter-reviewer |
+| `/proofread [file]` | Grammar/typo/consistency review |
 | `/commit [msg]` | Stage, commit, PR, merge |
+| `/devils-advocate` | Challenge letter content and strategy |
+| `/interview-me [topic]` | Interactive research interview |
 | `/lit-review [topic]` | Literature search + synthesis |
 | `/research-ideation [topic]` | Research questions + strategies |
-| `/interview-me [topic]` | Interactive research interview |
 | `/review-paper [file]` | Manuscript review |
-| `/data-analysis [dataset]` | End-to-end R analysis |
-
----
-
-## Beamer Custom Environments
-
-| Environment | Effect | Use Case |
-|---|---|---|
-| `block{Title}` | Oxford navy header, light blue body | Definitions, model components |
-| `alertblock{Title}` | Accent red header, light red body | Key results, warnings |
-| `beamercolorbox[...]{title}` | Custom full-width colour box | Title slide layout |
-| `columns[T]` + `column{0.48\textwidth}` | Two-column layout | Side-by-side comparisons |
-| `\red{text}` | Accent red highlight (`oxfordaccent`) | Emphasising key terms in equations |
-
-## Quarto CSS Classes
-
-| Class | Effect | Use Case |
-|---|---|---|
-| `.smaller` | 85% font | Dense content, appendix slides |
-| `.keybox` | Gold-accent bordered box | Key results and properties |
-| `.methodbox` | Blue-accent bordered box | Model setup, equations |
-| `.highlightbox` | Yellow-accent bordered box | Important notes |
-| `.hi-red` | Bold red text | Equation annotations (maps to `\red{}`) |
 
 ---
 
 ## Current Project State
 
-| Lecture | Beamer | Quarto | Key Content |
-|---------|--------|--------|-------------|
-| Workshop Talk | `Slides/MacroWorkshop_short.tex` | -- | 15-min talk: toy model relative allocation rule → Aguilar et al. production network → fiscal extensions (labour tax, production subsidy) → research agenda |
+| Application | File | Status | Key Content |
+|-------------|------|--------|-------------|
+| Yale Exchange | `Letters/nuffield-yale-exchange/cover-letter.tex` | Template with TODOs | Cover letter for Nuffield → Yale exchange selection |
