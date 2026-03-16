@@ -1,6 +1,6 @@
 # Troubleshooting Memory
 
-**When a technical issue takes more than one attempt to resolve, save the solution to memory.**
+**When a technical issue takes 2 or more attempts to resolve, save the solution to memory.**
 
 This overrides the default guidance against saving debugging solutions. Environment and toolchain issues recur across sessions, and re-debugging them wastes compute.
 
@@ -8,15 +8,19 @@ This overrides the default guidance against saving debugging solutions. Environm
 
 ## When to Save
 
-- Compilation errors that required >1 attempt to fix
+Save when ALL of the following are true:
+1. The issue required **at least 2 failed attempts** before finding the fix
+2. The issue is environmental or toolchain-related (not a one-off code bug)
+
+Common categories:
+- Compilation errors that required multiple attempts to fix
 - Path or environment issues (fonts, packages, tools not found)
 - Tool quirks (IDE behaviour, CLI flags, platform differences)
 - Configuration fixes (LaTeX packages, shell setup, git config)
-- Any fix where you tried something that didn't work before finding what did
 
 ## When NOT to Save
 
-- One-shot fixes (typo in filename, missing closing brace) — too trivial
+- Fixed on the first attempt — not worth storing
 - Code logic bugs specific to one file — the fix is in the code
 - Issues already documented in CLAUDE.md or project rules
 
