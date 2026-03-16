@@ -4,6 +4,8 @@
 
 This replaces ad-hoc agent selection. Every document type has a defined agent set, execution order, and early termination rules.
 
+**Manifest check:** Before invoking any agent, check `.claude/active-infrastructure.md`. If a manifest exists, only invoke agents listed there (plus core agents like proofreader). If no manifest exists (main branch), use the full routing table. See `infrastructure-manifest.md` for details.
+
 ---
 
 ## Routing Table
