@@ -136,3 +136,17 @@ Save to `quality_reports/[FILENAME]_theory_critique.md`:
    - CRITICAL: undermines the paper's main contribution or a central result is wrong/trivial/known
    - MAJOR: significant weakness in a supporting result, missing robustness, or important gap
    - MINOR: tightening opportunity, missing edge case, exposition improvement
+
+---
+
+## Learned Checks
+
+### LC-1: Figure-claim alignment — verify figures actually test the stated comparison
+- **Missed:** "evidence from Figures 11–12 is consistent with IO network position, rather than bilateral trade volume, being the primary determinant" — but neither figure plots bilateral trade volume on any axis. The comparison was narrative (one example pair), not systematic.
+- **Should check:** When the text claims "Figures X–Y show A rather than B", verify that B is actually plotted or measured in those figures. A claim that figures distinguish between two competing explanations requires both explanations to appear in the figure. If only one is plotted, the claim must be softened or the missing comparator added.
+- **Date:** 2026-03-20
+
+### LC-2: Overclaiming language relative to evidence strength
+- **Missed:** "This finding is confirmed under direct targeting in the US–EA analysis (Appendix C.1)" — but Appendix C.1 shows "weakly negative" correlations that the authors' own TODO note considers dropping for being "very small."
+- **Should check:** Flag verbs like "confirmed", "established", "demonstrated" when the cited evidence shows weak, suggestive, or statistically noisy patterns. Match the strength of the verb to the strength of the evidence: "confirmed" requires strong corroboration; "is broadly consistent with" or "echoed" suits weak correlations.
+- **Date:** 2026-03-20

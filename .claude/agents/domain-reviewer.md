@@ -184,3 +184,12 @@ Save report to `quality_reports/[FILENAME_WITHOUT_EXT]_substance_review.md`:
 5. **Check your own work.** Before flagging an "error," verify your correction is correct.
 6. **Respect the instructor.** Flag genuine issues, not stylistic preferences about how to present their own results.
 7. **Read the knowledge base.** Check notation conventions before flagging "inconsistencies."
+
+---
+
+## Learned Checks
+
+### LC-1: Prose variable names must match measured variables
+- **Missed:** Text claimed "IO network position" is the primary determinant, but the actual variable measured is $\vartheta_{ki}$ (intermediate input intensity — a sector's own intermediate input share). "IO network position" in the Acemoglu et al. (2012) sense means network centrality (eigenvector centrality, influence vectors), which is a distinct concept. A sector can have high $\vartheta_{ki}$ without being centrally positioned in the network.
+- **Should check:** When the text names a concept (especially one tied to a citation), verify the concept matches the variable actually computed. If the paper measures $\vartheta_{ki}$ but cites Acemoglu et al. (2012) on "network position," flag the mismatch and require either (a) measuring the cited concept or (b) using the correct term for what is measured.
+- **Date:** 2026-03-20
