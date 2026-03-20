@@ -42,6 +42,7 @@ These are never listed in the manifest because they're always on:
 ### Core Skills
 - `commit`
 - `proofread`
+- `learn`
 - `interview-me`
 - `devils-advocate`
 - `lit-review`
