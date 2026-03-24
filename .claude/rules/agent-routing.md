@@ -14,7 +14,7 @@ This replaces ad-hoc agent selection. Every document type has a defined agent se
 |---|---|---|---|
 | **Cover letter / proposal** | `Letters/**/*.tex` | proofreader ∥ domain-reviewer ∥ narrative-reviewer → cover-letter-reviewer | Standard |
 | **Beamer slides** | `Slides/**/*.tex` | proofreader ∥ narrative-reviewer → domain-reviewer | Standard |
-| **Research paper (theory)** | `master_supporting_docs/supporting_papers/**/*.tex` or paper submodules | proofreader ∥ derivation-auditor → theory-critic → narrative-reviewer | Deep |
+| **Research paper (theory)** | `master_supporting_docs/**/*.tex` (any paper in supporting docs, including submodules like `Tariffs_ECB/`, `MCMS/`) | proofreader ∥ derivation-auditor → theory-critic → narrative-reviewer | Deep |
 | **Journal peer review** | `**/*review*.xml`, `**/*review*.md` | proofreader → narrative-reviewer | Light |
 | **Exams / problem sets** | `**/*exam*.*`, `**/*PSet*.*`, `**/*tutorial*.*` | proofreader → domain-reviewer | Light |
 | **Documentation** | `quality_reports/**/*.md`, `*.md` | proofreader | Quick |

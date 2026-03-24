@@ -155,6 +155,11 @@ Save to `quality_reports/[FILENAME]_narrative_review.md`:
 
 ## Learned Checks
 
+### LC-2: "The same X" phrasing that conflates distinct mechanisms
+- **Missed:** "the same relative price shift increases EA demand for Chinese goods" — but the price shift for US buyers (tariff-driven, making Chinese goods MORE expensive) is fundamentally different from the price shift for EA buyers (GE-driven, making Chinese goods CHEAPER through falling Chinese costs and renminbi depreciation). These are opposite-sign effects from distinct channels, not "the same" shift. A reader following the logic would be confused about how a price increase for one buyer becomes a price decrease for another.
+- **Should check:** When the text says "the same mechanism," "the same channel," "the same price shift," or similar phrasing linking two effects, verify they genuinely operate through the same economic force. If the effects work through different channels (e.g., policy wedge vs GE adjustment), different signs, or different transmission paths, flag the conflation as MAJOR. The fix is usually to name each mechanism separately.
+- **Date:** 2026-03-20
+
 ### LC-1: Summary claims must not exceed the evidence presented
 - **Missed:** A section-concluding sentence claimed figures showed "IO network position, rather than bilateral trade volume" as the primary determinant — but bilateral trade volume was not plotted in any figure. The claim also said the finding was "confirmed" in an appendix where correlations were described as "weakly negative." A referee would immediately flag the gap between evidence and conclusion.
 - **Should check:** At every summary or concluding sentence (especially those beginning "Taken together," "This shows," "These results confirm"), verify: (1) every comparison in the claim has corresponding evidence in the cited figures/tables — if the claim says "A rather than B," both A and B must be measured; (2) the strength of the concluding verb ("confirms" vs "suggests" vs "is consistent with") matches the strength of the evidence. Flag as MAJOR any summary that overclaims relative to what was actually shown.

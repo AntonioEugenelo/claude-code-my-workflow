@@ -189,6 +189,11 @@ Save report to `quality_reports/[FILENAME_WITHOUT_EXT]_substance_review.md`:
 
 ## Learned Checks
 
+### LC-2: Calibration citations must be verified against source papers
+- **Missed:** Paper cited Baqaee and Farhi (2024) as the source for a uniform Armington trade elasticity of δ=μ=2. The cited paper actually uses sector-specific Caliendo-Parro (2015) elasticities, not a uniform value of 2. The false attribution was propagated across multiple footnotes during revision.
+- **Should check:** For every calibration parameter attributed to a specific paper (e.g., "following Author (Year)"), verify that the cited paper actually uses or recommends that specific value. Check the source paper's calibration table or parameter discussion. If the value is a compromise or convention not attributable to a single source, the text should say so rather than falsely citing a paper. This is especially important for parameters that are varied in robustness checks — the reader will look up the cited source.
+- **Date:** 2026-03-20
+
 ### LC-1: Prose variable names must match measured variables
 - **Missed:** Text claimed "IO network position" is the primary determinant, but the actual variable measured is $\vartheta_{ki}$ (intermediate input intensity — a sector's own intermediate input share). "IO network position" in the Acemoglu et al. (2012) sense means network centrality (eigenvector centrality, influence vectors), which is a distinct concept. A sector can have high $\vartheta_{ki}$ without being centrally positioned in the network.
 - **Should check:** When the text names a concept (especially one tied to a citation), verify the concept matches the variable actually computed. If the paper measures $\vartheta_{ki}$ but cites Acemoglu et al. (2012) on "network position," flag the mismatch and require either (a) measuring the cited concept or (b) using the correct term for what is measured.
