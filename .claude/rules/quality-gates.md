@@ -25,6 +25,8 @@
 
 Start at 100. Deduct for issues found using the document-specific rubric below.
 
+**Scoring authority:** Only review agents may produce scores. After fixing issues, Claude MUST re-run review agents to obtain a fresh score. Claude MUST NEVER self-assess or estimate a score after applying fixes — fixes can introduce new bugs. See `orchestrator-protocol.md`, Article: No Self-Scoring After Fixes.
+
 ---
 
 ## Cover Letters & Proposals (`Letters/**/*.tex`)
