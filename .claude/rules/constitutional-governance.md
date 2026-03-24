@@ -1,4 +1,4 @@
-# Constitutional Governance: Macro Workshop Project
+# Constitutional Governance: DSGE Model Replication Project
 
 **Non-negotiable principles for this project.**
 
@@ -6,11 +6,11 @@
 
 ## Article I: Single Source of Truth
 
-Beamer `.tex` files in `Slides/` are authoritative. Quarto `.qmd` derives from them. Never edit Quarto without first verifying the Beamer source matches.
+Cox et al. (2025) PDF is authoritative for the baseline model specification. Eugenelo `.tex` files are authoritative for extensions. Dynare `.mod` files in `model/` are authoritative for implementation.
 
-**Why:** Prevents divergence between presentation formats.
+**Why:** Three-layer traceability: paper → theory → code. Every model equation must trace to a numbered equation in the source paper.
 
-**Exceptions:** Quarto-only CSS/layout adjustments that have no Beamer equivalent.
+**Exceptions:** Shock processes (AR(1) specification) not fully specified in Cox et al. — document any additions explicitly.
 
 ---
 
@@ -18,7 +18,7 @@ Beamer `.tex` files in `Slides/` are authoritative. Quarto `.qmd` derives from t
 
 Enter plan mode for tasks requiring >3 files or multi-step workflows.
 
-**Why:** Prevents mid-implementation pivots. This is a 15-minute workshop talk for a critical audience — every change matters.
+**Why:** DSGE model implementation involves tightly coupled equations — a change to one equation cascades. Planning prevents mid-implementation pivots.
 
 **Exceptions:** Exploration folder allows fast-track. Single-file typo fixes skip planning.
 
@@ -26,9 +26,9 @@ Enter plan mode for tasks requiring >3 files or multi-step workflows.
 
 ## Article III: Quality Gate
 
-Nothing commits below **90/100**. This project targets a rigorous and critical audience.
+Nothing commits below **90/100**. Numerical tolerances from `quality-gates.md`: steady-state 1e-10, IRF 1e-6, welfare 1e-8, special-case nesting exact.
 
-**Why:** High bar ensures publication-ready output from the start.
+**Why:** Replication requires exact match to published results. Numerical errors propagate through the Ramsey solution.
 
 **Exceptions:** WIP branches explicitly marked. Exploratory work in `explorations/` uses 60/100.
 
@@ -36,12 +36,12 @@ Nothing commits below **90/100**. This project targets a rigorous and critical a
 
 ## Article IV: Mathematical Rigour
 
-All equations must be:
-1. Mathematically correct (every `=` step verified)
-2. Notation-consistent with the knowledge base
-3. Self-contained on each slide (assumptions stated or referenced)
+All model equations must be:
+1. Traceable to a numbered equation in Cox et al. (2025) or Eugenelo extension paper
+2. Notation-consistent across the entire model (paper notation → Dynare variable names documented)
+3. Verified via special-case nesting: setting extension parameters to baseline values (kappa=0, sigma=1) must reproduce Cox et al. exactly
 
-**Why:** The audience is rigorous macro theorists. Any error undermines credibility.
+**Why:** The model extends a published paper. Any deviation from the source must be intentional and documented.
 
 **Exceptions:** None. Fix before committing.
 
@@ -49,21 +49,21 @@ All equations must be:
 
 ## Article V: Compilation Verification
 
-All `.tex` files must compile with 3-pass XeLaTeX without errors before commit. Warnings are acceptable only if documented.
+Dynare must solve before commit: Blanchard-Kahn conditions satisfied, steady state exists, no NaN/Inf in policy functions. For LaTeX files, standard compilation rules apply.
 
-**Why:** Broken builds block all downstream work.
+**Why:** A model that doesn't solve is worse than no model — it gives false confidence.
 
-**Exceptions:** Known LaTeX warnings documented in session log.
+**Exceptions:** Known Dynare warnings documented in session log.
 
 ---
 
 ## User Preferences (Override Anytime)
 
-- Citation style (inline text vs BibTeX `\cite{}`)
-- Appendix ordering and content selection
-- Colour emphasis choices within the Oxford palette
-- Slide ordering within sections
-- Level of detail on any given slide
+- Number of sectors K for test runs
+- Calibration parameter choices within standard ranges
+- Solution method (direct FOCs vs. `ramsey_model`)
+- Output format (figures, tables, log files)
+- Extension ordering (kappa first vs. CRRA first vs. constrained G first)
 
 ---
 

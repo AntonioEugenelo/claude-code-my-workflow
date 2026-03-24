@@ -17,6 +17,7 @@ This replaces ad-hoc agent selection. Every document type has a defined agent se
 | **Research paper (theory)** | `master_supporting_docs/supporting_papers/**/*.tex` or paper submodules | proofreader ∥ derivation-auditor → theory-critic → narrative-reviewer | Deep |
 | **Journal peer review** | `**/*review*.xml`, `**/*review*.md` | proofreader → narrative-reviewer | Light |
 | **Exams / problem sets** | `**/*exam*.*`, `**/*PSet*.*`, `**/*tutorial*.*` | proofreader → domain-reviewer | Light |
+| **DSGE model code** | `model/**/*.mod`, `model/**/*.m` | derivation-auditor → theory-critic → domain-reviewer | Deep |
 | **Documentation** | `quality_reports/**/*.md`, `*.md` | proofreader | Quick |
 
 ### Reading the table
