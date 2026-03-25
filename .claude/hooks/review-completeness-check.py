@@ -17,7 +17,7 @@ ROUTING_TABLE = [
     ('Slides/**/*.tex',
      {'proofreader', 'narrative-reviewer', 'domain-reviewer'}),
     ('master_supporting_docs/**/*.tex',
-     {'proofreader', 'derivation-auditor', 'theory-critic', 'narrative-reviewer'}),
+     {'proofreader', 'derivation-auditor', 'theory-critic', 'narrative-reviewer', 'figure-reviewer'}),
     ('.py',
      {'code-critic', 'code-structurer'}),
     ('.m',
