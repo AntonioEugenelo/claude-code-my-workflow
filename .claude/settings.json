@@ -36,6 +36,7 @@
       "Bash(./scripts/sync_to_docs.sh)",
       "Bash(chmod *)",
       "Bash(open *)",
+      "Bash(xdg-open *)",
       "Bash(ls *)",
       "Bash(wc *)",
       "Bash(sort *)",
@@ -77,6 +78,12 @@
             "type": "command",
             "command": "\"C:\\Program Files\\Git\\bin\\bash.exe\" -c 'python3 \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/agent-learning-reminder.py'",
             "timeout": 5
+          },
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/review-agent-tracker.py",
+            "timeout": 5,
+            "statusMessage": "Tracking review agent..."
           }
         ]
       }
@@ -86,7 +93,41 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"C:\\Program Files\\Git\\bin\\bash.exe\" -c '\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/pre-compact.sh'",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/pre-compact.py",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "compact|resume",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/post-compact-restore.py",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash|Task",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/context-monitor.py",
+            "timeout": 5
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/verify-reminder.py",
             "timeout": 5
           }
         ]
@@ -97,11 +138,18 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"C:\\Program Files\\Git\\bin\\bash.exe\" -c 'python3 \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/log-reminder.py'",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/log-reminder.py",
             "timeout": 10
+          },
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/review-completeness-check.py",
+            "timeout": 5,
+            "statusMessage": "Checking review agent completeness..."
           }
         ]
       }
     ]
-  }
+  },
+  "plansDirectory": "quality_reports/plans"
 }

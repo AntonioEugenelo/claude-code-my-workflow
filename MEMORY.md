@@ -78,3 +78,31 @@ When a mistake is corrected, append a `[LEARN:category]` entry below.
 [LEARN:meta] Dogfooding principles must be enforced: plan-first, spec-then-plan, quality gates, session logs → we follow our own guide.
 
 [LEARN:meta] Template development work (building infrastructure, docs) doesn't create session logs in quality_reports/ → those are for user work (slides, analysis), not meta-work. Keeps template clean for users who fork.
+
+## Tariffs ECB Paper — Project Knowledge
+
+[LEARN:project] MCMS model: `master_supporting_docs/MCMS/` (branch: Paper). 4 countries (EA, CHN, ROW, USA), 44 sectors (3 energy + 41 non-energy). MATLAB/Dynare. Entry: `a0_launch.m`. Core equations: `dynare_files/b4_declare_model.mod`. Calibration: `a1_calibration.m`.
+
+[LEARN:project] Tariffs_ECB paper: `master_supporting_docs/Tariffs_ECB/0_clean/`. Overleaf-synced via `scripts/sync_to_overleaf.sh`. Paper sections in `sections/`, figures in `figures/`. Preliminary sections: 51 (macro effects), 52 (sectoral shocks), 60 (conclusions).
+
+[LEARN:model] IO matrix convention: Omega_X(buyer-country, seller-country, buyer-sector, seller-sector). Country reordering: data (EA=1, USA=2, CHI=3, ROW=4) → model (EA=1, CHN=2, ROW=3, USA=4). Knum=4=USA is hardcoded as dollar anchor.
+
+[LEARN:model] Only tariff shocks active (varepsilon_tau). Other shocks (TFP, demand, cost-push) are calibrated in a1_calibration.m but not fired in b5_declare_variance.mod. Tariff persistence rho=0.96.
+
+[LEARN:model] 18 scenario runs: 9 structural (Baseline, 5 IO decompositions, CnPeg, Arm1, Arm2) × 2 invoicing (Het_DCP, PCP). Post-processing via new_process.py → PDFs.
+
+[LEARN:workflow] ECB colour palette: #003299 (blue), #FFD700 (gold), #FF6600 (orange), #009900 (green). Applied to R figures, Python plots, and any presentation materials.
+
+## LaTeX / TinyTeX
+
+[LEARN:latex] TinyTeX 2025 install has broken `updmap`/`pdftex.map` (generated on CI runner). Cannot use `tlmgr install` against 2026 repos. Workaround: download packages from CTAN manually, install files into texmf-dist, run `mktexlsr`.
+
+[LEARN:latex] `mathastext` with `eulergreek` option requires the `eulervm` package (font family `zeur*`), NOT just the base Euler fonts (`eur*`). The `eulervm` virtual fonts (zeur*.vf + zeur*.tfm) bridge mathastext to Euler Type1 glyphs. Without eulervm, Greek letters render as T1 ligatures (β→fi, δ→ffi, γ→fl).
+
+[LEARN:latex] Edit tool fails with EEXIST on git submodule paths. Use Python scripts via Bash tool for all file modifications inside `master_supporting_docs/Tariffs_ECB/` and `master_supporting_docs/MCMS/`.
+
+## User Preferences
+
+[LEARN:preference] NEVER run reviews yourself — always delegate to the domain-reviewer, proofreader, or other specialist agents. If agents stall or fail, restart them or notify the user. Do not substitute manual review for agent-based review.
+
+[LEARN:project] Antonio Eugenelo is University of Oxford (RA), NOT ECB. The other authors (Aguilar, Chankova, Darracq, Dieppe, Dominguez-Diaz, Gallegos, Quintana) are ECB.

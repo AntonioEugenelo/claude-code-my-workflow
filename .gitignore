@@ -50,6 +50,10 @@ Thumbs.db
 # Quarto rendering artifacts
 /.quarto/
 
+# Cloned repos in supporting docs — now tracked as git submodules
+# master_supporting_docs/Tariffs_ECB/
+# master_supporting_docs/MCMS/
+
 # Output artifacts — uncomment lines below based on your preference
 # *.rds
 # output/**/*.rds

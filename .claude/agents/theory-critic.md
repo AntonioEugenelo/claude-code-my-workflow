@@ -40,6 +40,7 @@ For each unnecessary feature, state: "You could drop [X] and still get [result] 
 - [ ] **Timing:** Is the timing convention (Calvo, Rotemberg, Taylor) important or cosmetic?
 - [ ] **Information:** Is the information structure (perfect foresight, rational expectations, complete markets) stronger than needed?
 - [ ] **Regularity conditions:** Are there implicit regularity conditions that should be stated?
+- [ ] **Calibration citation accuracy:** For every parameter attributed to a specific paper ("following Author (Year)"), verify the cited paper actually uses that value. Check the source paper's calibration table if available locally in `master_supporting_docs/supporting_papers/`. Parameters with no source ("--") or "Standard value" are exempt.
 
 For each: "Assumption [X] could be weakened to [Y] because [reason]" or "Assumption [X] is necessary because without it [counterexample]."
 
@@ -66,6 +67,10 @@ For each: "Assumption [X] could be weakened to [Y] because [reason]" or "Assumpt
 - [ ] **Knife-edge results:** Does the result hold generally or only at a specific parameter value?
 - [ ] **Robustness claims:** Are robustness claims backed by analysis or just asserted?
 - [ ] **Literature positioning:** Are comparisons to existing results correct? Is the contribution correctly identified — i.e., is the paper actually doing something new, or is the result a known special case of an existing theorem?
+- [ ] **Figure-claim alignment:** When text claims "Figures X–Y show A rather than B," verify B is actually plotted or measured. If only A appears, the claim must be softened or B added.
+- [ ] **Evidence-strength matching:** Flag verbs like "confirmed," "established," "demonstrated" when cited evidence is weak, suggestive, or noisy. Match verb strength to evidence strength.
+- [ ] **Mechanism channel accuracy:** When the text describes a transmission mechanism, verify: (1) the stated cause produces the stated effect through the claimed channel; (2) "the same mechanism" genuinely refers to one channel, not two with different signs; (3) particular attention to third-country spillovers where the channel differs from the direct effect.
+- [ ] **Variable → equation tracing:** When a new variable is introduced (especially in counterfactuals), verify which equilibrium conditions it enters. A variable in UIP only (FX intervention) has different implications than one in the Euler equation (interest rate policy). Ask: "Does this affect intertemporal decisions or only the exchange rate?"
 
 ---
 
@@ -137,16 +142,3 @@ Save to `quality_reports/[FILENAME]_theory_critique.md`:
    - MAJOR: significant weakness in a supporting result, missing robustness, or important gap
    - MINOR: tightening opportunity, missing edge case, exposition improvement
 
----
-
-## Learned Checks
-
-### LC-1: Figure-claim alignment — verify figures actually test the stated comparison
-- **Missed:** "evidence from Figures 11–12 is consistent with IO network position, rather than bilateral trade volume, being the primary determinant" — but neither figure plots bilateral trade volume on any axis. The comparison was narrative (one example pair), not systematic.
-- **Should check:** When the text claims "Figures X–Y show A rather than B", verify that B is actually plotted or measured in those figures. A claim that figures distinguish between two competing explanations requires both explanations to appear in the figure. If only one is plotted, the claim must be softened or the missing comparator added.
-- **Date:** 2026-03-20
-
-### LC-2: Overclaiming language relative to evidence strength
-- **Missed:** "This finding is confirmed under direct targeting in the US–EA analysis (Appendix C.1)" — but Appendix C.1 shows "weakly negative" correlations that the authors' own TODO note considers dropping for being "very small."
-- **Should check:** Flag verbs like "confirmed", "established", "demonstrated" when the cited evidence shows weak, suggestive, or statistically noisy patterns. Match the strength of the verb to the strength of the evidence: "confirmed" requires strong corroboration; "is broadly consistent with" or "echoed" suits weak correlations.
-- **Date:** 2026-03-20
