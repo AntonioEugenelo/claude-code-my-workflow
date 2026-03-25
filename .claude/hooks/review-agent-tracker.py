@@ -12,7 +12,7 @@ CONTEXT_FILE = os.path.join(tempfile.gettempdir(), 'claude_review_context.txt')
 REVIEW_AGENTS = {'proofreader', 'narrative-reviewer', 'theory-critic', 'domain-reviewer',
                  'derivation-auditor', 'cover-letter-reviewer', 'pedagogy-reviewer',
                  'slide-auditor', 'tikz-reviewer', 'r-reviewer',
-                 'code-critic', 'code-structurer'}
+                 'code-critic', 'code-structurer', 'figure-reviewer'}
 
 try:
     data = json.load(sys.stdin)
