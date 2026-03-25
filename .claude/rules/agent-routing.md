@@ -18,6 +18,7 @@ This replaces ad-hoc agent selection. Every document type has a defined agent se
 | **Journal peer review** | `**/*review*.xml`, `**/*review*.md` | proofreader → narrative-reviewer | Light |
 | **Exams / problem sets** | `**/*exam*.*`, `**/*PSet*.*`, `**/*tutorial*.*` | proofreader → domain-reviewer | Light |
 | **Documentation** | `quality_reports/**/*.md`, `*.md` | proofreader | Quick |
+| **Code (computational)** | `**/*.py`, `**/*.m`, `**/*.R` | code-critic ∥ code-structurer | Standard |
 
 ### Reading the table
 
