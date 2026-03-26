@@ -129,7 +129,9 @@ def main():
             "reason": (
                 f"SESSION LOG REMINDER: {state['counter']} responses without "
                 f"updating the session log. Append your recent progress to "
-                f"{latest_log.name}."
+                f"{latest_log.name}. "
+                f"Also check if the repo structure changed — if so, update "
+                f"reference_repo_map.md in the memory directory."
             ),
         }
         json.dump(output, sys.stdout)
