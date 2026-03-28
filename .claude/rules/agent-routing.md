@@ -71,6 +71,12 @@ To save compute, stop the review pipeline early when critical errors are found:
 
 ---
 
+## RE-SCORE Round Invariant
+
+**The agent set is identical across all rounds of the review loop.** Round 2 uses the same agents as Round 1. Round 3 uses the same agents as Round 2. The routing table is consulted once (by document type) and applies to every round. See `orchestrator-protocol.md`, Article: No Agent Subsetting in RE-SCORE Rounds.
+
+---
+
 ## Adding New Document Types
 
 When a new branch introduces a document type not listed above:
