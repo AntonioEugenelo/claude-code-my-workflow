@@ -80,6 +80,17 @@ def reset_tracking():
             os.remove(f)
 
 
+# Read hook input
+try:
+    hook_input = json.load(sys.stdin)
+except (json.JSONDecodeError, EOFError):
+    hook_input = {}
+
+# If stop_hook_active, Claude is already continuing from a previous
+# Stop hook block — let it stop this time to avoid infinite loops.
+if hook_input.get("stop_hook_active", False):
+    sys.exit(0)
+
 called = get_called_agents()
 context_files = get_review_context()
 

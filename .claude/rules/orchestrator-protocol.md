@@ -49,6 +49,23 @@ After applying fixes (Step 4), Claude MUST re-run the review agents (Step 3) to 
 
 **How to apply:** Every time fixes are applied in Step 4, the loop MUST return to Step 3 (REVIEW) for fresh agent scoring before any score is reported to the user. The only scores that count are those produced by review agents running on the current state of the files.
 
+## Article: No Agent Subsetting in RE-SCORE Rounds
+
+**This is a non-negotiable rule. It may never be overridden.**
+
+When the loop returns to Step 3 (RE-SCORE), Claude MUST invoke the **full agent set** specified by the routing table for the document type. Claude MUST NOT:
+
+- Run only the agents that scored lowest in the previous round
+- Skip agents that "passed" the previous round
+- Reason that certain agents are unlikely to find new issues
+- Substitute a smaller agent set based on the nature of the fixes applied
+
+**Why:** Fixes can introduce new issues in domains that were previously clean. An agent that scored 95/100 in Round 1 might score 70/100 in Round 2 if fixes broke something in its domain. Selecting which agents to re-run is a form of self-assessment — the same epistemic error as self-scoring. The routing table is deterministic: document type → agent set. There is no clause for "skip agents you think will pass."
+
+**How to apply:** Every RE-SCORE round (Step 6) uses the identical agent set and execution order from Step 3.1-3.2 of the current round. The parallel/sequential structure from agent-routing.md applies unchanged. If the first parallel batch passes, the sequential agents MUST still run. The only valid reason to skip an agent is early termination (e.g., derivation-auditor finds CRITICAL → skip theory-critic, per agent-routing.md).
+
+**Incident:** 2026-03-28 — Round 2 ran only figure-reviewer and proofreader, dropping derivation-auditor, theory-critic, and narrative-reviewer. The dropped agents could have caught issues that the figure-reviewer found instead, and the theory-critic and narrative-reviewer never ran at all.
+
 ## Limits
 
 - **Main loop:** max 5 review-fix rounds
