@@ -54,9 +54,30 @@
 12. Fixed grammar throughout 43: Euro-Area → euro area, \cite → \citet, adverb placement, missing articles, quasi-share list
 13. Fixed β target: 4.5% → ~4%, matching β=0.99
 
+## Phase 3: Independent Data Verification & Deep Code Audit
+
+### Independent Extraction (Phase 1-2): ALL PASSED
+- Built standalone Python script (h5py only, zero shared code with new_process.py)
+- Every number matches existing CSVs to machine precision (max diff: 1e-16)
+- Verification script deleted after clean pass
+
+### Code Audit Findings
+
+**a1_calibration.m (66/100):**
+- All user concerns verified CORRECT: sector reordering (once, not double), country ordering, δ=μ=2, Taylor rule growth, DCP counts 7+20+17
+- 2 MAJOR bugs in dead code paths (monetary_policy==2 vectors, Zeta_X reweighting)
+
+**new_process.py (39/100):**
+- Main CSV-to-figure pipeline numerically correct
+- CRITICAL: SectorID merge bug in gen_section5_figs.py — 3x3 structural scatter uses misaligned sector-parameter pairings (SectorID 4-23 vs 1-20). Paper's R² values are wrong.
+- 10x Liberation Day error confirmed as prose error, NOT pipeline error
+- CN inflation under reverse tariff: verified correct (negative Q1, positive Q2+)
+- Near-fixed monetary policy: verified correct (overshooting mechanism confirmed)
+
 ## Open Questions
 
-- Deleted sections (55b, 55c) may still be referenced from other sections (e.g., Appendix refs to \ref{sec:liberation}, \ref{sec:targeting})
-- UIP sign error in appendix (a_appendix.tex lines 65/69) — flagged by derivation-auditor, needs separate fix
-- Appendix non-energy price index exponent typo (χ should be ξ, line 136) — flagged, needs fix
-- Taylor rule equation in Section 24 still shows GDP level, not growth — consider updating the equation itself
+- **P0: SectorID merge bug** — needs fix in gen_section5_figs.py, regenerate figure, update R² values
+- UIP sign error in appendix (a_appendix.tex lines 65/69)
+- Appendix non-energy price index exponent typo (χ should be ξ, line 136)
+- Taylor rule equation in Section 24 still shows GDP level, not growth
+- Deleted sections (55b, 55c) may still be referenced from appendix sections
