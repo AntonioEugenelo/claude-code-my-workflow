@@ -14,6 +14,9 @@ REVIEW_MODE_FILE = os.path.join(STATE_DIR, 'review_active.json')
 TRACKING_FILE = os.path.join(STATE_DIR, 'review_agents.txt')
 CONTEXT_FILE = os.path.join(STATE_DIR, 'review_context.txt')
 
+# Agents that only run in Round 1 (skipped in RE-SCORE rounds 2+)
+ROUND_1_ONLY = {'derivation-auditor', 'figure-reviewer'}
+
 # Routing table from agent-routing.md (path pattern → required agents)
 ROUTING_TABLE = [
     ('Letters/**/*.tex',
@@ -112,6 +115,17 @@ if hook_input.get("stop_hook_active", False):
 called = get_called_agents()
 context_files = get_review_context()
 required = match_routing(context_files) if context_files else set()
+
+# Check round number from mode file — round 2+ skips ROUND_1_ONLY agents
+try:
+    with open(REVIEW_MODE_FILE, 'r') as f:
+        mode = json.load(f)
+    review_round = mode.get('round', 1)
+except (json.JSONDecodeError, KeyError, FileNotFoundError):
+    review_round = 1
+
+if review_round > 1:
+    required -= ROUND_1_ONLY
 
 # Enforce completeness
 if required:
