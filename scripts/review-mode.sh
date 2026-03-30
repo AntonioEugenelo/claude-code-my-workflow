@@ -25,13 +25,17 @@ mkdir -p "$STATE_DIR"
 case "${1:-status}" in
   start)
     doc_pattern="${2:-unknown}"
+    round="${3:-1}"
     # Clear any stale tracking from previous rounds
     rm -f "$TRACKING_FILE" "$CONTEXT_FILE"
-    # Create mode marker
+    # Create mode marker with round number
     cat > "$MODE_FILE" <<EOF
-{"active": true, "pattern": "$doc_pattern", "started": "$(date -Iseconds 2>/dev/null || date)"}
+{"active": true, "pattern": "$doc_pattern", "round": $round, "started": "$(date -Iseconds 2>/dev/null || date)"}
 EOF
-    echo "Review mode ACTIVE for: $doc_pattern"
+    echo "Review mode ACTIVE for: $doc_pattern (round $round)"
+    if [ "$round" -gt 1 ]; then
+      echo "RE-SCORE round: derivation-auditor and figure-reviewer will be skipped."
+    fi
     echo "Hook will now enforce agent completeness per agent-routing.md."
     ;;
   stop|reset)

@@ -14,10 +14,9 @@ This replaces ad-hoc agent selection. Every document type has a defined agent se
 |---|---|---|---|
 | **Cover letter / proposal** | `Letters/**/*.tex` | proofreader ∥ domain-reviewer ∥ narrative-reviewer → cover-letter-reviewer | Standard |
 | **Beamer slides** | `Slides/**/*.tex` | proofreader ∥ narrative-reviewer → domain-reviewer | Standard |
-| **Research paper (theory)** | `master_supporting_docs/**/*.tex` (any paper in supporting docs, including submodules like `Tariffs_ECB/`, `MCMS/`) | proofreader ∥ derivation-auditor ∥ figure-reviewer → theory-critic → narrative-reviewer | Deep |
+| **Research paper (theory)** | `master_supporting_docs/**/*.tex` (any paper in supporting docs, including submodules like `Tariffs_ECB/`, `MCMS/`) | proofreader ∥ derivation-auditor¹ ∥ figure-reviewer¹ → theory-critic → narrative-reviewer | Deep |
 | **Journal peer review** | `**/*review*.xml`, `**/*review*.md` | proofreader → narrative-reviewer | Light |
 | **Exams / problem sets** | `**/*exam*.*`, `**/*PSet*.*`, `**/*tutorial*.*` | proofreader → domain-reviewer | Light |
-| **DSGE model code** | `model/**/*.mod`, `model/**/*.m` | derivation-auditor → theory-critic → domain-reviewer | Deep |
 | **Documentation** | `quality_reports/**/*.md`, `*.md` | proofreader | Quick |
 | **Code (computational)** | `**/*.py`, `**/*.m`, `**/*.R` | code-critic ∥ code-structurer | Standard |
 
@@ -26,6 +25,7 @@ This replaces ad-hoc agent selection. Every document type has a defined agent se
 - **∥** means run in parallel (no dependency between agents)
 - **→** means run sequentially (right agent depends on left agent's output or assumes it passed)
 - Agents listed left-to-right reflect execution order
+- **¹** = Round 1 only. These agents run in the first review round but are skipped in RE-SCORE rounds (2+) unless the user explicitly requests them. This saves compute on expensive agents whose findings are unlikely to change after text-level fixes.
 
 ---
 
