@@ -1,14 +1,18 @@
 #!/usr/bin/env python3
 """Stop hook: verifies all required review agents were called per agent-routing.md.
 
-Reads the routing table dynamically to determine required agents based on
-which files were being reviewed. Blocks if any required agent is missing.
-Resets the tracking file after a successful check.
-"""
-import json, sys, os, re, tempfile, fnmatch
+Only enforces when a review round is explicitly active (marker file exists).
+Ad-hoc agent calls never trigger this check.
 
-TRACKING_FILE = os.path.join(tempfile.gettempdir(), 'claude_review_agents.txt')
-CONTEXT_FILE = os.path.join(tempfile.gettempdir(), 'claude_review_context.txt')
+Marker file is created by: scripts/review-mode.sh start "<pattern>"
+"""
+import json, sys, os, re
+
+# State lives in project dir (gitignored), not system temp
+STATE_DIR = os.path.join(os.environ.get('CLAUDE_PROJECT_DIR', '.'), '.claude', 'state')
+REVIEW_MODE_FILE = os.path.join(STATE_DIR, 'review_active.json')
+TRACKING_FILE = os.path.join(STATE_DIR, 'review_agents.txt')
+CONTEXT_FILE = os.path.join(STATE_DIR, 'review_context.txt')
 
 # Routing table from agent-routing.md (path pattern → required agents)
 ROUTING_TABLE = [
@@ -45,11 +49,22 @@ def get_called_agents():
 
 
 def get_review_context():
-    """Read what files are being reviewed from the context file."""
-    if not os.path.exists(CONTEXT_FILE):
-        return []
-    with open(CONTEXT_FILE, 'r') as f:
-        return [line.strip() for line in f if line.strip()]
+    """Read file paths from the context file, or from the mode file's pattern."""
+    paths = []
+    if os.path.exists(CONTEXT_FILE):
+        with open(CONTEXT_FILE, 'r') as f:
+            paths = [line.strip() for line in f if line.strip()]
+    # Also read the pattern from the mode file if context file is empty
+    if not paths and os.path.exists(REVIEW_MODE_FILE):
+        try:
+            with open(REVIEW_MODE_FILE, 'r') as f:
+                mode = json.load(f)
+            pattern = mode.get('pattern', '')
+            if pattern:
+                paths = [pattern]
+        except (json.JSONDecodeError, KeyError):
+            pass
+    return paths
 
 
 def match_routing(file_paths):
@@ -58,27 +73,29 @@ def match_routing(file_paths):
     for fpath in file_paths:
         fpath = fpath.replace('\\', '/').lower()
         for pattern, agents in ROUTING_TABLE:
-            # Convert glob pattern to a simple substring + extension check
-            # e.g., 'master_supporting_docs/**/*.tex' → check if path contains
-            # 'master_supporting_docs/' and ends with '.tex'
-            parts = pattern.replace('**/', '').replace('*', '')
             base_dir = pattern.split('/')[0].lower() if '/' in pattern else ''
             ext = os.path.splitext(pattern)[1].lower()
             if base_dir and base_dir in fpath and (not ext or fpath.endswith(ext)):
                 required |= agents
                 break
             elif not base_dir and ext and fpath.endswith(ext):
-                # Extension-only patterns like '*.md'
                 required |= agents
                 break
     return required
 
 
 def reset_tracking():
-    for f in [TRACKING_FILE, CONTEXT_FILE]:
+    """Clean up all review state files (mode + tracking)."""
+    for f in [REVIEW_MODE_FILE, TRACKING_FILE, CONTEXT_FILE]:
         if os.path.exists(f):
             os.remove(f)
 
+
+# --- Main ---
+
+# Only enforce when a review round is explicitly active
+if not os.path.exists(REVIEW_MODE_FILE):
+    sys.exit(0)
 
 # Read hook input
 try:
@@ -89,24 +106,15 @@ except (json.JSONDecodeError, EOFError):
 # If stop_hook_active, Claude is already continuing from a previous
 # Stop hook block — let it stop this time to avoid infinite loops.
 if hook_input.get("stop_hook_active", False):
+    reset_tracking()
     sys.exit(0)
 
 called = get_called_agents()
 context_files = get_review_context()
+required = match_routing(context_files) if context_files else set()
 
-# Determine required agents
-if context_files:
-    required = match_routing(context_files)
-else:
-    # Fallback: if no context file, infer from which agents were called
-    # If any review agent was called, require the research paper set as default
-    if called:
-        required = {'proofreader', 'narrative-reviewer', 'theory-critic'}
-    else:
-        required = set()
-
-# Only enforce if at least one review agent was called
-if called and required:
+# Enforce completeness
+if required:
     missing = required - called
     if missing:
         result = {
@@ -120,4 +128,5 @@ if called and required:
         }
         print(json.dumps(result))
     else:
+        # All agents called — review round complete, clean up
         reset_tracking()
