@@ -36,6 +36,8 @@
       "Bash(./scripts/sync_to_docs.sh)",
       "Bash(./scripts/review-mode.sh *)",
       "Bash(./scripts/review-mode.sh)",
+      "Bash(./scripts/sync-overleaf.sh *)",
+      "Bash(./scripts/sync-overleaf.sh)",
       "Bash(chmod *)",
       "Bash(open *)",
       "Bash(xdg-open *)",
@@ -68,6 +70,12 @@
             "type": "command",
             "command": "\"C:\\Program Files\\Git\\bin\\bash.exe\" -c '\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/protect-files.sh'",
             "timeout": 5
+          },
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/overleaf-first-edit-sync.py",
+            "timeout": 60,
+            "statusMessage": "Syncing from Overleaf before first edit..."
           }
         ]
       }
@@ -129,6 +137,15 @@
             "type": "command",
             "command": "python3 \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/post-compact-restore.py",
             "timeout": 5
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c \"import os; f=os.path.join(os.environ.get('CLAUDE_PROJECT_DIR','.'),'.claude','state','overleaf_synced_this_session'); os.path.exists(f) and os.remove(f)\"",
+            "timeout": 3
           }
         ]
       }
