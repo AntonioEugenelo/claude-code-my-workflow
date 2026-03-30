@@ -13,9 +13,11 @@ Plan approved → orchestrator activates
   │         If verification fails → fix → re-verify
   │
   Step 3: REVIEW
-  │   3.0  Check .claude/active-infrastructure.md
+  │   3.0a Check .claude/active-infrastructure.md
   │         If manifest exists → only invoke listed agents + core (proofreader)
   │         If no manifest (main branch) → use full agent-routing table
+  │   3.0b Activate review mode: run ./scripts/review-mode.sh start "<path-pattern>"
+  │         This enables the completeness hook — without it, agents run ad-hoc
   │   3.1  Select agents per agent-routing.md (document type → agent set)
   │   3.2  Run agents (parallel where allowed, sequential where required)
   │   3.3  Agents produce the SCORE (Step 6 is agent-scored, never self-scored)
