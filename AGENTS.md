@@ -13,9 +13,10 @@ This repository is configured for Codex-first use.
 ## Startup Routine
 
 1. Read this file.
-2. For non-trivial work, read the latest relevant plan in `quality_reports/plans/`.
-3. Check `git status` before editing.
-4. Read the workflow docs in `docs/codex-workflows/` that match the task.
+2. If the task touches `master_supporting_docs/Tariffs_ECB/` and this is the first Codex call on the current branch/session, check Overleaf status first using the repo machinery in `scripts/sync-overleaf.sh` before editing. Prefer `status` first, then `pull` if remote changes are present or the user asks to sync.
+3. For non-trivial work, read the latest relevant plan in `quality_reports/plans/`.
+4. Check `git status` before editing.
+5. Read the workflow docs in `docs/codex-workflows/` that match the task.
 
 ## Core Workflows
 
