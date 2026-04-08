@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Claude Code Setup</title>
+  <title>Codex Academic Workflow</title>
   <style>
     body {
-      font-family: Georgia, 'Times New Roman', serif;
+      font-family: Georgia, "Times New Roman", serif;
       font-size: 1.3rem;
       max-width: 1100px;
       margin: 0 auto;
@@ -39,7 +39,7 @@
     a { color: #012169; }
     a:hover { color: #B9975B; }
 
-    .wip {
+    .notice {
       background: #fffbf0;
       border: 1px solid #e8dcc8;
       padding: 0.9em 1.2em;
@@ -87,7 +87,7 @@
     }
 
     code {
-      font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
+      font-family: "SF Mono", "Menlo", "Consolas", monospace;
       font-size: 0.85em;
       background: #f5f5f5;
       padding: 0.15em 0.4em;
@@ -100,7 +100,7 @@
       overflow-x: auto;
       font-size: 0.85em;
       line-height: 1.7;
-      font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
+      font-family: "SF Mono", "Menlo", "Consolas", monospace;
     }
 
     .footer {
@@ -111,7 +111,6 @@
       color: #999;
     }
 
-    /* ── Responsive: tablets ── */
     @media (max-width: 768px) {
       body {
         font-size: 1.1rem;
@@ -127,7 +126,6 @@
       }
     }
 
-    /* ── Responsive: phones ── */
     @media (max-width: 480px) {
       body {
         font-size: 1rem;
@@ -162,57 +160,51 @@
 </head>
 <body>
 
-  <h1>My Claude Code Setup</h1>
-  <div class="byline">Pedro H. C. Sant'Anna &middot; Emory University</div>
+  <h1>Codex Academic Workflow</h1>
+  <div class="byline">Pedro H. C. Sant'Anna � Codex migration branch</div>
 
-  <div class="wip">
-    <strong>Work in progress.</strong> This summarizes how I use Claude Code for academic work &mdash; lecture slides, R scripts, Beamer-to-Quarto pipelines. I keep learning and updating these files. Sharing what I've figured out so far with friends and colleagues.
+  <div class="notice">
+    <strong>Codex-first migration.</strong> This branch keeps the academic workflow structure, scripts, templates, and review discipline from the original repository, but rewrites the control plane around Codex instead of Claude-specific hooks and slash commands.
   </div>
 
-  <p>A starter kit for academics using <a href="https://code.claude.com/docs/en/overview">Claude Code</a> with LaTeX/Beamer, R, and Quarto. You describe what you want; Claude plans the approach, runs specialized agents, fixes issues, verifies quality, and presents results &mdash; like a contractor who handles the entire job. Extracted from a PhD course I developed (Econ 730 at Emory, 6 lectures, 800+ slides).</p>
+  <p>A starter kit for academic work with LaTeX, Beamer, Quarto, R, Python, and MATLAB under a Codex-native workflow. The repo now uses <code>AGENTS.md</code> plus explicit workflow docs for planning, verification, review routing, capability mapping, and durable project state.</p>
 
   <p>
     <a class="guide-btn" href="workflow-guide.html">Read the full guide</a>
   </p>
 
-  <h2>What's in the template</h2>
+  <h2>What changed in this branch</h2>
 
   <ul class="overview-list">
-    <li><strong>Contractor mode orchestrator</strong> <span class="desc">&mdash; you describe the task; Claude autonomously plans, implements, reviews with agents, fixes issues, and re-verifies until quality gates pass</span></li>
-    <li><strong>Beamer &rarr; Quarto pipeline</strong> <span class="desc">&mdash; 11-phase translation with TikZ-to-SVG and ggplot-to-plotly conversion</span></li>
-    <li><strong>10 specialized agents</strong> <span class="desc">&mdash; proofreader, slide auditor, pedagogy reviewer, R reviewer, TikZ critic, domain reviewer, adversarial QA pair, translator, verifier</span></li>
-    <li><strong>Adversarial critic-fixer loop</strong> <span class="desc">&mdash; two agents that check each other's work across up to 5 rounds &mdash; the critic can't fix, the fixer can't approve</span></li>
-    <li><strong>Quality scoring with mandatory verification</strong> <span class="desc">&mdash; every file scored 0&ndash;100; nothing ships below 80; the orchestrator verifies every output before reporting done</span></li>
-    <li><strong>19 slash commands + 17 context-aware rules</strong> <span class="desc">&mdash; <code>/compile-latex</code>, <code>/proofread</code>, <code>/deploy</code>, <code>/commit</code>, <code>/qa-quarto</code>, <code>/lit-review</code>, <code>/review-paper</code>, <code>/data-analysis</code>, and more &mdash; plus quality gates, notation consistency, and R conventions</span></li>
-    <li><strong>Research workflow skills</strong> <span class="desc">&mdash; <code>/lit-review</code> for literature synthesis, <code>/research-ideation</code> for hypothesis generation, <code>/interview-me</code> to formalize ideas, <code>/review-paper</code> for manuscript review, <code>/data-analysis</code> for end-to-end R analysis</span></li>
-    <li><strong>Smart hooks</strong> <span class="desc">&mdash; macOS desktop notifications, file protection for bibliography and settings, pre-compaction context snapshots to session logs</span></li>
-    <li><strong>Plan-first workflow with continuous learning</strong> <span class="desc">&mdash; non-trivial tasks start in plan mode; <code>[LEARN:tag]</code> corrections persist in MEMORY.md across sessions; plans survive context compression</span></li>
-    <li><strong>Research exploration workflow</strong> <span class="desc">&mdash; structured <code>explorations/</code> sandbox with fast-track prototyping (60/100 threshold), simplified orchestrator for R/research, and merge-only quality reporting</span></li>
-    <li><strong>Automated session log enforcement</strong> <span class="desc">&mdash; a lightweight Stop hook reminds Claude to keep session logs current; Beamer-Quarto sync enforced via auto-loaded rules</span></li>
+    <li><strong>Codex entrypoint</strong> <span class="desc">the primary instruction file is now <code>AGENTS.md</code>, not <code>CLAUDE.md</code></span></li>
+    <li><strong>Explicit workflows</strong> <span class="desc">planning, orchestration, review routing, session logging, and capabilities are documented in <code>docs/codex-workflows/</code></span></li>
+    <li><strong>Plain-language task model</strong> <span class="desc">instead of slash commands, users ask directly to compile, review, proofread, translate, validate citations, or run analysis</span></li>
+    <li><strong>Verification-first loop</strong> <span class="desc">Codex is expected to implement, verify, review, fix, and re-check rather than rely on runtime hook enforcement</span></li>
+    <li><strong>Preserved automation</strong> <span class="desc">existing scripts, templates, plans, session logs, and repository structure remain intact</span></li>
+    <li><strong>Legacy reference retained</strong> <span class="desc">the old <code>.claude/</code> tree still exists for comparison, but it is no longer authoritative on this branch</span></li>
   </ul>
 
   <h2>Getting started</h2>
 
-<pre># Fork this repo on GitHub, then:
-git clone https://github.com/YOUR_USERNAME/claude-code-my-workflow.git my-project
+<pre>git clone https://github.com/YOUR_USERNAME/claude-code-my-workflow.git my-project
 cd my-project</pre>
 
-  <p>Then start Claude Code and paste the <a href="workflow-guide.html#sec-first-session">starter prompt</a> from the guide. Describe your project in 2&ndash;3 sentences and Claude will read all the configuration files, fill in the placeholders, and adapt the workflow to your use case.</p>
+  <p>Then open the repository in Codex and start with <code>AGENTS.md</code>. For non-trivial tasks, also read the matching document in <code>docs/codex-workflows/</code>. The full guide explains the migrated workflow and how to use the repository without Claude-specific runtime features.</p>
 
-  <p>The <a href="workflow-guide.html">full guide</a> walks through everything: setup, agents, quality gates, workflow patterns, and customization.</p>
+  <p>The guide covers the new operating model, quality gates, review lenses, migration map, and the retained academic project structure.</p>
 
   <p>
     <a class="guide-btn" href="workflow-guide.html">Read the full guide</a>
     &nbsp;&nbsp;
-    <a class="guide-btn" href="workflow-guide.html#sec-first-session" style="background: #B9975B;">Copy the starter prompt</a>
+    <a class="guide-btn" href="workflow-guide.html#sec-first-session" style="background: #B9975B;">See starter prompt</a>
   </p>
 
   <h2>Source</h2>
 
-  <p>Everything is on GitHub: <a href="https://github.com/pedrohcgs/claude-code-my-workflow">pedrohcgs/claude-code-my-workflow</a></p>
+  <p>Repository: <a href="https://github.com/pedrohcgs/claude-code-my-workflow">pedrohcgs/claude-code-my-workflow</a></p>
 
   <div class="footer">
-    MIT License. Use freely for teaching, research, or any academic purpose.
+    MIT License. Use freely for teaching, research, or related academic work.
   </div>
 
 </body>
