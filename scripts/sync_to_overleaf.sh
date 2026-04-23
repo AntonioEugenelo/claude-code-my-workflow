@@ -1,73 +1,34 @@
 #!/bin/bash
-# sync_to_overleaf.sh — Sync Slides/, Figures/, Preambles/, and Bibliography
-# from this project into the Tariffs_ECB Overleaf repo.
+# Deprecated compatibility wrapper for the canonical Overleaf sync workflow.
 #
-# Usage: ./scripts/sync_to_overleaf.sh [commit message]
-# Default commit message: "Sync from claude-code-my-workflow"
-
+# This keeps the old entrypoint name alive while forwarding to the
+# Codex-first sync script.
 set -euo pipefail
 
-# Paths
-PROJECT_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-OVERLEAF_REPO="$PROJECT_ROOT/master_supporting_docs/Tariffs_ECB"
-TARGET_DIR="$OVERLEAF_REPO/0_clean"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+CANONICAL_SCRIPT="$SCRIPT_DIR/sync-overleaf.sh"
 
-if [ ! -d "$OVERLEAF_REPO/.git" ]; then
-    echo "ERROR: Tariffs_ECB repo not found at $OVERLEAF_REPO"
-    echo "Clone it first: git clone <url> master_supporting_docs/Tariffs_ECB"
+if [ ! -x "$CANONICAL_SCRIPT" ]; then
+    echo "ERROR: canonical sync script not found at $CANONICAL_SCRIPT" >&2
     exit 1
 fi
 
-COMMIT_MSG="${1:-Sync from claude-code-my-workflow}"
-
-echo "=== Syncing to Overleaf repo ==="
-
-# Ensure target directories exist
-mkdir -p "$TARGET_DIR/sections"
-mkdir -p "$TARGET_DIR/figures"
-
-# Sync .tex files from Slides/ → 0_clean/sections/
-if [ -d "$PROJECT_ROOT/Slides" ]; then
-    echo "Syncing .tex files from Slides/..."
-    find "$PROJECT_ROOT/Slides" -name "*.tex" -exec cp -v {} "$TARGET_DIR/sections/" \;
-fi
-
-# Sync figures from Figures/ → 0_clean/figures/
-if [ -d "$PROJECT_ROOT/Figures" ]; then
-    echo "Syncing figures from Figures/..."
-    find "$PROJECT_ROOT/Figures" \( -name "*.png" -o -name "*.pdf" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.svg" -o -name "*.eps" \) -exec cp -v {} "$TARGET_DIR/figures/" \;
-fi
-
-# Sync preamble/header files from Preambles/ → 0_clean/
-if [ -d "$PROJECT_ROOT/Preambles" ]; then
-    echo "Syncing preamble files from Preambles/..."
-    find "$PROJECT_ROOT/Preambles" -name "*.tex" -o -name "*.sty" | while read f; do
-        cp -v "$f" "$TARGET_DIR/"
-    done
-fi
-
-# Sync bibliography
-if [ -f "$PROJECT_ROOT/Bibliography_base.bib" ]; then
-    echo "Syncing bibliography..."
-    cp -v "$PROJECT_ROOT/Bibliography_base.bib" "$TARGET_DIR/bibliography.bib"
-fi
-
-# Commit and push from Overleaf repo
-cd "$OVERLEAF_REPO"
-if [ -n "$(git status --porcelain)" ]; then
-    echo ""
-    echo "=== Changes detected, committing ==="
-    git add -A
-    git status --short
-    echo ""
-    read -p "Commit and push? [y/N] " confirm
-    if [[ "$confirm" =~ ^[Yy]$ ]]; then
-        git commit -m "$COMMIT_MSG"
-        git push
-        echo "=== Pushed to Overleaf remote ==="
-    else
-        echo "Staged but not committed. Review with: cd $OVERLEAF_REPO && git diff --cached"
-    fi
+if [ "$#" -eq 0 ]; then
+    COMMAND="push"
 else
-    echo "No changes to sync."
+    COMMAND="$1"
 fi
+
+case "$COMMAND" in
+    pull|push|sync|status)
+        ;;
+    *)
+        echo "ERROR: unsupported arguments for deprecated wrapper: $*" >&2
+        echo "Use ./scripts/sync-overleaf.sh {pull|push|sync|status}." >&2
+        echo "Legacy commit-message mode is no longer supported by sync_to_overleaf.sh." >&2
+        exit 2
+    ;;
+esac
+
+echo "NOTE: sync_to_overleaf.sh is deprecated. Use ./scripts/sync-overleaf.sh $COMMAND instead." >&2
+exec "$CANONICAL_SCRIPT" "$COMMAND"

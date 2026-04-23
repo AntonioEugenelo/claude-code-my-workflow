@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -161,13 +161,13 @@
 <body>
 
   <h1>Codex Academic Workflow</h1>
-  <div class="byline">Pedro H. C. Sant'Anna � Codex migration branch</div>
+  <div class="byline">Pedro H. C. Sant'Anna · Codex migration branch</div>
 
   <div class="notice">
     <strong>Codex-first migration.</strong> This branch keeps the academic workflow structure, scripts, templates, and review discipline from the original repository, but rewrites the control plane around Codex instead of Claude-specific hooks and slash commands.
   </div>
 
-  <p>A starter kit for academic work with LaTeX, Beamer, Quarto, R, Python, and MATLAB under a Codex-native workflow. The repo now uses <code>AGENTS.md</code> plus explicit workflow docs for planning, verification, review routing, capability mapping, and durable project state.</p>
+  <p>A starter kit for academic work with LaTeX, Beamer, Quarto, R, Python, and MATLAB under a Codex-native workflow. The repo now uses <code>AGENTS.md</code> plus explicit workflow docs for planning, verification, quality gates, working conventions, read-only review agents, and durable project state.</p>
 
   <p>
     <a class="guide-btn" href="workflow-guide.html">Read the full guide</a>
@@ -177,9 +177,11 @@
 
   <ul class="overview-list">
     <li><strong>Codex entrypoint</strong> <span class="desc">the primary instruction file is now <code>AGENTS.md</code>, not <code>CLAUDE.md</code></span></li>
-    <li><strong>Explicit workflows</strong> <span class="desc">planning, orchestration, review routing, session logging, and capabilities are documented in <code>docs/codex-workflows/</code></span></li>
+    <li><strong>Explicit workflows</strong> <span class="desc">planning, orchestration, quality gates, review routing, adversarial review, conventions, and capabilities are documented in <code>docs/codex-workflows/</code></span></li>
     <li><strong>Plain-language task model</strong> <span class="desc">instead of slash commands, users ask directly to compile, review, proofread, translate, validate citations, or run analysis</span></li>
     <li><strong>Verification-first loop</strong> <span class="desc">Codex is expected to implement, verify, review, fix, and re-check rather than rely on runtime hook enforcement</span></li>
+    <li><strong>Codex local state</strong> <span class="desc">repo-local helper scripts now use <code>.codex/state/</code> rather than Claude-era state paths</span></li>
+    <li><strong>Read-only review agents</strong> <span class="desc">the active review-agent layer now lives under <code>.codex/review_agents/</code> and is meant for read-only explorer reviews</span></li>
     <li><strong>Preserved automation</strong> <span class="desc">existing scripts, templates, plans, session logs, and repository structure remain intact</span></li>
     <li><strong>Legacy reference retained</strong> <span class="desc">the old <code>.claude/</code> tree still exists for comparison, but it is no longer authoritative on this branch</span></li>
   </ul>
@@ -189,9 +191,9 @@
 <pre>git clone https://github.com/YOUR_USERNAME/claude-code-my-workflow.git my-project
 cd my-project</pre>
 
-  <p>Then open the repository in Codex and start with <code>AGENTS.md</code>. For non-trivial tasks, also read the matching document in <code>docs/codex-workflows/</code>. The full guide explains the migrated workflow and how to use the repository without Claude-specific runtime features.</p>
+  <p>Then open the repository in Codex and start with <code>AGENTS.md</code>. For non-trivial tasks, also read the matching document in <code>docs/codex-workflows/</code>. The full guide explains the migrated workflow, the active conventions, the read-only review-agent layer, and the move from legacy Claude state to <code>.codex/state/</code>.</p>
 
-  <p>The guide covers the new operating model, quality gates, review lenses, migration map, and the retained academic project structure.</p>
+  <p>The guide covers the operating model, quality gates, review lenses, review-agent routing, adversarial review loops, migration map, and the retained academic project structure.</p>
 
   <p>
     <a class="guide-btn" href="workflow-guide.html">Read the full guide</a>

@@ -9,14 +9,14 @@
 #   ./scripts/sync-overleaf.sh sync    # Both directions
 #   ./scripts/sync-overleaf.sh status  # Compare HEADs across all three
 #
-# Credentials: .claude/state/overleaf.env (gitignored)
+# Credentials: .codex/state/overleaf.env (gitignored)
 # Overleaf uses 'master', local/GitHub use 'main'.
 
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
-STATE_DIR="$PROJECT_ROOT/.claude/state"
+STATE_DIR="$PROJECT_ROOT/.codex/state"
 ENV_FILE="$STATE_DIR/overleaf.env"
 SUBMODULE_PATH="$PROJECT_ROOT/master_supporting_docs/Tariffs_ECB"
 LOG_FILE="$STATE_DIR/overleaf-sync.log"

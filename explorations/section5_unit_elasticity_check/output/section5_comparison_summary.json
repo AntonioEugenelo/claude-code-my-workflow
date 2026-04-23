@@ -1,0 +1,402 @@
+{
+  "aggregate_bars": {
+    "USA_top_negative_gdp": {
+      "high": [
+        {
+          "sector": "Textiles",
+          "value": -0.0285324740751805
+        },
+        {
+          "sector": "Electronics",
+          "value": -0.0094759892249553
+        },
+        {
+          "sector": "Other Manufacturing",
+          "value": -0.0068634745546941
+        }
+      ],
+      "unit": [
+        {
+          "sector": "Textiles",
+          "value": -0.029116123448842
+        },
+        {
+          "sector": "Electronics",
+          "value": -0.0190193921970013
+        },
+        {
+          "sector": "Other Manufacturing",
+          "value": -0.0148041083677473
+        }
+      ]
+    },
+    "CHN_top_negative_gdp": {
+      "high": [
+        {
+          "sector": "Textiles",
+          "value": -0.0562328098671906
+        },
+        {
+          "sector": "Electronics",
+          "value": -0.0494840881647808
+        },
+        {
+          "sector": "Other Manufacturing",
+          "value": -0.0394694428793652
+        }
+      ],
+      "unit": [
+        {
+          "sector": "Textiles",
+          "value": -0.0432257722296233
+        },
+        {
+          "sector": "Electronics",
+          "value": -0.0349018212127625
+        },
+        {
+          "sector": "Other Manufacturing",
+          "value": -0.0268534198714193
+        }
+      ]
+    },
+    "EA_top_gdp_by_abs": {
+      "high": [
+        {
+          "Description": "Electronics",
+          "value": -0.0012598566305741
+        },
+        {
+          "Description": "Pharma",
+          "value": 0.0012171564519406
+        },
+        {
+          "Description": "Other Manufacturing",
+          "value": 0.0006297566773615
+        }
+      ],
+      "unit": [
+        {
+          "Description": "Electronics",
+          "value": -0.0031002935234549
+        },
+        {
+          "Description": "Textiles",
+          "value": -0.0027201788773853
+        },
+        {
+          "Description": "Other Manufacturing",
+          "value": -0.0013134552285333
+        }
+      ]
+    },
+    "USA_top_cpi": {
+      "high": [
+        {
+          "sector": "Textiles",
+          "value": 0.0459938083894006
+        },
+        {
+          "sector": "Electronics",
+          "value": 0.032603605380163
+        },
+        {
+          "sector": "Other Manufacturing",
+          "value": 0.0261617568345993
+        }
+      ],
+      "unit": [
+        {
+          "sector": "Textiles",
+          "value": 0.0441940726610817
+        },
+        {
+          "sector": "Electronics",
+          "value": 0.0310305701870103
+        },
+        {
+          "sector": "Other Manufacturing",
+          "value": 0.0248569298441035
+        }
+      ]
+    }
+  },
+  "spillovers": {
+    "USA_aggregate": {
+      "high": {
+        "gross_cross_share": 0.611898851194139,
+        "median_service_share": 0.7453878192132813,
+        "service_share_gt_half_count": 19,
+        "cross_gt_own_count": 9
+      },
+      "unit": {
+        "gross_cross_share": 0.8304923882656712,
+        "median_service_share": 0.8047909030647822,
+        "service_share_gt_half_count": 20,
+        "cross_gt_own_count": 20
+      }
+    },
+    "CHN_aggregate": {
+      "high": {
+        "gross_cross_share": 0.5998431669022646,
+        "median_service_share": 0.4845708704680619,
+        "service_share_gt_half_count": 7,
+        "cross_gt_own_count": 18
+      },
+      "unit": {
+        "gross_cross_share": 0.6825680627101594,
+        "median_service_share": 0.5104602197493723,
+        "service_share_gt_half_count": 13,
+        "cross_gt_own_count": 19
+      }
+    },
+    "USA_textiles": {
+      "high": {
+        "sector": "Textiles",
+        "own": 0.0061885054268079,
+        "cross": -0.03472097950198442,
+        "total": -0.028532474075176516,
+        "gross_cross_share": 0.8487268799013308,
+        "service_share": 0.8020444160992539
+      },
+      "unit": {
+        "sector": "Textiles",
+        "own": 0.0012936610580483,
+        "cross": -0.0304097845068888,
+        "total": -0.0291161234488405,
+        "gross_cross_share": 0.9591949381212039,
+        "service_share": 0.8053101017776735
+      }
+    },
+    "USA_electronics": {
+      "high": {
+        "sector": "Electronics",
+        "own": 0.0213000131504521,
+        "cross": -0.03077600237540145,
+        "total": -0.009475989224949351,
+        "gross_cross_share": 0.5909822797430127,
+        "service_share": 0.7938614796270359
+      },
+      "unit": {
+        "sector": "Electronics",
+        "own": 0.006464665091562,
+        "cross": -0.02548405728856149,
+        "total": -0.019019392196999493,
+        "gross_cross_share": 0.7976549730331653,
+        "service_share": 0.8180790885736864
+      }
+    },
+    "CHN_textiles": {
+      "high": {
+        "sector": "Textiles",
+        "own": -0.0209695389341708,
+        "cross": -0.0352632709330175,
+        "total": -0.0562328098671883,
+        "gross_cross_share": 0.6270942358438597,
+        "service_share": 0.5459607080735431
+      },
+      "unit": {
+        "sector": "Textiles",
+        "own": -0.0128488439507283,
+        "cross": -0.0303769282788946,
+        "total": -0.0432257722296229,
+        "gross_cross_share": 0.7027503896871297,
+        "service_share": 0.550791922025698
+      }
+    },
+    "CHN_electronics": {
+      "high": {
+        "sector": "Electronics",
+        "own": -0.0208138203018279,
+        "cross": -0.02867026786295082,
+        "total": -0.04948408816477872,
+        "gross_cross_share": 0.5793835741194369,
+        "service_share": 0.5852536835532689
+      },
+      "unit": {
+        "sector": "Electronics",
+        "own": -0.0116806770161855,
+        "cross": -0.023221144196573097,
+        "total": -0.034901821212758595,
+        "gross_cross_share": 0.6653275786102661,
+        "service_share": 0.5758072122784669
+      }
+    }
+  },
+  "ea": {
+    "high": {
+      "top_negative_gdp": [
+        {
+          "sector": "Electronics",
+          "value": -0.0012598566305741
+        },
+        {
+          "sector": "Textiles",
+          "value": -0.0002908161047884
+        },
+        {
+          "sector": "Food And Bev",
+          "value": -0.0001578895007396
+        }
+      ],
+      "top_positive_va": [
+        {
+          "sector": "Electronics",
+          "value": 0.1392493755766285
+        },
+        {
+          "sector": "Textiles",
+          "value": 0.1093431029518242
+        },
+        {
+          "sector": "Other Manufacturing",
+          "value": 0.0958948508120251
+        }
+      ],
+      "aggregate_totals": {
+        "gdp": 0.0011368846460954771,
+        "cons": -0.0030521343611509457,
+        "cpi": 0.0028671439657010677
+      },
+      "sign_counts": {
+        "USA_positive_own_va": 20,
+        "CHN_negative_own_va": 20,
+        "EA_positive_own_va": 20,
+        "EA_positive_own_negative_agg": 12,
+        "USA_positive_own_negative_agg": 9
+      }
+    },
+    "unit": {
+      "top_negative_gdp": [
+        {
+          "sector": "Electronics",
+          "value": -0.0031002935234549
+        },
+        {
+          "sector": "Textiles",
+          "value": -0.0027201788773853
+        },
+        {
+          "sector": "Other Manufacturing",
+          "value": -0.0013134552285333
+        }
+      ],
+      "top_positive_va": [
+        {
+          "sector": "Electrical Equipment",
+          "value": 0.0204139815534516
+        },
+        {
+          "sector": "Machinery",
+          "value": 0.0179263788206506
+        },
+        {
+          "sector": "Electronics",
+          "value": 0.0164879966607635
+        }
+      ],
+      "aggregate_totals": {
+        "gdp": -0.010043366363728951,
+        "cons": -0.005672817525013842,
+        "cpi": 0.003230034991754263
+      },
+      "sign_counts": {
+        "USA_positive_own_va": 20,
+        "CHN_negative_own_va": 20,
+        "EA_positive_own_va": 18,
+        "EA_positive_own_negative_agg": 18,
+        "USA_positive_own_negative_agg": 20
+      }
+    }
+  },
+  "aggregate_totals": {
+    "high": {
+      "USA": {
+        "gdp": -0.040827426590558304,
+        "cons": -0.2565535950319278,
+        "cpi": 0.15099240114225826
+      },
+      "CHN": {
+        "gdp": -0.2423071455791086,
+        "cons": -0.05515081688807797,
+        "cpi": 0.007298901630525413
+      },
+      "EA": {
+        "gdp": 0.0011368846460954771,
+        "cons": -0.0030521343611509457,
+        "cpi": 0.0028671439657010677
+      }
+    },
+    "unit": {
+      "USA": {
+        "gdp": -0.08312239351204316,
+        "cons": -0.22375135629618575,
+        "cpi": 0.14355092113392248
+      },
+      "CHN": {
+        "gdp": -0.16809592637022258,
+        "cons": -0.06816153532790004,
+        "cpi": 0.013774777801935482
+      },
+      "EA": {
+        "gdp": -0.010043366363728951,
+        "cons": -0.005672817525013842,
+        "cpi": 0.003230034991754263
+      }
+    }
+  },
+  "impact_totals_from_ts": {
+    "unit": {
+      "USA_gdp": -0.0831223935120439,
+      "CHN_gdp": -0.1680959263702234,
+      "EA_gdp": -0.0100433663637294,
+      "USA_cons": -0.2237513562961865,
+      "CHN_cons": -0.0681615353279009,
+      "EA_cons": -0.0056728175250143,
+      "EA_exports": -0.0838191532892735,
+      "EA_imports": -0.0659436791655848
+    },
+    "high": {
+      "USA_gdp": -0.040827426590558,
+      "CHN_gdp": -0.2423071455791094,
+      "EA_gdp": 0.0011368846460953,
+      "USA_cons": -0.2565535950319288,
+      "CHN_cons": -0.0551508168880788,
+      "EA_cons": -0.0030521343611513,
+      "EA_exports": -0.0640243104594448,
+      "EA_imports": -0.0811573305058905
+    }
+  },
+  "claim_checks": {
+    "Textiles": {
+      "USA_gdp_high": -0.0285324740751805,
+      "USA_gdp_unit": -0.029116123448842,
+      "CHN_gdp_high": -0.0562328098671906,
+      "CHN_gdp_unit": -0.0432257722296233,
+      "USA_va_high": 3.1920321390783277,
+      "USA_va_unit": 0.6672705911311616,
+      "CHN_va_high": -0.7441839512457916,
+      "CHN_va_unit": -0.4559901622163008
+    },
+    "Electronics": {
+      "USA_gdp_high": -0.0094759892249553,
+      "USA_gdp_unit": -0.0190193921970013,
+      "CHN_gdp_high": -0.0494840881647808,
+      "CHN_gdp_unit": -0.0349018212127625,
+      "USA_va_high": 2.180524848810967,
+      "USA_va_unit": 0.6618006651837547,
+      "CHN_va_high": -1.17217701839738,
+      "CHN_va_unit": -0.6578235498887597
+    },
+    "Other Manufacturing": {
+      "USA_gdp_high": -0.0068634745546941,
+      "USA_gdp_unit": -0.0148041083677473,
+      "CHN_gdp_high": -0.0394694428793652,
+      "CHN_gdp_unit": -0.0268534198714193,
+      "USA_va_high": 1.4364578661372405,
+      "USA_va_unit": 0.3001956646341938,
+      "CHN_va_high": -1.7960940152450795,
+      "CHN_va_unit": -0.9636621739167944
+    }
+  }
+}

@@ -22,13 +22,20 @@ This repository is configured for Codex-first use.
 
 - Planning and ambiguity handling: `docs/codex-workflows/plan-first.md`
 - Implement-verify-review loop: `docs/codex-workflows/orchestrator.md`
-- Review lens selection by document type: `docs/codex-workflows/review-routing.md`
+- Quality thresholds and scoring: `docs/codex-workflows/quality-gates.md`
+- Review-agent routing by document type: `docs/codex-workflows/review-routing.md`
+- Read-only review-agent prompts and mappings: `docs/codex-workflows/review-agents.md`
+- Adversarial review loop procedure: `docs/codex-workflows/adversarial-review.md`
 - Session logging and merge reporting: `docs/codex-workflows/session-logging.md`
 - Capability map for common requests: `docs/codex-workflows/capabilities.md`
+- Working conventions, source fidelity, and exploration protocol: `docs/codex-workflows/working-conventions.md`
+- Writing and analysis style references: `docs/codex-workflows/style-guides.md`
 - Migration notes from the previous Claude-first setup: `docs/codex-migration.md`
 
 ## Repository Notes
 
+- `.codex/` contains repo-local Codex helper state. Treat `.codex/state/` as local-only.
+- `.codex/review_agents/` contains active read-only review-agent prompt cards.
 - `master_supporting_docs/` contains active paper, model, and supporting material. Treat nested git repos and submodules carefully.
 - `scripts/` contains reusable automation. Prefer using or extending these scripts over reimplementing workflow logic in prose.
 - `templates/` contains plan, quality-report, and session-log templates.
@@ -36,8 +43,9 @@ This repository is configured for Codex-first use.
 
 ## Review and Quality
 
-- Use the quality thresholds in `docs/codex-workflows/orchestrator.md`. The inherited default gates are 90 for commit-ready work, 95 for external review, 98 for send/deploy, and 60 for exploratory work.
-- When a task materially changes prose, analysis, or outputs, perform a review pass using the correct lenses from `docs/codex-workflows/review-routing.md`.
+- Use the quality thresholds in `docs/codex-workflows/quality-gates.md`. The inherited default gates are 90 for commit-ready work, 95 for external review, 98 for send/deploy, and 60 for exploratory work.
+- When a task materially changes prose, analysis, or outputs, perform a review pass using the correct review agents or checks from `docs/codex-workflows/review-routing.md`.
+- When the user asks for a harsh or adversarial review, use the read-only review agents and loop in `docs/codex-workflows/adversarial-review.md`.
 - Do not estimate post-fix scores from memory. Re-check the current files.
 
 ## Capability Triggers

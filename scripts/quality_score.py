@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-Quality Scoring System for Academic Course Materials
+Quality Scoring System for Academic Workflow Materials
 
 Calculates objective quality scores (0-100) based on defined rubrics.
-Enforces quality gates: 80 (commit), 90 (PR), 95 (excellence).
+Enforces quality gates: 90 (commit), 95 (external review), 98 (send/deploy).
 
 Usage:
     python scripts/quality_score.py Quarto/Lecture6_Topic.qmd
@@ -22,7 +22,7 @@ import re
 import json
 
 # ==============================================================================
-# SCORING RUBRIC (from .claude/rules/quality-gates.md)
+# SCORING RUBRIC (from docs/codex-workflows/quality-gates.md)
 # ==============================================================================
 
 QUARTO_RUBRIC = {
@@ -80,13 +80,13 @@ BEAMER_RUBRIC = {
 }
 
 THRESHOLDS = {
-    'commit': 80,
-    'pr': 90,
-    'excellence': 95
+    'commit': 90,
+    'review': 95,
+    'publish': 98
 }
 
 # ==============================================================================
-# ISSUE DETECTION (Lightweight checks - full agents run separately)
+# ISSUE DETECTION (Lightweight checks - full review passes run separately)
 # ==============================================================================
 
 class IssueDetector:
@@ -553,12 +553,12 @@ class QualityScorer:
         if self.auto_fail:
             status = 'FAIL'
             threshold = 'None (auto-fail)'
-        elif self.score >= THRESHOLDS['excellence']:
-            status = 'EXCELLENCE'
-            threshold = 'excellence'
-        elif self.score >= THRESHOLDS['pr']:
-            status = 'PR_READY'
-            threshold = 'pr'
+        elif self.score >= THRESHOLDS['publish']:
+            status = 'PUBLISH_READY'
+            threshold = 'publish'
+        elif self.score >= THRESHOLDS['review']:
+            status = 'REVIEW_READY'
+            threshold = 'review'
         elif self.score >= THRESHOLDS['commit']:
             status = 'COMMIT_READY'
             threshold = 'commit'
@@ -598,8 +598,8 @@ class QualityScorer:
         print(f"\n# Quality Score: {self.filepath.name}\n")
 
         status_emoji = {
-            'EXCELLENCE': '[EXCELLENCE]',
-            'PR_READY': '[PASS]',
+            'PUBLISH_READY': '[PASS]',
+            'REVIEW_READY': '[PASS]',
             'COMMIT_READY': '[PASS]',
             'BLOCKED': '[BLOCKED]',
             'FAIL': '[FAIL]'
@@ -611,17 +611,17 @@ class QualityScorer:
             print(f"\n**Status:** BLOCKED - Cannot commit (score < {THRESHOLDS['commit']})")
         elif report['status'] == 'COMMIT_READY':
             print(f"\n**Status:** Ready for commit (score >= {THRESHOLDS['commit']})")
-            gap_to_pr = THRESHOLDS['pr'] - report['score']
-            print(f"**Next milestone:** PR threshold ({THRESHOLDS['pr']}+)")
-            print(f"**Gap analysis:** Need +{gap_to_pr} points to reach PR quality")
-        elif report['status'] == 'PR_READY':
-            print(f"\n**Status:** Ready for PR (score >= {THRESHOLDS['pr']})")
-            gap_to_excellence = THRESHOLDS['excellence'] - report['score']
-            if gap_to_excellence > 0:
-                print(f"**Next milestone:** Excellence ({THRESHOLDS['excellence']})")
-                print(f"**Gap analysis:** +{gap_to_excellence} points to excellence")
-        elif report['status'] == 'EXCELLENCE':
-            print(f"\n**Status:** Excellence achieved! (score >= {THRESHOLDS['excellence']})")
+            gap_to_review = THRESHOLDS['review'] - report['score']
+            print(f"**Next milestone:** External-review threshold ({THRESHOLDS['review']}+)")
+            print(f"**Gap analysis:** Need +{gap_to_review} points to reach external-review quality")
+        elif report['status'] == 'REVIEW_READY':
+            print(f"\n**Status:** Ready for external review (score >= {THRESHOLDS['review']})")
+            gap_to_publish = THRESHOLDS['publish'] - report['score']
+            if gap_to_publish > 0:
+                print(f"**Next milestone:** Send/deploy threshold ({THRESHOLDS['publish']})")
+                print(f"**Gap analysis:** +{gap_to_publish} points to send/deploy quality")
+        elif report['status'] == 'PUBLISH_READY':
+            print(f"\n**Status:** Ready to send or deploy (score >= {THRESHOLDS['publish']})")
         elif report['status'] == 'FAIL':
             print(f"\n**Status:** Auto-fail (compilation/syntax error)")
 
@@ -658,10 +658,10 @@ class QualityScorer:
             print("1. Fix all critical issues above")
             print(f"2. Re-run quality score (target: >={THRESHOLDS['commit']})")
             print("3. Commit after reaching threshold\n")
-        elif report['status'] == 'COMMIT_READY' and report['score'] < THRESHOLDS['pr']:
-            print("## Recommended Actions to Reach PR Threshold")
-            points_needed = THRESHOLDS['pr'] - report['score']
-            print(f"Need +{points_needed} points to reach {THRESHOLDS['pr']}/100")
+        elif report['status'] == 'COMMIT_READY' and report['score'] < THRESHOLDS['review']:
+            print("## Recommended Actions to Reach External Review Threshold")
+            points_needed = THRESHOLDS['review'] - report['score']
+            print(f"Need +{points_needed} points to reach {THRESHOLDS['review']}/100")
             if report['issues']['counts']['major'] > 0:
                 print("Fix major issues listed above to improve score")
             print(f"\n**Estimated time:** 10-20 minutes\n")
@@ -695,13 +695,13 @@ Examples:
   python scripts/quality_score.py Quarto/Lecture6.qmd --verbose
 
 Quality Thresholds:
-  80/100 = Commit threshold (blocks if below)
-  90/100 = PR threshold (warning if below)
-  95/100 = Excellence (aspirational)
+  90/100 = Commit threshold (blocks if below)
+  95/100 = External review threshold
+  98/100 = Send/deploy threshold
 
 Exit Codes:
-  0 = Score >= 80 (commit allowed)
-  1 = Score < 80 (commit blocked)
+  0 = Score >= 90 (commit allowed)
+  1 = Score < 90 (commit blocked)
   2 = Auto-fail (compilation/syntax error)
         """
     )

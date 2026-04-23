@@ -2,7 +2,7 @@
 title: "Codex Academic Workflow"
 subtitle: "A Codex-first guide to planning, verification, review, and reproducible academic work"
 author: "Pedro H. C. Sant'Anna"
-date: "2026-04-08"
+date: "2026-04-13"
 format:
   html:
     toc: true
@@ -49,6 +49,7 @@ The migration changes the agent interface:
 - explicit workflow docs replace auto-loaded `.claude/rules/*`
 - plain-language requests replace slash-command skills
 - Codex follows procedures directly instead of relying on Claude hooks
+- repo-local helper state lives in `.codex/state/`
 
 ::: {.callout-note}
 ## Design Goal
@@ -75,9 +76,14 @@ For non-trivial work, also read the matching workflow docs:
 
 - `docs/codex-workflows/plan-first.md`
 - `docs/codex-workflows/orchestrator.md`
+- `docs/codex-workflows/quality-gates.md`
 - `docs/codex-workflows/review-routing.md`
+- `docs/codex-workflows/review-agents.md`
+- `docs/codex-workflows/adversarial-review.md`
 - `docs/codex-workflows/session-logging.md`
 - `docs/codex-workflows/capabilities.md`
+- `docs/codex-workflows/working-conventions.md`
+- `docs/codex-workflows/style-guides.md`
 
 ## Step 3: Use a Plain-Language Request
 
@@ -97,7 +103,7 @@ I am starting to work on [PROJECT NAME] in this repo. [Describe the project in 2
 
 Use the Codex workflow in this branch. Read AGENTS.md and the relevant files in docs/codex-workflows/, then adapt your work to this repository's conventions.
 
-For non-trivial tasks, write a plan to quality_reports/plans/ before editing. Verify outputs before claiming completion. Use the correct review lenses for the files you touch.
+For non-trivial tasks, write a plan to quality_reports/plans/ before editing. Verify outputs before claiming completion. Use the correct review agents or checks for the files you touch.
 ```
 
 # Core Workflow {#sec-system}
@@ -147,24 +153,48 @@ Conversation history is not durable enough for serious project state. This branc
 | Plans | `quality_reports/plans/` |
 | Session logs | `quality_reports/session_logs/` |
 | Merge reports | `quality_reports/merges/` |
+| Local helper state | `.codex/state/` |
 
 This lets Codex resume work from repository state rather than from fragile chat context.
 
 # Review Model {#sec-review}
 
-Codex can still behave like a specialist reviewer, but the specialization is now described as explicit lenses rather than Claude runtime subagents.
+Codex can still behave like a specialist reviewer, but the specialization is now implemented as explicit read-only review agents plus documented routing, rather than Claude runtime subagents.
 
 ## Review Routing
 
-| Document Type | Path Pattern | Lenses |
+| Document Type | Path Pattern | Read-Only Review Agents |
 | --- | --- | --- |
-| Cover letters | `Letters/**/*.tex` | proofreader, domain, narrative, letter-quality |
-| Slides | `Slides/**/*.tex`, `Quarto/**/*.qmd` | proofreader, narrative, domain, layout |
-| Research papers | `master_supporting_docs/**/*.tex` | proofreader, derivation, figure-consistency, theory, narrative |
-| Code and analysis | `**/*.py`, `**/*.m`, `**/*.R` | correctness, structure, reproducibility |
-| Documentation | `*.md`, `docs/**/*.md` | proofreader, command-check, link-check |
+| Cover letters | `Letters/**/*.tex` | `proofreader ∥ domain-reviewer ∥ narrative-reviewer → cover-letter-reviewer` |
+| Slides | `Slides/**/*.tex`, `Quarto/**/*.qmd` | `proofreader ∥ narrative-reviewer → domain-reviewer` |
+| Research papers | `master_supporting_docs/**/*.tex` | `proofreader ∥ derivation-auditor ∥ figure-reviewer → theory-critic → narrative-reviewer` |
+| Code and analysis | `**/*.py`, `**/*.m`, `**/*.R` | `code-critic ∥ code-structurer` |
+| Documentation | `*.md`, `docs/**/*.md` | `proofreader` plus local command/link checks |
 
 See `docs/codex-workflows/review-routing.md`.
+
+## Read-Only Review Agents
+
+The active review-agent prompt cards live under `.codex/review_agents/`.
+
+- every review agent is spawned as a Codex `explorer`
+- review agents are read-only
+- the main agent owns all fixes
+- `scripts/review_plan.py` computes the required review waves for a target
+- `scripts/review-mode.sh` tracks which review agents have completed the current round
+
+## Adversarial Review Loop
+
+For hostile or referee-style review:
+
+1. plan the route with `scripts/review_plan.py`
+2. run the baseline review agents
+3. add `devils-advocate`
+4. fix locally
+5. verify
+6. rerun the required read-only review agents
+
+See `docs/codex-workflows/adversarial-review.md`.
 
 ## Findings First
 
@@ -186,6 +216,8 @@ The inherited thresholds are:
 | 95 | External review | ready for collaborators or supervisors |
 | 98 | Send or deploy | ready to publish or submit |
 | 60 | Exploration | acceptable for fast prototype work |
+
+The authoritative threshold doc is `docs/codex-workflows/quality-gates.md`.
 
 ## Non-Negotiable Rules
 
@@ -217,6 +249,7 @@ See `docs/codex-workflows/capabilities.md`.
 | `scripts/` | reusable automation |
 | `templates/` | plan, log, and report templates |
 | `quality_reports/` | plans, logs, reviews, merge reports |
+| `.codex/` | repo-local Codex helper state |
 | `master_supporting_docs/` | papers, models, outputs, nested repositories |
 | `.claude/` | legacy reference material, not authoritative for this branch |
 
@@ -228,6 +261,8 @@ The repository still contains the original `.claude/` directory. It is intention
 - `.claude/skills/*/SKILL.md` slash-command semantics
 - `.claude/rules/*` auto-loading behavior
 - Claude-only control concepts like `EnterPlanMode` or `AskUserQuestion`
+
+The active helper scripts and local workflow state now use `.codex/state/`.
 
 If a future cleanup is needed, those assets can be archived or removed. For now, they remain as migration reference material.
 
@@ -258,9 +293,14 @@ If you are adapting another Claude-oriented repo to Codex, the sequence used her
 | --- | --- |
 | `docs/codex-workflows/plan-first.md` | planning and ambiguity handling |
 | `docs/codex-workflows/orchestrator.md` | implement-verify-review loop |
-| `docs/codex-workflows/review-routing.md` | review lenses by file type |
+| `docs/codex-workflows/quality-gates.md` | thresholds and scoring expectations |
+| `docs/codex-workflows/review-routing.md` | review-agent routing by file type |
+| `docs/codex-workflows/review-agents.md` | read-only review-agent layer |
+| `docs/codex-workflows/adversarial-review.md` | adversarial review procedure |
 | `docs/codex-workflows/session-logging.md` | logging and merge reporting |
 | `docs/codex-workflows/capabilities.md` | task recipes in place of slash commands |
+| `docs/codex-workflows/working-conventions.md` | source-of-truth, exploration, and reproducibility conventions |
+| `docs/codex-workflows/style-guides.md` | prose voice and analysis-style conventions |
 
 ## Legacy Reference
 

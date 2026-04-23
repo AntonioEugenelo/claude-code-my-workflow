@@ -1,0 +1,512 @@
+{
+  "provenance": {
+    "generated_at_utc": "2026-04-19T12:34:53.993547+00:00",
+    "script": {
+      "path": "C:\\CustomTools\\claude-code-my-workflow\\explorations\\full_paper_mcms_audit\\scripts\\build_maintext_evidence.py",
+      "size_bytes": 19920,
+      "mtime_utc": "2026-04-19T09:47:57.798021+00:00",
+      "sha256": "f43a4b298e8efa1e0e602665de0b6874363a2dbcb60d800a0ebd140ec4178a32"
+    },
+    "key_artifacts": [
+      {
+        "path": "C:\\CustomTools\\claude-code-my-workflow\\master_supporting_docs\\MCMS\\output_python\\extra_charts\\Figure_1_Benchmark_IRFs_TimeSeries.csv",
+        "size_bytes": 10993,
+        "mtime_utc": "2026-04-19T12:31:34.148000+00:00",
+        "sha256": "0c3bba9578d160a6e9206d283341cbfdccee57658af7781d2014cd78472c5b6e"
+      },
+      {
+        "path": "C:\\CustomTools\\claude-code-my-workflow\\master_supporting_docs\\MCMS\\output_python\\extra_charts\\Figure_4_UnitElast_vs_HighElast_TimeSeries.csv",
+        "size_bytes": 22009,
+        "mtime_utc": "2026-04-19T12:31:36.781980+00:00",
+        "sha256": "231c9ca439d9f2e70bffc953b0b2b2df37cba9ded827db8b8376ef0062f2defe"
+      },
+      {
+        "path": "C:\\CustomTools\\claude-code-my-workflow\\master_supporting_docs\\MCMS\\output_python\\extra_charts\\Figure_6_Baseline_Bars_CrossSection.csv",
+        "size_bytes": 11445,
+        "mtime_utc": "2026-04-19T12:31:37.529070+00:00",
+        "sha256": "f8baf3aa243f64744c5a830bc51f4b491b89e2502dff1260bcbb713303fa2a56"
+      },
+      {
+        "path": "C:\\CustomTools\\claude-code-my-workflow\\master_supporting_docs\\MCMS\\output_python\\extra_charts\\Figure_SectoralSpillover_Matrix.csv",
+        "size_bytes": 320904,
+        "mtime_utc": "2026-04-19T12:31:51.955797+00:00",
+        "sha256": "fcb7e4e0f140d5bab07c5c0ab0e36b47fc23bd8fd25fea6116c6399f082cc67e"
+      },
+      {
+        "path": "C:\\CustomTools\\claude-code-my-workflow\\master_supporting_docs\\MCMS\\output_matlab\\irf_Het_DCP_Baseline.mat",
+        "size_bytes": 69146192,
+        "mtime_utc": "2026-04-19T12:30:14.194636+00:00",
+        "sha256": "6c40c0b54ced3a5f8231365ca80b27a0057bc9e3074bd2aea2bfb438bea72414"
+      }
+    ]
+  },
+  "scope": {
+    "appendix_excluded": true,
+    "paper_files": [
+      "11_introduction.tex",
+      "43_calibration.tex",
+      "55a_benchmark_and_robustness.tex",
+      "56_sectoral_channels.tex",
+      "60_Conclusions.tex"
+    ]
+  },
+  "calibration": {
+    "countries": 4,
+    "sectors": 44,
+    "energy_sectors": 3,
+    "services_sectors": 21,
+    "tradeable_manufacturing_sectors": 20,
+    "beta": 0.99,
+    "sigma": 1.0,
+    "varphi": 1.0,
+    "gamma_star": 0.001,
+    "gamma_c": 0.4,
+    "eta_c": 0.9,
+    "iota_c": 0.9,
+    "gamma_x": 0.4,
+    "eta_x": 0.2,
+    "iota_x": 0.2,
+    "theta_w": 0.75,
+    "phi_pi": 1.5,
+    "phi_y": 0.0,
+    "phi_delta_pi": 0.0,
+    "phi_delta_y": 0.125,
+    "rho_r": 0.7,
+    "rho_tau": 0.96,
+    "sigma_tau": 1.0,
+    "sigma_r": 1.0,
+    "pcp_count": 7,
+    "lcp_count": 20,
+    "dcp_count": 17,
+    "armington_map_household": {
+      "1": 1.0,
+      "2": 1.0,
+      "3": 2.0
+    },
+    "armington_map_firm": {
+      "1": 2.0,
+      "2": 1.0,
+      "3": 2.0
+    }
+  },
+  "figure_pipeline": {
+    "Figure_1": {
+      "fig_id": "Figure_1",
+      "files": [
+        "irf_Het_DCP_Baseline.mat"
+      ],
+      "desc": "Benchmark_IRFs",
+      "cumulative": false,
+      "shock_pair": [
+        4,
+        2
+      ]
+    },
+    "Figure_1b": {
+      "fig_id": "Figure_1b",
+      "files": [
+        "irf_Het_DCP_Baseline.mat"
+      ],
+      "desc": "Benchmark_Reverse_IRFs",
+      "cumulative": false,
+      "shock_pair": [
+        2,
+        4
+      ]
+    },
+    "Figure_2": {
+      "fig_id": "Figure_2",
+      "files": [
+        "irf_Het_DCP_Baseline.mat",
+        "irf_Het_DCP_Direct5_Autarky.mat",
+        "irf_Het_DCP_Direct1_NoDom.mat",
+        "irf_Het_DCP_Direct4_ZeroIO.mat"
+      ],
+      "desc": "Cumul_IO_Decomposition",
+      "cumulative": true,
+      "shock_pair": [
+        4,
+        2
+      ]
+    },
+    "Figure_3a": {
+      "fig_id": "Figure_3a",
+      "files": [
+        "irf_Het_DCP_Baseline.mat",
+        "irf_PCP_Baseline.mat"
+      ],
+      "desc": "Benchmark_vs_PCP",
+      "cumulative": false,
+      "shock_pair": [
+        4,
+        2
+      ]
+    },
+    "Figure_3b": {
+      "fig_id": "Figure_3b",
+      "files": [
+        "irf_Het_DCP_Baseline.mat",
+        "irf_PCP_Baseline.mat"
+      ],
+      "desc": "Cumul_Benchmark_vs_PCP",
+      "cumulative": true,
+      "shock_pair": [
+        4,
+        2
+      ]
+    },
+    "Figure_4": {
+      "fig_id": "Figure_4",
+      "files": [
+        "irf_Het_DCP_Baseline_UnitElast.mat",
+        "irf_Het_DCP_Baseline.mat"
+      ],
+      "desc": "UnitElast_vs_HighElast",
+      "cumulative": false,
+      "shock_pair": [
+        4,
+        2
+      ]
+    },
+    "Figure_5a": {
+      "fig_id": "Figure_5a",
+      "files": [
+        "irf_Het_DCP_Baseline.mat",
+        "irf_Het_DCP_CnPeg3.mat"
+      ],
+      "desc": "Benchmark_vs_Peg",
+      "cumulative": false,
+      "shock_pair": [
+        4,
+        2
+      ]
+    },
+    "Figure_5b": {
+      "fig_id": "Figure_5b",
+      "files": [
+        "irf_Het_DCP_Baseline.mat",
+        "irf_Het_DCP_CnPeg3.mat"
+      ],
+      "desc": "Cumul_Benchmark_vs_Peg",
+      "cumulative": true,
+      "shock_pair": [
+        4,
+        2
+      ]
+    },
+    "Figure_6": {
+      "fig_id": "Figure_6",
+      "files": [
+        "irf_Het_DCP_Baseline.mat"
+      ],
+      "desc": "Baseline_Bars",
+      "cumulative": false,
+      "shock_pair": [
+        4,
+        2
+      ]
+    },
+    "Figure_7": {
+      "fig_id": "Figure_7",
+      "files": [
+        "irf_Het_DCP_Baseline.mat"
+      ],
+      "desc": "Baseline_Structural",
+      "cumulative": false,
+      "shock_pair": [
+        4,
+        2
+      ]
+    },
+    "Figure_8": {
+      "fig_id": "Figure_8",
+      "files": [
+        "irf_Het_DCP_Baseline.mat"
+      ],
+      "desc": "Baseline_Sectoral",
+      "cumulative": false,
+      "shock_pair": [
+        4,
+        2
+      ]
+    },
+    "Figure_9": {
+      "fig_id": "Figure_9",
+      "files": [
+        "irf_Het_DCP_Baseline.mat",
+        "irf_Het_DCP_CnPeg1.mat",
+        "irf_Het_DCP_CnPeg2.mat",
+        "irf_Het_DCP_CnPeg3.mat"
+      ],
+      "desc": "CnPeg_Comparison",
+      "cumulative": false,
+      "shock_pair": [
+        4,
+        2
+      ]
+    },
+    "Figure_16": {
+      "fig_id": "Figure_16",
+      "files": [
+        "irf_Het_DCP_Baseline.mat"
+      ],
+      "desc": "USEA_Bilateral",
+      "cumulative": false,
+      "shock_pair": [
+        4,
+        1
+      ]
+    },
+    "Figure_17": {
+      "fig_id": "Figure_17",
+      "files": [
+        "irf_Het_DCP_Baseline.mat",
+        "irf_PCP_Baseline.mat",
+        "irf_DCP_Baseline.mat"
+      ],
+      "desc": "DCP_PCP_FullDCP",
+      "cumulative": false,
+      "shock_pair": [
+        4,
+        2
+      ]
+    },
+    "Figure_18": {
+      "fig_id": "Figure_18",
+      "files": [
+        "irf_Het_DCP_Baseline.mat",
+        "irf_Het_DCP_NoMonPol.mat"
+      ],
+      "desc": "Benchmark_vs_NoMonPol",
+      "cumulative": false,
+      "shock_pair": [
+        4,
+        2
+      ]
+    },
+    "Figure_10": {
+      "fig_id": "Figure_10",
+      "desc": "Liberation_Scenario1"
+    },
+    "Figure_11": {
+      "fig_id": "Figure_11",
+      "desc": "Liberation_Scenario2"
+    },
+    "Figure_12": {
+      "fig_id": "Figure_12",
+      "desc": "Liberation_Scenario3"
+    },
+    "Figure_15": {
+      "fig_id": "Figure_15",
+      "desc": "EA_Sectoral_Heatmap"
+    }
+  },
+  "benchmark_metrics": {
+    "benchmark_forward": {
+      "us_gdp_q1": -0.040827426590558,
+      "us_gdp_q8": 0.0352738174227061,
+      "chn_gdp_q1": -0.2423071455791094,
+      "chn_gdp_q12": -0.0812138610398976,
+      "ea_gdp_q1": 0.0011368846460953,
+      "ea_gdp_q5": 0.0115518745009835,
+      "us_cpi_q1": 0.127439339237402,
+      "us_cpi_q4_rolling": 0.1509924011422589,
+      "chn_cpi_q1": 0.014567013355887,
+      "ea_cpi_q1": 0.0068640935223439,
+      "ea_cpi_turns_negative_q": 5,
+      "us_tb_q1": 1.5548463957831495,
+      "us_tb_q12": 0.6561263314957628,
+      "chn_tb_q1": -1.0240485952277942,
+      "chn_tb_q12": -0.17098926078584298,
+      "ea_tb_q1": 0.017133020046445693,
+      "us_reer_q1": -0.370505303837417,
+      "chn_reer_q1": 0.3071319576418731,
+      "chn_reer_q12": 0.2465024997006933,
+      "ea_reer_q1": 0.0799316808069395,
+      "us_cons_q1": -0.2565535950319288,
+      "chn_cons_q1": -0.0551508168880788,
+      "ea_cons_q1": -0.0030521343611513,
+      "us_i_q1": 0.0558166741596849,
+      "ea_i_q1": 0.0031314752592836,
+      "us_gdp_3yr": 0.01911075185780799,
+      "chn_gdp_3yr": -0.14692478656540237,
+      "ea_gdp_3yr": 0.008544399551392341,
+      "us_cpi_3yr_avg_4q": 0.06374013573061309,
+      "ea_cons_3yr": 0.005286801174196842,
+      "ea_tb_3yr": 0.013323524721000223
+    },
+    "benchmark_reverse": {
+      "us_gdp_q1": -0.1235753247952263,
+      "chn_gdp_q1": 0.0418361267581632,
+      "ea_gdp_q1": 0.0021261955730159,
+      "us_cpi_q11_rolling": -0.0065006202798103,
+      "chn_cpi_q1": 0.0299640674466119,
+      "us_tb_q1": -0.9345611049680015,
+      "chn_tb_q1": 0.5111047384707961,
+      "ea_tb_q1": 0.012822727351483702,
+      "us_reer_q1": 0.1106521458724295,
+      "chn_reer_q1": -0.1995275931258644,
+      "chn_cons_q1": -0.0515739778741327,
+      "chn_cons_q2": -0.0422491928616205
+    },
+    "io_robustness": {
+      "chn_gdp_3yr_benchmark": -0.1469247865654024,
+      "chn_gdp_3yr_zero_intl": -0.09746757281986934,
+      "chn_gdp_3yr_zero_both": -0.08830682892013508
+    },
+    "elasticity_robustness": {
+      "chn_gdp_3yr_unit": -0.10539443629573647,
+      "chn_gdp_3yr_high": -0.14692478656540237
+    },
+    "peg_robustness": {
+      "usa_gdp_3yr_benchmark": 0.01911075185780799,
+      "chn_gdp_3yr_benchmark": -0.14692478656540237,
+      "ea_gdp_3yr_benchmark": 0.008544399551392341,
+      "usa_gdp_3yr_peg": 0.03483985020813077,
+      "chn_gdp_3yr_peg": -0.23639209159487531,
+      "ea_gdp_3yr_peg": 0.023238538801166515
+    },
+    "dcp_robustness": {
+      "chn_gdp_3yr_heterogeneous": -0.14692478656540237,
+      "chn_gdp_3yr_pcp": -0.11230186416027392,
+      "chn_gdp_3yr_full_dcp": -0.13483782325699217,
+      "ea_gdp_3yr_heterogeneous": 0.008544399551392341,
+      "ea_gdp_3yr_pcp": 0.008917707995217582,
+      "ea_gdp_3yr_full_dcp": 0.009163500351410841
+    },
+    "monpol_robustness": {
+      "usa_gdp_3yr_benchmark": 0.01911075185780799,
+      "usa_gdp_3yr_no_monpol": 0.028035555355618663,
+      "chn_gdp_3yr_benchmark": -0.14692478656540237,
+      "chn_gdp_3yr_no_monpol": -0.11868449168549249,
+      "ea_gdp_3yr_benchmark": 0.008544399551392341,
+      "ea_gdp_3yr_no_monpol": 0.003228562849937717,
+      "us_cpi_3yr_benchmark": 0.06374013573061309,
+      "us_cpi_3yr_no_monpol": 0.035111785452538395,
+      "chn_cpi_3yr_benchmark": -0.002000727343914625,
+      "chn_cpi_3yr_no_monpol": 0.009422487811835717,
+      "usa_reer_q1_benchmark": -0.370505303837417,
+      "usa_reer_q1_no_monpol": -0.2374001462024876,
+      "ea_reer_q1_benchmark": 0.0799316808069395,
+      "ea_reer_q1_no_monpol": 0.0108142458930386,
+      "usa_i_q1_benchmark": 0.0558166741596849,
+      "usa_i_q1_no_monpol": 0.0001824876459108,
+      "ea_i_q1_benchmark": 0.0031314752592836,
+      "ea_i_q1_no_monpol": 2.5059456448367576e-06
+    }
+  },
+  "sectoral_metrics": {
+    "aggregate_bars": {
+      "usa_top_gdp": {
+        "textiles": -0.0285324740751805,
+        "electronics": -0.0094759892249553,
+        "other_manuf": -0.0068634745546941
+      },
+      "chn_top_gdp": {
+        "textiles": -0.0562328098671906,
+        "electronics": -0.0494840881647808,
+        "other_manuf": -0.0394694428793652
+      },
+      "ea_headline_gdp": {
+        "electronics": -0.0012598566305741,
+        "pharma": 0.0012171564519406,
+        "other_manuf": 0.0006297566773615
+      },
+      "usa_top_cpi": {
+        "textiles": 0.0459938083894006,
+        "electronics": 0.032603605380163,
+        "other_manuf": 0.0261617568345993
+      },
+      "chn_top_cpi": {
+        "electronics": 0.001737611668481,
+        "textiles": 0.0012157885829908
+      }
+    },
+    "own_sector": {
+      "usa": {
+        "textiles": 3.1920321390783277,
+        "electronics": 2.180524848810967,
+        "elec_equip": 2.1705052196931764
+      },
+      "chn": {
+        "other_manuf": -1.7960940152450795,
+        "electronics": -1.17217701839738,
+        "textiles": -0.7441839512457916,
+        "elec_equip": -0.6155805770406612
+      },
+      "ea": {
+        "electronics": 0.1392493755766285,
+        "textiles": 0.1093431029518242,
+        "other_manuf": 0.0958948508120251,
+        "positive_own_negative_agg_count": 12
+      }
+    },
+    "spillovers": {
+      "usa": {
+        "abs_cross_share": 0.6118988511941389,
+        "cross_domination_count": 9,
+        "service_share_pooled": 0.7746740079017844,
+        "tradeable_share_pooled": 0.15987007860753472,
+        "energy_share_pooled": 0.06545591349068093,
+        "service_share_min": 0.4378835843849926,
+        "service_share_median": 0.7475954092858951,
+        "service_share_max": 0.8358890311643897,
+        "service_share_above_half_count": 19
+      },
+      "chn": {
+        "abs_cross_share": 0.5998431669022645,
+        "cross_domination_count": 18,
+        "service_share_pooled": 0.5086670196143254,
+        "tradeable_share_pooled": 0.41197268006157106,
+        "energy_share_pooled": 0.0793603003241036,
+        "service_share_min": 0.3938515801112087,
+        "service_share_median": 0.500137306616858,
+        "service_share_max": 0.5916411651665683,
+        "service_share_above_half_count": 10
+      },
+      "usa_textiles": {
+        "agg": -0.028532474075176516,
+        "own": 0.0061885054268079
+      },
+      "usa_electronics": {
+        "agg": -0.009475989224949351,
+        "own": 0.0213000131504521
+      }
+    }
+  },
+  "caption_lines": [
+    {
+      "line": 91,
+      "text": "\\caption{Three-year average macro responses under heterogeneous invoicing (gray bars), PCP (blue dots), and DCP (green squares). Panels: United States, China, euro area. Shock: 10 pp bilateral tariff across all 20 tradeable sectors.}"
+    },
+    {
+      "line": 105,
+      "text": "\\caption{Real effective exchange rate (double-weighted) under heterogeneous invoicing (solid) and PCP (dashed). Panels: United States, China, euro area. Horizon: 12 quarters. Shock: 10 pp bilateral tariff across all 20 tradeable sectors.}"
+    },
+    {
+      "line": 136,
+      "text": "\\caption{Three-year average macro responses under the benchmark (gray bars) and two IO counterfactuals (dots): zero international IO and zero all IO. Panels: United States, China, euro area. Shock: 10 pp bilateral tariff across all 20 tradeable sectors.}"
+    },
+    {
+      "line": 153,
+      "text": "\\caption{Three-year average macro responses under the benchmark ($\\delta=\\mu=2$, gray bars) and low household elasticity ($\\delta=1$, $\\mu=2$, blue dot). Panels: United States, China, euro area. Shock: 10 pp bilateral tariff across all 20 tradeable sectors.}"
+    },
+    {
+      "line": 162,
+      "text": "\\caption{Three-year average macro responses under flexible rates (gray bars) and a China--US peg ($\\phi_{k,e}=15$, red dot). Panels: United States, China, euro area. Shock: 10 pp bilateral tariff across all 20 tradeable sectors.}"
+    },
+    {
+      "line": 182,
+      "text": "\\caption{Three-year average macro responses under the benchmark (gray bars) and near-fixed monetary policy ($\\rho_{k,r} = 0.999$, gold dot). Panels: United States, China, euro area. Shock: 10 pp bilateral tariff across all 20 tradeable sectors.}"
+    },
+    {
+      "line": 189,
+      "text": "\\caption{Real effective exchange rate (double-weighted): benchmark (solid blue) vs.\\ near-fixed monetary policy ($\\rho_{k,r} = 0.999$, dashed gold). Panels: United States, China, euro area. Horizon: 12 quarters. In the US, the benchmark overshoots on impact, while near-fixed rates generate a gradual appreciation. Shock: 10 pp bilateral tariff across all 20 tradeable sectors.}"
+    }
+  ],
+  "baseline_mat_state": {
+    "path": "C:\\CustomTools\\claude-code-my-workflow\\master_supporting_docs\\MCMS\\output_matlab\\irf_Het_DCP_Baseline.mat",
+    "exists": true,
+    "size_bytes": 69146192
+  }
+}

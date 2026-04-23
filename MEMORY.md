@@ -85,13 +85,19 @@ When a mistake is corrected, append a `[LEARN:category]` entry below.
 
 [LEARN:project] Tariffs_ECB paper: `master_supporting_docs/Tariffs_ECB/0_clean/`. Overleaf-synced via `scripts/sync_to_overleaf.sh`. Paper sections in `sections/`, figures in `figures/`. Preliminary sections: 51 (macro effects), 52 (sectoral shocks), 60 (conclusions).
 
+[LEARN:project] In `master_supporting_docs/Tariffs_ECB/0_clean/`, the live manuscript still includes `sections/56_sectoral_channels.tex` from `0_main.tex`. `55b_sectoral_transmission_decomposition.tex` is a useful reference draft, but edits there do not change the compiled paper unless that content is copied back into `56_sectoral_channels.tex` or the include is changed.
+
 [LEARN:model] IO matrix convention: Omega_X(buyer-country, seller-country, buyer-sector, seller-sector). Country reordering: data (EA=1, USA=2, CHI=3, ROW=4) → model (EA=1, CHN=2, ROW=3, USA=4). Knum=4=USA is hardcoded as dollar anchor.
 
 [LEARN:model] Only tariff shocks active (varepsilon_tau). Other shocks (TFP, demand, cost-push) are calibrated in a1_calibration.m but not fired in b5_declare_variance.mod. Tariff persistence rho=0.96.
 
 [LEARN:model] 18 scenario runs: 9 structural (Baseline, 5 IO decompositions, CnPeg, Arm1, Arm2) × 2 invoicing (Het_DCP, PCP). Post-processing via new_process.py → PDFs.
 
+[LEARN:model] When manuscript prose, plot labels, comments, and exported figures disagree about an MCMS scenario definition, treat the model code and saved `config_used` block inside the generated `.mat` file as the source of truth. For Armington sensitivity, `a1_calibration.m` is definitive: `armington=1 -> Delta_C=1, Delta_X=2`, `armington=2 -> Delta_C=1, Delta_X=1`, `armington=3 -> Delta_C=2, Delta_X=2`.
+
 [LEARN:workflow] ECB colour palette: #003299 (blue), #FFD700 (gold), #FF6600 (orange), #009900 (green). Applied to R figures, Python plots, and any presentation materials.
+
+[LEARN:workflow] On Codex branches, repo-local helper state belongs under `.codex/state/`. Keep `.claude/state/` as legacy-only and migrate active scripts away from it.
 
 ## LaTeX / TinyTeX
 
