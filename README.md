@@ -15,6 +15,8 @@ Use it as a head branch for new projects: keep the shared planning, review, veri
 
 The default branch should not require MCMS, Tariffs, Overleaf, MATLAB, Dynare, Quarto, LaTeX, or R just to be useful. Those capabilities remain available as opt-in project overlays or task-specific workflows.
 
+Project material is out of scope for this repository. Model code, data, supporting papers, generated figures, and project-specific branches should live in their own project repositories, not in `claude-code-my-workflow`.
+
 ## Active Codex Surfaces
 
 - `AGENTS.md`: primary Codex operating instructions.

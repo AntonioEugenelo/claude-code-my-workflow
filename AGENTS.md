@@ -12,6 +12,7 @@ This repository is configured for Codex-first use.
 - Respect active decision locks in `quality_reports/decisions/ACTIVE.md`. If a user request conflicts with an active lock, state the conflict and ask for an explicit override before proceeding.
 - Use the rerun gate before expensive reruns. Do not rerun long MATLAB, Julia, Quarto, LaTeX, or data-generation jobs until `docs/codex-workflows/rerun-gate.md` has been applied.
 - Keep `main` purpose-agnostic. It is an overset of reusable workflows and overlays, not a branch with one active project baked in.
+- Do not push project material to this workflow repository. Model code, data, supporting papers, generated figures, and project-specific working branches belong in their own repositories.
 
 ## Startup Routine
 
@@ -47,8 +48,8 @@ This repository is configured for Codex-first use.
 
 - This branch is purpose-agnostic by default. Specialized academic capabilities are present, but they are opt-in overlays rather than global assumptions.
 - When creating a project branch from this branch, use `templates/branch-tailoring-prompt.md` as the first prompt and activate only the necessary overlays.
-- `master_supporting_docs/` may contain optional project material, supporting papers, and submodules. Treat nested git repos and submodules carefully.
-- `model/` may contain optional MATLAB/Dynare/research-analysis assets for overlays that need them.
+- Project material may exist locally in ignored directories such as `master_supporting_docs/`, `model/`, or `Figures/`, but it is not part of this repository's infrastructure surface.
+- If a project needs model code, data, supporting papers, generated figures, or a project branch, create or use a separate repository for that project.
 - `scripts/` contains reusable automation. Prefer using or extending these scripts over reimplementing workflow logic in prose.
 - `templates/` contains plan, quality-report, and session-log templates.
 - `quality_reports/decisions/ACTIVE.md` contains active locks that prevent repeated branch/source/model confusion.

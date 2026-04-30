@@ -1,6 +1,0 @@
-[submodule "master_supporting_docs/MCMS"]
-	path = master_supporting_docs/MCMS
-	url = https://github.com/AntonioEugenelo/MCMS.git
-[submodule "master_supporting_docs/Tariffs_ECB"]
-	path = master_supporting_docs/Tariffs_ECB
-	url = https://github.com/AntonioEugenelo/Tariffs_ECB.git

@@ -95,3 +95,9 @@ scripts/R/_outputs/
 # Output artifacts — uncomment lines below based on your preference
 # *.rds
 # output/**/*.rds
+
+# Project work belongs in its own repository, not this workflow repo.
+Figures/
+master_supporting_docs/
+model/
+.gitmodules
