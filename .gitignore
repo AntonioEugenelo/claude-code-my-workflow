@@ -35,13 +35,20 @@ __pycache__/
 # OS files
 .DS_Store
 Thumbs.db
+__MACOSX/
+._*
 
 # Claude Code local files (not shared across machines)
 .claude/settings.local.json
 .claude/state/
+CLAUDE.local.md
+
+# Codex local hook/runtime state
+quality_reports/hook_state/
 
 # IDE
-.vscode/
+.vscode/*
+!.vscode/settings.json
 .idea/
 *.swp
 *.swo
@@ -49,6 +56,36 @@ Thumbs.db
 
 # Quarto rendering artifacts
 /.quarto/
+
+# quality_reports/ -- keep structure, ignore per-session project state
+quality_reports/plans/*
+quality_reports/specs/*
+quality_reports/session_logs/*
+quality_reports/merges/*
+quality_reports/decisions/*
+quality_reports/checkpoints/*
+quality_reports/claim_ledgers/*
+quality_reports/preregistrations/*
+quality_reports/run_cards/*
+quality_reports/run_state/*
+!quality_reports/plans/.gitkeep
+!quality_reports/specs/.gitkeep
+!quality_reports/session_logs/.gitkeep
+!quality_reports/merges/.gitkeep
+!quality_reports/decisions/.gitkeep
+!quality_reports/decisions/ACTIVE.md
+!quality_reports/decisions/source_authority.md
+!quality_reports/claim_ledgers/.gitkeep
+!quality_reports/claim_ledgers/README.md
+!quality_reports/claim_ledgers/TEMPLATE.md
+!quality_reports/checkpoints/.gitkeep
+!quality_reports/preregistrations/.gitkeep
+!quality_reports/run_cards/.gitkeep
+!quality_reports/run_cards/README.md
+!quality_reports/run_cards/TEMPLATE.md
+
+# R analysis outputs
+scripts/R/_outputs/
 
 # Cloned repos in supporting docs — now tracked as git submodules
 # master_supporting_docs/Tariffs_ECB/

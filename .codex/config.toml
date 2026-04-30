@@ -1,0 +1,60 @@
+schema_version = 1
+name = "codex-academic-workflow-starter"
+entrypoint = "AGENTS.md"
+default_project_overlay = "generic"
+
+[compatibility]
+claude_reference = ".claude"
+codex_agents = ".codex/agents"
+codex_skills = ".codex/skills"
+codex_rules = ".codex/rules"
+codex_hooks = ".codex/hooks"
+
+[hooks]
+SessionStart = [
+  { matcher = "resume", hooks = [
+    { type = "command", command = "python .codex/hooks/post-compact-restore.py", timeout = 5 },
+  ] },
+]
+PostToolUse = [
+  { matcher = ".*", hooks = [
+    { type = "command", command = "python .codex/hooks/context-monitor.py", timeout = 5 },
+  ] },
+  { matcher = ".*", hooks = [
+    { type = "command", command = "python .codex/hooks/verify-reminder.py", timeout = 5 },
+  ] },
+]
+Stop = [
+  { hooks = [
+    { type = "command", command = "python .codex/hooks/log-reminder.py", timeout = 10 },
+  ] },
+]
+
+[workflow]
+plans = "quality_reports/plans"
+specs = "quality_reports/specs"
+session_logs = "quality_reports/session_logs"
+merge_reports = "quality_reports/merges"
+checkpoints = "quality_reports/checkpoints"
+decisions = "quality_reports/decisions"
+
+[project_overlays]
+generic = "docs/project-overlays/README.md"
+branch_purpose_map = "docs/project-overlays/branch-purpose-map.md"
+academic_research = "docs/project-overlays/academic-research.md"
+antonio_eugenelo = "docs/project-overlays/antonio-eugenelo.md"
+tariffs_overleaf = "docs/project-overlays/tariffs-overleaf.md"
+mcms = "docs/project-overlays/mcms.md"
+government_spending = "docs/project-overlays/government-spending.md"
+cox_replication = "docs/project-overlays/cox-replication.md"
+cover_letters = "docs/project-overlays/cover-letters.md"
+cv_editing = "docs/project-overlays/cv-editing.md"
+referee_review = "docs/project-overlays/referee-review.md"
+teaching_slides = "docs/project-overlays/teaching-slides.md"
+slide_prototype = "docs/project-overlays/slide-prototype.md"
+workflow_infrastructure = "docs/project-overlays/workflow-infrastructure.md"
+
+[parity]
+preserve_claude_assets = true
+document_runtime_differences = true
+prefer_explicit_codex_workflows = true

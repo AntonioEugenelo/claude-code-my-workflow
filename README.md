@@ -1,244 +1,112 @@
-# My Claude Code Setup
+# Codex Academic Workflow Starter
+
+This repository is a Codex-first, purpose-agnostic workflow base for serious academic and research work. It keeps the full inherited Claude Code workflow as compatibility material, but `AGENTS.md` is now the active instruction surface.
 
-> **Work in progress.** This is not meant to be a polished guide for everyone. It's mostly a summary of how I've been using Claude Code for academic work — creating lecture slides, writing R scripts, managing Beamer-to-Quarto workflows, and so on. I keep learning new things, and as I do, I keep updating these files. This is just a way for me to share what I've figured out with friends and colleagues.
+Use it as a head branch for new projects: keep the shared planning, review, verification, agent, and skill library in place, then activate only the project overlay you need. The first prompt on a repurposed branch should tailor the branch using `docs/codex-workflows/branch-tailoring.md` or `templates/branch-tailoring-prompt.md`.
 
-**Live site:** [psantanna.com/claude-code-my-workflow](https://psantanna.com/claude-code-my-workflow/)
-**Last Updated:** 2026-02-15
+## Quick Start
 
-A ready-to-fork starter kit for academics using [Claude Code](https://code.claude.com/docs/en/overview) with **LaTeX/Beamer + R + Quarto**. You describe what you want; Claude plans the approach, runs specialized agents, fixes issues, verifies quality, and presents results — like a contractor who handles the entire job. Extracted from a production PhD course (6 lectures, 800+ slides).
+1. Fork or clone the repo.
+2. Start Codex in the repository root.
+3. Read `AGENTS.md`.
+4. For non-trivial work, create or update a plan in `quality_reports/plans/`.
+5. On a new project branch, run the branch-tailoring prompt before substantial work.
+6. Select a project overlay only when the work requires one.
 
----
+The default branch should not require MCMS, Tariffs, Overleaf, MATLAB, Dynare, Quarto, LaTeX, or R just to be useful. Those capabilities remain available as opt-in project overlays or task-specific workflows.
 
-## Quick Start (5 minutes)
+## Active Codex Surfaces
 
-### 1. Fork & Clone
+- `AGENTS.md`: primary Codex operating instructions.
+- `.codex/`: Codex-readable mirrors of agents, skills, hooks, and workflow metadata.
+- `.codex/config.toml`: project metadata and active Codex hook registration.
+- `.codex/rules/`: Codex-facing mirror of the preserved Claude rules and procedural checklists.
+- `docs/codex-workflows/`: task recipes for planning, first-prompt branch tailoring, implementation, review, logging, and capability routing.
+- `docs/project-overlays/`: optional project profiles for academic circumstances such as Antonio/Oxford, MCMS, Tariffs/Overleaf, Government Spending, Cox replication, applications, CVs, referee reviews, teaching, slide prototypes, and workflow infrastructure.
+- `quality_reports/`: plans, specs, session logs, merge reports, checkpoints, and decisions.
+- `quality_reports/decisions/ACTIVE.md`: active locks for branch/source/model decisions.
+- `quality_reports/run_cards/`: contracts for expensive reruns and output-overwriting jobs.
+- `quality_reports/claim_ledgers/`: source-to-claim ledgers for numeric and figure audits.
+- `templates/`: reusable plan, spec, report, checkpoint, and preregistration templates.
 
-```bash
-# Fork this repo on GitHub (click "Fork" on the repo page), then:
-git clone https://github.com/YOUR_USERNAME/claude-code-my-workflow.git my-project
-cd my-project
-```
+## Preserved Claude Compatibility
 
-Replace `YOUR_USERNAME` with your GitHub username.
+The original `.claude/` tree is intentionally retained. It contains the canonical Claude Code versions of:
 
-### 2. Start Claude Code and Paste This Prompt
+- agents,
+- skills and slash-command workflows,
+- hooks,
+- rules,
+- references,
+- settings,
+- status line scripts.
 
-```bash
-claude
-```
+Codex does not expose every Claude runtime feature with identical semantics. Where exact parity is not feasible, the Codex workflow preserves the behavior as explicit procedures, mirrored reference files, and documented limitations rather than silently deleting it.
 
-**Using VS Code?** Open the Claude Code panel instead. Everything works the same — see the [full guide](https://psantanna.com/claude-code-my-workflow/workflow-guide.html#sec-setup) for details.
+Known non-identical areas:
 
-Then paste the following, filling in your project details:
+- Claude `PostToolUse`, `Stop`, and `SessionStart[resume]` behavior is actively wired through Codex hooks.
+- Claude `Notification` and `PreCompact` have no exact Codex event in the installed runtime and remain explicit checkpoint/session-log procedures.
+- Claude slash-command argument expansion.
+- Claude status line rendering.
+- Claude `Task(subagent_type=...)` dispatch.
+- Claude permission-mode prompts.
 
-> I am starting to work on **[PROJECT NAME]** in this repo. **[Describe your project in 2–3 sentences — what you're building, who it's for, what tools you use.]**
->
-> I want our collaboration to be structured, precise, and rigorous. When creating visuals, everything must be polished and publication-ready.
->
-> I've set up the Claude Code academic workflow (forked from `pedrohcgs/claude-code-my-workflow`). The configuration files are already in this repo. Please read them, understand the workflow, and then **update all configuration files to fit my project** — fill in placeholders in `CLAUDE.md`, adjust rules if needed, and propose any customizations specific to my use case.
->
-> After that, use the plan-first workflow for all non-trivial tasks. Once I approve a plan, switch to contractor mode — coordinate everything autonomously and only come back to me when there's ambiguity or a decision to make.
->
-> Enter plan mode and start by adapting the workflow configuration for this project.
+## Purpose-Agnostic Model
 
-**What this does:** Claude reads all the configuration files, fills in your project name, institution, and preferences, then enters contractor mode — planning, implementing, reviewing, and verifying autonomously. You approve the plan and Claude handles the rest.
+The default workflow is generic:
 
-**Prefer to configure manually?** See the [full guide](https://psantanna.com/claude-code-my-workflow/workflow-guide.html#sec-setup) for step-by-step manual setup instructions.
+- Plan before ambiguous or broad work.
+- Treat source files as authoritative.
+- Verify after edits.
+- Use explicit review lenses instead of self-approval.
+- Keep durable context on disk.
+- Preserve project-specific assumptions in overlays.
 
----
+Project-specific material is available but not default. For example, the Antonio/Oxford, MCMS, Tariffs/Overleaf, Cox replication, Government Spending, CV, cover-letter, referee-review, teaching, and slide-prototype workflows are retained for projects that need them, but ordinary forks can ignore those overlays.
 
-## How It Works
+Known branch purposes are mapped in `docs/project-overlays/branch-purpose-map.md`. If a future branch introduces a distinct repeatable use, add it as a small overlay, workflow, template, skill, or script rather than making `main` project-specific.
 
-### Contractor Mode
+## Included Capabilities
 
-You describe a task. For complex or ambiguous requests, Claude first creates a requirements specification with MUST/SHOULD/MAY priorities and clarity status (CLEAR/ASSUMED/BLOCKED). You approve the spec, then Claude plans the approach, implements it, runs specialized review agents, fixes issues, re-verifies, and scores against quality gates — all autonomously. You see a summary when the work meets quality standards. Say "just do it" and it auto-commits too.
+The inherited workflow includes specialized agents and skills for:
 
-### Specialized Agents
+- proofreading and editing,
+- paper and referee-style review,
+- methods and domain review,
+- LaTeX and Quarto compilation,
+- Beamer-to-Quarto translation,
+- R/data-analysis review,
+- bibliography and claim validation,
+- reproducibility auditing,
+- lecture creation,
+- slide quality review,
+- preregistration,
+- checkpointing and session handoff,
+- response-to-referees workflows.
 
-Instead of one general-purpose reviewer, 10 focused agents each check one dimension:
+See `docs/codex-workflows/capabilities.md` for the Codex routing map, `.codex/skills/` for preserved skill instructions, and `.codex/rules/` for the detailed workflow rules.
 
-- **proofreader** — grammar/typos
-- **slide-auditor** — visual layout
-- **pedagogy-reviewer** — teaching quality
-- **r-reviewer** — R code quality
-- **domain-reviewer** — field-specific correctness (template — customize for your field)
+## Optional Dependencies
 
-Each is better at its narrow task than a generalist would be. The `/slide-excellence` skill runs them all in parallel.
+Install only what your selected project overlay or task needs.
 
-### Adversarial QA
+| Capability | Typical Tools |
+| --- | --- |
+| Core Codex workflow | git, Python 3 |
+| LaTeX/Beamer | XeLaTeX or TeX Live |
+| Quarto slides/sites | Quarto |
+| R analysis | R |
+| MATLAB/Dynare models | MATLAB, Dynare |
+| Overleaf sync | Bash-compatible shell, Overleaf git credentials |
+| GitHub PR workflows | GitHub CLI |
 
-Two agents work in opposition: the **critic** reads both Beamer and Quarto and produces harsh findings. The **fixer** implements exactly what the critic found. They loop until the critic says "APPROVED" (or 5 rounds max). This catches errors that single-pass review misses.
+On this Windows environment, `scripts/sync-overleaf.sh status` could not run because `bash` was not available on PATH. A Windows-native equivalent or Git Bash/WSL is required for that workflow.
 
-### Quality Gates
+## Legacy Upstream
 
-Every file gets a score (0–100). Scores below threshold block the action:
-- **80** — commit threshold
-- **90** — PR threshold
-- **95** — excellence (aspirational)
-
-### Context Survival
-
-Plans, specifications, and session logs survive auto-compression and session boundaries. The PreCompact hook saves a context snapshot before Claude's auto-compression triggers, ensuring critical decisions are never lost. MEMORY.md accumulates learning across sessions, so patterns discovered in one session inform future work.
-
----
-
-## The Guide
-
-For a comprehensive walkthrough, read the **[full guide](https://psantanna.com/claude-code-my-workflow/workflow-guide.html)** (or see the [source](guide/workflow-guide.qmd)).
-
-It covers:
-1. **Why This Workflow Exists** — the problem and the vision
-2. **Getting Started** — fork, paste one prompt, and Claude sets up the rest
-3. **The System in Action** — specialized agents, adversarial QA, quality scoring
-4. **The Building Blocks** — CLAUDE.md, rules, skills, agents, hooks, memory
-5. **Workflow Patterns** — lecture creation, translation, replication, multi-agent review, research exploration
-6. **Customizing for Your Domain** — creating your own reviewers and knowledge bases
-
----
-
-## What's Included
-
-<details>
-<summary><strong>10 agents, 19 skills, 17 rules, 4 hooks</strong> (click to expand)</summary>
-
-### Agents (`.claude/agents/`)
-
-| Agent | What It Does |
-|-------|-------------|
-| `proofreader` | Grammar, typos, overflow, consistency review |
-| `slide-auditor` | Visual layout audit (overflow, font consistency, spacing) |
-| `pedagogy-reviewer` | 13-pattern pedagogical review (narrative arc, notation density, pacing) |
-| `r-reviewer` | R code quality, reproducibility, and domain correctness |
-| `tikz-reviewer` | Merciless TikZ diagram visual critique |
-| `beamer-translator` | Beamer-to-Quarto translation specialist |
-| `quarto-critic` | Adversarial QA comparing Quarto against Beamer benchmark |
-| `quarto-fixer` | Implements fixes from the critic agent |
-| `verifier` | End-to-end task completion verification |
-| `domain-reviewer` | **Template** for your field-specific substance reviewer |
-
-### Skills (`.claude/skills/`)
-
-| Skill | What It Does |
-|-------|-------------|
-| `/compile-latex` | 3-pass XeLaTeX compilation with bibtex |
-| `/deploy` | Render Quarto + sync to GitHub Pages |
-| `/extract-tikz` | TikZ diagrams to PDF to SVG pipeline |
-| `/proofread` | Launch proofreader on a file |
-| `/visual-audit` | Launch slide-auditor on a file |
-| `/pedagogy-review` | Launch pedagogy-reviewer on a file |
-| `/review-r` | Launch R code reviewer |
-| `/qa-quarto` | Adversarial critic-fixer loop (max 5 rounds) |
-| `/slide-excellence` | Combined multi-agent review |
-| `/translate-to-quarto` | Full 11-phase Beamer-to-Quarto translation |
-| `/validate-bib` | Cross-reference citations against bibliography |
-| `/devils-advocate` | Challenge design decisions before committing |
-| `/create-lecture` | Full lecture creation workflow |
-| `/commit` | Stage, commit, create PR, and merge to main |
-| `/lit-review` | Literature search, synthesis, and gap identification |
-| `/research-ideation` | Generate research questions and empirical strategies |
-| `/interview-me` | Interactive interview to formalize a research idea |
-| `/review-paper` | Manuscript review: structure, econometrics, referee objections |
-| `/data-analysis` | End-to-end R analysis with publication-ready output |
-
-### Research Workflow
-
-| Feature | What It Does |
-|---------|-------------|
-| Exploration folder | Structured `explorations/` sandbox with graduate/archive lifecycle |
-| Fast-track workflow | 60/100 quality threshold for rapid prototyping |
-| Simplified orchestrator | implement → verify → score → done (no multi-round reviews) |
-| Enhanced session logging | Structured tables for changes, decisions, verification |
-| Merge-only reporting | Quality reports at merge time only |
-| Math line-length exception | Long lines acceptable for documented formulas |
-| Workflow quick reference | One-page cheat sheet at `.claude/WORKFLOW_QUICK_REF.md` |
-
-### Rules (`.claude/rules/`)
-
-Rules use path-scoped loading: **always-on** rules load every session (~100 lines total); **path-scoped** rules load only when Claude works on matching files. Claude follows ~150 instructions reliably, so less is more.
-
-**Always-on** (no `paths:` frontmatter — load every session):
-
-| Rule | What It Enforces |
-|------|-----------------|
-| `plan-first-workflow` | Plan mode for non-trivial tasks + context preservation |
-| `orchestrator-protocol` | Contractor mode: implement → verify → review → fix → score |
-| `session-logging` | Three logging triggers: post-plan, incremental, end-of-session |
-
-**Path-scoped** (load only when working on matching files):
-
-| Rule | Triggers On | What It Enforces |
-|------|------------|-----------------|
-| `verification-protocol` | `.tex`, `.qmd`, `docs/` | Task completion checklist |
-| `single-source-of-truth` | `Figures/`, `.tex`, `.qmd` | No content duplication; Beamer is authoritative |
-| `quality-gates` | `.tex`, `.qmd`, `*.R` | 80/90/95 scoring + tolerance thresholds |
-| `r-code-conventions` | `*.R` | R coding standards + math line-length exception |
-| `tikz-visual-quality` | `.tex` | TikZ diagram visual standards |
-| `beamer-quarto-sync` | `.tex`, `.qmd` | Auto-sync Beamer edits to Quarto |
-| `pdf-processing` | `master_supporting_docs/` | Safe large PDF handling |
-| `proofreading-protocol` | `.tex`, `.qmd`, `quality_reports/` | Propose-first, then apply with approval |
-| `no-pause-beamer` | `.tex` | No overlay commands in Beamer |
-| `replication-protocol` | `*.R` | Replicate original results before extending |
-| `knowledge-base-template` | `.tex`, `.qmd`, `*.R` | Notation/application registry template |
-| `orchestrator-research` | `*.R`, `explorations/` | Simple orchestrator for research (no multi-round reviews) |
-| `exploration-folder-protocol` | `explorations/` | Structured sandbox for experimental work |
-| `exploration-fast-track` | `explorations/` | Lightweight exploration workflow (60/100 threshold) |
-
-### Templates (`templates/`)
-
-| Template | What It Does |
-|----------|-------------|
-| `session-log.md` | Structured session logging format |
-| `quality-report.md` | Merge-time quality report format |
-| `exploration-readme.md` | Exploration project README template |
-| `archive-readme.md` | Archive documentation template |
-| `requirements-spec.md` | MUST/SHOULD/MAY requirements framework with clarity status |
-| `constitutional-governance.md` | Template for defining non-negotiable principles vs. preferences |
-| `skill-template.md` | Academic skill creation template with domain-specific examples |
-
-</details>
-
----
-
-## Prerequisites
-
-| Tool | Required For | Install |
-|------|-------------|---------|
-| [Claude Code](https://code.claude.com/docs/en/overview) | Everything | `npm install -g @anthropic-ai/claude-code` |
-| XeLaTeX | LaTeX compilation | [TeX Live](https://tug.org/texlive/) or [MacTeX](https://tug.org/mactex/) |
-| [Quarto](https://quarto.org) | Web slides | [quarto.org/docs/get-started](https://quarto.org/docs/get-started/) |
-| R | Figures & analysis | [r-project.org](https://www.r-project.org/) |
-| pdf2svg | TikZ to SVG | `brew install pdf2svg` (macOS) |
-| [gh CLI](https://cli.github.com/) | PR workflow | `brew install gh` (macOS) |
-
-Not all tools are needed — install only what your project uses. Claude Code is the only hard requirement.
-
----
-
-## Adapting for Your Field
-
-1. **Fill in the knowledge base** (`.claude/rules/knowledge-base-template.md`) with your notation, applications, and design principles
-2. **Customize the domain reviewer** (`.claude/agents/domain-reviewer.md`) with review lenses specific to your field
-3. **Update the color palette** in your Quarto theme SCSS file — change the color variables at the top
-4. **Add field-specific R pitfalls** to `.claude/rules/r-code-conventions.md`
-5. **Fill in the lecture mapping** in `.claude/rules/beamer-quarto-sync.md`
-6. **Customize the workflow quick reference** (`.claude/WORKFLOW_QUICK_REF.md`) with your non-negotiables and preferences
-7. **Set up the exploration folder** (`explorations/`) for experimental work
-
----
-
-## Additional Resources
-
-- [Claude Code Documentation](https://code.claude.com/docs/en/overview)
-- [Writing a Good CLAUDE.md](https://code.claude.com/docs/en/memory) — official guidance on project memory
-
----
-
-## Origin
-
-This infrastructure was extracted from **Econ 730: Causal Panel Data** at Emory University, developed by Pedro Sant'Anna using Claude Code over 6+ sessions. The course produced 6 complete PhD lecture decks with 800+ slides, interactive Quarto versions with plotly charts, and full R replication packages — all managed through this multi-agent workflow.
-
----
+This repository tracks upstream workflow improvements from Pedro Sant'Anna's `claude-code-my-workflow` and adapts them for Codex-first use. The original Claude-oriented guide, changelog, and `.claude/` assets are preserved so Claude users can still recover the original behavior.
 
 ## License
 
-MIT License. Use freely for teaching, research, or any academic purpose.
+MIT License. See `LICENSE`.
