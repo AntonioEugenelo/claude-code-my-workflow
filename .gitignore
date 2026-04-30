@@ -68,6 +68,7 @@ quality_reports/claim_ledgers/*
 quality_reports/preregistrations/*
 quality_reports/run_cards/*
 quality_reports/run_state/*
+quality_reports/tmp/*
 !quality_reports/plans/.gitkeep
 !quality_reports/specs/.gitkeep
 !quality_reports/session_logs/.gitkeep

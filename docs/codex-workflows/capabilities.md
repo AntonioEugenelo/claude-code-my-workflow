@@ -22,7 +22,7 @@ This file replaces Claude slash commands with Codex-native task recipes. Users c
 | Run Cox replication work | Use `cox-replication.md`, apply the rerun gate, and use a claim ledger for broad numeric or figure audits. |
 | Run data analysis | Inspect inputs, confirm assumptions, run the analysis code, regenerate outputs, and summarize reproducibility status. |
 | Deploy docs or rendered outputs | Render first, verify artifacts, then run the repo-specific sync or publish script if applicable. |
-| Challenge an argument | Use a devil's-advocate pass that looks for weak assumptions, omitted alternatives, and evidence gaps. |
+| Challenge an argument | Use `adversarial-review.md` and the `devils-advocate` review agent after the baseline route. |
 | Brainstorm research ideas | Read relevant supporting material, synthesize literature constraints, and propose testable questions with empirical strategies. |
 | Conduct an interview-style elicitation | Ask a short sequence of targeted questions, summarize the answers, and turn them into a concrete brief or research plan. |
 | Create a checkpoint | Summarize active branch, plan, open files, decisions, blockers, verification state, and next actions in `quality_reports/checkpoints/`. |

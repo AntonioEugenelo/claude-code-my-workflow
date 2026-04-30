@@ -20,8 +20,9 @@ The default branch should not require MCMS, Tariffs, Overleaf, MATLAB, Dynare, Q
 - `AGENTS.md`: primary Codex operating instructions.
 - `.codex/`: Codex-readable mirrors of agents, skills, hooks, and workflow metadata.
 - `.codex/config.toml`: project metadata and active Codex hook registration.
+- `.codex/review_agents/`: read-only review prompt cards for explicit review-agent passes.
 - `.codex/rules/`: Codex-facing mirror of the preserved Claude rules and procedural checklists.
-- `docs/codex-workflows/`: task recipes for planning, first-prompt branch tailoring, implementation, review, logging, and capability routing.
+- `docs/codex-workflows/`: task recipes for planning, first-prompt branch tailoring, implementation, review agents, adversarial review, logging, and capability routing.
 - `docs/project-overlays/`: optional project profiles for academic circumstances such as Antonio/Oxford, MCMS, Tariffs/Overleaf, Government Spending, Cox replication, applications, CVs, referee reviews, teaching, slide prototypes, and workflow infrastructure.
 - `quality_reports/`: plans, specs, session logs, merge reports, checkpoints, and decisions.
 - `quality_reports/decisions/ACTIVE.md`: active locks for branch/source/model decisions.
@@ -73,6 +74,8 @@ The inherited workflow includes specialized agents and skills for:
 
 - proofreading and editing,
 - paper and referee-style review,
+- explicit read-only Codex review-agent passes,
+- adversarial review loops,
 - methods and domain review,
 - LaTeX and Quarto compilation,
 - Beamer-to-Quarto translation,

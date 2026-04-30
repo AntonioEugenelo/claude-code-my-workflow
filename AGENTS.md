@@ -29,7 +29,12 @@ This repository is configured for Codex-first use.
 - Planning and ambiguity handling: `docs/codex-workflows/plan-first.md`
 - First-prompt project tailoring: `docs/codex-workflows/branch-tailoring.md`
 - Implement-verify-review loop: `docs/codex-workflows/orchestrator.md`
+- Explicit read-only review agents: `docs/codex-workflows/review-agents.md`
+- Adversarial review loop: `docs/codex-workflows/adversarial-review.md`
 - Review lens selection by document type: `docs/codex-workflows/review-routing.md`
+- Working conventions and source fidelity: `docs/codex-workflows/working-conventions.md`
+- Writing and analysis style guides: `docs/codex-workflows/style-guides.md`
+- Quality gate details: `docs/codex-workflows/quality-gates.md`
 - Session logging and merge reporting: `docs/codex-workflows/session-logging.md`
 - Capability map for common requests: `docs/codex-workflows/capabilities.md`
 - Rerun gate for expensive jobs: `docs/codex-workflows/rerun-gate.md`
@@ -52,7 +57,8 @@ This repository is configured for Codex-first use.
 - `quality_reports/run_state/` is ignored runtime state for current long-running jobs.
 - `.claude/` is retained as compatibility/reference material. Do not rely on Claude-specific runtime semantics for Codex behavior unless the user is explicitly running Claude Code.
 - `.codex/` mirrors agents, skills, rules, hooks, and workflow metadata for Codex-first use. Treat `.claude/` as the source for Claude parity and `.codex/` as the Codex-facing reference.
-- `.codex/config.toml` actively registers supported Codex hooks for `PostToolUse`, `SessionStart[resume]`, and `Stop`. Claude `Notification` and `PreCompact` have no exact Codex event in the installed runtime, so checkpointing and session-log capture remain explicit workflow obligations.
+- `.codex/review_agents/` contains read-only review prompt cards used by `docs/codex-workflows/review-agents.md`.
+- `.codex/config.toml` actively registers supported Codex hooks for command guards, `PostToolUse`, `SessionStart[resume]`, and `Stop`. Claude `Notification` and `PreCompact` have no exact Codex event in the installed runtime, so checkpointing and session-log capture remain explicit workflow obligations.
 
 ## Project Overlays
 
@@ -86,3 +92,5 @@ If the user asks to rerun, recompute, regenerate figures, recompile a large arti
 If the user asks to audit all results, all figures, all numeric claims, or whether text still matches generated outputs, create or update a claim ledger under `quality_reports/claim_ledgers/` before broad edits.
 
 If the user asks to push, pull, sync Overleaf, merge branches, or copy outputs between repos, apply `docs/codex-workflows/source-authority.md` first.
+
+If the user asks for harsh review, adversarial review, review agents, or external-style critique, use `docs/codex-workflows/review-agents.md` and `docs/codex-workflows/adversarial-review.md`.
