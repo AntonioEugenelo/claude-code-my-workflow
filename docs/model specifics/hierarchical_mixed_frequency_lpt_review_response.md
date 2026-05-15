@@ -496,9 +496,9 @@ Theory-critic findings and response:
    - Remaining caveat: the full posterior filter remains computationally
      expensive.
 3. **Anchored HMF/C2-SUT runtime is not pure HMF.**
-   - Response: this is retained as a true description of the active runtime.
-     The new draw filter also reports that pure HMF passes for four of the five
-     diagnostic draws, while draw 2 requires the 25 percent C2-SUT anchor.
+   - Superseded by the 2026-05-15 cleanup. The active runtime is no longer an
+     ex-post HMF/C2-SUT blend; C2-SUT enters through a configurable prior
+     strength, and the no-C2-prior case is explicitly available.
 4. **Sectoral production-weight state is not jointly estimated.**
    - Documentation response: the note now says annual sectoral weights remain
      a deterministic/proxy allocation layer; only aggregate annual fiscal
@@ -516,28 +516,31 @@ Code-critic findings and code response:
      `generated_julia_checksum`, `source_hash_manifest_sha256`, and BK counts.
 2. **Candidate JSON lacked schema/provenance validation.**
    - Fixed in code. Candidate payloads now carry posterior, exposure, and C2
-     anchor-matrix hashes. The mutable `metadata.json` hash was removed from
+     prior-center hashes. The mutable `metadata.json` hash was removed from
      candidate provenance. The Julia draw filter validates provenance, country
-     order, vector lengths, matrix dimensions, finite values, and anchor/HMF
-     weights summing to one.
+     order, vector lengths, matrix dimensions, finite values, and nonnegative
+     C2 prior strength.
 3. **Anchor matrices were blended positionally after dropping labels.**
-   - Fixed in code. Both the HMF builder and candidate preparer now assert
-     C2-SUT country row order and consecutive sector-index columns before
-     blending.
+   - Fixed in code and then superseded. Both the HMF builder and candidate
+     preparer assert C2-SUT country row order and consecutive sector-index
+     columns before using C2-SUT as a prior center.
 4. **A malformed candidate could abort a draw-filter batch without a row.**
    - Fixed in code. Candidate-level exceptions are caught and written as
      failed rows with stage `candidate_exception`.
-5. **Filter metadata hard-coded the active anchor and did not distinguish
+5. **Filter metadata hard-coded the active prior setting and did not distinguish
    candidate-file size from tested rows.**
-   - Fixed in code. The summarizer now reads the active anchor from
-     `metadata.json` and records candidate-file SHA, candidate count, anchor
+   - Fixed in code. The summarizer now reads the active prior strength from
+     `metadata.json` and records candidate-file SHA, candidate count, prior
      grid, and summary-file SHA.
 
 Devils-advocate findings and response:
 
-1. **`runtime_ready` conflated a point solve with posterior readiness.**
-   - Fixed in code and docs. The runtime now separates
-     `point_runtime_solve_ready=true` from `posterior_filter_ready=false`.
+1. **`runtime_ready` conflated QZ/BK solution, bounded debt, and posterior
+   readiness.**
+   - Fixed in code and docs. The runtime now separates QZ/BK `solves=true`
+     from strict `admissible=true`. The current candidate solves in QZ/BK but
+     fails bounded debt, so `point_runtime_solve_ready=false` and
+     `posterior_filter_ready=false`.
 2. **Candidate provenance included a mutable metadata hash that the validator
    did not check.**
    - Fixed in code. Candidate provenance now covers the posterior draw file,
@@ -580,19 +583,18 @@ Code/runtime re-review findings and response:
      draw-filter summarizer, fiscal-rule loader, and solver source files in
      addition to upstream data files.
 4. **Draw-level diagnostics still lacked memory and bounded-debt columns.**
-   - Partly fixed in code. The draw filter now writes max-resident-memory
-     before/after columns and explicit `bounded_debt_status` and
-     `timeout_status` fields. Bounded-debt remains marked
-     `not_evaluated_solve_only` until a separate debt-dynamics diagnostic is
-     implemented.
+   - Fixed in code. The draw filter now writes max-resident-memory
+     before/after columns, explicit `bounded_debt_status`, debt-block spectral
+     radius, and a strict `admissible` column. Draws that solve but fail the
+     debt-block diagnostic are recorded as `failed_bounded_debt_filter`.
 
 Verification after code fixes:
 
 ```text
-python -B scripts/build_hmf_fiscal_rule_estimator.py --draws 500 --tau-y-anchor-weight 0.25
+python -B scripts/build_hmf_fiscal_rule_estimator.py --draws 500 --tau-y-c2-prior-obs-equiv 25
 julia --project=. scripts/check_hmf_solve_status.jl
-python -B scripts/prepare_hmf_posterior_draw_filter_candidates.py --draws 1 2 3 4 5 --tau-y-anchor-grid 0.0 0.25 0.5 0.75 1.0
-julia --project=. scripts/check_hmf_posterior_draw_filter.jl --skip-draw-after-pass
+python -B scripts/prepare_hmf_posterior_draw_filter_candidates.py --draws 1 2 3 4 5 --tau-y-c2-prior-grid 0 5 10 25 50 100
+julia --project=. scripts/check_hmf_posterior_draw_filter.jl input_data/fiscal_rules_hmf/posterior_draw_filter_candidates.json --validate-only
 python -B scripts/summarize_hmf_posterior_draw_filter.py
 julia --project=. scripts/check_hmf_runtime.jl
 ```
@@ -600,30 +602,99 @@ julia --project=. scripts/check_hmf_runtime.jl
 Current evidence:
 
 ```text
-runtime_readiness_flag = point_runtime_solve_ready
-point_runtime_solve_ready = true
+runtime_readiness_flag = point_runtime_pending_solve_filter
+point_runtime_solve_ready = false
 posterior_filter_ready = false
-determinacy status = passed_solve_status_only
-pre-solve checksum = 145c95dc7661c39e358dd39e31bf06d3b53a7ce0f1cb1bdc6dcceba2433433be
-determinacy checksum = 1da5e950ca1213633fcdcc412025db16b129294403c64c8d82cbef62c4db4e9f
-runtime structural checksum = c196eaa619ea723708665fbb3435ce4ac84a160e0b51687fedc6a2d82e5ba87f
-source hash manifest = 30681530365440fa4740931ba5bdce423768fbd37f783e7711da6af828739dec
+determinacy status = failed_bounded_debt_filter
+solves = true
+admissible = false
+debt_feedback_closure = none
+runtime_selection_basis = posterior_summary_with_c2_sut_tau_y_prior
+tau_y_c2_prior_obs_equiv = 25.0
+pre-solve checksum = a3e85233ba7c4d4d1d5eb1be60561768719111ed08fb5253977008748336f76e
+determinacy checksum = a3e85233ba7c4d4d1d5eb1be60561768719111ed08fb5253977008748336f76e
+runtime structural checksum = 764e9ea95b74aa901e82903595c595c8f07921cb3ba1bef982596a19d6dc6e36
+source hash manifest = 36e3eb35ba38aff9854c5f0cbbe76c10412233e2cb942a26156c2c96ad4ac426
 determinacy BK counts = 1885 stable / 1885 required; 723 unstable / 723 required
-posterior draw filter = 6 tested candidates across 5 latent-state-space draws
-posterior draw filter result = all 5 draws have at least one passing anchor
-minimum passing anchor = 0.0 for draws 1, 3, 4, 5; 0.25 for draw 2
-candidate file = 25 draw-anchor candidates with source and C2-anchor provenance hashes
-candidate file checksum = 38c524c79996469b7a760134e5616897dd45b527bc3d4868edff1f86f6ea2568
-fixed active-anchor candidate file = 100 code-bound candidates at tau_y_solution_anchor_weight 0.25
-code-bound active-anchor smoke filter = 1 completed draw, 1 passing, active_anchor_solve_rate 1.0
-code-bound active-anchor ESS proxy = 1 / 100; posterior_ready_gate_passed = false
+bounded debt status = failed_debt_block_spectral_radius
+point runtime debt-block spectral radius = 1.01214862942549
+posterior draw filter = strict admissibility harness validated with code/data provenance
+candidate file = 30 draw/prior candidates over C2 prior strengths 0, 5, 10, 25, 50, 100
+candidate file checksum = 79f44e7c017522e9ee34cf7897b96df88d6e42650441e0308fb2f0d82497ef0c
+fixed active-prior candidate file = 100 code-bound candidates at tau_y_c2_prior_obs_equiv 25
+code-bound active-prior smoke filter = 1 completed draw, QZ/BK solves but admissible=false
+smoke draw debt-block spectral radius = 1.009976083688932
+smoke candidate file checksum = 83bd9bc6cfef372e2102657a4cb0bd7270b88b7b43b2a3ec1d460e529aacc438
+smoke summary checksum = f03504f2f3a5e481111f6581c44662fc63ea63f2810ec5f0a62bd445ea73c997
+code-bound active-prior ESS proxy = 0 / 100; posterior_ready_gate_passed = false
 ```
 
 Round 4 status:
 
 The major code-level review findings have been addressed by code changes rather
-than by weakening claims wherever feasible. The remaining unresolved issue is
-substantive rather than a bug: this is still a fiscal-rule-block bridge and
-filtered subset, not a full 500-draw solve-filtered posterior and not a full
-structural LPT posterior. Because the reviewer scores remain below the strict
-95/100 stopping threshold, the review is not recorded as fully passed.
+than by weakening claims wherever feasible. The new substantive finding is that
+the clean unscaled Bayesian path rejects the current active runtime under the
+bounded-debt admissibility filter. The next fix should condition posterior
+summaries on accepted draws, or change the model closure/prior so accepted
+draws exist without ex-post debt-feedback scaling. Because the reviewer scores
+remain below the strict 95/100 stopping threshold, the review is not recorded
+as fully passed.
+
+## Clean Bayesian admissibility update, 2026-05-15
+
+The debt-feedback runtime scaling has been removed from the estimator, candidate
+generator, generated runtime metadata, and Julia provenance validator. `Phi_b`
+is now selected by the declared posterior rule with `debt_feedback_closure =
+none`; there is no hidden multiplication by 2, 5, or any other runtime factor,
+and no nonnegative debt-feedback clipping.
+
+The admissibility filter now treats QZ/BK and bounded debt separately. The
+current point runtime has:
+
+```text
+solves = true
+admissible = false
+status = failed_bounded_debt_filter
+debt_block_spectral_radius = 1.01214862942549
+```
+
+The one-draw active-prior smoke filter has:
+
+```text
+solves = true
+admissible = false
+status = failed_bounded_debt_filter
+debt_block_spectral_radius = 1.009976083688932
+provenance_status = matched
+```
+
+This is the correct failure mode for the clean Bayesian version: runtime
+parameters must be posterior summaries conditional on stationary `rho`,
+hierarchical transfer priors, sectoral `tau_Y` measurement error, QZ/BK
+solution, and bounded debt. The current artifacts provide the machinery, but
+not yet an admissible filtered posterior.
+
+## Issues 1-4 calibration cleanup, 2026-05-15
+
+1. C2-SUT prior strength is now an explicit hyperparameter:
+   `--tau-y-c2-prior-obs-equiv`. The baseline remains 25 observation-equivalents
+   and is labelled as a prior choice, not data evidence.
+2. Zero C2 prior is allowed. `--tau-y-c2-prior-obs-equiv 0` runs, candidate
+   validation accepts 0, and `posterior_draw_filter_candidates.json` includes
+   the grid `0, 5, 10, 25, 50, 100`.
+3. Silent persistence caps were removed from selected runtime summaries and
+   draw-filter candidates. `rho_selected` now equals `rho_p50`; stationarity and
+   determinacy are filter outcomes.
+4. Silent output-response clipping for `tau_C` and `tau_N` was removed.
+   `Phi_y_selected` now equals `Phi_y_p50`; sign/range failures are left to the
+   explicit admissibility filter.
+
+Additional hidden tricks removed while addressing these issues:
+
+- `debt_feedback_closure` is now `none`.
+- `Phi_b_selected` now equals `Phi_b_p50`.
+- The sectoral `tau_Y` runtime is no longer an ex-post HMF/C2 coefficient blend;
+  C2-SUT enters as a configurable prior center and prior precision.
+
+The cleaned active runtime still fails bounded debt, so this is a more honest
+candidate, not a solved baseline.

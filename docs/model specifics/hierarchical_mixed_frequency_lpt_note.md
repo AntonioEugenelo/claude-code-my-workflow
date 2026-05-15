@@ -2,16 +2,17 @@
 
 Date: 2026-05-14
 
-Status: design note plus first operational prototype. The repository now has a
+Status: design note plus operational prototype. The repository now has a
 Bayesian mixed-frequency fiscal-rule-block candidate generated in
 `MCMS-private/input_data/fiscal_rules_hmf`. This is still not a full LPT
 structural posterior, because the MCMS equilibrium conditions are not inside
-the likelihood. The passing runtime handoff uses aggregate HMF posterior
-vectors for `tau_C` and `tau_N` and a solve-filtered sectoral `tau_Y` blend:
-75 percent HMF annual-weight allocation and 25 percent C2-SUT solution anchor.
-The pure unanchored sectoral HMF `tau_Y` allocation is generated and audited;
-in the current five-draw diagnostic filter, four of five draws pass at the
-pure-HMF anchor while one draw needs the 25 percent C2-SUT solution anchor.
+the likelihood. The runtime handoff uses raw aggregate posterior summaries for
+`tau_C` and `tau_N`; sectoral `tau_Y` is a posterior mean under an explicit
+C2-SUT prior/measurement layer. The baseline C2-SUT prior strength is 25
+observation-equivalents, and the reported sensitivity grid is 0, 5, 10, 25,
+50, and 100. A value of 0 disables the C2-SUT prior. The active runtime
+solves in the QZ/BK sense but fails the bounded-debt admissibility diagnostic,
+so it is not marked runtime-ready.
 
 ## Notation and acronyms
 
@@ -1248,10 +1249,14 @@ There are three options:
    - restrict persistence below one;
    - restrict volatility and response magnitudes.
 2. Ex post posterior filtering:
-   - estimate fiscal-rule posterior;
+   - estimate the fiscal-rule posterior under the stationary `rho`
+     restrictions, hierarchical transfer priors, and sectoral `tau_Y`
+     measurement-error layer;
    - solve the DSGE model for each posterior draw;
-   - retain or weight draws that solve and satisfy BK/stability checks and
-     bounded debt dynamics.
+   - retain or weight only draws that solve and satisfy BK/stability checks and
+     bounded debt dynamics;
+   - compute runtime parameters from posterior summaries conditional on those
+     restrictions.
 3. Joint structural posterior:
    - include the DSGE solution inside the likelihood;
    - reject nonsolving draws during posterior simulation.
@@ -1335,10 +1340,10 @@ The first implemented HMF prototype now adds:
 3. Annual production-tax and production-subsidy weights for the U.S. BEA SUT
    sectoral layer.
 4. A sectoral HMF `tau_Y` allocation artifact for comparison.
-5. A solve-filtered runtime handoff that uses a 75 percent HMF sectoral
-   `tau_Y` allocation and a 25 percent C2-SUT production-wedge solution
-   anchor. The pure unanchored HMF sectoral `tau_Y` allocation fails the BK
-   filter.
+5. A runtime handoff that uses sectoral `tau_Y` posterior means under an
+   explicit C2-SUT prior-strength hyperparameter. The baseline prior strength
+   is 25 observation-equivalents, while 0 disables the C2 prior. The current
+   runtime is not solve-filter accepted because bounded debt fails.
 
 The full structural version would extend this with a larger solve-filtered
 posterior and DSGE likelihood embedding. The current implementation already
@@ -1400,31 +1405,38 @@ determinacy_filtered_posterior
 runtime_selected_summary
 ```
 
-As of the first implementation, `:hmf_candidate` is opt-in and passes the
-summary-level solve-status gate with:
+As of the current strict-admissibility implementation, `:hmf_candidate` is
+opt-in and passes the QZ/BK count but fails the bounded-debt diagnostic. This
+is intentional: the runtime parameters are no longer rescued by ex-post
+debt-feedback scaling, clipping beyond the stated nonnegative closure, or
+blending after posterior summarization. There is no longer a nonnegative
+debt-feedback closure in the runtime; `debt_feedback_closure = none`. The
+filter must accept the draw, or the runtime remains pending.
 
 ```text
-status = passed_solve_status_only
+status = failed_bounded_debt_filter
+solves = true
+admissible = false
 stage = solve
-tau_y_solution_anchor_weight = 0.25
-tau_y_hmf_allocation_weight = 0.75
-elapsed_seconds = 961.1969997882843
+tau_y_c2_prior_obs_equiv = 25.0
 stable_eigenvalues = 1885
 required_stable = 1885
 unstable_eigenvalues = 723
 required_unstable = 723
-posterior_target = aggregate_hmf_with_c2_sut_tau_y_anchor_pending_draw_filter
-runtime_readiness_flag = point_runtime_solve_ready
-point_runtime_solve_ready = true
+bounded_debt_status = failed_debt_block_spectral_radius
+point_runtime_debt_block_spectral_radius = 1.01214862942549
+posterior_target = aggregate_hmf_with_c2_sut_tau_y_prior_pending_draw_filter
+runtime_readiness_flag = point_runtime_pending_solve_filter
+point_runtime_solve_ready = false
 posterior_filter_ready = false
 ```
 
-The pass should be interpreted narrowly: the aggregate HMF `tau_C` and
-`tau_N` vectors are active, and sectoral `tau_Y` uses a solve-filtered blend.
-The pure annual-weight sectoral HMF `tau_Y` allocation exists as an audited
-candidate and comparison object. In the current five-draw diagnostic, pure HMF
-passes for draws 1, 3, 4, and 5, but draw 2 has a BK shortfall at pure HMF and
-passes only after the 25 percent C2-SUT anchor is applied.
+The current result should be interpreted narrowly: the aggregate HMF `tau_C`
+and `tau_N` vectors and the sectoral `tau_Y` posterior-prior construction can
+be generated and solve in the QZ/BK sense, but the point runtime is not
+admissible because debt is not bounded. Earlier BK-only anchor diagnostics are
+historical and no longer constitute posterior acceptance under the strict
+bounded-debt filter.
 
 Matrix files should use unambiguous names, for example:
 
@@ -1602,22 +1614,25 @@ Current prototype status:
    `calibration.jl`.
 3. Annual sectoral production-tax and production-subsidy weights are generated
    in `MCMS-private/input_data/fiscal_rules_hmf`.
-4. The pure experimental sectoral HMF `tau_Y` allocation fails the solve
-   filter for draw 2 with 1,884 stable eigenvalues versus 1,885 required, but
-   passes for draws 1, 3, 4, and 5 in the current five-draw diagnostic subset.
-5. The active HMF runtime therefore uses the strongest passing tested blend:
-   75 percent HMF sectoral `tau_Y` allocation and 25 percent C2-SUT solution
-   anchor.
+4. Sectoral `tau_Y` no longer uses an ex-post HMF/C2-SUT blend. C2-SUT enters
+   as an explicit prior/measurement layer with configurable prior strength.
+   The baseline prior strength is 25 observation-equivalents, and the
+   sensitivity grid is 0, 5, 10, 25, 50, and 100. A value of 0 disables the
+   C2-SUT prior.
+5. The active HMF runtime uses raw posterior medians for `rho`, `Phi_y`,
+   `Phi_b`, and `sigma`; persistence, sign, debt-feedback, and output-response
+   admissibility are handled by the solve/determinacy filter rather than by
+   silent coefficient caps or clipping.
 6. `scripts/check_hmf_solve_status.jl` records the point-runtime solve gate in
    `determinacy_filter_summary.csv`; the current checksum-bound point runtime
-   passes with 1,885 stable and 723 unstable eigenvalues, exactly matching the
-   required BK counts. `calibration.jl` now enforces the live HMF runtime
-   checksum against `metadata.json` and `determinacy_filter_summary.csv`; the
-   solve script records both the pre-readiness file checksum and the post-
-   readiness file checksum, plus an invariant structural runtime hash.
+   passes QZ/BK with 1,885 stable and 723 unstable eigenvalues, exactly
+   matching the required counts, but fails bounded-debt admissibility with debt
+   block spectral radius 1.01214862942549. `calibration.jl` enforces the live
+   HMF runtime checksum against `metadata.json` and
+   `determinacy_filter_summary.csv`.
 7. `scripts/summarize_hmf_layer_comparison.py` records matrix-distance
-   comparisons across C2-SUT, the active HMF blend, and the pure unanchored
-   HMF allocation in `layer_comparison_summary.csv`.
+   comparisons across the C2-SUT prior center, the active posterior mean, and
+   the no-C2-prior HMF allocation in `layer_comparison_summary.csv`.
 8. `latent_quarterly_state_space_panel.csv` and
    `latent_quarterly_state_space_diagnostics.csv` replace the earlier
    annual-to-quarterly coefficient shortcut for annual-observed aggregate
@@ -1635,54 +1650,53 @@ Current prototype status:
    aggregate country `tau_Y` factor plus diagonal sectoral idiosyncratic noise.
 10. `scripts/prepare_hmf_posterior_draw_filter_candidates.py` and
    `scripts/check_hmf_posterior_draw_filter.jl` implement the posterior-draw
-   solve-filter harness. After the latent-state-space rebuild, the stale
-   pre-state-space draw filter was overwritten by a fresh five-draw solve
-   filter using the anchor grid `0.0, 0.25, 0.5, 0.75, 1.0`. The filter tested
-   six candidates: draws 1, 3, 4, and 5 pass at pure HMF; draw 2 fails at pure
-   HMF with a BK shortfall and passes at the active 75/25 blend. Candidate
-   files carry hashes for immutable/current source inputs and C2 anchor
-   matrices; the mutable `metadata.json` hash is not used as candidate
-   provenance. The Julia filter validates provenance, country order, vector
-   length, matrix dimensions, finite values, and anchor-weight closure before
-   solving each candidate; malformed candidates are recorded as failed rows
-   rather than aborting the whole batch silently.
+   solve-filter harness. The current candidate grid uses C2 prior strengths
+   `0, 5, 10, 25, 50, 100`; 0 is the no-C2-prior case. Candidate files carry
+   hashes for immutable/current source inputs and C2 prior-center matrices;
+   the mutable `metadata.json` hash is not used as candidate provenance. The
+   Julia filter validates provenance, country order, vector length, matrix
+   dimensions, finite values, and nonnegative prior strength before solving
+   each candidate; malformed candidates are recorded as failed rows rather
+   than aborting the whole batch silently.
 11. The draw-filter harness is now adaptive: candidate generation supports
-   anchor grids, and the Julia filter supports `--resume
+   C2-prior-strength grids, and the Julia filter supports `--resume
    --skip-draw-after-pass` so long posterior filters can be continued without
-   retesting draws that already have one passing anchor.
+   retesting draws that already have one passing admissibility result.
 12. `scripts/summarize_hmf_posterior_draw_filter.py` reduces raw draw-anchor
-    trials into minimum-passing-anchor summaries. In the current diagnostic
-    set, all five tested latent-state-space posterior draws have at least one
-    passing anchor; the minimum passing anchor is 0.0 for four draws and 0.25
-    for one draw.
-13. A separate fixed active-anchor filter path has been prepared for the
+    trials into minimum-passing-prior summaries.
+13. A separate fixed active-prior filter path has been prepared for the
     100-draw posterior-readiness gate.
-    `posterior_draw_filter_active_anchor_candidates.json` contains 100
-    active-anchor candidates at `tau_y_solution_anchor_weight = 0.25` and
+    `posterior_draw_filter_active_prior_candidates.json` contains 100
+    active-prior candidates at `tau_y_c2_prior_obs_equiv = 25` and
     validates with code/data provenance. A final code-bound smoke solve in
-    `posterior_draw_filter_active_anchor_codebound_smoke_summary.csv` has 1
-    completed active-anchor draw, passing with exact BK counts and matched
-    provenance; the associated overall summary reports `filtered_ess_proxy =
-    1` and `posterior_ready_gate_passed = false`.
+    `posterior_draw_filter_active_prior_codebound_smoke_summary.csv` has 1
+    completed active-prior draw. It solves with exact BK counts and matched
+    provenance, but fails bounded-debt admissibility with debt-block spectral
+    radius 1.009976083688932; the associated overall summary reports
+    `filtered_ess_proxy = 0` and `posterior_ready_gate_passed = false`.
 14. `scripts/run_hmf_pipeline.py` provides a reproducible wrapper: cheap
     reporting refreshes run by default, while `--build`, `--runtime-check`,
     `--solve-check`, and `--draw-filter --resume --skip-draw-after-pass`
     opt into expensive stages.
-15. `scripts/check_hmf_runtime.jl` passes and
-    `scripts/check_hmf_solve_status.jl` records
-    `passed_solve_status_only`. Generated HMF runtimes now start with
-    `point_runtime_pending_solve_filter`; only `check_hmf_solve_status.jl` can
-    mark the point runtime `point_runtime_solve_ready`. The separate
-    `posterior_filter_ready` flag remains false until a larger posterior draw
-    filter meets the pre-specified solve-mass and ESS gate. The determinacy row
-    records the generated Julia checksum, source-hash manifest, elapsed time,
-    and BK counts used for the passing point-runtime solve.
+15. `scripts/check_hmf_runtime.jl` validates the pending runtime, and
+    `scripts/check_hmf_solve_status.jl` now records
+    `failed_bounded_debt_filter`. Generated HMF runtimes start with
+    `point_runtime_pending_solve_filter`; `check_hmf_solve_status.jl` can mark
+    the point runtime `point_runtime_solve_ready` only when QZ/BK and
+    bounded-debt diagnostics both pass. The separate `posterior_filter_ready`
+    flag remains false until a larger posterior draw filter meets the
+    pre-specified solve-mass and ESS gate. The determinacy row records the
+    generated Julia checksum, source-hash manifest, elapsed time, BK counts,
+    and debt-block diagnostic used for the point-runtime rejection.
 
-The next implementation step is continuing the fixed active-anchor posterior
-solve filter from the final code-bound smoke draw to at least the 100-draw
-readiness gate. The harness exists and can resume across sessions, but the
-repository does not yet contain a 100-draw or 500-draw filtered posterior
-because each solve is expensive in the current Julia pipeline.
+The next implementation step is to move the bounded-debt condition inside the
+posterior summarization loop: draw candidates should be solved, rejected when
+the debt block is unbounded, and then runtime vectors should be computed from
+the accepted posterior mass. Continuing the fixed active-prior posterior
+solve filter to at least the 100-draw readiness gate is still necessary, but
+the current one-draw smoke result warns that the active posterior summaries may
+need a stronger prior/closure revision before accepted draws exist without
+ex-post scaling.
 
 ## Full structural version
 
