@@ -1,0 +1,509 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=0.85in]{geometry}
+\usepackage{amsmath,amssymb,mathtools,bm}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\setlength{\emergencystretch}{3em}
+\renewcommand{\arraystretch}{1.15}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+\newcommand{\E}{\mathbb E}
+\newcommand{\TC}{T^C}
+\newcommand{\TN}{T^N}
+\newcommand{\TY}{T^Y}
+\newcommand{\tauc}{\tau^C}
+\newcommand{\taun}{\tau^N}
+\newcommand{\tauy}{\tau^Y}
+\newcommand{\bg}{b^g}
+\newcommand{\ig}{i^g}
+\newcommand{\Pc}{P^C}
+\newcommand{\MC}{MC}
+\newcommand{\Rev}{\operatorname{Rev}}
+
+\title{Fiscal-LPT Appendix Derivation Audit}
+\author{Adversarial derivation check}
+\date{May 13, 2026}
+
+\begin{document}
+\maketitle
+
+\section{Scope and verdict}
+
+This note audits the appendix derivations in \path{Fiscal-LPT/main.tex} against the
+live Julia implementation in \path{MCMS-private/src/build_equations.jl} and the
+current calibration block in \path{MCMS-private/src/calibration.jl}. The equations
+implemented in Julia are internally coherent under a precise set of conventions.
+The appendix mostly reports the implemented equations correctly, but several
+derivation statements are too loose. One item is a real derivation fault: the
+level government budget constraint written in the appendix is not the correct
+level ancestor of the implemented linear budget equation.
+
+\section{Adversarial findings}
+
+\textbf{Fix: opening appendix conventions.}
+The text says the new fiscal objects are log deviations. This is not true for
+\(\bg_{k,t}\). The implemented debt variable is an additive real public-debt
+deviation normalized by steady-state GDP, not a log deviation. Treating debt as
+a log deviation would change the fiscal-rule and budget-constraint scaling.
+
+\textbf{Fix: labour-tax derivation and revenue equation.}
+The appendix must define \(\taun_{k,t}\equiv \widehat{(1-\TN_{k,t})^{-1}}\), not
+just ``the log labour wedge.'' The wage Phillips curve and the labour-tax
+revenue equation both require this inverse after-tax wedge convention. If
+\(\taun\) were instead \(\widehat{1-\TN}\), the signs would flip.
+
+\textbf{Fix: government budget derivation.}
+The appendix starts from
+\[
+  B^g_{t}=(1+i^g_{t-1})B^g_{t-1}-P^C_tY_t\Rev_t.
+\]
+That timing and gross-debt form do not linearize to the implemented equation
+\[
+  \beta \bg_t-\beta\bar b^g\ig_t+\Rev_t=\bg_{t-1}-\bar b^g\pi^C_t.
+\]
+The implemented equation comes from a one-period discount-debt budget,
+\[
+  Q^g_tB^g_t + P^C_t\bar Y\,\Rev_t = B^g_{t-1},
+  \qquad Q^g_t=(R^g_t)^{-1}.
+\]
+This should be corrected in the appendix.
+
+\textbf{Clarify: revenue accounting.}
+The revenue variables \(rev^C,rev^N,rev^Y,rev^{tar}\) are not log revenues.
+They are first-order deviations of revenue scaled by steady-state GDP. The
+formulas are correct only under that additive normalization.
+
+\textbf{Clarify: consumption-tax Euler derivation.}
+The Euler equation is correct, but the text should say that \(i_{k,t}\) is the
+log deviation of the gross nominal rate, or the model's first-order interest-rate
+gap measured in the same units as inflation. Otherwise the coefficient on the
+interest-rate term is ambiguous.
+
+\textbf{Clarify: production-tax and subsidy experiments.}
+A statement such as \(\sigma^Y_{4,21}=-0.10\) is a shock-scale override. It is a
+ten percentage point subsidy only for a unit innovation and under the local
+mapping \(d\TY=(1+\bar \TY)\tauy\). If the model shock is interpreted as a
+statutory-rate movement, the gross-wedge conversion must be stated.
+
+\textbf{Verify: Dynare mirror claim.}
+\texttt{main.tex} says there is a Dynare mirror in \texttt{b*\_fiscal\_lpt.mod}.
+The model equations in the mirror match the structure, but the parameter file
+still contains older placeholder assignments such as \(\bar \TC=0.20\),
+\(\bar \TN=0.30\), \(\bar b^g=0.60\), and \(\psi^g=0.01\). The current Julia
+calibration instead uses country-specific values and \(\psi^g=0\). Do not cite
+the Dynare parameter file as the current quantitative calibration unless it is
+regenerated or patched.
+
+\section{Notation that makes the derivations valid}
+
+For strictly positive variables, lower-case variables are log deviations:
+\[
+  x_t=\widehat X_t=\log X_t-\log \bar X.
+\]
+Debt is different. The implemented debt state is an additive deviation of real
+public debt from its steady-state ratio:
+\[
+  \bg_{k,t}
+  =
+  \frac{B^g_{k,t}}{\Pc_{k,t}\bar Y_k}-\bar b^g_k.
+\]
+It is normalized by current CPI and steady-state real GDP. This convention is
+forced by the implemented budget equation because no current \(y_{k,t}\) term
+appears there.
+
+The three tax variables are log deviations of gross wedges:
+\begin{align}
+  \tauc_{k,t} &\equiv \widehat{(1+\TC_{k,t})}, \\
+  \taun_{k,t} &\equiv \widehat{(1-\TN_{k,t})^{-1}}, \\
+  \tauy_{k i,t} &\equiv \widehat{(1+\TY_{k i,t})}.
+\end{align}
+Therefore the first-order statutory-rate changes are
+\begin{align}
+  d\TC_{k,t} &= (1+\bar\TC_k)\tauc_{k,t}, \\
+  d\TN_{k,t} &= (1-\bar\TN_k)\taun_{k,t}, \\
+  d\TY_{k i,t} &= (1+\bar\TY_{k i})\tauy_{k i,t}.
+\end{align}
+These conversion formulas are the hidden step behind the revenue equations.
+
+\section{Consumption tax and the Euler equation}
+
+The household consumption FOC is
+\[
+  U_C(C_{k,t})=\Lambda_{k,t}\Pc_{k,t}(1+\TC_{k,t}),
+\]
+so, with CRRA utility \(U_C(C)=C^{-\sigma}\),
+\[
+  \log \Lambda_{k,t}
+  =
+  -\sigma \log C_{k,t}
+  -\log \Pc_{k,t}
+  -\log(1+\TC_{k,t}).
+\]
+After subtracting the steady state,
+\[
+  \lambda_{k,t}=-\sigma c_{k,t}-p^C_{k,t}-\tauc_{k,t}.
+\]
+
+The nominal bond FOC is
+\[
+  \Lambda_{k,t}
+  =
+  \beta R_{k,t}\E_t\Lambda_{k,t+1},
+  \qquad R_{k,t}=1+i^{level}_{k,t}.
+\]
+At first order, using \(\beta \bar R=1\) and ignoring Jensen terms,
+\[
+  \lambda_{k,t}
+  =
+  i_{k,t}+\E_t\lambda_{k,t+1},
+\]
+where \(i_{k,t}\) is the log deviation of the gross nominal rate. Substitute the
+multiplier expression:
+\[
+  -\sigma c_{k,t}-p^C_{k,t}-\tauc_{k,t}
+  =
+  i_{k,t}
+  +\E_t[-\sigma c_{k,t+1}-p^C_{k,t+1}-\tauc_{k,t+1}].
+\]
+Move terms and use \(\pi^C_{k,t+1}=p^C_{k,t+1}-p^C_{k,t}\):
+\[
+  \sigma c_{k,t}
+  =
+  \sigma \E_t c_{k,t+1}
+  -i_{k,t}
+  +\E_t\pi^C_{k,t+1}
+  +\E_t\tauc_{k,t+1}
+  -\tauc_{k,t}.
+\]
+Divide by \(\sigma\):
+\[
+  c_{k,t}
+  =
+  \E_t c_{k,t+1}
+  -\frac{1}{\sigma}
+  \left(
+    i_{k,t}
+    -\E_t\pi^C_{k,t+1}
+    -\E_t\tauc_{k,t+1}
+    +\tauc_{k,t}
+  \right).
+\]
+This exactly matches the implemented Julia equation
+\[
+  c_k[0]=c_k[1]-\sigma^{-1}(i_k[0]-\pi^C_k[1]-\tauc_k[1]+\tauc_k[0]).
+\]
+
+\section{Labour tax and the wage Phillips curve}
+
+The static labour condition is
+\[
+  \frac{W_{k,t}}{\Pc_{k,t}}
+  =
+  \frac{1+\TC_{k,t}}{1-\TN_{k,t}}
+  C_{k,t}^{\sigma}N_{k,t}^{\varphi}.
+\]
+Taking deviations gives
+\[
+  w^{flex}_{k,t}
+  =
+  \sigma c_{k,t}
+  +\varphi n_{k,t}
+  +\tauc_{k,t}
+  +\taun_{k,t}.
+\]
+The sign on \(\taun\) is positive because \(\taun\) is the log deviation of the
+inverse after-tax labour wedge. A higher labour tax raises the pre-tax wage
+required by households.
+
+The Calvo wage block uses the desired real-wage gap:
+\[
+  \pi^w_{k,t}
+  =
+  \kappa^w_k(w^{flex}_{k,t}-w_{k,t})
+  +\beta\E_t\pi^w_{k,t+1}.
+\]
+Substitution yields
+\[
+  \pi^w_{k,t}
+  =
+  \kappa^w_k
+  \left(
+    \sigma c_{k,t}
+    +\varphi n_{k,t}
+    -w_{k,t}
+    +\tauc_{k,t}
+    +\taun_{k,t}
+  \right)
+  +\beta\E_t\pi^w_{k,t+1}.
+\]
+This matches the implemented wage equation. The only appendix problem is
+definition: without the inverse after-tax wedge convention, the sign is not
+well-defined.
+
+\section{Production tax and price setting}
+
+The selected instrument is a marginal-cost wedge:
+\[
+  \MC^{tax}_{k i,t}=(1+\TY_{k i,t})\MC_{k i,t}.
+\]
+Taking log deviations,
+\[
+  mc^{tax}_{k i,t}
+  =
+  mc_{k i,t}+\tauy_{k i,t}.
+\]
+Hence every price Phillips-curve marginal-cost gap receives the same
+\(+\tauy_{k i,t}\) term. For producer-currency pricing:
+\[
+  \pi_{lki,t}
+  =
+  \kappa^p_{ki}(mc_{ki,t}+\tauy_{ki,t}-p_{lki,t})
+  +\beta\E_t\pi_{lki,t+1}.
+\]
+For local-currency pricing with \(l\ne k\), the implemented relative-price term
+also includes the bilateral real exchange rate:
+\[
+  \pi_{lki,t}
+  =
+  \kappa^p_{ki}(mc_{ki,t}+\tauy_{ki,t}-p_{lki,t}-q_{kl,t})
+  +\beta\E_t\pi_{lki,t+1}.
+\]
+For dominant-currency pricing, the \(q\) term is relative to the dominant
+currency country. The appendix is acceptable because it says it suppresses the
+currency-pricing indicators, but the full derivation should mention these
+branches if the appendix is meant to be self-contained.
+
+\section{Fiscal rules}
+
+For a generic wedge \(x_{k,t}\), define a target
+\[
+  x^{target}_{k,t}
+  =
+  \phi^x_{y,k}y_{k,t}
+  +
+  \phi^x_{b,k}\bg_{k,t-1}.
+\]
+Partial adjustment gives
+\[
+  x_{k,t}
+  =
+  \rho^x_k x_{k,t-1}
+  +(1-\rho^x_k)x^{target}_{k,t}
+  +\sigma^x_k\varepsilon^x_{k,t}.
+\]
+Therefore
+\begin{align}
+  \tauc_{k,t}
+  &=
+  \rho^C_k\tauc_{k,t-1}
+  +(1-\rho^C_k)(\phi^C_{y,k}y_{k,t}+\phi^C_{b,k}\bg_{k,t-1})
+  +\sigma^C_k\varepsilon^C_{k,t}, \\
+  \taun_{k,t}
+  &=
+  \rho^N_k\taun_{k,t-1}
+  +(1-\rho^N_k)(\phi^N_{y,k}y_{k,t}+\phi^N_{b,k}\bg_{k,t-1})
+  +\sigma^N_k\varepsilon^N_{k,t}, \\
+  \tauy_{k i,t}
+  &=
+  \rho^Y_{k i}\tauy_{k i,t-1}
+  +(1-\rho^Y_{k i})(\phi^Y_{y,k i}y_{k,t}+\phi^Y_{b,k i}\bg_{k,t-1})
+  +\sigma^Y_{k i}\varepsilon^Y_{k i,t}.
+\end{align}
+These equations match the Julia implementation. The only convention issue is
+again that \(\bg\) is an additive normalized debt deviation, not a log deviation.
+
+\section{Revenue linearizations}
+
+The implemented revenue variables are additive deviations normalized by
+steady-state GDP. They are not logs.
+
+\subsection{Consumption-tax revenue}
+
+Let
+\[
+  s^C_k=\frac{\bar\Pc_k\bar C_k}{\bar\Pc_k\bar Y_k}
+  =\frac{\bar C_k}{\bar Y_k}.
+\]
+Revenue is
+\[
+  \mathcal R^C_{k,t}=\TC_{k,t}\Pc_{k,t}C_{k,t}.
+\]
+Scaled by steady-state nominal GDP and abstracting from the common CPI level
+already handled in the real budget normalization,
+\[
+  rev^C_{k,t}
+  =
+  s^C_k
+  \left[
+    d\TC_{k,t}
+    +\bar\TC_k c_{k,t}
+  \right].
+\]
+Using \(d\TC=(1+\bar\TC)\tauc\),
+\[
+  rev^C_{k,t}
+  =
+  s^C_k
+  \left[
+    (1+\bar\TC_k)\tauc_{k,t}
+    +\bar\TC_k c_{k,t}
+  \right].
+\]
+
+\subsection{Labour-tax revenue}
+
+Let
+\[
+  s^L_k=\frac{\bar W_k\bar N_k}{\bar\Pc_k\bar Y_k}.
+\]
+Revenue is
+\[
+  \mathcal R^N_{k,t}=\TN_{k,t}W_{k,t}N_{k,t}.
+\]
+The first-order scaled deviation is
+\[
+  rev^N_{k,t}
+  =
+  s^L_k
+  \left[
+    d\TN_{k,t}
+    +\bar\TN_k(w_{k,t}+n_{k,t})
+  \right].
+\]
+Using \(d\TN=(1-\bar\TN)\taun\),
+\[
+  rev^N_{k,t}
+  =
+  s^L_k
+  \left[
+    (1-\bar\TN_k)\taun_{k,t}
+    +\bar\TN_k(w_{k,t}+n_{k,t})
+  \right].
+\]
+
+\subsection{Production-tax revenue}
+
+Let
+\[
+  s^{MCY}_{k i}=\frac{\overline{\MC}_{k i}\bar Y_{k i}}{\bar\Pc_k\bar Y_k}.
+\]
+Revenue is
+\[
+  \mathcal R^Y_{k,t}=\sum_i \TY_{k i,t}\MC_{k i,t}Y_{k i,t}.
+\]
+The first-order scaled deviation is
+\[
+  rev^Y_{k,t}
+  =
+  \sum_i s^{MCY}_{k i}
+  \left[
+    d\TY_{k i,t}
+    +\bar\TY_{k i}(mc_{k i,t}+y_{k i,t})
+  \right].
+\]
+Using \(d\TY=(1+\bar\TY)\tauy\),
+\[
+  rev^Y_{k,t}
+  =
+  \sum_i s^{MCY}_{k i}
+  \left[
+    (1+\bar\TY_{k i})\tauy_{k i,t}
+    +\bar\TY_{k i}(mc_{k i,t}+y_{k i,t})
+  \right].
+\]
+This matches the implemented equation. If \(\bar\TY<0\), the base-effect term
+has the sign of a subsidy: higher marginal-cost output makes the subsidy more
+expensive.
+
+\section{Government borrowing spread}
+
+The spread equation is directly linear:
+\[
+  \ig_{k,t}=i_{k,t}+\psi^g_k\bg_{k,t-1}.
+\]
+The baseline calibration currently sets \(\psi^g_k=0\) in Julia. Therefore the
+spread channel is present as an equation but shut down quantitatively in the
+current Julia baseline.
+
+\section{Government budget constraint}
+
+The implemented budget is a discount-debt equation. Start from
+\[
+  Q^g_{k,t}B^g_{k,t}
+  +
+  \Pc_{k,t}\bar Y_k
+  \left(
+    rev^C_{k,t}+rev^N_{k,t}+rev^Y_{k,t}+rev^{tar}_{k,t}
+  \right)
+  =
+  B^g_{k,t-1}.
+\]
+Divide by \(\Pc_{k,t}\bar Y_k\):
+\[
+  Q^g_{k,t}
+  \frac{B^g_{k,t}}{\Pc_{k,t}\bar Y_k}
+  +rev^C_{k,t}+rev^N_{k,t}+rev^Y_{k,t}+rev^{tar}_{k,t}
+  =
+  \frac{B^g_{k,t-1}}{\Pc_{k,t}\bar Y_k}.
+\]
+Use
+\[
+  \frac{B^g_{k,t}}{\Pc_{k,t}\bar Y_k}=\bar b^g_k+\bg_{k,t},
+  \qquad
+  \frac{B^g_{k,t-1}}{\Pc_{k,t}\bar Y_k}
+  =
+  \frac{\Pc_{k,t-1}}{\Pc_{k,t}}
+  \frac{B^g_{k,t-1}}{\Pc_{k,t-1}\bar Y_k}.
+\]
+At first order,
+\[
+  \frac{\Pc_{k,t-1}}{\Pc_{k,t}}(\bar b^g_k+\bg_{k,t-1})
+  =
+  \bar b^g_k+\bg_{k,t-1}-\bar b^g_k\pi^C_{k,t}.
+\]
+For discount debt, \(Q^g_{k,t}=1/R^g_{k,t}\). With \(\bar Q^g=\beta\) and
+\(\ig_{k,t}\) as the log deviation of the gross government rate,
+\[
+  Q^g_{k,t}(\bar b^g_k+\bg_{k,t})
+  =
+  \beta\bar b^g_k+\beta\bg_{k,t}-\beta\bar b^g_k\ig_{k,t}.
+\]
+Subtract the steady-state identity \(\beta\bar b^g_k=\bar b^g_k-\bar rev_k\).
+The first-order budget is
+\[
+  \beta\bg_{k,t}
+  -\beta\bar b^g_k\ig_{k,t}
+  +rev^C_{k,t}+rev^N_{k,t}+rev^Y_{k,t}+rev^{tar}_{k,t}
+  =
+  \bg_{k,t-1}
+  -\bar b^g_k\pi^C_{k,t}.
+\]
+This is the implemented equation. The current appendix should use this
+discount-debt parent equation. Starting from a lagged gross-interest budget is
+not just a harmless alternative presentation; it changes the timing and the
+linear coefficients.
+
+\section{Minimum edits recommended for \texttt{main.tex}}
+
+The appendix can be made mathematically tight with these targeted edits:
+\begin{enumerate}
+  \item Define \(\tauc,\taun,\tauy\) exactly as gross-wedge log deviations and
+  state that \(\bg\) is an additive debt-ratio deviation.
+  \item Replace the government budget parent equation with
+  \(Q^g_tB^g_t+\Pc_t\bar Y\,rev_t=B^g_{t-1}\).
+  \item Say explicitly that revenue variables are first-order GDP-normalized
+  deviations, not log revenue variables.
+  \item Qualify the Dynare-mirror sentence: the equation mirror matches the
+  fiscal structure, but the current quantitative calibration is the Julia
+  \texttt{src/calibration.jl} block unless the Dynare parameter file is updated.
+  \item In the policy-experiment paragraph, distinguish a wedge shock scale
+  from a statutory-rate change.
+\end{enumerate}
+
+\end{document}

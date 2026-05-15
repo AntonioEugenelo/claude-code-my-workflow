@@ -30,6 +30,15 @@ ROUTES = [
         "adversarial": [["devils-advocate"]],
     },
     {
+        "name": "fiscal-lpt-paper",
+        "waves": [
+            ["proofreader", "derivation-auditor", "figure-reviewer"],
+            ["theory-critic", "pedagogical-reviewer", "cochrane-style-reviewer", "narrative-reviewer"],
+        ],
+        "tier": "Deep",
+        "adversarial": [["devils-advocate"]],
+    },
+    {
         "name": "research-paper",
         "waves": [
             ["proofreader", "derivation-auditor", "figure-reviewer"],
@@ -73,16 +82,18 @@ def match_route(target: str) -> dict:
         return ROUTES[0]
     if (normalized.startswith("slides/") and suffix == ".tex") or (normalized.startswith("quarto/") and suffix == ".qmd"):
         return ROUTES[1]
-    if normalized.startswith("master_supporting_docs/") and suffix == ".tex":
+    if ("/fiscal-lpt/" in normalized or normalized.startswith("../fiscal-lpt/") or normalized.startswith("fiscal-lpt/")) and suffix == ".tex":
         return ROUTES[2]
-    if "review" in normalized and suffix in {".md", ".xml"}:
+    if normalized.startswith("master_supporting_docs/") and suffix == ".tex":
         return ROUTES[3]
-    if any(token in normalized for token in ["exam", "pset", "tutorial"]):
+    if "review" in normalized and suffix in {".md", ".xml"}:
         return ROUTES[4]
-    if suffix in {".py", ".m", ".r"}:
-        return ROUTES[6]
-    if suffix == ".md":
+    if any(token in normalized for token in ["exam", "pset", "tutorial"]):
         return ROUTES[5]
+    if suffix in {".py", ".m", ".r"}:
+        return ROUTES[7]
+    if suffix == ".md":
+        return ROUTES[6]
     raise SystemExit(f"No review route found for target: {target}")
 
 

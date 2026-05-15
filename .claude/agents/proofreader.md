@@ -44,6 +44,12 @@ Review the specified file thoroughly and produce a detailed report of all issues
 - Citations pointing to the wrong paper
 - Verify that citation keys match the intended paper in the bibliography file
 
+### 6. FISCAL-LPT PAPER STYLE
+- Too-close wording from the supporting Cochrane PDFs
+- Long strings of sentences with the same length and rhythm
+- Filler transitions such as "it is important to note"
+- Confusion between paper source, model source, and writing-direction material
+
 ## Report Format
 
 For each issue found, provide:

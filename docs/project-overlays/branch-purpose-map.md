@@ -1,26 +1,27 @@
 # Branch Purpose Map
 
-This branch is the purpose-agnostic overset branch. It should contain the reusable workflow machinery for every known project branch, but it should not make any project overlay active by default.
+This checkout is tailored to the Fiscal-LPT / MCMS fiscal-extension project while preserving reusable workflow machinery from the prior purpose-agnostic branch.
 
 ## Known Branch Uses
 
 | Branch or family | Primary use | Activate overlays |
 | --- | --- | --- |
 | `main`, `codex-upstream-purpose-agnostic-migration` | Codex-first workflow infrastructure and Claude compatibility | `workflow-infrastructure.md` |
-| `Tariffs_ECB_paper`, `codex-ecb-tariffs` | Tariffs/ECB paper, Overleaf sync, academic writing, review, compilation | `academic-research.md`, `antonio-eugenelo.md`, `tariffs-overleaf.md` |
-| MCMS-related work | MATLAB/Dynare model runs, calibration, generated results | `mcms.md`, optionally `academic-research.md` |
-| `cox-replication-*`, `preserve-cox-replication-before-codex-migration` | Cox replication and government-spending model/paper work | `cox-replication.md`, `government-spending.md`, optionally `academic-research.md` |
-| `antonio-main-mixed-archive` | Antonio/Oxford local academic context and mixed legacy material | `antonio-eugenelo.md`, then task-specific overlays |
-| `cover-letters` | Cover letters, statements, fellowship/exchange applications | `cover-letters.md`, `antonio-eugenelo.md` |
+| Fiscal-LPT / MCMS fiscal extension | Fiscal variables and fiscal-rule steps in MCMS, with a paper-only Overleaf repo | `fiscal-lpt-mcms.md`, `mcms.md` |
+| MCMS-related work | model runs, calibration, generated results | `mcms.md` |
+| `cox-replication-*`, `preserve-cox-replication-before-codex-migration` | Cox replication and government-spending model/paper work | `cox-replication.md` |
+| `cover-letters` | Cover letters, statements, fellowship/exchange applications | `cover-letters.md` |
 | `cv-editing` | CV editing, CV consistency checks, application packages | `cv-editing.md`, `antonio-eugenelo.md` |
 | `ISOF-reviews` | Referee/review forms and paper assessment | `referee-review.md`, optionally `academic-research.md` |
 | `Monetary_Economics` | Teaching, lecture notes, problem sets, Beamer/Quarto slides | `teaching-slides.md`, optionally `academic-research.md` |
 | `Slides---Antigravity` | Slide/application prototype and visual presentation work | `slide-prototype.md`, optionally `academic-research.md` |
 | Upstream workflow branches | Importing reusable hooks, agents, skills, docs, and repo hygiene | `workflow-infrastructure.md` |
 
-## Overset Rule
+## Boundary Rule
 
-If a branch has a distinct repeatable use, represent that use as an overlay, workflow doc, template, script, skill, agent, or rule in this branch. Do not copy large project assets into the generic branch just to prove support exists.
+Represent repeatable project behavior as an overlay, workflow doc, template,
+script, skill, agent, or rule. Keep model code in `../MCMS-private`, paper source
+in `../Fiscal-LPT`, and writing-direction material in this workflow repo.
 
 ## Independence Rule
 

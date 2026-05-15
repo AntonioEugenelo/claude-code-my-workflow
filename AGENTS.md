@@ -11,8 +11,8 @@ This repository is configured for Codex-first use.
 - Use explicit review passes instead of self-approval. After material fixes, re-run the relevant review checklist before claiming the issue is resolved.
 - Respect active decision locks in `quality_reports/decisions/ACTIVE.md`. If a user request conflicts with an active lock, state the conflict and ask for an explicit override before proceeding.
 - Use the rerun gate before expensive reruns. Do not rerun long MATLAB, Julia, Quarto, LaTeX, or data-generation jobs until `docs/codex-workflows/rerun-gate.md` has been applied.
-- Keep `main` purpose-agnostic. It is an overset of reusable workflows and overlays, not a branch with one active project baked in.
-- Do not push project material to this workflow repository. Model code, data, supporting papers, generated figures, and project-specific working branches belong in their own repositories.
+- Keep the workflow machinery reusable, but treat this local checkout as tailored to the Fiscal-LPT / MCMS fiscal-extension project.
+- Do not push model code, generated figures, or paper source to this workflow repository. Writing guides, supporting writing material, and project-direction notes belong here.
 
 ## Startup Routine
 
@@ -32,7 +32,7 @@ This repository is configured for Codex-first use.
 - Implement-verify-review loop: `docs/codex-workflows/orchestrator.md`
 - Explicit read-only review agents: `docs/codex-workflows/review-agents.md`
 - Adversarial review loop: `docs/codex-workflows/adversarial-review.md`
-- Review lens selection by document type: `docs/codex-workflows/review-routing.md`
+- Review lens selection by document type: `docs/codex-workflows/review-agents.md` and `scripts/review_plan.py`
 - Working conventions and source fidelity: `docs/codex-workflows/working-conventions.md`
 - Writing and analysis style guides: `docs/codex-workflows/style-guides.md`
 - Quality gate details: `docs/codex-workflows/quality-gates.md`
@@ -46,10 +46,16 @@ This repository is configured for Codex-first use.
 
 ## Repository Notes
 
-- This branch is purpose-agnostic by default. Specialized academic capabilities are present, but they are opt-in overlays rather than global assumptions.
+- This checkout is project-tailored for Fiscal-LPT / MCMS while preserving reusable workflow machinery where practical.
 - When creating a project branch from this branch, use `templates/branch-tailoring-prompt.md` as the first prompt and activate only the necessary overlays.
 - Project material may exist locally in ignored directories such as `master_supporting_docs/`, `model/`, or `Figures/`, but it is not part of this repository's infrastructure surface.
 - If a project needs model code, data, supporting papers, generated figures, or a project branch, create or use a separate repository for that project.
+- Current local project split:
+  - `../Fiscal-LPT` is the paper/Overleaf repository and should contain only paper source and compile assets.
+  - `../MCMS-private` is the model repository and should contain files needed to run, calibrate, and audit the MCMS fiscal extension.
+  - this workflow repository contains writing direction, review rules, supporting writing guides, and workflow machinery.
+- For Fiscal-LPT writing, use `docs/project-overlays/fiscal-lpt-mcms.md` and `docs/codex-workflows/fiscal-lpt-writing-style.md`.
+- `docs/supporting_docs/` contains local writing-source material, including the writing guide and Cochrane papers. Use it to derive high-level prose principles and review checks; do not copy wording into paper text.
 - `scripts/` contains reusable automation. Prefer using or extending these scripts over reimplementing workflow logic in prose.
 - `templates/` contains plan, quality-report, and session-log templates.
 - `quality_reports/decisions/ACTIVE.md` contains active locks that prevent repeated branch/source/model confusion.
@@ -65,11 +71,8 @@ This repository is configured for Codex-first use.
 
 - Generic base: no project overlay required.
 - Branch-to-purpose map: `docs/project-overlays/branch-purpose-map.md`.
-- Academic research workflows: `docs/project-overlays/academic-research.md`.
-- Antonio/Oxford local circumstances: `docs/project-overlays/antonio-eugenelo.md`.
-- Tariffs/Overleaf workflow: `docs/project-overlays/tariffs-overleaf.md`.
+- Fiscal-LPT / MCMS fiscal extension: `docs/project-overlays/fiscal-lpt-mcms.md`.
 - MCMS model workflow: `docs/project-overlays/mcms.md`.
-- Government Spending project: `docs/project-overlays/government-spending.md`.
 - Cox replication workflow: `docs/project-overlays/cox-replication.md`.
 - Cover letters and applications: `docs/project-overlays/cover-letters.md`.
 - CV editing and application-packet checks: `docs/project-overlays/cv-editing.md`.
@@ -81,7 +84,8 @@ This repository is configured for Codex-first use.
 ## Review and Quality
 
 - Use the quality thresholds in `docs/codex-workflows/orchestrator.md`. The inherited default gates are 90 for commit-ready work, 95 for external review, 98 for send/deploy, and 60 for exploratory work.
-- When a task materially changes prose, analysis, or outputs, perform a review pass using the correct lenses from `docs/codex-workflows/review-routing.md`.
+- When a task materially changes prose, analysis, or outputs, perform a review pass using the correct lenses from `docs/codex-workflows/review-agents.md` and `scripts/review_plan.py`.
+- When a task materially changes Fiscal-LPT paper prose, include `cochrane-style-reviewer` and apply `docs/codex-workflows/fiscal-lpt-writing-style.md`.
 - Do not estimate post-fix scores from memory. Re-check the current files.
 
 ## Capability Triggers

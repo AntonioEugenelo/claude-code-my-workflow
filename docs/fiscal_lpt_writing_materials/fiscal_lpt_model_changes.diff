@@ -1,0 +1,331 @@
+--- b0_main.mod
++++ b0_main_fiscal_lpt.mod
+@@ -38,35 +38,35 @@
+ % 1. Defining variables
+ %----------------------------------------------------------------
+ 
+-    @#include "b1_declare_var.mod"
++    @#include "b1_declare_var_fiscal_lpt.mod"
+ 
+ %----------------------------------------------------------------
+ % 2. Defining exogenous variables
+ %----------------------------------------------------------------
+ 
+-    @#include "b2_declare_varexo.mod"
++    @#include "b2_declare_varexo_fiscal_lpt.mod"
+ 
+ %----------------------------------------------------------------
+ % 3. Defining and loading parameters
+ %----------------------------------------------------------------
+ 
+-    @#include "b3_declare_par.mod"
++    @#include "b3_declare_par_fiscal_lpt.mod"
+ 
+ %----------------------------------------------------------------
+ % 4. Model block
+ %----------------------------------------------------------------
+ 
+-    @#include "b4_declare_model.mod"
++    @#include "b4_declare_model_fiscal_lpt.mod"
+     end;
+ 
+ %----------------------------------------------------------------
+ % 5. Shocks
+ %----------------------------------------------------------------
+     
+-    @#include "b5_declare_variance.mod"
++    @#include "b5_declare_variance_fiscal_lpt.mod"
+     end;
+ 
+ %----------------------------------------------------------------
+ % 6. Solve
+ %----------------------------------------------------------------
+-stoch_simul(order=1,irf=20,nograph,nodisplay,nomoments) exp_1_2 exp_1_3 exp_1_4 exp_2_1 exp_2_3 exp_2_4 exp_3_1 exp_3_2 exp_3_4 exp_4_1 exp_4_2 exp_4_3 imp_1_2 imp_1_3 imp_1_4 imp_2_1 imp_2_3 imp_2_4 imp_3_1 imp_3_2 imp_3_4 imp_4_1 imp_4_2 imp_4_3 pi_C_core_1 pi_C_core_2 pi_C_core_3 pi_C_core_4 reer_import_1 reer_import_2 reer_import_3 reer_import_4 exp_1 exp_2 exp_3 exp_4 imp_1 imp_2 imp_3 imp_4 pi_w_1 pi_w_2 pi_w_3 pi_w_4 c_1 c_2 c_3 c_4 y_1 y_2 y_3 y_4 pi_C_1 pi_C_2 pi_C_3 pi_C_4 i_1 i_2 i_3 i_4 va_1_1 va_1_2 va_1_3 va_1_4 va_1_5 va_1_6 va_1_7 va_1_8 va_1_9 va_1_10 va_1_11 va_1_12 va_1_13 va_1_14 va_1_15 va_1_16 va_1_17 va_1_18 va_1_19 va_1_20 va_1_21 va_1_22 va_1_23 va_1_24 va_1_25 va_1_26 va_1_27 va_1_28 va_1_29 va_1_30 va_1_31 va_1_32 va_1_33 va_1_34 va_1_35 va_1_36 va_1_37 va_1_38 va_1_39 va_1_40 va_1_41 va_1_42 va_1_43 va_1_44 va_2_1 va_2_2 va_2_3 va_2_4 va_2_5 va_2_6 va_2_7 va_2_8 va_2_9 va_2_10 va_2_11 va_2_12 va_2_13 va_2_14 va_2_15 va_2_16 va_2_17 va_2_18 va_2_19 va_2_20 va_2_21 va_2_22 va_2_23 va_2_24 va_2_25 va_2_26 va_2_27 va_2_28 va_2_29 va_2_30 va_2_31 va_2_32 va_2_33 va_2_34 va_2_35 va_2_36 va_2_37 va_2_38 va_2_39 va_2_40 va_2_41 va_2_42 va_2_43 va_2_44 va_3_1 va_3_2 va_3_3 va_3_4 va_3_5 va_3_6 va_3_7 va_3_8 va_3_9 va_3_10 va_3_11 va_3_12 va_3_13 va_3_14 va_3_15 va_3_16 va_3_17 va_3_18 va_3_19 va_3_20 va_3_21 va_3_22 va_3_23 va_3_24 va_3_25 va_3_26 va_3_27 va_3_28 va_3_29 va_3_30 va_3_31 va_3_32 va_3_33 va_3_34 va_3_35 va_3_36 va_3_37 va_3_38 va_3_39 va_3_40 va_3_41 va_3_42 va_3_43 va_3_44 va_4_1 va_4_2 va_4_3 va_4_4 va_4_5 va_4_6 va_4_7 va_4_8 va_4_9 va_4_10 va_4_11 va_4_12 va_4_13 va_4_14 va_4_15 va_4_16 va_4_17 va_4_18 va_4_19 va_4_20 va_4_21 va_4_22 va_4_23 va_4_24 va_4_25 va_4_26 va_4_27 va_4_28 va_4_29 va_4_30 va_4_31 va_4_32 va_4_33 va_4_34 va_4_35 va_4_36 va_4_37 va_4_38 va_4_39 va_4_40 va_4_41 va_4_42 va_4_43 va_4_44 pi_1_1 pi_1_2 pi_1_3 pi_1_4 pi_1_5 pi_1_6 pi_1_7 pi_1_8 pi_1_9 pi_1_10 pi_1_11 pi_1_12 pi_1_13 pi_1_14 pi_1_15 pi_1_16 pi_1_17 pi_1_18 pi_1_19 pi_1_20 pi_1_21 pi_1_22 pi_1_23 pi_1_24 pi_1_25 pi_1_26 pi_1_27 pi_1_28 pi_1_29 pi_1_30 pi_1_31 pi_1_32 pi_1_33 pi_1_34 pi_1_35 pi_1_36 pi_1_37 pi_1_38 pi_1_39 pi_1_40 pi_1_41 pi_1_42 pi_1_43 pi_1_44 pi_2_1 pi_2_2 pi_2_3 pi_2_4 pi_2_5 pi_2_6 pi_2_7 pi_2_8 pi_2_9 pi_2_10 pi_2_11 pi_2_12 pi_2_13 pi_2_14 pi_2_15 pi_2_16 pi_2_17 pi_2_18 pi_2_19 pi_2_20 pi_2_21 pi_2_22 pi_2_23 pi_2_24 pi_2_25 pi_2_26 pi_2_27 pi_2_28 pi_2_29 pi_2_30 pi_2_31 pi_2_32 pi_2_33 pi_2_34 pi_2_35 pi_2_36 pi_2_37 pi_2_38 pi_2_39 pi_2_40 pi_2_41 pi_2_42 pi_2_43 pi_2_44 pi_3_1 pi_3_2 pi_3_3 pi_3_4 pi_3_5 pi_3_6 pi_3_7 pi_3_8 pi_3_9 pi_3_10 pi_3_11 pi_3_12 pi_3_13 pi_3_14 pi_3_15 pi_3_16 pi_3_17 pi_3_18 pi_3_19 pi_3_20 pi_3_21 pi_3_22 pi_3_23 pi_3_24 pi_3_25 pi_3_26 pi_3_27 pi_3_28 pi_3_29 pi_3_30 pi_3_31 pi_3_32 pi_3_33 pi_3_34 pi_3_35 pi_3_36 pi_3_37 pi_3_38 pi_3_39 pi_3_40 pi_3_41 pi_3_42 pi_3_43 pi_3_44 pi_4_1 pi_4_2 pi_4_3 pi_4_4 pi_4_5 pi_4_6 pi_4_7 pi_4_8 pi_4_9 pi_4_10 pi_4_11 pi_4_12 pi_4_13 pi_4_14 pi_4_15 pi_4_16 pi_4_17 pi_4_18 pi_4_19 pi_4_20 pi_4_21 pi_4_22 pi_4_23 pi_4_24 pi_4_25 pi_4_26 pi_4_27 pi_4_28 pi_4_29 pi_4_30 pi_4_31 pi_4_32 pi_4_33 pi_4_34 pi_4_35 pi_4_36 pi_4_37 pi_4_38 pi_4_39 pi_4_40 pi_4_41 pi_4_42 pi_4_43 pi_4_44;
++stoch_simul(order=1,irf=20,nograph,nodisplay,nomoments);
+--- b1_declare_var.mod
++++ b1_declare_var_fiscal_lpt.mod
+@@ -103,8 +103,26 @@
+     @#endfor
+ @#endfor
+ 
++
+ %----------------------------------------------------------------
+-% Shocks (tariffs only)
++% Fiscal policy: VAT, labour-income tax, sectoral production tax, debt
++%----------------------------------------------------------------
++@#for k in 1:Knum
++    tau_C_@{k}            % log deviation of gross VAT wedge 1+T^C_k
++    tau_N_@{k}            % log deviation of gross labour-income tax wedge 1/(1-T^N_k)
++    bgov_@{k}             % public debt deviation, normalized by steady-state GDP
++    i_g_@{k}              % government borrowing rate used only in the fiscal budget
++    rev_C_@{k}            % VAT revenue deviation, normalized by steady-state GDP
++    rev_N_@{k}            % labour-income tax revenue deviation, normalized by steady-state GDP
++    rev_Y_@{k}            % production-tax revenue deviation, normalized by steady-state GDP
++    rev_tariff_@{k}       % tariff revenue deviation, normalized by steady-state GDP
++    @#for i in 1:Inum
++        tau_Y_@{k}_@{i}   % sector-specific gross production-cost tax/subsidy wedge 1+T^Y_ki
++    @#endfor
++@#endfor
++
++%----------------------------------------------------------------
++% Shocks (tariffs and fiscal shocks)
+ %----------------------------------------------------------------
+ @#for k in 1:Knum
+     @#for i in 1:Inum
+--- b2_declare_varexo.mod
++++ b2_declare_varexo_fiscal_lpt.mod
+@@ -16,4 +16,16 @@
+     @#endfor
+ @#endfor
+ 
++
++%----------------------------------------------------------------
++% Fiscal-policy innovations
++%----------------------------------------------------------------
++@#for k in 1:Knum
++    varepsilon_tau_C_@{k}       % VAT-rule shock
++    varepsilon_tau_N_@{k}       % labour-income tax-rule shock
++    @#for i in 1:Inum
++        varepsilon_tau_Y_@{k}_@{i}   % sectoral production-tax/subsidy-rule shock
++    @#endfor
++@#endfor
++
+ ;--- b3_declare_par.mod
++++ b3_declare_par_fiscal_lpt.mod
+@@ -119,6 +119,36 @@
+     ind_dcp_@{i}
+ @#endfor
+ 
++
++%----------------------------------------------------------------
++% Fiscal policy: tax wedges, revenue shares, fiscal rules and debt spread
++%----------------------------------------------------------------
++
++@#for k in 1:Knum
++    Tbar_C_@{k}                 % steady-state statutory VAT/consumption tax rate
++    Tbar_N_@{k}                 % steady-state statutory household labour-income tax rate
++    s_C_@{k}                    % steady-state final-consumption base as share of GDP
++    s_L_@{k}                    % steady-state labour-income base as share of GDP
++    bgov_ss_@{k}                % steady-state public debt/GDP ratio used in linearized budget
++    psi_bgov_spread_@{k}        % elasticity of government borrowing spread to lagged debt
++    rho_tau_C_@{k}              % persistence of VAT rule
++    rho_tau_N_@{k}              % persistence of labour-income tax rule
++    phi_tau_C_y_@{k}            % VAT response to y_k
++    phi_tau_C_b_@{k}            % VAT response to lagged public debt
++    phi_tau_N_y_@{k}            % labour-income tax response to y_k
++    phi_tau_N_b_@{k}            % labour-income tax response to lagged public debt
++    sigma_tau_C_@{k}            % scale of VAT-rule shock
++    sigma_tau_N_@{k}            % scale of labour-income tax-rule shock
++    @#for i in 1:Inum
++        Tbar_Y_@{k}_@{i}        % steady-state statutory sectoral production tax; negative means subsidy
++        s_MCY_@{k}_@{i}         % steady-state MC_ki*Y_ki base as share of GDP
++        rho_tau_Y_@{k}_@{i}     % persistence of sectoral production-tax rule
++        phi_tau_Y_y_@{k}_@{i}   % sectoral production-tax response to y_k
++        phi_tau_Y_b_@{k}_@{i}   % sectoral production-tax response to lagged public debt
++        sigma_tau_Y_@{k}_@{i}   % scale of sectoral production-tax-rule shock
++    @#endfor
++@#endfor
++
+ %----------------------------------------------------------------
+ % Shocks
+ %----------------------------------------------------------------
+@@ -269,4 +299,44 @@
+     ind_pcp_@{i} = Ind_PCP(1,@{i});
+     ind_lcp_@{i} = Ind_LCP(1,@{i});
+     ind_dcp_@{i} = Ind_DCP(1,@{i});
+-@#endfor+@#endfor
++
++%----------------------------------------------------------------
++% Fiscal policy calibration placeholders
++%----------------------------------------------------------------
++% These values make the fiscal block operational but are not inferred from calib.mat.
++% Replace them with country/sector evidence before using the model quantitatively.
++% Positive phi_tau_C_y and phi_tau_Y_y make VAT and production-tax wedges rise in booms
++% and fall in recessions. Positive phi_tau_N_b makes labour-income taxes back public debt.
++
++@#for k in 1:Knum
++    Tbar_C_@{k}             = 0.20;
++    Tbar_N_@{k}             = 0.30;
++    s_C_@{k}                = 1.00;
++    s_L_@{k}                = (1
++        @#for i in 1:Inum
++            - (1 - psi_@{k}_@{i}/M_@{k}_@{i}) * lambda_@{k}_@{i}
++        @#endfor
++    );
++    bgov_ss_@{k}            = 0.60;
++    psi_bgov_spread_@{k}    = 0.01;
++
++    rho_tau_C_@{k}          = 0.80;
++    rho_tau_N_@{k}          = 0.80;
++    phi_tau_C_y_@{k}        = 0.05;
++    phi_tau_C_b_@{k}        = 0.00;
++    phi_tau_N_y_@{k}        = 0.00;
++    phi_tau_N_b_@{k}        = 0.10;
++    sigma_tau_C_@{k}        = 0.01;
++    sigma_tau_N_@{k}        = 0.01;
++
++    @#for i in 1:Inum
++        Tbar_Y_@{k}_@{i}        = 0.00;
++        s_MCY_@{k}_@{i}         = lambda_@{k}_@{i}/M_@{k}_@{i};
++        rho_tau_Y_@{k}_@{i}     = 0.80;
++        phi_tau_Y_y_@{k}_@{i}   = 0.05;
++        phi_tau_Y_b_@{k}_@{i}   = 0.00;
++        sigma_tau_Y_@{k}_@{i}   = 0.01;
++    @#endfor
++@#endfor
++
+--- b4_declare_model.mod
++++ b4_declare_model_fiscal_lpt.mod
+@@ -108,7 +108,7 @@
+ 
+ // [A.28] Domestic bonds euler condition
+ @#for k in 1:Knum
+-    c_@{k} = c_@{k}(+1) - 1/sigma * (i_@{k} - pi_C_@{k}(+1));
++    c_@{k} = c_@{k}(+1) - 1/sigma * (i_@{k} - pi_C_@{k}(+1) - tau_C_@{k}(+1) + tau_C_@{k});
+ @#endfor
+ 
+ // [A.31] UIP (one bond traded internationally, denominated in the currency of country Knum)
+@@ -221,23 +221,23 @@
+ @#for k in 1:Knum
+     @#for l in 1:Knum
+         @#for i in 1:Inum
+-            0 = ind_pcp_@{i} * (pi_@{l}_@{k}_@{i} - kappa_p_@{k}_@{i} * (mc_@{k}_@{i} - p_@{l}_@{k}_@{i}) - beta * pi_@{l}_@{k}_@{i}(+1)) +
++            0 = ind_pcp_@{i} * (pi_@{l}_@{k}_@{i} - kappa_p_@{k}_@{i} * (mc_@{k}_@{i} + tau_Y_@{k}_@{i} - p_@{l}_@{k}_@{i}) - beta * pi_@{l}_@{k}_@{i}(+1)) +
+                 ind_lcp_@{i} * (
+                     @#if l != k
+-                        pi_@{l}_@{k}_@{i} - kappa_p_@{k}_@{i} * (mc_@{k}_@{i} - p_@{l}_@{k}_@{i} - q_@{k}_@{l}) - beta * pi_@{l}_@{k}_@{i}(+1)
++                        pi_@{l}_@{k}_@{i} - kappa_p_@{k}_@{i} * (mc_@{k}_@{i} + tau_Y_@{k}_@{i} - p_@{l}_@{k}_@{i} - q_@{k}_@{l}) - beta * pi_@{l}_@{k}_@{i}(+1)
+                     @#else
+-                        pi_@{l}_@{k}_@{i} - kappa_p_@{k}_@{i} * (mc_@{k}_@{i} - p_@{l}_@{k}_@{i}) - beta * pi_@{l}_@{k}_@{i}(+1)
++                        pi_@{l}_@{k}_@{i} - kappa_p_@{k}_@{i} * (mc_@{k}_@{i} + tau_Y_@{k}_@{i} - p_@{l}_@{k}_@{i}) - beta * pi_@{l}_@{k}_@{i}(+1)
+                     @#endif
+                 ) +
+                 ind_dcp_@{i} * (
+                 @#if l != k
+                     @#if k < Knum
+-                        pi_@{l}_@{k}_@{i} - kappa_p_@{k}_@{i} * (mc_@{k}_@{i} - p_@{l}_@{k}_@{i} - q_@{k}_@{Knum}) - beta * (pi_@{l}_@{k}_@{i}(+1))
++                        pi_@{l}_@{k}_@{i} - kappa_p_@{k}_@{i} * (mc_@{k}_@{i} + tau_Y_@{k}_@{i} - p_@{l}_@{k}_@{i} - q_@{k}_@{Knum}) - beta * (pi_@{l}_@{k}_@{i}(+1))
+                     @#else
+-                        pi_@{l}_@{k}_@{i} - kappa_p_@{k}_@{i} * (mc_@{k}_@{i} - p_@{l}_@{k}_@{i}) - beta * (pi_@{l}_@{k}_@{i}(+1))
++                        pi_@{l}_@{k}_@{i} - kappa_p_@{k}_@{i} * (mc_@{k}_@{i} + tau_Y_@{k}_@{i} - p_@{l}_@{k}_@{i}) - beta * (pi_@{l}_@{k}_@{i}(+1))
+                     @#endif
+                 @#else
+-                    pi_@{l}_@{k}_@{i} - kappa_p_@{k}_@{i} * (mc_@{k}_@{i} - p_@{l}_@{k}_@{i}) - beta * (pi_@{l}_@{k}_@{i}(+1))
++                    pi_@{l}_@{k}_@{i} - kappa_p_@{k}_@{i} * (mc_@{k}_@{i} + tau_Y_@{k}_@{i} - p_@{l}_@{k}_@{i}) - beta * (pi_@{l}_@{k}_@{i}(+1))
+                 @#endif
+                 )
+             ;
+@@ -260,7 +260,7 @@
+ 
+ // [A.83] Wage Phillips curve
+ @#for k in 1:Knum
+-    pi_w_@{k} = kappa_w_@{k} * (sigma * c_@{k} + varphi * n_@{k} - w_@{k}) + beta * pi_w_@{k}(+1); 
++    pi_w_@{k} = kappa_w_@{k} * (sigma * c_@{k} + varphi * n_@{k} - w_@{k} + tau_C_@{k} + tau_N_@{k}) + beta * pi_w_@{k}(+1); 
+ @#endfor
+ 
+ // [A.84] Definition of wage inflation
+@@ -800,6 +800,87 @@
+     @#endfor
+ @#endfor
+ 
++
++
++// -----------------------------------------------------------------------------
++// [FP.1] Leeper-Plante-Traum-style fiscal rules for VAT, labour-income tax,
++//        and sector-specific production tax/subsidy wedges.
++// tau_C_k is d log(1+T^C_k,t). Positive = higher VAT wedge.
++// tau_N_k is d log(1/(1-T^N_k,t)). Positive = higher household labour-income tax wedge.
++// tau_Y_k_i is d log(1+T^Y_k_i,t). Positive = production tax; negative = subsidy.
++// The selected specification uses y_k,t as the cyclical indicator and lagged bgov_k as debt.
++// Default calibration: VAT and production wedges respond to output; labour tax responds to debt.
++// -----------------------------------------------------------------------------
++@#for k in 1:Knum
++    tau_C_@{k} = rho_tau_C_@{k} * tau_C_@{k}(-1)
++        + (1-rho_tau_C_@{k}) * (phi_tau_C_y_@{k} * y_@{k} + phi_tau_C_b_@{k} * bgov_@{k}(-1))
++        + sigma_tau_C_@{k} * varepsilon_tau_C_@{k};
++
++    tau_N_@{k} = rho_tau_N_@{k} * tau_N_@{k}(-1)
++        + (1-rho_tau_N_@{k}) * (phi_tau_N_y_@{k} * y_@{k} + phi_tau_N_b_@{k} * bgov_@{k}(-1))
++        + sigma_tau_N_@{k} * varepsilon_tau_N_@{k};
++
++    @#for i in 1:Inum
++        tau_Y_@{k}_@{i} = rho_tau_Y_@{k}_@{i} * tau_Y_@{k}_@{i}(-1)
++            + (1-rho_tau_Y_@{k}_@{i}) * (phi_tau_Y_y_@{k}_@{i} * y_@{k} + phi_tau_Y_b_@{k}_@{i} * bgov_@{k}(-1))
++            + sigma_tau_Y_@{k}_@{i} * varepsilon_tau_Y_@{k}_@{i};
++    @#endfor
++@#endfor
++
++// -----------------------------------------------------------------------------
++// [FP.2] Tax revenues, linearized and normalized by steady-state GDP.
++// Uniform VAT does not affect relative consumption demands; it enters the Euler
++// equation through the tax-inclusive CPI and the wage Phillips curve through the
++// household labour-supply wedge.
++// -----------------------------------------------------------------------------
++@#for k in 1:Knum
++    rev_C_@{k} = s_C_@{k} * ((1 + Tbar_C_@{k}) * tau_C_@{k} + Tbar_C_@{k} * c_@{k});
++
++    rev_N_@{k} = s_L_@{k} * ((1 - Tbar_N_@{k}) * tau_N_@{k} + Tbar_N_@{k} * (w_@{k} + n_@{k}));
++
++    rev_Y_@{k} = (0
++        @#for i in 1:Inum
++            + s_MCY_@{k}_@{i} * ((1 + Tbar_Y_@{k}_@{i}) * tau_Y_@{k}_@{i} + Tbar_Y_@{k}_@{i} * (mc_@{k}_@{i} + y_@{k}_@{i}))
++        @#endfor
++    );
++
++    rev_tariff_@{k} = (0
++        @#for l in 1:Knum
++            @#if l != k
++                @#for i in 1:Inum
++                    + ( beta_C_@{k}_@{l}_@{i}
++                        @#for j in 1:Inum
++                            + lambda_@{k}_@{j} * omega_X_@{k}_@{l}_@{j}_@{i}
++                        @#endfor
++                      ) * tau_@{k}_@{l}_@{i}
++                @#endfor
++            @#endif
++        @#endfor
++    );
++@#endfor
++
++// -----------------------------------------------------------------------------
++// [FP.3] Fiscal-accounting government borrowing spread.
++// This spread affects only the government budget. It does not enter the household
++// Euler equation, UIP, or private borrowing costs.
++// -----------------------------------------------------------------------------
++@#for k in 1:Knum
++    i_g_@{k} = i_@{k} + psi_bgov_spread_@{k} * bgov_@{k}(-1);
++@#endfor
++
++// -----------------------------------------------------------------------------
++// [FP.4] Government budget identity with one-period nominal discount debt.
++// bgov_k is a real public-debt deviation normalized by steady-state GDP.
++// The no-Ponzi restriction is not a separate Dynare equation; it is imposed by
++// choosing debt-stabilizing fiscal feedbacks and must be checked through the
++// stability/determinacy of the solved linear system.
++// -----------------------------------------------------------------------------
++@#for k in 1:Knum
++    beta * bgov_@{k} - beta * bgov_ss_@{k} * i_g_@{k}
++        + rev_C_@{k} + rev_N_@{k} + rev_Y_@{k} + rev_tariff_@{k}
++        = bgov_@{k}(-1) - bgov_ss_@{k} * pi_C_@{k};
++@#endfor
++
+ // [49] Taylor rule for non-members of currency unions
+ @#for k in (Knum_MU+1):Knum
+     i_@{k} = rho_r_@{k} * i_@{k}(-1) + (1-rho_r_@{k}) * phi_pi_@{k} * pi_C_@{k} + (1-rho_r_@{k}) * phi_y_@{k} * y_@{k} + (1-rho_r_@{k}) * phi_Delta_pi_@{k} * (pi_C_@{k} - pi_C_@{k}(-1)) + (1-rho_r_@{k}) * phi_Delta_y_@{k} * (y_@{k} - y_@{k}(-1))
+--- b5_declare_variance.mod
++++ b5_declare_variance_fiscal_lpt.mod
+@@ -16,3 +16,14 @@
+     @#endfor
+ @#endfor
+ 
++%----------------------------------------------------------------
++% Fiscal-policy shocks
++%----------------------------------------------------------------
++@#for k in 1:Knum
++    var varepsilon_tau_C_@{k}; stderr 1;
++    var varepsilon_tau_N_@{k}; stderr 1;
++    @#for i in 1:Inum
++        var varepsilon_tau_Y_@{k}_@{i}; stderr 1;
++    @#endfor
++@#endfor
++

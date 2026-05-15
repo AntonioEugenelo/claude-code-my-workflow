@@ -15,6 +15,9 @@ Use this as a read-only Codex `explorer` review agent.
 - likely overflow or density problems
 - citation-format consistency
 - obvious academic-quality issues such as unsupported claims or wrong citation references
+- Fiscal-LPT paper anti-patterns from `docs/codex-workflows/fiscal-lpt-writing-style.md`:
+  copied or too-close Cochrane phrasing, long strings of same-length sentences,
+  filler transitions, and paper/model/workflow boundary confusion
 
 ## Output
 

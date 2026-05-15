@@ -22,6 +22,9 @@ Use this as a read-only Codex `explorer` review agent.
   - leads paragraphs with claims and interpretation rather than raw magnitudes
   - treats small or mixed net outcomes as decomposition problems when the text itself shows offsetting margins
   - ends with a bridge that makes the next section feel necessary
+- for Fiscal-LPT paper prose, whether the argument follows the puzzle,
+  mechanism, model object, result, implication order in
+  `docs/codex-workflows/fiscal-lpt-writing-style.md`
 - flag any recommendation that would likely conflict with theory, pedagogy, derivation, or domain-review priorities as an explicit cross-agent conflict instead of assuming the narrative preference should win
 
 ## Output

@@ -2,6 +2,29 @@
 
 Use these conventions when the task calls for the repo's established prose voice or analysis/figure style.
 
+## Fiscal-LPT Paper Style
+
+Apply this style to all Fiscal-LPT paper prose in `../Fiscal-LPT`.
+
+Authoritative guide: `docs/codex-workflows/fiscal-lpt-writing-style.md`.
+
+Core rules:
+
+- Open with the economic puzzle or fact, not with project history.
+- Move from puzzle to mechanism, then model object, then result, then implication.
+- Lead paragraphs with claims rather than figure, table, or script references.
+- Explain fiscal variables by economic role before notation.
+- Tie taxes, subsidies, debt, and fiscal feedback rules to the MCMS model step
+  that makes them operational.
+- Use Cochrane's papers as evidence for structure, rhythm, and ordering; do not
+  copy phrasing or imitate at the sentence level.
+- Target 17-22 words per sentence on average, with short anchor sentences used
+  for reversals, implications, and puzzle statements.
+- Keep results prose selective: name the comparison first, then report
+  magnitudes, then explain the mechanism.
+
+Review with `cochrane-style-reviewer` whenever Fiscal-LPT paper text changes.
+
 ## Eugenelo Prose Voice
 
 Apply this voice when the user asks for Eugenelo style, "my writing style", or when revising prose that should sound like Antonio Eugenelo.

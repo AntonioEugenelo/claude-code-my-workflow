@@ -21,6 +21,7 @@ The active prompt cards live under `.codex/review_agents/`.
 | Review Agent | Active Prompt Card | Primary Job |
 | --- | --- | --- |
 | `proofreader` | `.codex/review_agents/proofreader.md` | language, typos, consistency, likely overflow |
+| `cochrane-style-reviewer` | `.codex/review_agents/cochrane-style-reviewer.md` | Fiscal-LPT paper style, sentence rhythm, mechanism-first ordering |
 | `narrative-reviewer` | `.codex/review_agents/narrative-reviewer.md` | story, flow, audience, confusion points |
 | `pedagogical-reviewer` | `.codex/review_agents/pedagogical-reviewer.md` | teaching order, signposting, reader burden, one-pass comprehensibility |
 | `theory-critic` | `.codex/review_agents/theory-critic.md` | hostile theory ref report |
@@ -39,6 +40,7 @@ The older Claude names are preserved because they remain useful shorthand:
 | Lens | Review Agent |
 | --- | --- |
 | `proofreader` | `proofreader` |
+| `cochrane-style` | `cochrane-style-reviewer` |
 | `domain` | `domain-reviewer` |
 | `narrative` | `narrative-reviewer` |
 | `pedagogy` | `pedagogical-reviewer` |

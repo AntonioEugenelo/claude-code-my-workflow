@@ -1,13 +1,11 @@
 # Project Overlays
 
-The repository is purpose-agnostic by default. Activate an overlay only when the current task needs its assumptions, paths, tools, or review standards.
+This checkout is tailored to Fiscal-LPT / MCMS, while retaining reusable overlays for adjacent workflows. Activate an overlay when the current task needs its assumptions, paths, tools, or review standards.
 
 Available overlays:
 
 - `branch-purpose-map.md`: map from known branches to reusable overlays and optional dependencies.
-- `academic-research.md`: general academic writing, reviewing, slides, analysis, and reproducibility.
-- `antonio-eugenelo.md`: Antonio Eugenelo's Oxford/local academic circumstances.
-- `tariffs-overleaf.md`: Tariffs ECB paper and Overleaf synchronization.
+- `fiscal-lpt-mcms.md`: Fiscal-LPT paper, MCMS fiscal extension, and three-repo boundaries.
 - `mcms.md`: MCMS MATLAB/Dynare model work.
 - `government-spending.md`: Government Spending in Disaggregated Economies project.
 - `cox-replication.md`: Cox replication, model-result checks, and government-spending paper reruns.

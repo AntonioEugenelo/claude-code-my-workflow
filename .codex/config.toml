@@ -1,7 +1,7 @@
 schema_version = 1
 name = "codex-academic-workflow-starter"
 entrypoint = "AGENTS.md"
-default_project_overlay = "generic"
+default_project_overlay = "fiscal_lpt_mcms"
 
 [compatibility]
 claude_reference = ".claude"
@@ -54,11 +54,8 @@ decisions = "quality_reports/decisions"
 [project_overlays]
 generic = "docs/project-overlays/README.md"
 branch_purpose_map = "docs/project-overlays/branch-purpose-map.md"
-academic_research = "docs/project-overlays/academic-research.md"
-antonio_eugenelo = "docs/project-overlays/antonio-eugenelo.md"
-tariffs_overleaf = "docs/project-overlays/tariffs-overleaf.md"
+fiscal_lpt_mcms = "docs/project-overlays/fiscal-lpt-mcms.md"
 mcms = "docs/project-overlays/mcms.md"
-government_spending = "docs/project-overlays/government-spending.md"
 cox_replication = "docs/project-overlays/cox-replication.md"
 cover_letters = "docs/project-overlays/cover-letters.md"
 cv_editing = "docs/project-overlays/cv-editing.md"

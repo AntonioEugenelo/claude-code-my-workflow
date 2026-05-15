@@ -60,6 +60,7 @@ For each section/paragraph transition:
 - [ ] Are there hedging phrases that add nothing ("it is worth noting that", "it should be mentioned")?
 - [ ] Are there vague sentences that sound good but say nothing specific?
 - [ ] Is the document front-loaded with the strongest material, or does it bury the lead?
+- [ ] For Fiscal-LPT paper prose, does the section follow puzzle -> mechanism -> model object/result -> implication, as required by `docs/codex-workflows/fiscal-lpt-writing-style.md`?
 
 ---
 
